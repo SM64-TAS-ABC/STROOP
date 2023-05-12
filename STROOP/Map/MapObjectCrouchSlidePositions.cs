@@ -32,37 +32,17 @@ namespace STROOP.Map
         private ushort storedMarioAngle = 0;
         private ushort storedCameraAngle = 0;
 
-        private List<CrouchSlidePoint> storedPoints = new List<CrouchSlidePoint>();
+        private List<SlidingMarioState> storedPoints = new List<SlidingMarioState>();
 
         private int _tex = -1;
 
         public MapObjectCrouchSlidePositions()
             : base()
         {
-            LineWidth = 0;
+            InternalRotates = true;
         }
 
-        private class CrouchSlidePoint
-        {
-            public readonly float X;
-            public readonly float Y;
-            public readonly float Z;
-            public readonly ushort Angle;
-
-            public CrouchSlidePoint(
-                float x,
-                float y,
-                float z,
-                ushort angle)
-            {
-                X = x;
-                Y = y;
-                Z = z;
-                Angle = angle;
-            }
-        }
-
-        private List<CrouchSlidePoint> GetPoints()
+        private List<SlidingMarioState> GetPoints()
         {
             float testMarioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
             float testMarioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -138,8 +118,7 @@ namespace STROOP.Map
                             terrainType: terrainType,
                             new Input(x, y));
                     CrouchSlideCalculator.act_crouch_slide(marioState);
-                    CrouchSlidePoint point = new CrouchSlidePoint(marioState.X, marioState.Y, marioState.Z, marioState.MarioAngle);
-                    storedPoints.Add(point);
+                    storedPoints.Add(marioState);
                 }
             }
             return storedPoints;
@@ -147,7 +126,7 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<CrouchSlidePoint> points = GetPoints();
+            List<SlidingMarioState> points = GetPoints();
 
             for (int i = 0; i <points.Count; i++)
             {
@@ -156,7 +135,7 @@ namespace STROOP.Map
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(p.Angle) : 0;
+                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(p.MarioAngle) : 0;
                 double opacity = Opacity;
                 if (this == hoverData?.MapObject && i == hoverData?.Index)
                 {
@@ -164,21 +143,11 @@ namespace STROOP.Map
                 }
                 MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, angleDegrees, opacity);
             }
-
-            if (LineWidth != 0)
-            {
-                for (int i = 0; i < points.Count - 1; i++)
-                {
-                    var p1 = points[i];
-                    var p2 = points[i + 1];
-                    //MapUtilities.DrawLinesOn2DControlTopDownView(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, UseRelativeCoordinates);
-                }
-            }
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            List<CrouchSlidePoint> points = GetPoints();
+            List<SlidingMarioState> points = GetPoints();
 
             for (int i = 0; i < points.Count; i++)
             {
@@ -187,7 +156,7 @@ namespace STROOP.Map
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(p.Angle) : 0;
+                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(p.MarioAngle) : 0;
                 double opacity = Opacity;
                 if (this == hoverData?.MapObject && i == hoverData?.Index)
                 {
@@ -195,25 +164,15 @@ namespace STROOP.Map
                 }
                 MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, angleDegrees, opacity);
             }
-
-            if (LineWidth != 0)
-            {
-                for (int i = 0; i < points.Count - 1; i++)
-                {
-                    var p1 = points[i];
-                    var p2 = points[i + 1];
-                    //MapUtilities.DrawLinesOn2DControlOrthographicView(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, UseRelativeCoordinates);
-                }
-            }
         }
 
         public override void DrawOn3DControl()
         {
-            List<CrouchSlidePoint> points = GetPoints();
+            List<SlidingMarioState> points = GetPoints();
 
             foreach (var p in points)
             {
-                Matrix4 viewMatrix = GetModelMatrix(p.X, p.Y, p.Z, p.Angle);
+                Matrix4 viewMatrix = GetModelMatrix(p.X, p.Y, p.Z, p.MarioAngle);
                 GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
                 Map3DVertex[] vertices = GetVertices();
@@ -226,16 +185,6 @@ namespace STROOP.Map
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
                 GL.DeleteBuffer(vertexBuffer);
-            }
-
-            if (LineWidth != 0)
-            {
-                for (int i = 0; i < points.Count - 1; i++)
-                {
-                    var p1 = points[i];
-                    var p2 = points[i + 1];
-                    //MapUtilities.DrawLinesOn3DControl(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, GetModelMatrix());
-                }
             }
         }
 
@@ -295,7 +244,7 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            List<CrouchSlidePoint> points = GetPoints();
+            List<SlidingMarioState> points = GetPoints();
 
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
@@ -309,7 +258,8 @@ namespace STROOP.Map
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
                 if (dist <= radius || forceCursorPosition)
                 {
-                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i);
+                    string info = $"hSpeed={point.HSpeed} facingYaw={point.MarioAngle} slidingYaw={point.SlidingAngle} puX={PuUtilities.GetPuIndex(point.X)} puZ={PuUtilities.GetPuIndex(point.Z)}";
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i, info: info);
                 }
             }
             return null;
@@ -317,7 +267,7 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            List<CrouchSlidePoint> points = GetPoints();
+            List<SlidingMarioState> points = GetPoints();
 
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
@@ -331,7 +281,8 @@ namespace STROOP.Map
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius || forceCursorPosition)
                 {
-                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i);
+                    string info = $"hSpeed={point.HSpeed} facingYaw={point.MarioAngle} slidingYaw={point.SlidingAngle} puX={PuUtilities.GetPuIndex(point.X)} puZ={PuUtilities.GetPuIndex(point.Z)}";
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i, info: info);
                 }
             }
             return null;
@@ -339,7 +290,7 @@ namespace STROOP.Map
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
-            List<CrouchSlidePoint> points = GetPoints();
+            List<SlidingMarioState> points = GetPoints();
 
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
