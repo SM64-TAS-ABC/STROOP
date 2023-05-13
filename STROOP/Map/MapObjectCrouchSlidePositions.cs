@@ -124,7 +124,7 @@ namespace STROOP.Map
                             floorHeight: floorHeight,
                             wall: wall,
                             terrainType: terrainType,
-                            new Input(x, y));
+                            input: new Input(x, y));
                     CrouchSlideCalculator.act_crouch_slide(marioState);
                     if (!seen.Contains((marioState.X, marioState.Y, marioState.Z)))
                     {
