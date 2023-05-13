@@ -101,9 +101,9 @@ namespace STROOP.Map
 
             storedPoints.Clear();
             HashSet<(float x, float y, float z)> seen = new HashSet<(float x, float y, float z)>();
-            for (int x = -128; x <= 127; x++)
+            for (int x = -127; x <= 127; x++)
             {
-                for (int y = -128; y <= 127; y++)
+                for (int y = -127; y <= 127; y++)
                 {
                     SlidingMarioState marioState =
                         new SlidingMarioState(
