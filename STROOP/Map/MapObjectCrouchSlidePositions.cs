@@ -100,6 +100,7 @@ namespace STROOP.Map
             short terrainType = Config.Stream.GetShort(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.AreaPointerOffset) + 0x2);
 
             storedPoints.Clear();
+            HashSet<(float x, float y, float z)> seen = new HashSet<(float x, float y, float z)>();
             for (int x = -128; x <= 127; x++)
             {
                 for (int y = -128; y <= 127; y++)
@@ -125,7 +126,11 @@ namespace STROOP.Map
                             terrainType: terrainType,
                             new Input(x, y));
                     CrouchSlideCalculator.act_crouch_slide(marioState);
-                    storedPoints.Add(marioState);
+                    if (!seen.Contains((marioState.X, marioState.Y, marioState.Z)))
+                    {
+                        seen.Add((marioState.X, marioState.Y, marioState.Z));
+                        storedPoints.Add(marioState);
+                    }
                 }
             }
             return storedPoints;
