@@ -269,7 +269,7 @@ namespace STROOP.Structs
             public float offsetY;
             public float radius;
             public short numWalls;
-            public TriangleDataModel[] walls;
+            public TriangleDataModel[] walls = new TriangleDataModel[4];
         };
 
         public static TriangleDataModel resolve_and_return_wall_collisions(
