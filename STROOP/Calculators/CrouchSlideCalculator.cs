@@ -14,6 +14,8 @@ namespace STROOP.Structs
 {
     public static class CrouchSlideCalculator
     {
+        private static CellSnapshot _cellSnapshot;
+
         const uint LEVEL_BOUNDARY_MAX = 0x2000;
         const int CELL_SIZE = (1 << 10);
         const int NUM_CELLS = (int)(2 * LEVEL_BOUNDARY_MAX / CELL_SIZE);
@@ -56,6 +58,10 @@ namespace STROOP.Structs
         const ushort SURFACE_NOISE_VERY_SLIPPERY = 0x0075;
         const ushort SURFACE_NO_CAM_COL_VERY_SLIPPERY = 0x0078;
 
+        public static void SetCellSnapshot(CellSnapshot cellSnapshot)
+        {
+            _cellSnapshot = cellSnapshot;
+        }
 
         public static int act_crouch_slide(SlidingMarioState m)
         {
@@ -203,8 +209,8 @@ namespace STROOP.Structs
             lowerWall = resolve_and_return_wall_collisions(nextPos, 30.0f, 24.0f);
             upperWall = resolve_and_return_wall_collisions(nextPos, 60.0f, 50.0f);
 
-            (floor, floorHeight) = TriangleUtilities.FindFloorAndY(nextPos.x, nextPos.y, nextPos.z);
-            (ceil, ceilHeight) = TriangleUtilities.FindCeilingAndY(nextPos.x, floorHeight, nextPos.z);
+            (floor, floorHeight) = _cellSnapshot.FindFloorAndY(nextPos.x, nextPos.y, nextPos.z);
+            (ceil, ceilHeight) = _cellSnapshot.FindCeilingAndY(nextPos.x, floorHeight, nextPos.z);
 
             //waterLevel = find_water_level(nextPos[0], nextPos[2]);
             waterLevel = -11000;
@@ -315,10 +321,10 @@ namespace STROOP.Structs
             cellX = (short)(((x + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & NUM_CELLS_INDEX);
             cellZ = (short)(((z + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & NUM_CELLS_INDEX);
 
-            List<TriangleDataModel> dynamicWalls = CellUtilities.GetTrianglesInCell(cellX, cellZ, false, TriangleClassification.Wall);
+            List<TriangleDataModel> dynamicWalls = _cellSnapshot.GetTrianglesInCell(cellX, cellZ, false, TriangleClassification.Wall);
             numCollisions += find_wall_collisions_from_list(colData, dynamicWalls);
 
-            List<TriangleDataModel> staticWalls = CellUtilities.GetTrianglesInCell(cellX, cellZ, true, TriangleClassification.Wall);
+            List<TriangleDataModel> staticWalls = _cellSnapshot.GetTrianglesInCell(cellX, cellZ, true, TriangleClassification.Wall);
             numCollisions += find_wall_collisions_from_list(colData, staticWalls);
 
             return numCollisions;

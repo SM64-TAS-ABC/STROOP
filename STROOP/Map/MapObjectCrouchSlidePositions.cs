@@ -101,6 +101,8 @@ namespace STROOP.Map
 
             storedPoints.Clear();
             HashSet<(float x, float y, float z)> seen = new HashSet<(float x, float y, float z)>();
+            CellSnapshot cellSnapshot = new CellSnapshot();
+            CrouchSlideCalculator.SetCellSnapshot(cellSnapshot);
             for (int x = -127; x <= 127; x++)
             {
                 for (int y = -127; y <= 127; y++)
