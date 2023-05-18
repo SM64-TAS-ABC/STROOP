@@ -183,7 +183,7 @@ namespace STROOP.Structs
                 intendedPos.z = m.Z + m.Floor.NormY * (m.ZSpeed / 4.0f);
                 intendedPos.y = m.Y;
 
-                stepResult = (uint)perform_ground_quarter_step(m, intendedPos);
+                stepResult = (uint)perform_ground_quarter_step(m, ref intendedPos);
                 if (stepResult == GROUND_STEP_LEFT_GROUND || stepResult == GROUND_STEP_HIT_WALL_STOP_QSTEPS) {
                     break;
                 }
@@ -196,7 +196,7 @@ namespace STROOP.Structs
             return (int)stepResult;
         }
 
-        static int perform_ground_quarter_step(SlidingMarioState m, (float x, float y, float z) nextPos)
+        static int perform_ground_quarter_step(SlidingMarioState m, ref (float x, float y, float z) nextPos)
         {
             TriangleDataModel lowerWall;
             TriangleDataModel upperWall;
@@ -206,8 +206,8 @@ namespace STROOP.Structs
             float floorHeight;
             float waterLevel;
 
-            lowerWall = resolve_and_return_wall_collisions(nextPos, 30.0f, 24.0f);
-            upperWall = resolve_and_return_wall_collisions(nextPos, 60.0f, 50.0f);
+            lowerWall = resolve_and_return_wall_collisions(ref nextPos, 30.0f, 24.0f);
+            upperWall = resolve_and_return_wall_collisions(ref nextPos, 60.0f, 50.0f);
 
             (floor, floorHeight) = _cellSnapshot.FindFloorAndY(nextPos.x, nextPos.y, nextPos.z);
             (ceil, ceilHeight) = _cellSnapshot.FindCeilingAndY(nextPos.x, floorHeight, nextPos.z);
@@ -279,7 +279,7 @@ namespace STROOP.Structs
         };
 
         public static TriangleDataModel resolve_and_return_wall_collisions(
-            (float x, float y, float z) pos, float offset, float radius)
+            ref (float x, float y, float z) pos, float offset, float radius)
         {
             WallCollisionData collisionData = new WallCollisionData();
             TriangleDataModel wall = null;
@@ -406,9 +406,9 @@ namespace STROOP.Structs
                 }
                 else
                 {
-                    w1 = -surf.X1;
-                    w2 = -surf.X2;
-                    w3 = -surf.X3;
+                    w1 = surf.X1;
+                    w2 = surf.X2;
+                    w3 = surf.X3;
                     y1 = surf.Y1;
                     y2 = surf.Y2;
                     y3 = surf.Y3;

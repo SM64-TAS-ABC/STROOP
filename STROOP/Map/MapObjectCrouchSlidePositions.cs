@@ -105,8 +105,10 @@ namespace STROOP.Map
             CrouchSlideCalculator.SetCellSnapshot(cellSnapshot);
             for (int x = -127; x <= 127; x++)
             {
+                if (x >= -7 && x <= -1 || x >= 1 && x <= 7) continue;
                 for (int y = -127; y <= 127; y++)
                 {
+                    if (y >= -7 && y <= -1 || y >= 1 && y <= 7) continue;
                     SlidingMarioState marioState =
                         new SlidingMarioState(
                             x: testMarioX,
