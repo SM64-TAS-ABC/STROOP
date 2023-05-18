@@ -357,8 +357,8 @@ namespace STROOP.Map
                 case "MapObjectCorkBoxTester":
                     mapObject = new MapObjectCorkBoxTester();
                     break;
-                case "MapObjectCrouchSlidePositions":
-                    mapObject = new MapObjectCrouchSlidePositions();
+                case "MapObjectSlidePositions":
+                    mapObject = new MapObjectSlidePositions();
                     break;
                 case "MapObjectCUpFloor":
                     mapObject = new MapObjectCUpFloor();

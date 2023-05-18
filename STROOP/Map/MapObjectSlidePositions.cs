@@ -17,7 +17,7 @@ using STROOP.Models;
 
 namespace STROOP.Map
 {
-    public class MapObjectCrouchSlidePositions : MapObject
+    public class MapObjectSlidePositions : MapObject
     {
         private float storedMarioX = 0;
         private float storedMarioY = 0;
@@ -38,7 +38,7 @@ namespace STROOP.Map
 
         private int _tex = -1;
 
-        public MapObjectCrouchSlidePositions()
+        public MapObjectSlidePositions()
             : base()
         {
             InternalRotates = true;
