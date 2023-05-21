@@ -102,7 +102,7 @@ namespace STROOP.Map
             storedPoints.Clear();
             HashSet<(float x, float y, float z)> seen = new HashSet<(float x, float y, float z)>();
             CellSnapshot cellSnapshot = new CellSnapshot();
-            CrouchSlideCalculator.SetCellSnapshot(cellSnapshot);
+            SlideCalculator.SetCellSnapshot(cellSnapshot);
             for (int x = -127; x <= 127; x++)
             {
                 if (x >= -7 && x <= -1 || x >= 1 && x <= 7) continue;
@@ -129,7 +129,7 @@ namespace STROOP.Map
                             wall: wall,
                             terrainType: terrainType,
                             input: new Input(x, y));
-                    CrouchSlideCalculator.act_crouch_slide(marioState);
+                    SlideCalculator.act_crouch_slide(marioState);
                     if (!seen.Contains((marioState.X, marioState.Y, marioState.Z)))
                     {
                         seen.Add((marioState.X, marioState.Y, marioState.Z));
@@ -270,7 +270,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Crouch Slide Positions";
+            return "Slide Positions";
         }
 
         public override MapDrawType GetDrawType()

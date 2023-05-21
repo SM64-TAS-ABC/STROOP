@@ -181,7 +181,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculators\CrouchSlideCalculator.cs" />
+    <Compile Include="Calculators\SlideCalculator.cs" />
     <Compile Include="Calculators\SlidingMarioState.cs" />
     <Compile Include="Calculators\PunchRecoilCalculator.cs" />
     <Compile Include="Calculators\LoadingZoneMain.cs" />

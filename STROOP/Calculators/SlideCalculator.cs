@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public static class CrouchSlideCalculator
+    public static class SlideCalculator
     {
         private static CellSnapshot _cellSnapshot;
 
