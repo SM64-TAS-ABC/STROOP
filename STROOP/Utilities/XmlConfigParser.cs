@@ -16,6 +16,7 @@ using System.Net;
 using STROOP.Structs.Configurations;
 using STROOP.Controls;
 using STROOP.Models;
+using STROOP.Map;
 
 namespace STROOP.Utilities
 {
@@ -1599,6 +1600,8 @@ namespace STROOP.Utilities
                         hacks.Add(romHack);
                         if (name == "Display Variable") VarHackConfig.ShowVarRomHack = romHack;
                         if (name == "Display Variable 2") VarHackConfig.ShowVarRomHack2 = romHack;
+                        if (name == "Previous Positions (U)") MapObjectPreviousPositions._romHackUS = romHack;
+                        if (name == "Previous Positions (J)") MapObjectPreviousPositions._romHackJP = romHack;
                         break;
                 }
             }

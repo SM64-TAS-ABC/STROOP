@@ -18,6 +18,9 @@ namespace STROOP.Map
 {
     public class MapObjectPreviousPositions : MapObject
     {
+        public static RomHack _romHackUS;
+        public static RomHack _romHackJP;
+
         private int _redMarioTex = -1;
         private int _greenMarioTex = -1;
         private int _orangeMarioTex = -1;
@@ -490,6 +493,19 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                ToolStripMenuItem itemEnableRomHack = new ToolStripMenuItem("Enable Rom Hack");
+                itemEnableRomHack.Click += (sender, e) =>
+                {
+                    if (RomVersionConfig.Version == RomVersion.US)
+                    {
+                        _romHackUS.LoadPayload();
+                    }
+                    if (RomVersionConfig.Version == RomVersion.JP)
+                    {
+                        _romHackJP.LoadPayload();
+                    }
+                };
+
                 ToolStripMenuItem itemShowEachPoint = new ToolStripMenuItem("Show Each Point");
                 itemShowEachPoint.Click += (sender, e) =>
                 {
@@ -525,6 +541,7 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemEnableRomHack);
                 _contextMenuStrip.Items.Add(itemShowEachPoint);
                 _contextMenuStrip.Items.Add(_itemTrackHistory);
                 _contextMenuStrip.Items.Add(_itemPauseHistory);
