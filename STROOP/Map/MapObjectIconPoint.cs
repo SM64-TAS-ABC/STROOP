@@ -169,6 +169,39 @@ namespace STROOP.Map
             ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(x, y, z, "Position");
             output.Insert(0, copyPositionItem);
 
+            ToolStripMenuItem pastePositionItem = new ToolStripMenuItem("Paste Position");
+            pastePositionItem.Click += (sender, e) =>
+            {
+                List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
+                if (stringList.Count == 2)
+                {
+                    double? xValue = ParsingUtilities.ParseDoubleNullable(stringList[0]);
+                    double? zValue = ParsingUtilities.ParseDoubleNullable(stringList[1]);
+                    if (!xValue.HasValue || !zValue.HasValue) return;
+                    GetPositionAngle().SetValues(x: xValue, z: zValue);
+                }
+                if (stringList.Count == 3)
+                {
+                    double? xValue = ParsingUtilities.ParseDoubleNullable(stringList[0]);
+                    double? yValue = ParsingUtilities.ParseDoubleNullable(stringList[1]);
+                    double? zValue = ParsingUtilities.ParseDoubleNullable(stringList[2]);
+                    if (!xValue.HasValue || !yValue.HasValue || !zValue.HasValue) return;
+                    GetPositionAngle().SetValues(x: xValue, y: yValue, z: zValue);
+                }
+            };
+            output.Insert(1, pastePositionItem);
+
+            ToolStripMenuItem gotoPositionItem = new ToolStripMenuItem("Go to Position");
+            gotoPositionItem.Click += (sender, e) =>
+            {
+                Config.Stream.Suspend();
+                Config.Stream.SetValue((float)x, MarioConfig.StructAddress + MarioConfig.XOffset);
+                Config.Stream.SetValue((float)y, MarioConfig.StructAddress + MarioConfig.YOffset);
+                Config.Stream.SetValue((float)z, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                Config.Stream.Resume();
+            };
+            output.Insert(2, gotoPositionItem);
+
             return output;
         }
 
