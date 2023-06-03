@@ -175,6 +175,7 @@ namespace STROOP.Managers
         TextBox _textBoxTestingInvisibleWallsZMin;
         TextBox _textBoxTestingInvisibleWallsZMax;
         TextBox _textBoxTestingInvisibleWallsY;
+        CheckBox _checkBoxTestingInvisibleWallsOnlyLonePoints;
         Button _buttonTestingInvisibleWallsCalculate;
 
         public TestingManager(TabPage tabControl)
@@ -442,27 +443,30 @@ namespace STROOP.Managers
             _textBoxTestingInvisibleWallsZMin = groupBoxTestingInvisibleWalls.Controls["textBoxTestingInvisibleWallsZMin"] as TextBox;
             _textBoxTestingInvisibleWallsZMax = groupBoxTestingInvisibleWalls.Controls["textBoxTestingInvisibleWallsZMax"] as TextBox;
             _textBoxTestingInvisibleWallsY = groupBoxTestingInvisibleWalls.Controls["textBoxTestingInvisibleWallsY"] as TextBox;
+            _checkBoxTestingInvisibleWallsOnlyLonePoints = groupBoxTestingInvisibleWalls.Controls["checkBoxTestingInvisibleWallsOnlyLonePoints"] as CheckBox;
             _buttonTestingInvisibleWallsCalculate = groupBoxTestingInvisibleWalls.Controls["buttonTestingInvisibleWallsCalculate"] as Button;
             _buttonTestingInvisibleWallsCalculate.Click += (sender, e) => CalculateInvisibleWalls();
         }
 
         private void CalculateInvisibleWalls()
         {
+            if (_checkBoxTestingInvisibleWallsOnlyLonePoints.Checked)
+            {
+                CalculateInvisibleWalls_OnlyLonePoints();
+            }
+            else
+            {
+                CalculateInvisibleWalls_AllPoints();
+            }
+        }
+
+        private void CalculateInvisibleWalls_AllPoints()
+        {
             double? xMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMin.Text);
             double? xMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMax.Text);
             double? zMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMin.Text);
             double? zMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMax.Text);
             double? yDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsY.Text);
-
-            if (_textBoxTestingInvisibleWallsXMin.Text == "" &&
-                _textBoxTestingInvisibleWallsXMax.Text == "" &&
-                _textBoxTestingInvisibleWallsZMin.Text == "" &&
-                _textBoxTestingInvisibleWallsZMax.Text == "" &&
-                _textBoxTestingInvisibleWallsY.Text == "")
-            {
-                CalculateInvisibleWalls2();
-                return;
-            }
 
             if (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue) return;
 
@@ -479,6 +483,7 @@ namespace STROOP.Managers
 
             for (int x = xMin; x <= xMax; x++)
             {
+                if (x % 100 == 0) Config.Print("Step1: " + x);
                 for (int z = zMin; z <= zMax; z++)
                 {
                     counter++;
@@ -502,13 +507,15 @@ namespace STROOP.Managers
             InfoForm.ShowValue(output, "Invisible Wall Points", $"Invisible Wall Points ({units.Count} found / {counter} checked)");
         }
 
-        private void CalculateInvisibleWalls2()
+        private void CalculateInvisibleWalls_OnlyLonePoints()
         {
-            double? xMinDouble = -8191;
-            double? xMaxDouble = 8191;
-            double? zMinDouble = -8191;
-            double? zMaxDouble = 8191;
-            double? yDouble = 15000;
+            double? xMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMin.Text);
+            double? xMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMax.Text);
+            double? zMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMin.Text);
+            double? zMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMax.Text);
+            double? yDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsY.Text);
+
+            if (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue) return;
 
             // allow for swapped bounds
             int xMin = Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
@@ -518,51 +525,56 @@ namespace STROOP.Managers
             int y = (int)yDouble.Value;
 
             CellSnapshot cellSnapshot = new CellSnapshot();
-            int tableDiameter = 8191 * 2 + 1;
-            bool[,] invisibleWallTable = new bool[tableDiameter, tableDiameter];
+            int xDiameter = (int)(xMaxDouble - xMinDouble + 1);
+            int zDiameter = (int)(zMaxDouble - zMinDouble + 1);
+            bool[,] invisibleWallTable = new bool[xDiameter, zDiameter];
             int counter = 0;
 
             for (int x = xMin; x <= xMax; x++)
             {
-                if (x % 100 == 0) Config.Print(x);
+                if (x % 100 == 0) Config.Print("Step1: " + x);
                 for (int z = zMin; z <= zMax; z++)
                 {
                     counter++;
                     (TriangleDataModel floor, float floorY) = cellSnapshot.FindFloorAndY(x, y, z);
                     if (floor == null)
                     {
-                        invisibleWallTable[x + 8191, z + 8191] = true;
+                        invisibleWallTable[x - xMin, z - zMin] = true;
                         continue;
                     }
                     (TriangleDataModel ceiling, float ceilingY) = cellSnapshot.FindCeilingAndY(x, floorY + 80, z);
                     if (y + 160.0f > ceilingY)
                     {
-                        invisibleWallTable[x + 8191, z + 8191] = true;
+                        invisibleWallTable[x - xMin, z - zMin] = true;
                         continue;
                     }
                 }
             }
 
+            int checkRadius = 2;
+            int checkThreshold = 16;
+
             List<(int x, int z)> units = new List<(int x, int z)>();
-            for (int xb = xMin + 1; xb <= xMax - 1; xb++)
+            for (int xb = xMin + checkRadius; xb <= xMax - checkRadius; xb++)
             {
-                for (int zb = zMin + 1; zb <= zMax - 1; zb++)
+                if (xb % 100 == 0) Config.Print("Step2: " + xb);
+                for (int zb = zMin + checkRadius; zb <= zMax - checkRadius; zb++)
                 {
-                    if (!invisibleWallTable[xb + 8191, zb + 8191]) continue;
+                    if (!invisibleWallTable[xb - xMin, zb - zMin]) continue;
                     int numAdjacentFloorUnits = 0;
-                    for (int xd = -1; xd <= 1; xd++)
+                    for (int xd = -checkRadius; xd <= checkRadius; xd++)
                     {
-                        for (int zd = -1; zd <= 1; zd++)
+                        for (int zd = -checkRadius; zd <= checkRadius; zd++)
                         {
                             int x = xb + xd;
                             int z = zb + zd;
-                            if (!invisibleWallTable[x + 8191, z + 8191])
+                            if (!invisibleWallTable[x - xMin, z - zMin])
                             {
                                 numAdjacentFloorUnits++;
                             }
                         }
                     }
-                    if (numAdjacentFloorUnits >= 6)
+                    if (numAdjacentFloorUnits >= checkThreshold)
                     {
                         units.Add((xb, zb));
                     }
