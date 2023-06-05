@@ -446,6 +446,21 @@ namespace STROOP.Managers
             _checkBoxTestingInvisibleWallsOnlyLonePoints = groupBoxTestingInvisibleWalls.Controls["checkBoxTestingInvisibleWallsOnlyLonePoints"] as CheckBox;
             _buttonTestingInvisibleWallsCalculate = groupBoxTestingInvisibleWalls.Controls["buttonTestingInvisibleWallsCalculate"] as Button;
             _buttonTestingInvisibleWallsCalculate.Click += (sender, e) => CalculateInvisibleWalls();
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                groupBoxTestingInvisibleWalls,
+                new List<string>() { "Use Custom Positions" },
+                new List<Action>()
+                {
+                    () =>
+                    {
+                        _textBoxTestingInvisibleWallsXMin.Text = ((int)Math.Min(SpecialConfig.CustomX, SpecialConfig.Custom2X)).ToString();
+                        _textBoxTestingInvisibleWallsXMax.Text = ((int)Math.Max(SpecialConfig.CustomX, SpecialConfig.Custom2X)).ToString();
+                        _textBoxTestingInvisibleWallsZMin.Text = ((int)Math.Min(SpecialConfig.CustomZ, SpecialConfig.Custom2Z)).ToString();
+                        _textBoxTestingInvisibleWallsZMax.Text = ((int)Math.Max(SpecialConfig.CustomZ, SpecialConfig.Custom2Z)).ToString();
+                        _textBoxTestingInvisibleWallsY.Text = (18000).ToString();
+                    }
+                });
         }
 
         private void CalculateInvisibleWalls()
