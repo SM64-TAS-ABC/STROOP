@@ -57,7 +57,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Cylinder Points";
+            return $"Custom Cylinder Points ({_points.Count})";
         }
 
         public override ContextMenuStrip GetContextMenuStrip()

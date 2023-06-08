@@ -48,7 +48,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Sphere Points";
+            return $"Custom Sphere Points ({_points.Count})";
         }
 
         public override ContextMenuStrip GetContextMenuStrip()

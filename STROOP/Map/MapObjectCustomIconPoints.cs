@@ -170,7 +170,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Icon Points";
+            return $"Custom Icon Points ({_points.Count})";
         }
 
         public override MapDrawType GetDrawType()
