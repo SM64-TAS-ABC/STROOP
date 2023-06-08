@@ -119,6 +119,10 @@ namespace STROOP.Map
                     items.Add(new ToolStripSeparator());
                 }
 
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(
+                    cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z, "Clicked Position");
+                items.Add(copyPositionItem);
+
                 ToolStripMenuItem goToClickedPositionItem = new ToolStripMenuItem("Go to Clicked Position");
                 goToClickedPositionItem.Click += (sender, e) =>
                 {
@@ -148,10 +152,6 @@ namespace STROOP.Map
                     }
                 };
                 items.Add(goToClickedPositionItem);
-
-                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(
-                    cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z, "Clicked Position");
-                items.Add(copyPositionItem);
             }
             return items;
         }
