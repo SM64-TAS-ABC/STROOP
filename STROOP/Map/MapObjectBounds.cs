@@ -35,7 +35,7 @@ namespace STROOP.Map
         {
             Size = 15;
             Opacity = 0.25;
-            Color = Color.Magenta;
+            Color = Color.Yellow;
             LineWidth = 3;
 
             LAST_INSTANCE = this;
