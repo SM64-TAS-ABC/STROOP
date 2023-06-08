@@ -449,16 +449,20 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 groupBoxTestingInvisibleWalls,
-                new List<string>() { "Use Custom Positions" },
+                new List<string>() { "Use Bounds" },
                 new List<Action>()
                 {
                     () =>
                     {
-                        _textBoxTestingInvisibleWallsXMin.Text = ((int)Math.Min(SpecialConfig.CustomX, SpecialConfig.Custom2X)).ToString();
-                        _textBoxTestingInvisibleWallsXMax.Text = ((int)Math.Max(SpecialConfig.CustomX, SpecialConfig.Custom2X)).ToString();
-                        _textBoxTestingInvisibleWallsZMin.Text = ((int)Math.Min(SpecialConfig.CustomZ, SpecialConfig.Custom2Z)).ToString();
-                        _textBoxTestingInvisibleWallsZMax.Text = ((int)Math.Max(SpecialConfig.CustomZ, SpecialConfig.Custom2Z)).ToString();
-                        _textBoxTestingInvisibleWallsY.Text = (18000).ToString();
+                        MapObjectBounds bounds = MapObjectBounds.LAST_INSTANCE;
+                        if (bounds != null)
+                        {
+                            _textBoxTestingInvisibleWallsXMin.Text = ((int)bounds.GetXMin()).ToString();
+                            _textBoxTestingInvisibleWallsXMax.Text = ((int)bounds.GetXMax()).ToString();
+                            _textBoxTestingInvisibleWallsZMin.Text = ((int)bounds.GetZMin()).ToString();
+                            _textBoxTestingInvisibleWallsZMax.Text = ((int)bounds.GetZMax()).ToString();
+                            _textBoxTestingInvisibleWallsY.Text = (18000).ToString();
+                        }
                     }
                 });
         }

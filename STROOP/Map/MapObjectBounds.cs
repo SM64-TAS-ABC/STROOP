@@ -16,6 +16,8 @@ namespace STROOP.Map
 {
     public class MapObjectBounds : MapObject
     {
+        public static MapObjectBounds LAST_INSTANCE = null;
+
         private int _blueCircleTex = -1;
         private int _lastHoveredPointIndex = 0;
 
@@ -35,6 +37,8 @@ namespace STROOP.Map
             Opacity = 0.25;
             Color = Color.Magenta;
             LineWidth = 3;
+
+            LAST_INSTANCE = this;
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
@@ -177,6 +181,26 @@ namespace STROOP.Map
                 }
             }
             return null;
+        }
+
+        public float GetXMin()
+        {
+            return _points.Min(p => p.x);
+        }
+
+        public float GetXMax()
+        {
+            return _points.Max(p => p.x);
+        }
+
+        public float GetZMin()
+        {
+            return _points.Min(p => p.z);
+        }
+
+        public float GetZMax()
+        {
+            return _points.Max(p => p.z);
         }
     }
 }
