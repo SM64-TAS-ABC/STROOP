@@ -487,6 +487,14 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemBounds = new ToolStripMenuItem("Add Tracker for Bounds");
+            itemBounds.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapObjectBounds();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemCameraView = new ToolStripMenuItem("Add Tracker for Camera View");
             itemCameraView.Click += (sender, e) =>
             {
@@ -669,6 +677,7 @@ namespace STROOP.Managers
             itemMisc.DropDownItems.Add(itemCompass);
             itemMisc.DropDownItems.Add(itemCoordinateLabels);
             itemMisc.DropDownItems.Add(itemCorkBoxTester);
+            itemMisc.DropDownItems.Add(itemBounds);
             itemMisc.DropDownItems.Add(itemCameraView);
 
             ToolStripMenuItem itemCustom = new ToolStripMenuItem("Custom...");
