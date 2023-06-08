@@ -17,7 +17,7 @@ namespace STROOP.Map
     public class MapObjectBounds : MapObject
     {
         private int _blueCircleTex = -1;
-        private int _lastHoveredPoint = 0;
+        private int _lastHoveredPointIndex = 0;
 
         private List<(float x, float z)> _points =
             new List<(float x, float z)>()
@@ -81,24 +81,49 @@ namespace STROOP.Map
                 double opacity = 1;
                 if (this == hoverData?.MapObject && i == hoverData?.Index)
                 {
-                    _lastHoveredPoint = i;
+                    _lastHoveredPointIndex = i;
                     opacity = MapUtilities.GetHoverOpacity();
                 }
                 MapUtilities.DrawTexture(_blueCircleTex, point, size, angleDegrees, opacity);
             }
         }
 
-        //public override (double x, double y, double z)? GetDragPosition()
-        //{
-        //    return 
-        //}
+        public override (double x, double y, double z)? GetDragPosition()
+        {
+            var point = _points[_lastHoveredPointIndex];
+            return (point.x, 0, point.z);
+        }
 
-        //public override void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
-        //{
-        //    if (KeyboardUtilities.IsCtrlHeld()) z = null;
-        //    if (KeyboardUtilities.IsShiftHeld()) x = null;
-        //    GetPositionAngle().SetValues(x, y, z);
-        //}
+        public override void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
+        {
+            if (x.HasValue)
+            {
+                if (_lastHoveredPointIndex == 0 || _lastHoveredPointIndex == 1)
+                {
+                    _points[0] = ((float)x.Value, _points[0].z);
+                    _points[1] = ((float)x.Value, _points[1].z);
+                }
+                else
+                {
+                    _points[2] = ((float)x.Value, _points[2].z);
+                    _points[3] = ((float)x.Value, _points[3].z);
+                }
+            }
+
+            if (z.HasValue)
+            {
+                if (_lastHoveredPointIndex == 0 || _lastHoveredPointIndex == 3)
+                {
+                    _points[0] = (_points[0].x, (float)z.Value);
+                    _points[3] = (_points[3].x, (float)z.Value);
+                }
+                else
+                {
+                    _points[1] = (_points[1].x, (float)z.Value);
+                    _points[2] = (_points[2].x, (float)z.Value);
+                }
+            }
+        }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
@@ -146,7 +171,7 @@ namespace STROOP.Map
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(point.x, point.z, UseRelativeCoordinates);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
-                if (dist <= radius || forceCursorPosition)
+                if (dist <= radius || (forceCursorPosition && _lastHoveredPointIndex == i))
                 {
                     return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.x, 0, point.z, index: i);
                 }
