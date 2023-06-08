@@ -17,6 +17,16 @@ namespace STROOP.Map
     public class MapObjectBounds : MapObject
     {
         private int _blueCircleTex = -1;
+        private int _lastHoveredPoint = 0;
+
+        private List<(float x, float z)> _points =
+            new List<(float x, float z)>()
+            {
+                (-1000, -1000),
+                (-1000, 1000),
+                (1000, 1000),
+                (1000, -1000),
+            };
 
         public MapObjectBounds()
             : base()
@@ -29,10 +39,8 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<(float x, float z)> data = GetData();
-
             List<(float x, float z)> dataForControl =
-                data.ConvertAll(d => MapUtilities.ConvertCoordsForControlTopDownView(d.x, d.z, UseRelativeCoordinates));
+                _points.ConvertAll(d => MapUtilities.ConvertCoordsForControlTopDownView(d.x, d.z, UseRelativeCoordinates));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -62,9 +70,9 @@ namespace STROOP.Map
 
             GL.Color4(1, 1, 1, 1.0f);
 
-            for (int i = data.Count - 1; i >= 0; i--)
+            for (int i = _points.Count - 1; i >= 0; i--)
             {
-                var dataPoint = data[i];
+                var dataPoint = _points[i];
                 (float x, float z) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z, UseRelativeCoordinates);
                 float angleDegrees = 0;
@@ -73,22 +81,24 @@ namespace STROOP.Map
                 double opacity = 1;
                 if (this == hoverData?.MapObject && i == hoverData?.Index)
                 {
+                    _lastHoveredPoint = i;
                     opacity = MapUtilities.GetHoverOpacity();
                 }
                 MapUtilities.DrawTexture(_blueCircleTex, point, size, angleDegrees, opacity);
             }
         }
 
-        private List<(float x, float z)> GetData()
-        {
-            return new List<(float x, float z)>()
-            {
-                (-100, -100),
-                (-100, 100),
-                (100, 100),
-                (100, -100),
-            };
-        }
+        //public override (double x, double y, double z)? GetDragPosition()
+        //{
+        //    return 
+        //}
+
+        //public override void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
+        //{
+        //    if (KeyboardUtilities.IsCtrlHeld()) z = null;
+        //    if (KeyboardUtilities.IsShiftHeld()) x = null;
+        //    GetPositionAngle().SetValues(x, y, z);
+        //}
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
@@ -130,10 +140,9 @@ namespace STROOP.Map
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
 
-            List<(float x, float z)> data = GetData();
-            for (int i = data.Count - 1; i >= 0; i--)
+            for (int i = _points.Count - 1; i >= 0; i--)
             {
-                var point = data[i];
+                var point = _points[i];
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(point.x, point.z, UseRelativeCoordinates);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
