@@ -16,33 +16,23 @@ namespace STROOP.Map
 {
     public class MapObjectBounds : MapObject
     {
+        private int _blueCircleTex = -1;
+
         public MapObjectBounds()
             : base()
         {
-            Opacity = 0.5;
+            Size = 15;
+            Opacity = 0.25;
             Color = Color.Magenta;
+            LineWidth = 3;
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<List<(float x, float y, float z, Color color, bool isHovered)>> quadList =
-                new List<List<(float x, float y, float z, Color color, bool isHovered)>>()
-                {
-                    new List<(float x, float y, float z, Color color, bool isHovered)>()
-                    {
-                       (-100, 0, -100, Color, false),
-                       (-100, 0, 100, Color, false),
-                       (100, 0, 100, Color, false),
-                       (100, 0, -100, Color, false),
-                    }
-                };
-            List<List<(float x, float z, Color color, bool isHovered)>> quadListForControl =
-                quadList.ConvertAll(quad => quad.ConvertAll(
-                    vertex =>
-                    {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates);
-                        return (x, z, vertex.color, vertex.isHovered);
-                    }));
+            List<(float x, float z)> data = GetData();
+
+            List<(float x, float z)> dataForControl =
+                data.ConvertAll(d => MapUtilities.ConvertCoordsForControlTopDownView(d.x, d.z, UseRelativeCoordinates));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -50,13 +40,10 @@ namespace STROOP.Map
 
             // Draw quad
             GL.Begin(PrimitiveType.Quads);
-            foreach (List<(float x, float z, Color color, bool isHovered)> quad in quadListForControl)
+            foreach (var d in dataForControl)
             {
-                foreach ((float x, float z, Color color, bool isHovered) in quad)
-                {
-                    GL.Color4(color.R, color.G, color.B, OpacityByte);
-                    GL.Vertex2(x, z);
-                }
+                GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+                GL.Vertex2(d.x, d.z);
             }
             GL.End();
 
@@ -65,18 +52,42 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z, Color color, bool isHovered)> quad in quadListForControl)
+                GL.Begin(PrimitiveType.LineLoop);
+                foreach (var d in dataForControl)
                 {
-                    GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z, Color color, bool isHovered) in quad)
-                    {
-                        GL.Vertex2(x, z);
-                    }
-                    GL.End();
+                    GL.Vertex2(d.x, d.z);
                 }
+                GL.End();
             }
 
             GL.Color4(1, 1, 1, 1.0f);
+
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                var dataPoint = data[i];
+                (float x, float z) = dataPoint;
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z, UseRelativeCoordinates);
+                float angleDegrees = 0;
+                SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueCircleMapImage.Size, Size, Scales);
+                PointF point = new PointF(positionOnControl.x, positionOnControl.z);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(_blueCircleTex, point, size, angleDegrees, 1);
+            }
+        }
+
+        private List<(float x, float z)> GetData()
+        {
+            return new List<(float x, float z)>()
+            {
+                (-100, -100),
+                (-100, 100),
+                (100, 100),
+                (100, -100),
+            };
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
@@ -102,6 +113,15 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Perspective;
+        }
+
+        public override void Update()
+        {
+            if (_blueCircleTex == -1)
+            {
+                _blueCircleTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.BlueCircleMapImage as Bitmap);
+            }
         }
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
