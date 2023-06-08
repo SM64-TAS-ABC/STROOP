@@ -70,12 +70,12 @@ namespace STROOP.Map
                 float angleDegrees = 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueCircleMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                double opacity = Opacity;
+                double opacity = 1;
                 if (this == hoverData?.MapObject && i == hoverData?.Index)
                 {
                     opacity = MapUtilities.GetHoverOpacity();
                 }
-                MapUtilities.DrawTexture(_blueCircleTex, point, size, angleDegrees, 1);
+                MapUtilities.DrawTexture(_blueCircleTex, point, size, angleDegrees, opacity);
             }
         }
 
@@ -126,75 +126,23 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            //Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
-            //if (!relPosMaybe.HasValue) return null;
-            //Point relPos = relPosMaybe.Value;
-            //(float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
-            //var quadList = GetQuadList(null);
-            //for (int i = quadList.Count - 1; i >= 0; i--)
-            //{
-            //    var quad = quadList[i];
-            //    var simpleQuad = quad.ConvertAll(q => (q.x, q.y, q.z));
-            //    if (MapUtilities.IsWithinRectangularQuad(simpleQuad, inGameX, inGameZ) || forceCursorPosition)
-            //    {
-            //        return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, 0, 0, 0, index: i);
-            //    }
-            //}
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
+
+            List<(float x, float z)> data = GetData();
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                var point = data[i];
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(point.x, point.z, UseRelativeCoordinates);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
+                if (dist <= radius || forceCursorPosition)
+                {
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.x, 0, point.z, index: i);
+                }
+            }
             return null;
-        }
-
-        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
-        {
-            //Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
-            //if (!relPosMaybe.HasValue) return null;
-            //Point relPos = relPosMaybe.Value;
-
-            //var quadList = GetQuadList(null);
-            //for (int i = quadList.Count - 1; i >= 0; i--)
-            //{
-            //    var quad = quadList[i];
-            //    var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates));
-            //    if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y, forceCursorPosition))
-            //    {
-            //        return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, 0, 0, 0, index: i);
-            //    }
-            //}
-            return null;
-        }
-
-        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
-        {
-            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
-
-            //var quadList = GetQuadList(null);
-            //var quad = quadList[hoverData.Index.Value];
-            //if (quad.Count == 0) return output;
-
-            //double xMin = quad.Min(p => p.x);
-            //double xMax = quad.Max(p => p.x);
-            //double zMin = quad.Min(p => p.z);
-            //double zMax = quad.Max(p => p.z);
-            //double y = quad.Max(p => p.y);
-
-            //ToolStripMenuItem copyXMin = new ToolStripMenuItem(string.Format("Copy X Min ({0})", xMin));
-            //ToolStripMenuItem copyXMax = new ToolStripMenuItem(string.Format("Copy X Max ({0})", xMax));
-            //ToolStripMenuItem copyZMin = new ToolStripMenuItem(string.Format("Copy Z Min ({0})", zMin));
-            //ToolStripMenuItem copyZMax = new ToolStripMenuItem(string.Format("Copy Z Max ({0})", zMax));
-            //ToolStripMenuItem copyY = new ToolStripMenuItem(string.Format("Copy Y ({0})", y));
-
-            //copyXMin.Click += (sender, e) => Clipboard.SetText(xMin.ToString());
-            //copyXMax.Click += (sender, e) => Clipboard.SetText(xMax.ToString());
-            //copyZMin.Click += (sender, e) => Clipboard.SetText(zMin.ToString());
-            //copyZMax.Click += (sender, e) => Clipboard.SetText(zMax.ToString());
-            //copyY.Click += (sender, e) => Clipboard.SetText(y.ToString());
-
-            //output.Insert(0, copyXMin);
-            //output.Insert(1, copyXMax);
-            //output.Insert(2, copyZMin);
-            //output.Insert(3, copyZMax);
-            //output.Insert(4, copyY);
-
-            return output;
         }
     }
 }
