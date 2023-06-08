@@ -328,6 +328,9 @@ namespace STROOP.Map
                 case "MapObjectAngleRange":
                     mapObject = new MapObjectAngleRange(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
+                case "MapObjectBounds":
+                    mapObject = MapObjectBounds.Create(xElement.Attribute(XName.Get("points")).Value);
+                    break;
                 case "MapObjectBranchPath":
                     mapObject = MapObjectBranchPath.Create(
                         PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value),

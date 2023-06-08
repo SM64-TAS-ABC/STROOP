@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -39,6 +40,20 @@ namespace STROOP.Map
             LineWidth = 3;
 
             LAST_INSTANCE = this;
+        }
+
+        public MapObjectBounds(List<(float x, float z)> points) : this()
+        {
+            _points = points;
+        }
+
+        public static MapObjectBounds Create(string text)
+        {
+            List<(double x, double y, double z)> points = MapUtilities.ParsePoints(text, false);
+            if (points == null) return null;
+            List<(float x, float z)> floatPoints = points.ConvertAll(
+                point => ((float)point.x, (float)point.z));
+            return new MapObjectBounds(floatPoints);
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
@@ -201,6 +216,16 @@ namespace STROOP.Map
         public float GetZMax()
         {
             return _points.Max(p => p.z);
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> pointList = _points.ConvertAll(
+                p => string.Format("({0},{1})", (double)p.x, (double)p.z));
+            return new List<XAttribute>()
+            {
+                new XAttribute("points", string.Join(",", pointList)),
+            };
         }
     }
 }
