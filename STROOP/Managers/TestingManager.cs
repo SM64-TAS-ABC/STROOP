@@ -461,7 +461,6 @@ namespace STROOP.Managers
                             _textBoxTestingInvisibleWallsXMax.Text = ((int)bounds.GetXMax()).ToString();
                             _textBoxTestingInvisibleWallsZMin.Text = ((int)bounds.GetZMin()).ToString();
                             _textBoxTestingInvisibleWallsZMax.Text = ((int)bounds.GetZMax()).ToString();
-                            _textBoxTestingInvisibleWallsY.Text = (18000).ToString();
                         }
                     }
                 });
