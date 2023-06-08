@@ -226,6 +226,27 @@ namespace STROOP.Map
             ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(point.x, point.y, point.z, "Position");
             output.Insert(0, copyPositionItem);
 
+            ToolStripMenuItem goToPositionItem = new ToolStripMenuItem("Go to Position");
+            goToPositionItem.Click += (sender, e) =>
+            {
+                Config.Stream.Suspend();
+                Config.Stream.SetValue((float)hoverData.X, MarioConfig.StructAddress + MarioConfig.XOffset);
+                Config.Stream.SetValue((float)hoverData.Y, MarioConfig.StructAddress + MarioConfig.YOffset);
+                Config.Stream.SetValue((float)hoverData.Z, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                Config.Stream.Resume();
+            };
+            output.Insert(1, goToPositionItem);
+
+            ToolStripMenuItem goToPositionLaterallyItem = new ToolStripMenuItem("Go to Position Laterally");
+            goToPositionLaterallyItem.Click += (sender, e) =>
+            {
+                Config.Stream.Suspend();
+                Config.Stream.SetValue((float)hoverData.X, MarioConfig.StructAddress + MarioConfig.XOffset);
+                Config.Stream.SetValue((float)hoverData.Z, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                Config.Stream.Resume();
+            };
+            output.Insert(2, goToPositionLaterallyItem);
+
             return output;
         }
 
