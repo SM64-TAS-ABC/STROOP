@@ -463,10 +463,10 @@ namespace STROOP.Managers
             if (!useMapObjectBounds && (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue)) return;
 
             // allow for swapped bounds
-            int xMin = useMapObjectBounds ? -8191 : Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
-            int xMax = useMapObjectBounds ? 8191 : Math.Max((int)xMinDouble.Value, (int)xMaxDouble.Value);
-            int zMin = useMapObjectBounds ? -8191 : Math.Min((int)zMinDouble.Value, (int)zMaxDouble.Value);
-            int zMax = useMapObjectBounds ? 8191 : Math.Max((int)zMinDouble.Value, (int)zMaxDouble.Value);
+            int xMin = useMapObjectBounds ? bounds.GetXMin() : Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
+            int xMax = useMapObjectBounds ? bounds.GetXMax() : Math.Max((int)xMinDouble.Value, (int)xMaxDouble.Value);
+            int zMin = useMapObjectBounds ? bounds.GetZMin() : Math.Min((int)zMinDouble.Value, (int)zMaxDouble.Value);
+            int zMax = useMapObjectBounds ? bounds.GetZMax() : Math.Max((int)zMinDouble.Value, (int)zMaxDouble.Value);
             int y = (int)yDouble.Value;
 
             CellSnapshot cellSnapshot = new CellSnapshot();

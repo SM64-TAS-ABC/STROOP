@@ -180,6 +180,26 @@ namespace STROOP.Map
             return null;
         }
 
+        public int GetXMin()
+        {
+            return (int)Math.Floor(_points.Min(p => p.x));
+        }
+
+        public int GetXMax()
+        {
+            return (int)Math.Ceiling(_points.Max(p => p.x));
+        }
+
+        public int GetZMin()
+        {
+            return (int)Math.Floor(_points.Min(p => p.z));
+        }
+
+        public int GetZMax()
+        {
+            return (int)Math.Ceiling(_points.Max(p => p.z));
+        }
+
         public bool IsWithinBounds(float x, float z)
         {
             return MapUtilities.IsWithinShapeForControl(_points, x, z, false);
