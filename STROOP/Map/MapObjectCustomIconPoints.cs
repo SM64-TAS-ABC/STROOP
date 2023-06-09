@@ -178,6 +178,32 @@ namespace STROOP.Map
             return MapDrawType.Overlay;
         }
 
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem copyPoints = new ToolStripMenuItem("Copy Points");
+                copyPoints.Click += (sender, e) =>
+                {
+                    List<string> lines = _points.ConvertAll(p => p.x + "\t" + p.y + "\t" + p.z);
+                    Clipboard.SetText(string.Join("\r\n", lines));
+                };
+
+                ToolStripMenuItem copyPointsLaterally = new ToolStripMenuItem("Copy Points Laterally");
+                copyPointsLaterally.Click += (sender, e) =>
+                {
+                    List<string> lines = _points.ConvertAll(p => p.x + "\t" + p.z);
+                    Clipboard.SetText(string.Join("\r\n", lines));
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(copyPoints);
+                _contextMenuStrip.Items.Add(copyPointsLaterally);
+            }
+
+            return _contextMenuStrip;
+        }
+
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
