@@ -457,16 +457,15 @@ namespace STROOP.Managers
             double? yDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsY.Text);
 
             bool onlyLonePoints = _checkBoxTestingInvisibleWallsOnlyLonePoints.Checked;
-            bool useMapObjectBounds = !xMinDouble.HasValue && !xMaxDouble.HasValue && !zMinDouble.HasValue && !zMaxDouble.HasValue && MapObjectBounds.LAST_INSTANCE != null;
-            MapObjectBounds bounds = MapObjectBounds.LAST_INSTANCE;
+            bool useMapObjectBounds = !xMinDouble.HasValue && !xMaxDouble.HasValue && !zMinDouble.HasValue && !zMaxDouble.HasValue;
 
             if (!useMapObjectBounds && (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue)) return;
 
             // allow for swapped bounds
-            int xMin = useMapObjectBounds ? bounds.GetXMin() : Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
-            int xMax = useMapObjectBounds ? bounds.GetXMax() : Math.Max((int)xMinDouble.Value, (int)xMaxDouble.Value);
-            int zMin = useMapObjectBounds ? bounds.GetZMin() : Math.Min((int)zMinDouble.Value, (int)zMaxDouble.Value);
-            int zMax = useMapObjectBounds ? bounds.GetZMax() : Math.Max((int)zMinDouble.Value, (int)zMaxDouble.Value);
+            int xMin = useMapObjectBounds ? MapObjectBounds.GetTotalXMin() : Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
+            int xMax = useMapObjectBounds ? MapObjectBounds.GetTotalXMax() : Math.Max((int)xMinDouble.Value, (int)xMaxDouble.Value);
+            int zMin = useMapObjectBounds ? MapObjectBounds.GetTotalZMin() : Math.Min((int)zMinDouble.Value, (int)zMaxDouble.Value);
+            int zMax = useMapObjectBounds ? MapObjectBounds.GetTotalZMax() : Math.Max((int)zMinDouble.Value, (int)zMaxDouble.Value);
             int y = (int)yDouble.Value;
 
             CellSnapshot cellSnapshot = new CellSnapshot();
@@ -482,7 +481,7 @@ namespace STROOP.Managers
                 {
                     if (useMapObjectBounds)
                     {
-                        if (!bounds.IsWithinBounds(x, z)) continue;
+                        if (!MapObjectBounds.IsWithinBoundsForAny(x, z)) continue;
                     }
 
                     counter++;

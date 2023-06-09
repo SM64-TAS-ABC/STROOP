@@ -17,8 +17,6 @@ namespace STROOP.Map
 {
     public class MapObjectBounds : MapObject
     {
-        public static MapObjectBounds LAST_INSTANCE = null;
-
         private int _blueCircleTex = -1;
         private int _lastHoveredPointIndex = 0;
 
@@ -38,8 +36,6 @@ namespace STROOP.Map
             Opacity = 0.25;
             Color = Color.Yellow;
             LineWidth = 3;
-
-            LAST_INSTANCE = this;
         }
 
         public MapObjectBounds(List<(float x, float z)> points) : this()
@@ -203,6 +199,36 @@ namespace STROOP.Map
         public bool IsWithinBounds(float x, float z)
         {
             return MapUtilities.IsWithinShapeForControl(_points, x, z, false);
+        }
+
+        public static List<MapObjectBounds> GetAllBounds()
+        {
+            return Config.MapGui.flowLayoutPanelMapTrackers.GetAllMapObjectsOfType<MapObjectBounds>();
+        }
+
+        public static int GetTotalXMin()
+        {
+            return GetAllBounds().Min(bounds => bounds.GetXMin());
+        }
+
+        public static int GetTotalXMax()
+        {
+            return GetAllBounds().Max(bounds => bounds.GetXMax());
+        }
+
+        public static int GetTotalZMin()
+        {
+            return GetAllBounds().Min(bounds => bounds.GetZMin());
+        }
+
+        public static int GetTotalZMax()
+        {
+            return GetAllBounds().Max(bounds => bounds.GetZMax());
+        }
+
+        public static bool IsWithinBoundsForAny(float x, float z)
+        {
+            return GetAllBounds().Any(bounds => bounds.IsWithinBounds(x, z));
         }
 
         public override List<XAttribute> GetXAttributes()

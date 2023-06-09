@@ -1444,5 +1444,10 @@ namespace STROOP.Map
             tracker.SetMapTypeVisibility(MapType.Map3D, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor3D"))?.Value ?? true.ToString()));
             return tracker;
         }
+
+        public List<T> GetAllMapObjectsOfType<T>() where T : MapObject
+        {
+            return _mapObjectList.FindAll(mapObj => mapObj is T).ConvertAll(mapObj => (T)mapObj);
+        }
     }
 }

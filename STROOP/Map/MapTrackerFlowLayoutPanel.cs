@@ -73,6 +73,19 @@ namespace STROOP.Map
             return null;
         }
 
+        public List<T> GetAllMapObjectsOfType<T>() where T : MapObject
+        {
+            lock (_objectLock)
+            {
+                List<T> output = new List<T>();
+                foreach (MapTracker tracker in Controls)
+                {
+                    output.AddRange(tracker.GetAllMapObjectsOfType<T>());
+                }
+                return output;
+            }
+        }
+
         public void RemoveControl(MapTracker mapTracker)
         {
             lock (_objectLock)
