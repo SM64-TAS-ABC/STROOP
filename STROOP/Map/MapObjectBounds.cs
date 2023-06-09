@@ -180,24 +180,9 @@ namespace STROOP.Map
             return null;
         }
 
-        public float GetXMin()
+        public bool IsWithinBounds(float x, float z)
         {
-            return _points.Min(p => p.x);
-        }
-
-        public float GetXMax()
-        {
-            return _points.Max(p => p.x);
-        }
-
-        public float GetZMin()
-        {
-            return _points.Min(p => p.z);
-        }
-
-        public float GetZMax()
-        {
-            return _points.Max(p => p.z);
+            return MapUtilities.IsWithinShapeForControl(_points, x, z, false);
         }
 
         public override List<XAttribute> GetXAttributes()

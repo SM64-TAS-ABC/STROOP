@@ -446,105 +446,32 @@ namespace STROOP.Managers
             _checkBoxTestingInvisibleWallsOnlyLonePoints = groupBoxTestingInvisibleWalls.Controls["checkBoxTestingInvisibleWallsOnlyLonePoints"] as CheckBox;
             _buttonTestingInvisibleWallsCalculate = groupBoxTestingInvisibleWalls.Controls["buttonTestingInvisibleWallsCalculate"] as Button;
             _buttonTestingInvisibleWallsCalculate.Click += (sender, e) => CalculateInvisibleWalls();
-
-            ControlUtilities.AddContextMenuStripFunctions(
-                groupBoxTestingInvisibleWalls,
-                new List<string>() { "Use Bounds" },
-                new List<Action>()
-                {
-                    () =>
-                    {
-                        MapObjectBounds bounds = MapObjectBounds.LAST_INSTANCE;
-                        if (bounds != null)
-                        {
-                            _textBoxTestingInvisibleWallsXMin.Text = ((int)bounds.GetXMin()).ToString();
-                            _textBoxTestingInvisibleWallsXMax.Text = ((int)bounds.GetXMax()).ToString();
-                            _textBoxTestingInvisibleWallsZMin.Text = ((int)bounds.GetZMin()).ToString();
-                            _textBoxTestingInvisibleWallsZMax.Text = ((int)bounds.GetZMax()).ToString();
-                        }
-                    }
-                });
         }
 
         private void CalculateInvisibleWalls()
         {
-            if (_checkBoxTestingInvisibleWallsOnlyLonePoints.Checked)
-            {
-                CalculateInvisibleWalls_OnlyLonePoints();
-            }
-            else
-            {
-                CalculateInvisibleWalls_AllPoints();
-            }
-        }
-
-        private void CalculateInvisibleWalls_AllPoints()
-        {
             double? xMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMin.Text);
             double? xMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMax.Text);
             double? zMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMin.Text);
             double? zMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMax.Text);
             double? yDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsY.Text);
 
-            if (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue) return;
+            bool onlyLonePoints = _checkBoxTestingInvisibleWallsOnlyLonePoints.Checked;
+            bool useMapObjectBounds = !xMinDouble.HasValue && !xMaxDouble.HasValue && !zMinDouble.HasValue && !zMaxDouble.HasValue && MapObjectBounds.LAST_INSTANCE != null;
+            MapObjectBounds bounds = MapObjectBounds.LAST_INSTANCE;
+
+            if (!useMapObjectBounds && (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue)) return;
 
             // allow for swapped bounds
-            int xMin = Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
-            int xMax = Math.Max((int)xMinDouble.Value, (int)xMaxDouble.Value);
-            int zMin = Math.Min((int)zMinDouble.Value, (int)zMaxDouble.Value);
-            int zMax = Math.Max((int)zMinDouble.Value, (int)zMaxDouble.Value);
+            int xMin = useMapObjectBounds ? -8191 : Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
+            int xMax = useMapObjectBounds ? 8191 : Math.Max((int)xMinDouble.Value, (int)xMaxDouble.Value);
+            int zMin = useMapObjectBounds ? -8191 : Math.Min((int)zMinDouble.Value, (int)zMaxDouble.Value);
+            int zMax = useMapObjectBounds ? 8191 : Math.Max((int)zMinDouble.Value, (int)zMaxDouble.Value);
             int y = (int)yDouble.Value;
 
             CellSnapshot cellSnapshot = new CellSnapshot();
-            List<(int x, int z)> units = new List<(int x, int z)>();
-            int counter = 0;
-
-            for (int x = xMin; x <= xMax; x++)
-            {
-                if (x % 100 == 0) Config.Print("Step1: " + x);
-                for (int z = zMin; z <= zMax; z++)
-                {
-                    counter++;
-                    (TriangleDataModel floor, float floorY) = cellSnapshot.FindFloorAndY(x, y, z);
-                    if (floor == null)
-                    {
-                        units.Add((x, z));
-                        continue;
-                    }
-                    (TriangleDataModel ceiling, float ceilingY) = cellSnapshot.FindCeilingAndY(x, floorY + 80, z);
-                    if (y + 160.0f > ceilingY)
-                    {
-                        units.Add((x, z));
-                        continue;
-                    }
-                }
-            }
-
-            List<string> lines = units.ConvertAll(unit => unit.x + "\t" + unit.z);
-            string output = string.Join("\r\n", lines);
-            InfoForm.ShowValue(output, "Invisible Wall Points", $"Invisible Wall Points ({units.Count} found / {counter} checked)");
-        }
-
-        private void CalculateInvisibleWalls_OnlyLonePoints()
-        {
-            double? xMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMin.Text);
-            double? xMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMax.Text);
-            double? zMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMin.Text);
-            double? zMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMax.Text);
-            double? yDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsY.Text);
-
-            if (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue) return;
-
-            // allow for swapped bounds
-            int xMin = Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
-            int xMax = Math.Max((int)xMinDouble.Value, (int)xMaxDouble.Value);
-            int zMin = Math.Min((int)zMinDouble.Value, (int)zMaxDouble.Value);
-            int zMax = Math.Max((int)zMinDouble.Value, (int)zMaxDouble.Value);
-            int y = (int)yDouble.Value;
-
-            CellSnapshot cellSnapshot = new CellSnapshot();
-            int xDiameter = (int)(xMaxDouble - xMinDouble + 1);
-            int zDiameter = (int)(zMaxDouble - zMinDouble + 1);
+            int xDiameter = xMax - xMin + 1;
+            int zDiameter = zMax - zMin + 1;
             bool[,] invisibleWallTable = new bool[xDiameter, zDiameter];
             int counter = 0;
 
@@ -553,6 +480,11 @@ namespace STROOP.Managers
                 if (x % 100 == 0) Config.Print("Step1: " + x);
                 for (int z = zMin; z <= zMax; z++)
                 {
+                    if (useMapObjectBounds)
+                    {
+                        if (!bounds.IsWithinBounds(x, z)) continue;
+                    }
+
                     counter++;
                     (TriangleDataModel floor, float floorY) = cellSnapshot.FindFloorAndY(x, y, z);
                     if (floor == null)
@@ -569,8 +501,18 @@ namespace STROOP.Managers
                 }
             }
 
-            int checkRadius = 2;
-            int checkThreshold = 16;
+            int checkRadius;
+            int checkThreshold;
+            if (onlyLonePoints)
+            {
+                checkRadius = 1;
+                checkThreshold = 6;
+            }
+            else
+            {
+                checkRadius = 0;
+                checkThreshold = 0;
+            }
 
             List<(int x, int z)> units = new List<(int x, int z)>();
             for (int xb = xMin + checkRadius; xb <= xMax - checkRadius; xb++)
