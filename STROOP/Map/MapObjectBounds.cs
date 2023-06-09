@@ -117,30 +117,12 @@ namespace STROOP.Map
         {
             if (x.HasValue)
             {
-                if (_lastHoveredPointIndex == 0 || _lastHoveredPointIndex == 1)
-                {
-                    _points[0] = ((float)x.Value, _points[0].z);
-                    _points[1] = ((float)x.Value, _points[1].z);
-                }
-                else
-                {
-                    _points[2] = ((float)x.Value, _points[2].z);
-                    _points[3] = ((float)x.Value, _points[3].z);
-                }
+                _points[_lastHoveredPointIndex] = ((float)x.Value, _points[_lastHoveredPointIndex].z);
             }
 
             if (z.HasValue)
             {
-                if (_lastHoveredPointIndex == 0 || _lastHoveredPointIndex == 3)
-                {
-                    _points[0] = (_points[0].x, (float)z.Value);
-                    _points[3] = (_points[3].x, (float)z.Value);
-                }
-                else
-                {
-                    _points[1] = (_points[1].x, (float)z.Value);
-                    _points[2] = (_points[2].x, (float)z.Value);
-                }
+                _points[_lastHoveredPointIndex] = (_points[_lastHoveredPointIndex].x, (float)z.Value);
             }
         }
 
