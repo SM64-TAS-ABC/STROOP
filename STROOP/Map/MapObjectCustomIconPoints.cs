@@ -273,6 +273,13 @@ namespace STROOP.Map
             };
             output.Insert(2, goToPositionLaterallyItem);
 
+            ToolStripMenuItem removePointItem = new ToolStripMenuItem("Remove Point");
+            removePointItem.Click += (sender, e) =>
+            {
+                _points.RemoveAt(hoverData.Index.Value);
+            };
+            output.Insert(3, removePointItem);
+
             return output;
         }
 
