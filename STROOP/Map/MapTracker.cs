@@ -914,30 +914,37 @@ namespace STROOP.Map
                     mapTrackers.Add(movingArrow);
 
                     MapTracker homeLine = new MapTracker(new MapObjectHomeLine(objPosAngle));
+                    homeLine.SetLineWidth(2);
                     mapTrackers.Add(homeLine);
 
                     MapTracker sphere400 = new MapTracker(new MapObjectCustomSphere(objPosAngle));
                     sphere400.SetSize(400);
+                    sphere400.SetOpacity(20);
                     sphere400.SetColor(Color.Cyan);
                     mapTrackers.Add(sphere400);
 
                     MapTracker sphere2000 = new MapTracker(new MapObjectCustomSphere(objPosAngle));
                     sphere2000.SetSize(2000);
+                    sphere2000.SetOpacity(20);
                     sphere2000.SetColor(Color.FromArgb(0, 255, 0));
                     mapTrackers.Add(sphere2000);
 
                     MapTracker drawDistanceSphere = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
+                    drawDistanceSphere.SetOpacity(20);
                     drawDistanceSphere.SetColor(Color.Red);
                     mapTrackers.Add(drawDistanceSphere);
 
                     MapTracker drawDistanceSphere2 = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
+                    drawDistanceSphere2.SetOpacity(20);
                     drawDistanceSphere2.SetColor(Color.Yellow);
                     drawDistanceSphere2.ApplySettings(new MapObjectSettings(changeUseCrossSection: true, newUseCrossSection: false));
                     mapTrackers.Add(drawDistanceSphere2);
 
-                    MapTracker homeCylinder = new MapTracker(new MapObjectCustomCylinder(homePosAngle));
-                    homeCylinder.SetColor(Color.Pink);
-                    mapTrackers.Add(homeCylinder);
+                    MapTracker homeSphere = new MapTracker(new MapObjectCustomSphere(homePosAngle));
+                    homeSphere.SetSize(2000);
+                    homeSphere.SetOpacity(20);
+                    homeSphere.SetColor(Color.Pink);
+                    mapTrackers.Add(homeSphere);
 
                     MapTracker zoneDividers = new MapTracker(new MapObjectFlyGuyZoneDividers(objPosAngle));
                     mapTrackers.Add(zoneDividers);
