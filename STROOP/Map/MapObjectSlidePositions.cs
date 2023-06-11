@@ -129,7 +129,7 @@ namespace STROOP.Map
                             wall: wall,
                             terrainType: terrainType,
                             input: new Input(x, y));
-                    SlideCalculator.act_crouch_slide(marioState);
+                    SlideCalculator.DoSlideFrame(marioState);
                     if (!seen.Contains((marioState.X, marioState.Y, marioState.Z)))
                     {
                         seen.Add((marioState.X, marioState.Y, marioState.Z));

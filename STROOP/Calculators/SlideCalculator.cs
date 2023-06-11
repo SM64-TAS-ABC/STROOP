@@ -63,6 +63,102 @@ namespace STROOP.Structs
             _cellSnapshot = cellSnapshot;
         }
 
+        public static void DoSlideFrame(SlidingMarioState m)
+        {
+            update_mario_geometry_inputs(m);
+            act_crouch_slide(m);
+        }
+
+        public static void update_mario_geometry_inputs(SlidingMarioState m)
+        {
+            float gasLevel;
+            float ceilToFloorDist;
+
+            float preX = m.X;
+            float preY = m.Y;
+            float preZ = m.Z;
+
+            f32_find_wall_collision(ref m.X, ref m.Y, ref m.Z, 60.0f, 50.0f);
+            f32_find_wall_collision(ref m.X, ref m.Y, ref m.Z, 30.0f, 24.0f);
+
+            (m.Floor, m.FloorHeight) = _cellSnapshot.FindFloorAndY(m.X, m.Y, m.Z);
+
+            // If Mario is OOB, move his position to his graphical position (which was not updated)
+            // and check for the floor there.
+            // This can cause errant behavior when combined with astral projection,
+            // since the graphical position was not Mario's previous location.
+            if (m.Floor == null)
+            {
+                m.X = preX;
+                m.Y = preY;
+                m.Z = preZ;
+                (m.Floor, m.FloorHeight) = _cellSnapshot.FindFloorAndY(m.X, m.Y, m.Z);
+            }
+
+            //m->ceilHeight = vec3f_find_ceil(&m->pos[0], m->floorHeight, &m->ceil);
+            //gasLevel = find_poison_gas_level(m->pos[0], m->pos[2]);
+            //m->waterLevel = find_water_level(m->pos[0], m->pos[2]);
+
+            if (m.Floor != null)
+            {
+                //m->floorAngle = atan2s(m->floor->normal.z, m->floor->normal.x);
+                //m->terrainSoundAddend = mario_get_terrain_sound_addend(m);
+
+                //if ((m->pos[1] > m->waterLevel - 40) && mario_floor_is_slippery(m)) {
+                //    m->input |= INPUT_ABOVE_SLIDE;
+                //}
+
+                //if ((m->floor->flags & SURFACE_FLAG_DYNAMIC)
+                //    || (m->ceil && m->ceil->flags & SURFACE_FLAG_DYNAMIC)) {
+                //    ceilToFloorDist = m->ceilHeight - m->floorHeight;
+
+                //    if ((0.0f <= ceilToFloorDist) && (ceilToFloorDist <= 150.0f)) {
+                //        m->input |= INPUT_SQUISHED;
+                //    }
+                //}
+
+                //if (m->pos[1] > m->floorHeight + 100.0f) {
+                //    m->input |= INPUT_OFF_FLOOR;
+                //}
+
+                //if (m->pos[1] < (m->waterLevel - 10)) {
+                //    m->input |= INPUT_IN_WATER;
+                //}
+
+                //if (m->pos[1] < (gasLevel - 100.0f)) {
+                //    m->input |= INPUT_IN_POISON_GAS;
+                //}
+
+            }
+            else
+            {
+                //level_trigger_warp(m, WARP_OP_DEATH);
+            }
+        }
+
+        public static int f32_find_wall_collision(ref float xPtr, ref float yPtr, ref float zPtr, float offsetY, float radius)
+        {
+            WallCollisionData collision = new WallCollisionData();
+            int numCollisions = 0;
+
+            collision.offsetY = offsetY;
+            collision.radius = radius;
+
+            collision.x = xPtr;
+            collision.y = yPtr;
+            collision.z = zPtr;
+
+            collision.numWalls = 0;
+
+            numCollisions = find_wall_collisions(collision);
+
+            xPtr = collision.x;
+            yPtr = collision.y;
+            zPtr = collision.z;
+
+            return numCollisions;
+        }
+
         public static int act_crouch_slide(SlidingMarioState m)
         {
             int cancel;
