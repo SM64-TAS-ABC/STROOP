@@ -184,12 +184,14 @@ namespace STROOP.Structs
             return 0;
         }
 
-        public static void common_slide_action(SlidingMarioState m, uint endAction, uint airAction, int animation) {
+        public static void common_slide_action(SlidingMarioState m, uint endAction, uint airAction, int animation)
+        {
             (float x, float y, float z) pos;
 
             pos = (m.X, m.Y, m.Z);
 
-            switch (perform_ground_step(m)) {
+            switch (perform_ground_step(m))
+            {
                 case GROUND_STEP_LEFT_GROUND:
                     //set_mario_action(m, airAction, 0);
                     break;
@@ -280,7 +282,8 @@ namespace STROOP.Structs
                 intendedPos.y = m.Y;
 
                 stepResult = (uint)perform_ground_quarter_step(m, ref intendedPos);
-                if (stepResult == GROUND_STEP_LEFT_GROUND || stepResult == GROUND_STEP_HIT_WALL_STOP_QSTEPS) {
+                if (stepResult == GROUND_STEP_LEFT_GROUND || stepResult == GROUND_STEP_HIT_WALL_STOP_QSTEPS)
+                {
                     break;
                 }
             }
