@@ -187,6 +187,12 @@ namespace STROOP.Map
         public readonly bool ChangeUseMarioAsOrigin;
         public readonly bool NewUseMarioAsOrigin;
 
+        public readonly bool ChangeSlidePositionsPause;
+        public readonly bool NewSlidePositionsPause;
+
+        public readonly bool ChangeSlidePositionsExclude0HSpeedCases;
+        public readonly bool NewSlidePositionsExclude0HSpeedCases;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -363,7 +369,13 @@ namespace STROOP.Map
             float? newCustomHeight = null,
             
             bool changeUseMarioAsOrigin = false,
-            bool newUseMarioAsOrigin = false)
+            bool newUseMarioAsOrigin = false,
+            
+            bool changeSlidePositionsPause = false,
+            bool newSlidePositionsPause = false,
+
+            bool changeSlidePositionsExclude0HSpeedCases = false,
+            bool newSlidePositionsExclude0HSpeedCases = false)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -541,6 +553,12 @@ namespace STROOP.Map
 
             ChangeUseMarioAsOrigin = changeUseMarioAsOrigin;
             NewUseMarioAsOrigin = newUseMarioAsOrigin;
+
+            ChangeSlidePositionsPause = changeSlidePositionsPause;
+            NewSlidePositionsPause = newSlidePositionsPause;
+
+            ChangeSlidePositionsExclude0HSpeedCases = changeSlidePositionsExclude0HSpeedCases;
+            NewSlidePositionsExclude0HSpeedCases = newSlidePositionsExclude0HSpeedCases;
         }
 
         public static MapObjectSettings FromXElement(XElement xElement)

@@ -35,6 +35,10 @@ namespace STROOP.Map
         private List<SlidingMarioState> storedPoints = new List<SlidingMarioState>();
 
         private bool _isPaused = false;
+        private bool _exclude0HSpeedCases = false;
+
+        private ToolStripMenuItem _itemPause;
+        private ToolStripMenuItem _itemExclude0HSpeedCases;
 
         private int _tex = -1;
 
@@ -44,7 +48,7 @@ namespace STROOP.Map
             InternalRotates = true;
         }
 
-        private List<SlidingMarioState> GetPoints()
+        private List<SlidingMarioState> GetPointsInternal()
         {
             if (_isPaused)
             {
@@ -138,6 +142,12 @@ namespace STROOP.Map
                 }
             }
             return storedPoints;
+        }
+
+        private List<SlidingMarioState> GetPoints()
+        {
+            return GetPointsInternal().FindAll(
+                marioState => !_exclude0HSpeedCases || marioState.HSpeed != 0);
         }
 
         public List<(string, object)> GetInfoFromMarioState(SlidingMarioState marioState)
@@ -356,18 +366,45 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemPause = new ToolStripMenuItem("Pause");
-                itemPause.Click += (sender, e) =>
+                _itemPause = new ToolStripMenuItem("Pause");
+                _itemPause.Click += (sender, e) =>
                 {
-                    _isPaused = !_isPaused;
-                    itemPause.Checked = _isPaused;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeSlidePositionsPause: true, newSlidePositionsPause: !_isPaused);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                _itemExclude0HSpeedCases = new ToolStripMenuItem("Exclude 0 HSpeed Cases");
+                _itemExclude0HSpeedCases.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeSlidePositionsExclude0HSpeedCases: true, newSlidePositionsExclude0HSpeedCases: !_exclude0HSpeedCases);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemPause);
+                _contextMenuStrip.Items.Add(_itemPause);
+                _contextMenuStrip.Items.Add(_itemExclude0HSpeedCases);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeSlidePositionsPause)
+            {
+                _isPaused = settings.NewSlidePositionsPause;
+                _itemPause.Checked = settings.NewSlidePositionsPause;
+            }
+
+            if (settings.ChangeSlidePositionsExclude0HSpeedCases)
+            {
+                _exclude0HSpeedCases = settings.NewSlidePositionsExclude0HSpeedCases;
+                _itemExclude0HSpeedCases.Checked = settings.NewSlidePositionsExclude0HSpeedCases;
+            }
         }
     }
 }
