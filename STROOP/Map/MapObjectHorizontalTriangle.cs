@@ -235,10 +235,10 @@ namespace STROOP.Map
                 {
                     return tris.ConvertAll(tri =>
                     {
-                        int xMin = (int)Math.Max(tri.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - 1);
-                        int xMax = (int)Math.Min(tri.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + 1);
-                        int zMin = (int)Math.Max(tri.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - 1);
-                        int zMax = (int)Math.Min(tri.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + 1);
+                        int xMin = (int)Math.Max(tri.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - SavedSettingsConfig.TriangleVertexMultiplier);
+                        int xMax = (int)Math.Min(tri.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + SavedSettingsConfig.TriangleVertexMultiplier);
+                        int zMin = (int)Math.Max(tri.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - SavedSettingsConfig.TriangleVertexMultiplier);
+                        int zMax = (int)Math.Min(tri.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + SavedSettingsConfig.TriangleVertexMultiplier);
 
                         Color color = data.color;
                         if (_distinguishSlidingClasses)
@@ -262,9 +262,9 @@ namespace STROOP.Map
 
                         List<(int x, float y, int z, Color color, TriangleDataModel tri)> points =
                             new List<(int x, float y, int z, Color color, TriangleDataModel tri)>();
-                        for (int x = xMin; x <= xMax; x++)
+                        for (int x = xMin; x <= xMax; x += SavedSettingsConfig.TriangleVertexMultiplier)
                         {
-                            for (int z = zMin; z <= zMax; z++)
+                            for (int z = zMin; z <= zMax; z += SavedSettingsConfig.TriangleVertexMultiplier)
                             {
                                 float? y = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
                                 if (y.HasValue &&
