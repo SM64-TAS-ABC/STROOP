@@ -235,10 +235,10 @@ namespace STROOP.Map
                 {
                     return tris.ConvertAll(tri =>
                     {
-                        int xMin = (int)Math.Max(tri.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - SavedSettingsConfig.TriangleVertexMultiplier);
-                        int xMax = (int)Math.Min(tri.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + SavedSettingsConfig.TriangleVertexMultiplier);
-                        int zMin = (int)Math.Max(tri.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - SavedSettingsConfig.TriangleVertexMultiplier);
-                        int zMax = (int)Math.Min(tri.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + SavedSettingsConfig.TriangleVertexMultiplier);
+                        int xMin = Math.Max(tri.GetMinX(), (int)(Config.CurrentMapGraphics.MapViewXMin / 4) * 4 - SavedSettingsConfig.TriangleVertexMultiplier);
+                        int xMax = Math.Min(tri.GetMaxX(), (int)(Config.CurrentMapGraphics.MapViewXMax / 4) * 4 + SavedSettingsConfig.TriangleVertexMultiplier);
+                        int zMin = Math.Max(tri.GetMinZ(), (int)(Config.CurrentMapGraphics.MapViewZMin / 4) * 4 - SavedSettingsConfig.TriangleVertexMultiplier);
+                        int zMax = Math.Min(tri.GetMaxZ(), (int)(Config.CurrentMapGraphics.MapViewZMax / 4) * 4 + SavedSettingsConfig.TriangleVertexMultiplier);
 
                         Color color = data.color;
                         if (_distinguishSlidingClasses)
