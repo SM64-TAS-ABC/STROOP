@@ -20,6 +20,7 @@ namespace STROOP.Map
     {
         private bool _showTriUnits;
         private bool _truncateBottomOfHitbox;
+        private bool _useExtendedLevelBoundaries;
         private float? _minHeight;
         private float? _maxHeight;
         private PositionAngle _minPosAngle;
@@ -29,6 +30,7 @@ namespace STROOP.Map
 
         private ToolStripMenuItem _itemShowTriUnits;
         private ToolStripMenuItem _itemTruncateBottomOfHitbox;
+        private ToolStripMenuItem _itemUseExtendedLevelBoundaries;
         private ToolStripMenuItem _itemSetMinHeight;
         private ToolStripMenuItem _itemSetMaxHeight;
 
@@ -448,6 +450,14 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
+            _itemUseExtendedLevelBoundaries = new ToolStripMenuItem("Use Extended Level Boundaries");
+            _itemUseExtendedLevelBoundaries.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeUseExtendedLevelBoundaries: true, newUseExtendedLevelBoundaries: !_useExtendedLevelBoundaries);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             _itemSetMinHeight = new ToolStripMenuItem(SET_MIN_HEIGHT_TEXT);
             _itemSetMinHeight.Click += (sender, e) =>
             {
@@ -542,6 +552,7 @@ namespace STROOP.Map
             {
                 _itemShowTriUnits,
                 _itemTruncateBottomOfHitbox,
+                _itemUseExtendedLevelBoundaries,
                 _itemSetMinHeight,
                 itemClearMinHeight,
                 _itemSetMaxHeight,
@@ -601,6 +612,12 @@ namespace STROOP.Map
             {
                 _truncateBottomOfHitbox = settings.NewHorizontalTriangleTruncateBottomOfHitbox;
                 _itemTruncateBottomOfHitbox.Checked = settings.NewHorizontalTriangleTruncateBottomOfHitbox;
+            }
+
+            if (settings.ChangeUseExtendedLevelBoundaries)
+            {
+                _useExtendedLevelBoundaries = settings.NewUseExtendedLevelBoundaries;
+                _itemUseExtendedLevelBoundaries.Checked = settings.NewUseExtendedLevelBoundaries;
             }
 
             if (settings.ChangeHorizontalTriangleMinHeight)
