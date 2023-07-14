@@ -557,8 +557,8 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemMarblerPreset = new ToolStripMenuItem("Add Marbler Preset");
-            itemMarblerPreset.Click += (sender, e) =>
+            ToolStripMenuItem itemPresetForWallsFloorsCeilings = new ToolStripMenuItem("Add Preset for Walls, Floors, Ceilings");
+            itemPresetForWallsFloorsCeilings.Click += (sender, e) =>
             {
                 List<MapTracker> mapTrackers = new List<MapTracker>();
 
@@ -581,17 +581,20 @@ namespace STROOP.Managers
                 mapTrackers.Add(mapTrackerLowerWallsGround);
 
                 MapTracker mapTrackerUpperWallsAir = new MapTracker(new MapObjectLevelWall());
+                mapTrackerUpperWallsAir.SetIsVisible(false);
                 mapTrackerUpperWallsAir.SetCustomName("Upper Walls (Air)");
                 mapTrackerUpperWallsAir.SetColor(Color.Cyan);
                 mapTrackerUpperWallsAir.ApplySettings(new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -150));
                 mapTrackers.Add(mapTrackerUpperWallsAir);
 
                 MapTracker mapTrackerLowerWallsAir = new MapTracker(new MapObjectLevelWall());
+                mapTrackerLowerWallsAir.SetIsVisible(false);
                 mapTrackerLowerWallsAir.SetCustomName("Lower Walls (Air)");
                 mapTrackerLowerWallsAir.ApplySettings(new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -30));
                 mapTrackers.Add(mapTrackerLowerWallsAir);
 
                 MapTracker mapTrackerWallsWater = new MapTracker(new MapObjectLevelWall());
+                mapTrackerWallsWater.SetIsVisible(false);
                 mapTrackerWallsWater.SetCustomName("Walls (Water)");
                 mapTrackerWallsWater.SetSize(110);
                 mapTrackerWallsWater.ApplySettings(new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -10));
@@ -686,7 +689,7 @@ namespace STROOP.Managers
             itemCustom.DropDownItems.Add(itemDrawing);
 
             ToolStripMenuItem itemPreset = new ToolStripMenuItem("Preset...");
-            itemPreset.DropDownItems.Add(itemMarblerPreset);
+            itemPreset.DropDownItems.Add(itemPresetForWallsFloorsCeilings);
 
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemObjects);
