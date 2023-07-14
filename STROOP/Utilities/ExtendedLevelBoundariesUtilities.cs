@@ -69,7 +69,7 @@ namespace STROOP.Structs
 
             long distBefore = 0;
             long distAfter = 0;
-            if (goThroughValue != 0)
+            if (padBounds)
             {
                 goThroughValue = Convert(goThroughValue, isY);
                 long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
