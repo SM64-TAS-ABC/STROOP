@@ -15,8 +15,11 @@ namespace STROOP.Structs
 
         public static int TriangleVertexMultiplier => SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
 
-        public static List<float> GetValuesInRangeFloat(long min, long max, int numSubdivides)
+        public static List<float> GetCustomGridlinesValues(int numSubdivides)
         {
+            long min = -8192;
+            long max = 8192;
+
             min = Convert(min, false);
             max = Convert(max, false);
 

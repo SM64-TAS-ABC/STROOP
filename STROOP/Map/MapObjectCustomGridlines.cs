@@ -27,14 +27,12 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int min = -8192;
-            int max = 8192;
             int size = (int)Size;
             if (size < 1) size = 1;
-            List<float> values = ExtendedLevelBoundariesUtilities.GetValuesInRangeFloat(min, max, size);
+            List<float> values = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size);
 
-            long convertedMin = ExtendedLevelBoundariesUtilities.Convert(min, false);
-            long convertedMax = ExtendedLevelBoundariesUtilities.Convert(max, false);
+            long convertedMin = ExtendedLevelBoundariesUtilities.Convert(-8192, false);
+            long convertedMax = ExtendedLevelBoundariesUtilities.Convert(8192, false);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (float x in values)
@@ -54,11 +52,9 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int min = -8192;
-            int max = 8192;
             int size = (int)Size;
             if (size < 1) size = 1;
-            List<float> values = ExtendedLevelBoundariesUtilities.GetValuesInRangeFloat(min, max, size);
+            List<float> values = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (float x in values)
@@ -73,14 +69,12 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
-            int min = -8192;
-            int max = 8192;
             int size = (int)Size;
             if (size < 1) size = 1;
-            List<float> values = ExtendedLevelBoundariesUtilities.GetValuesInRangeFloat(min, max, size);
+            List<float> values = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size);
 
-            long convertedMin = ExtendedLevelBoundariesUtilities.Convert(min, false);
-            long convertedMax = ExtendedLevelBoundariesUtilities.Convert(max, false);
+            long convertedMin = ExtendedLevelBoundariesUtilities.Convert(-8192, false);
+            long convertedMax = ExtendedLevelBoundariesUtilities.Convert(8192, false);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (float x in values)
@@ -114,11 +108,9 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int min = -8192;
-            int max = 8192;
             int size = (int)Size;
             if (size < 1) size = 1;
-            List<float> values = ExtendedLevelBoundariesUtilities.GetValuesInRangeFloat(min, max, size);
+            List<float> values = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (float x in values)
