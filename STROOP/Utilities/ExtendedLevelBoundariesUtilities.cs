@@ -15,13 +15,28 @@ namespace STROOP.Structs
 
         public static int TriangleVertexMultiplier => SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
 
-        public static List<float> GetCustomGridlinesValues(int numSubdivides)
+        public static List<float> GetCustomGridlinesValues(int numSubdivides, Coordinate coordinate)
         {
-            long min = -8192;
-            long max = 8192;
+            float mapMin = 0;
+            float mapMax = 0;
+            if (coordinate == Coordinate.X)
+            {
+                mapMin = Config.CurrentMapGraphics.MapViewXMin;
+                mapMax = Config.CurrentMapGraphics.MapViewXMax;
+            }
+            if (coordinate == Coordinate.Y)
+            {
+                mapMin = Config.CurrentMapGraphics.MapViewYMin;
+                mapMax = Config.CurrentMapGraphics.MapViewYMax;
+            }
+            if (coordinate == Coordinate.Z)
+            {
+                mapMin = Config.CurrentMapGraphics.MapViewZMin;
+                mapMax = Config.CurrentMapGraphics.MapViewZMax;
+            }
 
-            min = Convert(min, false);
-            max = Convert(max, false);
+            long min = Math.Max(Convert(-8192, false), (long)Math.Floor(mapMin));
+            long max = Math.Min(Convert(8192, false), (long)Math.Ceiling(mapMax));
 
             List<float> values = new List<float>();
             for (int i = 0; i <= numSubdivides; i++)
@@ -37,7 +52,7 @@ namespace STROOP.Structs
             long min, long max, long gap, bool isY,
             ValueOffsetType valueOffsetType, long goThroughValue, bool convertBounds, bool convertGap, bool padBounds)
         {
-            long multiplier = convertGap ? 4 : 1;
+            long multiplier = convertGap && SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
             long padding = padBounds ? 1 : 0;
             if (valueOffsetType == ValueOffsetType.GO_THROUGH_VALUE)
             {
