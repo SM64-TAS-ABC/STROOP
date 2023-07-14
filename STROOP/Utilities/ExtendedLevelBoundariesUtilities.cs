@@ -65,15 +65,22 @@ namespace STROOP.Structs
         {
             long multiplier = convertGap && SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
             long padding = padBounds ? 1 : 0;
+            long multipliedGap = multiplier * gap;
+
+            goThroughValue = Convert(goThroughValue, isY);
+            long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
+            long distBefore = goThroughValueMod;
+            long distAfter = multipliedGap - goThroughValueMod;
+
             if (valueOffsetType == ValueOffsetType.GO_THROUGH_VALUE)
             {
-                min = (min / gap / multiplier - padding) * gap * multiplier;
-                max = (max / gap / multiplier + padding) * gap * multiplier;
+                min = ((min - distBefore) / multipliedGap - padding) * multipliedGap + distBefore;
+                max = ((max + distAfter) / multipliedGap + padding) * multipliedGap - distAfter;
             }
             else if (valueOffsetType == ValueOffsetType.SPACED_AROUND_ZERO)
             {
-                min = (min / gap / multiplier - padding) * gap * multiplier - gap * multiplier / 2;
-                max = (max / gap / multiplier + padding) * gap * multiplier + gap * multiplier / 2;
+                min = (min / multipliedGap - padding) * multipliedGap - multipliedGap / 2;
+                max = (max / multipliedGap + padding) * multipliedGap + multipliedGap / 2;
             }
 
             if (convertBounds)

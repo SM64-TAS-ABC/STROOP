@@ -10,10 +10,10 @@ namespace STROOP.Utilities
 {
     public static class PuUtilities
     {
-        public static readonly int HalfPuSize = 32768;
-        public static readonly int PuSize = 65536;
-        public static readonly int PuSpeed = 65536;
-        public static readonly int QpuSpeed = 262144;
+        public static int HalfPuSize => 32768 * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+        public static int PuSize => 65536 * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+        public static int PuSpeed => 65536 * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+        public static int QpuSpeed => 262144 * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
 
         public static double GetRelativeCoordinate(double coord)
         {

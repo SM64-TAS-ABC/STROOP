@@ -23,9 +23,9 @@ namespace STROOP.Map
         private bool _useMarioAsOrigin;
         private ToolStripMenuItem _itemUseMarioAsOrigin;
 
-        private int puSize = 65536;
-        private int halfPuSize = 32768;
-        private int halfCourseSize = 8192;
+        private int puSize => 65536;
+        private int halfPuSize => 32768;
+        private int halfCourseSize => 8192;
 
         public MapObjectPuGridlines()
             : base()
@@ -64,10 +64,10 @@ namespace STROOP.Map
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
                             gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
 
-                        long xMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMin, false);
-                        long xMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMax, false);
-                        long zMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewZMin, false);
-                        long zMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewZMax, false);
+                        float xMin = Config.CurrentMapGraphics.MapViewXMin;
+                        float xMax = Config.CurrentMapGraphics.MapViewXMax;
+                        float zMin = Config.CurrentMapGraphics.MapViewZMin;
+                        float zMax = Config.CurrentMapGraphics.MapViewZMax;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         foreach (long x in xValues)
