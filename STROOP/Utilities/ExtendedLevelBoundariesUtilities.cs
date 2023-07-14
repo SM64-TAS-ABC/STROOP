@@ -69,13 +69,13 @@ namespace STROOP.Structs
 
             long distBefore = 0;
             long distAfter = 0;
-            //if (padBounds)
-            //{
-            //    goThroughValue = Convert(goThroughValue, isY);
-            //    long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
-            //    distBefore = goThroughValueMod;
-            //    distAfter = multipliedGap - goThroughValueMod;
-            //}
+            if (padBounds && goThroughValue != 0)
+            {
+                goThroughValue = Convert(goThroughValue, isY);
+                long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
+                distBefore = goThroughValueMod;
+                distAfter = multipliedGap - goThroughValueMod;
+            }
 
             if (valueOffsetType == ValueOffsetType.GO_THROUGH_VALUE)
             {
@@ -86,8 +86,8 @@ namespace STROOP.Structs
             {
                 min = (min / multipliedGap - padding) * multipliedGap;
                 max = (max / multipliedGap + padding) * multipliedGap;
-                min = GetNext(min, -gap / 2, isY);
-                max = GetNext(max, gap / 2, isY);
+                min = GetNext(min, -gap / 2, isY, true);
+                max = GetNext(max, gap / 2, isY, true);
             }
 
             if (convertBounds)
@@ -97,15 +97,15 @@ namespace STROOP.Structs
             }
             else if (SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
-                min = Normalize(min, isY);
-                max = Normalize(max, isY);
+                min = Normalize(min, isY, true);
+                max = Normalize(max, isY, true);
             }
 
             long increment(long i)
             {
                 if (convertGap)
                 {
-                    return GetNext(i, gap, isY);
+                    return GetNext(i, gap, isY, false);
                 }
                 else
                 {
@@ -121,18 +121,16 @@ namespace STROOP.Structs
             return values;
         }
 
-        public static long GetNext(long value, long gap, bool isY)
+        public static long GetNext(long value, long gap, bool isY, bool negativeLeniency)
         {
-            long unconverted = Unconvert(value, isY);
+            long unconverted = Unconvert(value, isY, negativeLeniency);
             unconverted += gap;
             return Convert(unconverted, isY);
         }
 
-        public static long Normalize(long value, bool isY)
+        public static long Normalize(long value, bool isY, bool negativeLeniency)
         {
-            long offset = isY ? 0 : 1;
-            value = value <= 0 ? value - offset : value;
-            return Convert(Unconvert(value, isY), isY);
+            return Convert(Unconvert(value, isY, negativeLeniency), isY);
         }
 
         public static long Convert(long value, bool isY)
@@ -146,14 +144,14 @@ namespace STROOP.Structs
             return value > 0 ? value * 4 : value * 4 - offset;
         }
 
-        public static long Unconvert(long value, bool isY)
+        public static long Unconvert(long value, bool isY, bool negativeLeniency)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
                 return value;
             }
 
-            long offset = isY ? 0 : 1;
+            long offset = isY || negativeLeniency ? 0 : 1;
             return value > 0 ? value / 4 : (value + offset) / 4;
         }
     }
