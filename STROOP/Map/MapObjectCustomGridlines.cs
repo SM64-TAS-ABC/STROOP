@@ -31,29 +31,18 @@ namespace STROOP.Map
             int max = 8192;
             int size = (int)Size;
             if (size < 1) size = 1;
-            int gap = 16384 / size;
-            List<int> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(min, max, gap, false, false, true, true);
-
-            double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
-            double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
-            double viewXDiff = viewXMax - viewXMin;
-            double viewXDiffPixels = viewXDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            if (values.Count > viewXDiffPixels)
-            {
-                return new List<(float x, float y, float z)>();
-            }
+            List<float> values = ExtendedLevelBoundariesUtilities.GetValuesInRangeFloat(min, max, size);
 
             int convertedMin = ExtendedLevelBoundariesUtilities.Convert(min, false);
             int convertedMax = ExtendedLevelBoundariesUtilities.Convert(max, false);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            foreach (int x in values)
+            foreach (float x in values)
             {
                 vertices.Add((x, marioY, convertedMin));
                 vertices.Add((x, marioY, convertedMax));
             }
-            foreach (int z in values)
+            foreach (float z in values)
             {
                 vertices.Add((convertedMin, marioY, z));
                 vertices.Add((convertedMax, marioY, z));
@@ -65,41 +54,17 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int gridlineMin = -8192 * _multiplier;
-            int gridlineMax = 8192 * _multiplier;
-
-            double size = Size;
+            int min = -8192;
+            int max = 8192;
+            int size = (int)Size;
             if (size < 1) size = 1;
-            double increment = 16384 / size * _multiplier;
-
-            double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
-            double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
-            double viewXDiff = viewXMax - viewXMin;
-            double viewXDiffPixels = viewXDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            double viewZMin = Config.CurrentMapGraphics.MapViewZMin;
-            double viewZMax = Config.CurrentMapGraphics.MapViewZMax;
-            double viewZDiff = viewZMax - viewZMin;
-            double viewZDiffPixels = viewZDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            int xMinMultiple = Math.Max((int)((viewXMin - gridlineMin) / increment) - 1, 0);
-            int xMaxMultiple = Math.Min((int)((viewXMax - gridlineMin) / increment) + 1, (int)size);
-            int numXLines = xMaxMultiple - xMinMultiple + 1;
-
-            int zMinMultiple = Math.Max((int)((viewZMin - gridlineMin) / increment) - 1, 0);
-            int zMaxMultiple = Math.Min((int)((viewZMax - gridlineMin) / increment) + 1, (int)size);
-            int numZLines = zMaxMultiple - zMinMultiple + 1;
-
-            if (numXLines > viewXDiffPixels || numZLines > viewZDiffPixels)
-                return new List<(float x, float y, float z)>();
+            List<float> values = ExtendedLevelBoundariesUtilities.GetValuesInRangeFloat(min, max, size);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int multipleX = xMinMultiple; multipleX <= xMaxMultiple; multipleX++)
+            foreach (float x in values)
             {
-                float x = (float)(multipleX * increment + gridlineMin);
-                for (int multipleZ = zMinMultiple; multipleZ <= zMaxMultiple; multipleZ++)
+                foreach (float z in values)
                 {
-                    float z = (float)(multipleZ * increment + gridlineMin);
                     vertices.Add((x, marioY, z));
                 }
             }
@@ -108,72 +73,38 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
-            int gridlineMin = -8192 * _multiplier;
-            int gridlineMax = 8192 * _multiplier;
-
-            double size = Size;
+            int min = -8192;
+            int max = 8192;
+            int size = (int)Size;
             if (size < 1) size = 1;
-            double increment = 16384 / size * _multiplier;
+            List<float> values = ExtendedLevelBoundariesUtilities.GetValuesInRangeFloat(min, max, size);
 
-            double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
-            double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
-            double viewXDiff = viewXMax - viewXMin;
-            double viewXDiffPixels = viewXDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            double viewYMin = Config.CurrentMapGraphics.MapViewYMin;
-            double viewYMax = Config.CurrentMapGraphics.MapViewYMax;
-            double viewYDiff = viewYMax - viewYMin;
-            double viewYDiffPixels = viewYDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            double viewZMin = Config.CurrentMapGraphics.MapViewZMin;
-            double viewZMax = Config.CurrentMapGraphics.MapViewZMax;
-            double viewZDiff = viewZMax - viewZMin;
-            double viewZDiffPixels = viewZDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            int xMinMultiple = Math.Max((int)((viewXMin - gridlineMin) / increment) - 1, 0);
-            int xMaxMultiple = Math.Min((int)((viewXMax - gridlineMin) / increment) + 1, (int)size);
-            int numXLines = xMaxMultiple - xMinMultiple + 1;
-
-            int yMinMultiple = Math.Max((int)((viewYMin - gridlineMin) / increment) - 1, 0);
-            int yMaxMultiple = Math.Min((int)((viewYMax - gridlineMin) / increment) + 1, (int)size);
-            int numYLines = yMaxMultiple - yMinMultiple + 1;
-
-            int zMinMultiple = Math.Max((int)((viewZMin - gridlineMin) / increment) - 1, 0);
-            int zMaxMultiple = Math.Min((int)((viewZMax - gridlineMin) / increment) + 1, (int)size);
-            int numZLines = zMaxMultiple - zMinMultiple + 1;
-
-            if (numXLines > viewXDiffPixels || numYLines > viewYDiffPixels || numZLines > viewZDiffPixels)
-                return new List<(float x, float y, float z)>();
+            int convertedMin = ExtendedLevelBoundariesUtilities.Convert(min, false);
+            int convertedMax = ExtendedLevelBoundariesUtilities.Convert(max, false);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int xMultiple = xMinMultiple; xMultiple <= xMaxMultiple; xMultiple++)
+            foreach (float x in values)
             {
-                float x = (float)(xMultiple * increment + gridlineMin);
-                for (int yMultiple = yMinMultiple; yMultiple <= yMaxMultiple; yMultiple++)
+                foreach (float y in values)
                 {
-                    float y = (float)(yMultiple * increment + gridlineMin);
-                    vertices.Add((x, y, gridlineMin));
-                    vertices.Add((x, y, gridlineMax));
+                    vertices.Add((x, y, convertedMin));
+                    vertices.Add((x, y, convertedMax));
                 }
             }
-            for (int xMultiple = xMinMultiple; xMultiple <= xMaxMultiple; xMultiple++)
+            foreach (float x in values)
             {
-                float x = (float)(xMultiple * increment + gridlineMin);
-                for (int zMultiple = zMinMultiple; zMultiple <= zMaxMultiple; zMultiple++)
+                foreach (float z in values)
                 {
-                    float z = (float)(zMultiple * increment + gridlineMin);
-                    vertices.Add((x, gridlineMin, z));
-                    vertices.Add((x, gridlineMax, z));
+                    vertices.Add((x, convertedMin, z));
+                    vertices.Add((x, convertedMax, z));
                 }
             }
-            for (int zMultiple = zMinMultiple; zMultiple <= zMaxMultiple; zMultiple++)
+            foreach (float z in values)
             {
-                float z = (float)(zMultiple * increment + gridlineMin);
-                for (int yMultiple = yMinMultiple; yMultiple <= yMaxMultiple; yMultiple++)
+                foreach (float y in values)
                 {
-                    float y = (float)(yMultiple * increment + gridlineMin);
-                    vertices.Add((gridlineMin, y, z));
-                    vertices.Add((gridlineMax, y, z));
+                    vertices.Add((convertedMin, y, z));
+                    vertices.Add((convertedMax, y, z));
                 }
             }
             return vertices;
@@ -181,53 +112,21 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
         {
-            int gridlineMin = -8192 * _multiplier;
-            int gridlineMax = 8192 * _multiplier;
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            double size = Size;
+            int min = -8192;
+            int max = 8192;
+            int size = (int)Size;
             if (size < 1) size = 1;
-            double increment = 16384 / size * _multiplier;
-
-            double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
-            double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
-            double viewXDiff = viewXMax - viewXMin;
-            double viewXDiffPixels = viewXDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            double viewYMin = Config.CurrentMapGraphics.MapViewYMin;
-            double viewYMax = Config.CurrentMapGraphics.MapViewYMax;
-            double viewYDiff = viewYMax - viewYMin;
-            double viewYDiffPixels = viewYDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            double viewZMin = Config.CurrentMapGraphics.MapViewZMin;
-            double viewZMax = Config.CurrentMapGraphics.MapViewZMax;
-            double viewZDiff = viewZMax - viewZMin;
-            double viewZDiffPixels = viewZDiff * Config.CurrentMapGraphics.MapViewScaleValue;
-
-            int xMinMultiple = Math.Max((int)((viewXMin - gridlineMin) / increment) - 1, 0);
-            int xMaxMultiple = Math.Min((int)((viewXMax - gridlineMin) / increment) + 1, (int)size);
-            int numXLines = xMaxMultiple - xMinMultiple + 1;
-
-            int yMinMultiple = Math.Max((int)((viewYMin - gridlineMin) / increment) - 1, 0);
-            int yMaxMultiple = Math.Min((int)((viewYMax - gridlineMin) / increment) + 1, (int)size);
-            int numYLines = yMaxMultiple - yMinMultiple + 1;
-
-            int zMinMultiple = Math.Max((int)((viewZMin - gridlineMin) / increment) - 1, 0);
-            int zMaxMultiple = Math.Min((int)((viewZMax - gridlineMin) / increment) + 1, (int)size);
-            int numZLines = zMaxMultiple - zMinMultiple + 1;
-
-            if (numXLines > viewXDiffPixels || numYLines > viewYDiffPixels || numZLines > viewZDiffPixels)
-                return new List<(float x, float y, float z)>();
+            List<float> values = ExtendedLevelBoundariesUtilities.GetValuesInRangeFloat(min, max, size);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int xMultiple = xMinMultiple; xMultiple <= xMaxMultiple; xMultiple++)
+            foreach (float x in values)
             {
-                float x = (float)(xMultiple * increment + gridlineMin);
-                for (int yMultiple = yMinMultiple; yMultiple <= yMaxMultiple; yMultiple++)
+                foreach (float y in values)
                 {
-                    float y = (float)(yMultiple * increment + gridlineMin);
-                    for (int zMultiple = zMinMultiple; zMultiple <= zMaxMultiple; zMultiple++)
+                    foreach (float z in values)
                     {
-                        float z = (float)(zMultiple * increment + gridlineMin);
                         vertices.Add((x, y, z));
                     }
                 }
