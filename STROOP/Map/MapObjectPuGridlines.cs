@@ -50,15 +50,15 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_ZERO, false, true, true);
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_ZERO, false, true, true);
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
-                        long xMin = ExtendedLevelBoundariesUtilities.Convert((long)Config.CurrentMapGraphics.MapViewXMin, false);
-                        long xMax = ExtendedLevelBoundariesUtilities.Convert((long)Config.CurrentMapGraphics.MapViewXMax, false);
-                        long zMin = ExtendedLevelBoundariesUtilities.Convert((long)Config.CurrentMapGraphics.MapViewZMin, false);
-                        long zMax = ExtendedLevelBoundariesUtilities.Convert((long)Config.CurrentMapGraphics.MapViewZMax, false);
+                        long xMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMin, false);
+                        long xMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMax, false);
+                        long zMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewZMin, false);
+                        long zMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewZMax, false);
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         foreach (long x in xValues)
@@ -79,15 +79,15 @@ namespace STROOP.Map
 
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, false, true, true);
+                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, false, true, true);
+                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
 
-                        long xMin = ExtendedLevelBoundariesUtilities.Convert((long)Config.CurrentMapGraphics.MapViewXMin, false);
-                        long xMax = ExtendedLevelBoundariesUtilities.Convert((long)Config.CurrentMapGraphics.MapViewXMax, false);
-                        long zMin = ExtendedLevelBoundariesUtilities.Convert((long)Config.CurrentMapGraphics.MapViewZMin, false);
-                        long zMax = ExtendedLevelBoundariesUtilities.Convert((long)Config.CurrentMapGraphics.MapViewZMax, false);
+                        long xMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMin, false);
+                        long xMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMax, false);
+                        long zMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewZMin, false);
+                        long zMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewZMax, false);
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         foreach (long x in xValues)

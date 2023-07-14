@@ -11,7 +11,7 @@ namespace STROOP.Structs
 {
     public static class ExtendedLevelBoundariesUtilities
     {
-        public enum ValueOffsetType { GO_THROUGH_ZERO, SPACED_AROUND_ZERO, BASED_ON_MIN }
+        public enum ValueOffsetType { GO_THROUGH_VALUE, SPACED_AROUND_ZERO, BASED_ON_MIN }
 
         public static int TriangleVertexMultiplier => SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
 
@@ -30,11 +30,13 @@ namespace STROOP.Structs
             return values;
         }
 
-        public static List<long> GetValuesInRange(long min, long max, long gap, bool isY, ValueOffsetType valueOffsetType, bool convertBounds, bool convertGap, bool padBounds)
+        public static List<long> GetValuesInRange(
+            long min, long max, long gap, bool isY,
+            ValueOffsetType valueOffsetType, long goThroughValue, bool convertBounds, bool convertGap, bool padBounds)
         {
             long multiplier = convertGap ? 4 : 1;
             long padding = padBounds ? 1 : 0;
-            if (valueOffsetType == ValueOffsetType.GO_THROUGH_ZERO)
+            if (valueOffsetType == ValueOffsetType.GO_THROUGH_VALUE)
             {
                 min = (min / gap / multiplier - padding) * gap * multiplier;
                 max = (max / gap / multiplier + padding) * gap * multiplier;
