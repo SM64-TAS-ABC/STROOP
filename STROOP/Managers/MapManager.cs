@@ -629,6 +629,7 @@ namespace STROOP.Managers
                 mapTrackerFloorSnapUp.ApplySettings(new MapObjectSettings(changeHorizontalTriangleShowTriUnits: true, newHorizontalTriangleShowTriUnits: true));
                 mapTrackerFloorSnapUp.ApplySettings(new MapObjectSettings(changeHorizontalTriangleMinHeightPositionAngle: true, newHorizontalTriangleMinHeightPositionAngle: "Mario"));
                 mapTrackerFloorSnapUp.ApplySettings(new MapObjectSettings(changeHorizontalTriangleMaxHeightPositionAngle: true, newHorizontalTriangleMaxHeightPositionAngle: "YOffset 78 [Mario]"));
+                mapTrackerFloorSnapUp.ApplySettings(new MapObjectSettings(changeIncludeObjectTris: true, newIncludeObjectTris: true));
                 mapTrackers.Add(mapTrackerFloorSnapUp);
 
                 MapTracker mapTrackerFloorsSnapDown = new MapTracker(new MapObjectLevelFloor());
@@ -638,6 +639,7 @@ namespace STROOP.Managers
                 mapTrackerFloorsSnapDown.ApplySettings(new MapObjectSettings(changeHorizontalTriangleShowTriUnits: true, newHorizontalTriangleShowTriUnits: true));
                 mapTrackerFloorsSnapDown.ApplySettings(new MapObjectSettings(changeHorizontalTriangleMinHeightPositionAngle: true, newHorizontalTriangleMinHeightPositionAngle: "YOffset -100 [Mario]"));
                 mapTrackerFloorsSnapDown.ApplySettings(new MapObjectSettings(changeHorizontalTriangleMaxHeightPositionAngle: true, newHorizontalTriangleMaxHeightPositionAngle: "YOffset -0.001 [Mario]"));
+                mapTrackerFloorsSnapDown.ApplySettings(new MapObjectSettings(changeIncludeObjectTris: true, newIncludeObjectTris: true));
                 mapTrackers.Add(mapTrackerFloorsSnapDown);
 
                 MapTracker mapTrackerNextPositions = new MapTracker(new MapObjectNextPositions());
