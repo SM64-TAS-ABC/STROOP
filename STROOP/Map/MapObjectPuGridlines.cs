@@ -115,20 +115,22 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / puSize) - 1) * puSize;
-                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / puSize) + 1) * puSize;
-                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / puSize) - 1) * puSize;
-                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / puSize) + 1) * puSize;
+                        List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                        List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                        for (int x = xMin; x <= xMax; x += puSize)
+                        foreach (long x in xValues)
                         {
-                            for (int z = zMin; z <= zMax; z += puSize)
+                            foreach (long z in zValues)
                             {
-                                float x1 = x - halfCourseSize;
-                                float x2 = x + halfCourseSize;
-                                float z1 = z - halfCourseSize;
-                                float z2 = z + halfCourseSize;
+                                float x1 = x - halfCourseSize * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                                float x2 = x + halfCourseSize * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                                float z1 = z - halfCourseSize * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                                float z2 = z + halfCourseSize * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
 
                                 vertices.Add((x1, marioY, z1));
                                 vertices.Add((x1, marioY, z2));
