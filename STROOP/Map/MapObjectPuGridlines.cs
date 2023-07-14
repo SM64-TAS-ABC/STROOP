@@ -93,10 +93,10 @@ namespace STROOP.Map
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
                             puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
 
-                        long xMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMin, false);
-                        long xMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMax, false);
-                        long zMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewZMin, false);
-                        long zMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewZMax, false);
+                        float xMin = Config.CurrentMapGraphics.MapViewXMin;
+                        float xMax = Config.CurrentMapGraphics.MapViewXMax;
+                        float zMin = Config.CurrentMapGraphics.MapViewZMin;
+                        float zMax = Config.CurrentMapGraphics.MapViewZMax;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         foreach (long x in xValues)
