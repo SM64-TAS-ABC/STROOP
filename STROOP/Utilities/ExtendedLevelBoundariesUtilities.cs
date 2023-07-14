@@ -30,23 +30,30 @@ namespace STROOP.Structs
             return values;
         }
 
-        public static List<long> GetValuesInRange(long min, long max, long gap, bool isY, ValueOffsetType valueOffsetType, bool convertBounds, bool convertGap)
+        public static List<long> GetValuesInRange(long min, long max, long gap, bool isY, ValueOffsetType valueOffsetType, bool convertBounds, bool convertGap, bool padBounds)
         {
+            long multiplier = convertGap ? 4 : 1;
+            long padding = padBounds ? 1 : 0;
             if (valueOffsetType == ValueOffsetType.GO_THROUGH_ZERO)
             {
-                min = (min / gap) * gap;
-                max = (max / gap) * gap;
+                min = (min / gap / multiplier - padding) * gap * multiplier;
+                max = (max / gap / multiplier + padding) * gap * multiplier;
             }
             else if (valueOffsetType == ValueOffsetType.SPACED_AROUND_ZERO)
             {
-                min = (min / gap) * gap - gap / 2;
-                max = (max / gap) * gap + gap / 2;
+                min = (min / gap / multiplier - padding) * gap * multiplier - gap * multiplier / 2;
+                max = (max / gap / multiplier + padding) * gap * multiplier + gap * multiplier / 2;
             }
 
             if (convertBounds)
             {
                 min = Convert(min, isY);
                 max = Convert(max, isY);
+            }
+            else
+            {
+                min = Normalize(min, isY);
+                max = Normalize(max, isY);
             }
 
             long increment(long i)
