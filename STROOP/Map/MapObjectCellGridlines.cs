@@ -26,20 +26,24 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int min = -8192 * _multiplier;
-            int max = 8192 * _multiplier;
-            int increment = 1024 * _multiplier;
+            int min = -8192;
+            int max = 8192;
+            int gap = 1024;
+            List<int> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(min, max, gap, false, true, true);
+
+            int convertedMin = ExtendedLevelBoundariesUtilities.Convert(min, false);
+            int convertedMax = ExtendedLevelBoundariesUtilities.Convert(max, false);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int x = min; x <= max; x += increment)
+            foreach (int x in values)
             {
-                vertices.Add((x, marioY, min));
-                vertices.Add((x, marioY, max));
+                vertices.Add((x, marioY, convertedMin));
+                vertices.Add((x, marioY, convertedMax));
             }
-            for (int z = min; z <= max; z += increment)
+            foreach (int z in values)
             {
-                vertices.Add((min, marioY, z));
-                vertices.Add((max, marioY, z));
+                vertices.Add((convertedMin, marioY, z));
+                vertices.Add((convertedMax, marioY, z));
             }
             return vertices;
         }
@@ -48,14 +52,15 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int min = -8192 * _multiplier;
-            int max = 8192 * _multiplier;
-            int increment = 1024 * _multiplier;
+            int min = -8192;
+            int max = 8192;
+            int gap = 1024;
+            List<int> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(min, max, gap, false, true, true);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int x = min; x <= max; x += increment)
+            foreach (int x in values)
             {
-                for (int z = min; z <= max; z += increment)
+                foreach (int z in values)
                 {
                     vertices.Add((x, marioY, z));
                 }
