@@ -64,7 +64,7 @@ namespace STROOP.Structs
             ValueOffsetType valueOffsetType, long goThroughValue, bool convertBounds, bool convertGap, bool padBounds)
         {
             long multiplier = convertGap && SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
-            long padding = padBounds ? 1 : 0;
+            long padding = padBounds ? 2 : 0;
             long multipliedGap = multiplier * gap;
 
             long distBefore = 0;
