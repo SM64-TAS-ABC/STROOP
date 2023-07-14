@@ -23,9 +23,9 @@ namespace STROOP.Map
         private bool _useMarioAsOrigin;
         private ToolStripMenuItem _itemUseMarioAsOrigin;
 
-        private int puSize => 65536 * _multiplier;
-        private int halfPuSize => 32768 * _multiplier;
-        private int halfCourseSize => 8192 * _multiplier;
+        private int puSize = 65536;
+        private int halfPuSize = 32768;
+        private int halfCourseSize = 8192;
 
         public MapObjectPuGridlines()
             : base()
