@@ -13,10 +13,13 @@ namespace STROOP.Structs
     {
         public static int TriangleVertexMultiplier => SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
 
-        public static List<int> GetValuesInRange(int min, int max, int gap, bool isY, bool convertBounds, bool convertGap)
+        public static List<int> GetValuesInRange(int min, int max, int gap, bool isY, bool goThrough0, bool convertBounds, bool convertGap)
         {
-            min = (min / gap) * gap;
-            max = (max / gap) * gap;
+            if (goThrough0)
+            {
+                min = (min / gap) * gap;
+                max = (max / gap) * gap;
+            }
 
             if (convertBounds)
             {
