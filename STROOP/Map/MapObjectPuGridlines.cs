@@ -336,27 +336,41 @@ namespace STROOP.Map
                 case PuGridlineSetting.SETTING3:
                     {
                         float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+                        float yCenter = Config.CurrentMapGraphics.MapViewCenterYValue;
                         float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / puSize) - 1) * puSize;
-                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / puSize) + 1) * puSize;
-                        int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / puSize) - 1) * puSize;
-                        int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / puSize) + 1) * puSize;
-                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / puSize) - 1) * puSize;
-                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / puSize) + 1) * puSize;
+
+                        float xMin = Config.CurrentMapGraphics.MapViewXMin;
+                        float xMax = Config.CurrentMapGraphics.MapViewXMax;
+                        float yMin = Config.CurrentMapGraphics.MapViewYMin;
+                        float yMax = Config.CurrentMapGraphics.MapViewYMax;
+                        float zMin = Config.CurrentMapGraphics.MapViewZMin;
+                        float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+                        long size = (long)Math.Max(Size, 1);
+                        long gap = puSize * size;
+                        List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                        List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
+                            gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                        List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                             Config.CurrentMapGraphics.MapViewYawValue == 32768))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                            for (int x = xMin; x <= xMax; x += puSize)
+                            foreach (long x in xValues)
                             {
-                                for (int y = yMin; y <= yMax; y += puSize)
+                                foreach (long y in yValues)
                                 {
-                                    float x1 = x - halfCourseSize;
-                                    float x2 = x + halfCourseSize;
-                                    float y1 = y - halfCourseSize;
-                                    float y2 = y + halfCourseSize;
+                                    float x1 = x - halfCourseSize * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                                    float x2 = x + halfCourseSize * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                                    float y1 = y - halfCourseSize * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                                    float y2 = y + halfCourseSize * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
 
                                     vertices.Add((x1, y1, zCenter));
                                     vertices.Add((x1, y2, zCenter));
@@ -378,9 +392,9 @@ namespace STROOP.Map
                             Config.CurrentMapGraphics.MapViewYawValue == 49152))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                            for (int z = zMin; z <= zMax; z += puSize)
+                            foreach (long z in zValues)
                             {
-                                for (int y = yMin; y <= yMax; y += puSize)
+                                foreach (long y in yValues)
                                 {
                                     float z1 = z - halfCourseSize;
                                     float z2 = z + halfCourseSize;
