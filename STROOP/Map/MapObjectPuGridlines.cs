@@ -46,14 +46,23 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
+                        long goThroughValueX = 0;
+                        long goThroughValueZ = 0;
+                        if (_useMarioAsOrigin)
+                        {
+                            (int puXIndex, int puYIndex, int puZIndex) = PuUtilities.GetMarioPuIndexes();
+                            goThroughValueX = puXIndex * (long)puSize;
+                            goThroughValueZ = puZIndex * (long)puSize;
+                        }
+
                         long size = (long)Math.Max(Size, 1);
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
 
                         long xMin = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMin, false);
                         long xMax = ExtendedLevelBoundariesUtilities.Normalize((long)Config.CurrentMapGraphics.MapViewXMax, false);
