@@ -18,6 +18,7 @@ namespace STROOP.Map
     {
         public enum PuGridlineSetting { SETTING1, SETTING2, SETTING3 };
         private PuGridlineSetting _setting;
+        private List<ToolStripMenuItem> _settingItemList;
 
         private bool _useMarioAsOrigin;
         private ToolStripMenuItem _itemUseMarioAsOrigin;
@@ -480,6 +481,7 @@ namespace STROOP.Map
                 (List<ToolStripMenuItem> itemList, Action<PuGridlineSetting> valueAction) =
                     ControlUtilities.CreateCheckableItems(
                         itemNames, itemValues, setterAction, startingValue);
+                _settingItemList = itemList;
 
                 _itemUseMarioAsOrigin = new ToolStripMenuItem("Use Mario as Origin");
                 _itemUseMarioAsOrigin.Click += (sender, e) =>
@@ -506,6 +508,11 @@ namespace STROOP.Map
             if (settings.ChangePuGridlinesSetting)
             {
                 _setting = (PuGridlineSetting)Enum.Parse(typeof(PuGridlineSetting), settings.NewPuGridlinesSetting);
+                List<PuGridlineSetting> enumValues = EnumUtilities.GetEnumValues<PuGridlineSetting>(typeof(PuGridlineSetting));
+                for (int i = 0; i < 3; i++)
+                {
+                    _settingItemList[i].Checked = _setting == enumValues[i];
+                }
             }
 
             if (settings.ChangeUseMarioAsOrigin)
