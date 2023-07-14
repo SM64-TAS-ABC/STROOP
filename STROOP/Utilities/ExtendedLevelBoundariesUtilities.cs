@@ -38,14 +38,25 @@ namespace STROOP.Structs
             long min = Math.Max(Convert(-8192, false), (long)Math.Floor(mapMin));
             long max = Math.Min(Convert(8192, false), (long)Math.Ceiling(mapMax));
 
-            List<float> values = new List<float>();
-            for (int i = 0; i <= numSubdivides; i++)
+            long courseWidth = 16384;
+
+            if (courseWidth >= numSubdivides && courseWidth % numSubdivides == 0 ||
+                numSubdivides >= courseWidth && numSubdivides % courseWidth == 0)
             {
-                float p = i / (float)numSubdivides;
-                float value = min + p * (max - min);
-                values.Add(value);
+                float gap = courseWidth / (float)numSubdivides;
+                long minMultiple = (long)Math.Floor(min / gap);
+                long maxMultiple = (long)Math.Ceiling(max / gap);
+
+                List<float> values = new List<float>();
+                for (long multiple = minMultiple; multiple <= maxMultiple; multiple++)
+                {
+                    float value = multiple * gap;
+                    values.Add(value);
+                }
+                return values;
             }
-            return values;
+
+            return new List<float>();
         }
 
         public static List<long> GetValuesInRange(
