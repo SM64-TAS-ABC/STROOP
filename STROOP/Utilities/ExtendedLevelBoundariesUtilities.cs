@@ -69,13 +69,13 @@ namespace STROOP.Structs
 
             long distBefore = 0;
             long distAfter = 0;
-            if (padBounds)
-            {
-                goThroughValue = Convert(goThroughValue, isY);
-                long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
-                distBefore = goThroughValueMod;
-                distAfter = multipliedGap - goThroughValueMod;
-            }
+            //if (padBounds)
+            //{
+            //    goThroughValue = Convert(goThroughValue, isY);
+            //    long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
+            //    distBefore = goThroughValueMod;
+            //    distAfter = multipliedGap - goThroughValueMod;
+            //}
 
             if (valueOffsetType == ValueOffsetType.GO_THROUGH_VALUE)
             {
@@ -84,8 +84,10 @@ namespace STROOP.Structs
             }
             else if (valueOffsetType == ValueOffsetType.SPACED_AROUND_ZERO)
             {
-                min = (min / multipliedGap - padding) * multipliedGap - multipliedGap / 2;
-                max = (max / multipliedGap + padding) * multipliedGap + multipliedGap / 2;
+                min = (min / multipliedGap - padding) * multipliedGap;
+                max = (max / multipliedGap + padding) * multipliedGap;
+                min = GetNext(min, -gap / 2, isY);
+                max = GetNext(max, gap / 2, isY);
             }
 
             if (convertBounds)
@@ -93,7 +95,7 @@ namespace STROOP.Structs
                 min = Convert(min, isY);
                 max = Convert(max, isY);
             }
-            else
+            else if (SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
                 min = Normalize(min, isY);
                 max = Normalize(max, isY);
@@ -128,6 +130,8 @@ namespace STROOP.Structs
 
         public static long Normalize(long value, bool isY)
         {
+            long offset = isY ? 0 : 1;
+            value = value <= 0 ? value - offset : value;
             return Convert(Unconvert(value, isY), isY);
         }
 
