@@ -13,22 +13,22 @@ namespace STROOP.Structs
     {
         public static int TriangleVertexMultiplier => SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
 
-        public static List<int> GetValuesInRange(int min, int max, int gap, bool convertBounds, bool convertGap)
+        public static List<int> GetValuesInRange(int min, int max, int gap, bool isY, bool convertBounds, bool convertGap)
         {
             min = (min / gap) * gap;
             max = (max / gap) * gap;
 
             if (convertBounds)
             {
-                min = Convert(min);
-                max = Convert(max);
+                min = Convert(min, isY);
+                max = Convert(max, isY);
             }
 
             int increment(int i)
             {
                 if (convertGap)
                 {
-                    return GetNext(i, gap);
+                    return GetNext(i, gap, isY);
                 }
                 else
                 {
@@ -44,36 +44,38 @@ namespace STROOP.Structs
             return values;
         }
 
-        public static int GetNext(int value, int gap)
+        public static int GetNext(int value, int gap, bool isY)
         {
-            int unconverted = Unconvert(value);
+            int unconverted = Unconvert(value, isY);
             unconverted += gap;
-            return Convert(unconverted);
+            return Convert(unconverted, isY);
         }
 
-        public static int Normalize(int value)
+        public static int Normalize(int value, bool isY)
         {
-            return Convert(Unconvert(value));
+            return Convert(Unconvert(value, isY), isY);
         }
 
-        public static int Convert(int value)
-        {
-            if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
-            {
-                return (short)value;
-            }
-
-            return value > 0 ? value * 4 : value * 4 - 1;
-        }
-
-        public static int Unconvert(int value)
+        public static int Convert(int value, bool isY)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
                 return (short)value;
             }
 
-            return value > 0 ? value / 4 : (value + 1) / 4;
+            int offset = isY ? 0 : 1;
+            return value > 0 ? value * 4 : value * 4 - offset;
+        }
+
+        public static int Unconvert(int value, bool isY)
+        {
+            if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
+            {
+                return (short)value;
+            }
+
+            int offset = isY ? 0 : 1;
+            return value > 0 ? value / 4 : (value + offset) / 4;
         }
     }
 }

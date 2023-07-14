@@ -25,10 +25,11 @@ namespace STROOP.Utilities
             int max = (int)SpecialConfig.CustomY;
             int gap = (int)SpecialConfig.CustomZ;
 
-            bool convertBounds = SpecialConfig.Custom2X != 0;
-            bool convertGap = SpecialConfig.Custom2Y != 0;
+            bool isY = SpecialConfig.Custom2X != 0;
+            bool convertBounds = SpecialConfig.Custom2Y != 0;
+            bool convertGap = SpecialConfig.Custom2Z != 0;
 
-            List<int> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(min, max, gap, convertBounds, convertGap);
+            List<int> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(min, max, gap, isY, convertBounds, convertGap);
             Config.Print($"min={min} max={max} gap={gap} convertBounds={convertBounds} convertGap={convertGap}");
             Config.Print(string.Join(",", values));
             Config.Print();
