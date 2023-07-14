@@ -272,25 +272,39 @@ namespace STROOP.Map
                 case PuGridlineSetting.SETTING2:
                     {
                         float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+                        float yCenter = Config.CurrentMapGraphics.MapViewCenterYValue;
                         float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / puSize) - 1) * puSize - halfPuSize;
-                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / puSize) + 1) * puSize + halfPuSize;
-                        int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / puSize) - 1) * puSize - halfPuSize;
-                        int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / puSize) + 1) * puSize + halfPuSize;
-                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / puSize) - 1) * puSize - halfPuSize;
-                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / puSize) + 1) * puSize + halfPuSize;
+
+                        float xMin = Config.CurrentMapGraphics.MapViewXMin;
+                        float xMax = Config.CurrentMapGraphics.MapViewXMax;
+                        float yMin = Config.CurrentMapGraphics.MapViewYMin;
+                        float yMax = Config.CurrentMapGraphics.MapViewYMax;
+                        float zMin = Config.CurrentMapGraphics.MapViewZMin;
+                        float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+                        long size = (long)Math.Max(Size, 1);
+                        long gap = puSize * size;
+                        List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                        List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
+                            gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                        List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                             Config.CurrentMapGraphics.MapViewYawValue == 32768))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                            for (int x = xMin; x <= xMax; x += puSize)
+                            foreach (long x in xValues)
                             {
                                 vertices.Add((x, yMin, zCenter));
                                 vertices.Add((x, yMax, zCenter));
                             }
-                            for (int y = yMin; y <= yMax; y += puSize)
+                            foreach (long y in yValues)
                             {
                                 vertices.Add((xMin, y, zCenter));
                                 vertices.Add((xMax, y, zCenter));
@@ -302,12 +316,12 @@ namespace STROOP.Map
                             Config.CurrentMapGraphics.MapViewYawValue == 49152))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                            for (int z = zMin; z <= zMax; z += puSize)
+                            foreach (long z in zValues)
                             {
                                 vertices.Add((xCenter, yMin, z));
                                 vertices.Add((xCenter, yMax, z));
                             }
-                            for (int y = yMin; y <= yMax; y += puSize)
+                            foreach (long y in yValues)
                             {
                                 vertices.Add((zCenter, y, zMin));
                                 vertices.Add((xCenter, y, zMax));
