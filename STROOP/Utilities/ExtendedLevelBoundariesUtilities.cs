@@ -67,10 +67,15 @@ namespace STROOP.Structs
             long padding = padBounds ? 1 : 0;
             long multipliedGap = multiplier * gap;
 
-            goThroughValue = Convert(goThroughValue, isY);
-            long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
-            long distBefore = goThroughValueMod;
-            long distAfter = multipliedGap - goThroughValueMod;
+            long distBefore = 0;
+            long distAfter = 0;
+            if (goThroughValue != 0)
+            {
+                goThroughValue = Convert(goThroughValue, isY);
+                long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
+                distBefore = goThroughValueMod;
+                distAfter = multipliedGap - goThroughValueMod;
+            }
 
             if (valueOffsetType == ValueOffsetType.GO_THROUGH_VALUE)
             {
