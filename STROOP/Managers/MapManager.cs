@@ -17,6 +17,7 @@ using STROOP.Map.Map3D;
 using STROOP.Forms;
 using System.Xml.Linq;
 using System.Windows.Input;
+using static STROOP.Map.MapObjectPuGridlines;
 
 namespace STROOP.Managers
 {
@@ -616,6 +617,61 @@ namespace STROOP.Managers
                 }
             };
 
+            ToolStripMenuItem itemPresentMovement = new ToolStripMenuItem("Add Preset for Movement");
+            itemPresentMovement.Click += (sender, e) =>
+            {
+                List<MapTracker> mapTrackers = new List<MapTracker>();
+
+                MapTracker mapTrackerFloorSnapUp = new MapTracker(new MapObjectLevelFloor());
+                mapTrackerFloorSnapUp.SetCustomName("Floor Snap Up");
+                mapTrackerFloorSnapUp.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+                mapTrackerFloorSnapUp.SetColor(ColorTranslator.FromHtml("#008080"));
+                mapTrackerFloorSnapUp.ApplySettings(new MapObjectSettings(changeHorizontalTriangleShowTriUnits: true, newHorizontalTriangleShowTriUnits: true));
+                mapTrackerFloorSnapUp.ApplySettings(new MapObjectSettings(changeHorizontalTriangleMinHeightPositionAngle: true, newHorizontalTriangleMinHeightPositionAngle: "Mario"));
+                mapTrackerFloorSnapUp.ApplySettings(new MapObjectSettings(changeHorizontalTriangleMaxHeightPositionAngle: true, newHorizontalTriangleMaxHeightPositionAngle: "YOffset 78 [Mario]"));
+                mapTrackers.Add(mapTrackerFloorSnapUp);
+
+                MapTracker mapTrackerFloorsSnapDown = new MapTracker(new MapObjectLevelFloor());
+                mapTrackerFloorsSnapDown.SetCustomName("Floor Snap Down");
+                mapTrackerFloorsSnapDown.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+                mapTrackerFloorsSnapDown.SetColor(ColorTranslator.FromHtml("#FF8000"));
+                mapTrackerFloorsSnapDown.ApplySettings(new MapObjectSettings(changeHorizontalTriangleShowTriUnits: true, newHorizontalTriangleShowTriUnits: true));
+                mapTrackerFloorsSnapDown.ApplySettings(new MapObjectSettings(changeHorizontalTriangleMinHeightPositionAngle: true, newHorizontalTriangleMinHeightPositionAngle: "YOffset -100 [Mario]"));
+                mapTrackerFloorsSnapDown.ApplySettings(new MapObjectSettings(changeHorizontalTriangleMaxHeightPositionAngle: true, newHorizontalTriangleMaxHeightPositionAngle: "YOffset -0.001 [Mario]"));
+                mapTrackers.Add(mapTrackerFloorsSnapDown);
+
+                MapTracker mapTrackerNextPositions = new MapTracker(new MapObjectNextPositions());
+                mapTrackers.Add(mapTrackerNextPositions);
+
+                MapTracker mapTrackerMarioFacingArrowForwards = new MapTracker(new MapObjectMarioFacingArrow(PositionAngle.Mario));
+                mapTrackerMarioFacingArrowForwards.SetSize(2000);
+                mapTrackerMarioFacingArrowForwards.SetLineWidth(2);
+                mapTrackers.Add(mapTrackerMarioFacingArrowForwards);
+
+                MapTracker mapTrackerMarioFacingArrowBackwards = new MapTracker(new MapObjectMarioFacingArrow(PositionAngle.Mario));
+                mapTrackerMarioFacingArrowBackwards.SetSize(2000);
+                mapTrackerMarioFacingArrowBackwards.SetLineWidth(2);
+                mapTrackerMarioFacingArrowBackwards.SetLineColor(ColorTranslator.FromHtml("#FF0000"));
+                mapTrackerMarioFacingArrowBackwards.ApplySettings(new MapObjectSettings(changeArrowAngleOffset: true, newArrowAngleOffset: 32768));
+                mapTrackers.Add(mapTrackerMarioFacingArrowBackwards);
+
+                MapTracker mapTrackerMarioSlidingArrow = new MapTracker(new MapObjectMarioSlidingArrow(PositionAngle.Mario));
+                mapTrackerMarioSlidingArrow.SetSize(2000);
+                mapTrackerMarioSlidingArrow.SetLineWidth(2);
+                mapTrackerMarioFacingArrowBackwards.SetLineColor(ColorTranslator.FromHtml("#FF00FF"));
+                mapTrackers.Add(mapTrackerMarioSlidingArrow);
+
+                MapTracker mapTrackerPuGridlines = new MapTracker(new MapObjectPuGridlines());
+                mapTrackerPuGridlines.SetLineWidth(2);
+                mapTrackerPuGridlines.ApplySettings(new MapObjectSettings(changePuGridlinesSetting: true, newPuGridlinesSetting: PuGridlineSetting.SETTING3.ToString()));
+                mapTrackers.Add(mapTrackerPuGridlines);
+
+                foreach (MapTracker mapTracker in mapTrackers)
+                {
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(mapTracker);
+                }
+            };
+
             ToolStripMenuItem itemMapPopOut = new ToolStripMenuItem("Add Map Pop Out");
             itemMapPopOut.Click += (sender, e) =>
             {
@@ -690,6 +746,7 @@ namespace STROOP.Managers
 
             ToolStripMenuItem itemPreset = new ToolStripMenuItem("Preset...");
             itemPreset.DropDownItems.Add(itemPresetForWallsFloorsCeilings);
+            itemPreset.DropDownItems.Add(itemPresentMovement);
 
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemObjects);

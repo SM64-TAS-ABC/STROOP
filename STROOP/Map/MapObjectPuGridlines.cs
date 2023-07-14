@@ -16,7 +16,7 @@ namespace STROOP.Map
 {
     public class MapObjectPuGridlines : MapObjectGridlines
     {
-        private enum PuGridlineSetting { SETTING1, SETTING2, SETTING3 };
+        public enum PuGridlineSetting { SETTING1, SETTING2, SETTING3 };
         private PuGridlineSetting _setting;
 
         private bool _useMarioAsOrigin;
