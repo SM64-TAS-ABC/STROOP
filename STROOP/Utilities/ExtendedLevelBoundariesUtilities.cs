@@ -42,38 +42,36 @@ namespace STROOP.Structs
             return values;
         }
 
-        public static short GetNext(int value, int gap)
+        public static int GetNext(int value, int gap)
         {
             int unconverted = Unconvert(value);
             unconverted += gap;
             return Convert(unconverted);
         }
 
-        public static short Normalize(int value)
+        public static int Normalize(int value)
         {
             return Convert(Unconvert(value));
         }
 
-        public static short Convert(int value)
+        public static int Convert(int value)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
                 return (short)value;
             }
 
-            int newValue = value > 0 ? value * 4 : value * 4 - 1;
-            return (short)newValue;
+            return value > 0 ? value * 4 : value * 4 - 1;
         }
 
-        public static short Unconvert(int value)
+        public static int Unconvert(int value)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
                 return (short)value;
             }
 
-            int newValue = value > 0 ? value / 4 : (value + 1) / 4;
-            return (short)newValue;
+            return value > 0 ? value / 4 : (value + 1) / 4;
         }
     }
 }

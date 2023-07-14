@@ -21,13 +21,17 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            for (int gap = 1; gap <= 2; gap++)
-            {
-                for (int i = -20; i <= 20; i++)
-                {
-                    Config.Print($"value={i} gap={gap} next={ExtendedLevelBoundariesUtilities.GetNext(i, gap)}");
-                }
-            }
+            int min = (int)SpecialConfig.CustomX;
+            int max = (int)SpecialConfig.CustomY;
+            int gap = (int)SpecialConfig.CustomZ;
+
+            bool convertBounds = SpecialConfig.Custom2X != 0;
+            bool convertGap = SpecialConfig.Custom2Y != 0;
+
+            List<int> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(min, max, gap, convertBounds, convertGap);
+            Config.Print($"min={min} max={max} gap={gap} convertBounds={convertBounds} convertGap={convertGap}");
+            Config.Print(string.Join(",", values));
+            Config.Print();
         }
     }
 }
