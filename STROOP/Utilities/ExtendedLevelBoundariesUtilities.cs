@@ -11,26 +11,50 @@ namespace STROOP.Structs
 {
     public static class ExtendedLevelBoundariesUtilities
     {
-        public static List<int> GetPointsInRange(int min, int max, int gap, bool convertBounds, bool convertGap)
+        public static List<int> GetValuesInRange(int min, int max, int gap, bool convertBounds, bool convertGap)
         {
-            List<int> output = new List<int>();
+            min = (min / gap) * gap;
+            max = (max / gap) * gap;
 
-            return output;
+            if (convertBounds)
+            {
+                min = Convert(min);
+                max = Convert(max);
+            }
+
+            int increment(int i)
+            {
+                if (convertGap)
+                {
+                    return GetNext(i, gap);
+                }
+                else
+                {
+                    return i + gap;
+                }
+            }
+
+            List<int> values = new List<int>();
+            for (int i = min; i <= max; i = increment(i))
+            {
+                values.Add(i);
+            }
+            return values;
         }
 
         public static short GetNext(int value, int gap)
         {
-            int unconverted = MaybeUnconvert(value);
+            int unconverted = Unconvert(value);
             unconverted += gap;
-            return MaybeConvert(unconverted);
+            return Convert(unconverted);
         }
 
         public static short Normalize(int value)
         {
-            return MaybeConvert(MaybeUnconvert(value));
+            return Convert(Unconvert(value));
         }
 
-        public static short MaybeConvert(int value)
+        public static short Convert(int value)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
@@ -41,7 +65,7 @@ namespace STROOP.Structs
             return (short)newValue;
         }
 
-        public static short MaybeUnconvert(int value)
+        public static short Unconvert(int value)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
