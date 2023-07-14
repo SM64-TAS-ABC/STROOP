@@ -21,13 +21,15 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            TrackPlatform trackPlatform = new TrackPlatform();
-            for (int i = 0; i < 100; i++)
+            for (int i = -20; i <= 20; i++)
             {
-                trackPlatform.Update(true);
-                Config.Print("{0}: {1}", i, trackPlatform.oPosX);
+                Config.Print($"{i} NORMALIZED {ExtendedLevelBoundariesUtilities.Normalize(i)}");
             }
-            Config.Print(trackPlatform);
+
+            for (int i = -20; i <= 20; i++)
+            {
+                Config.Print($"{i} UNNORMALIZED {ExtendedLevelBoundariesUtilities.UnNormalize(i)}");
+            }
         }
     }
 }
