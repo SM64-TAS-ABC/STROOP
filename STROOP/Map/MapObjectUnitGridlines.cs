@@ -101,25 +101,37 @@ namespace STROOP.Map
             }
 
             float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+            float yCenter = Config.CurrentMapGraphics.MapViewCenterYValue;
             float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-            int xMin = Normalize(Config.CurrentMapGraphics.MapViewXMin) - _multiplier;
-            int xMax = Normalize(Config.CurrentMapGraphics.MapViewXMax) + _multiplier;
-            int yMin = Normalize(Config.CurrentMapGraphics.MapViewYMin) - _multiplier;
-            int yMax = Normalize(Config.CurrentMapGraphics.MapViewYMax) + _multiplier;
-            int zMin = Normalize(Config.CurrentMapGraphics.MapViewZMin) - _multiplier;
-            int zMax = Normalize(Config.CurrentMapGraphics.MapViewZMax) + _multiplier;
+
+            float xMin = Config.CurrentMapGraphics.MapViewXMin;
+            float xMax = Config.CurrentMapGraphics.MapViewXMax;
+            float yMin = Config.CurrentMapGraphics.MapViewYMin;
+            float yMax = Config.CurrentMapGraphics.MapViewYMax;
+            float zMin = Config.CurrentMapGraphics.MapViewZMin;
+            float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+            List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+            List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
+                1, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+            List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                 Config.CurrentMapGraphics.MapViewYawValue == 32768))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int x = xMin; x <= xMax; x += _multiplier)
+                foreach (long x in xValues)
                 {
                     vertices.Add((x, yMin, zCenter));
                     vertices.Add((x, yMax, zCenter));
                 }
-                for (int y = yMin; y <= yMax; y += _multiplier)
+                foreach (long y in yValues)
                 {
                     vertices.Add((xMin, y, zCenter));
                     vertices.Add((xMax, y, zCenter));
@@ -131,12 +143,12 @@ namespace STROOP.Map
                 Config.CurrentMapGraphics.MapViewYawValue == 49152))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int z = zMin; z <= zMax; z += _multiplier)
+                foreach (long z in zValues)
                 {
                     vertices.Add((xCenter, yMin, z));
                     vertices.Add((xCenter, yMax, z));
                 }
-                for (int y = yMin; y <= yMax; y += _multiplier)
+                foreach (long y in yValues)
                 {
                     vertices.Add((xCenter, y, zMin));
                     vertices.Add((xCenter, y, zMax));
@@ -146,7 +158,7 @@ namespace STROOP.Map
             else if (Config.CurrentMapGraphics.MapViewPitchValue == 0)
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int y = yMin; y <= yMax; y += _multiplier)
+                foreach (long y in yValues)
                 {
                     vertices.Add((float.NegativeInfinity, y, float.NegativeInfinity));
                     vertices.Add((float.PositiveInfinity, y, float.PositiveInfinity));
@@ -168,22 +180,34 @@ namespace STROOP.Map
             }
 
             float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+            float yCenter = Config.CurrentMapGraphics.MapViewCenterYValue;
             float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-            int xMin = Normalize(Config.CurrentMapGraphics.MapViewXMin) - _multiplier;
-            int xMax = Normalize(Config.CurrentMapGraphics.MapViewXMax) + _multiplier;
-            int yMin = Normalize(Config.CurrentMapGraphics.MapViewYMin) - _multiplier;
-            int yMax = Normalize(Config.CurrentMapGraphics.MapViewYMax) + _multiplier;
-            int zMin = Normalize(Config.CurrentMapGraphics.MapViewZMin) - _multiplier;
-            int zMax = Normalize(Config.CurrentMapGraphics.MapViewZMax) + _multiplier;
+
+            float xMin = Config.CurrentMapGraphics.MapViewXMin;
+            float xMax = Config.CurrentMapGraphics.MapViewXMax;
+            float yMin = Config.CurrentMapGraphics.MapViewYMin;
+            float yMax = Config.CurrentMapGraphics.MapViewYMax;
+            float zMin = Config.CurrentMapGraphics.MapViewZMin;
+            float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+            List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+            List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
+                1, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+            List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                 Config.CurrentMapGraphics.MapViewYawValue == 32768))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int x = xMin; x <= xMax; x += _multiplier)
+                foreach (long x in xValues)
                 {
-                    for (int y = yMin; y <= yMax; y += _multiplier)
+                    foreach (long y in yValues)
                     {
                         vertices.Add((x, y, zCenter));
                     }
@@ -195,9 +219,9 @@ namespace STROOP.Map
                 Config.CurrentMapGraphics.MapViewYawValue == 49152))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int z = zMin; z <= zMax; z += _multiplier)
+                foreach (long z in zValues)
                 {
-                    for (int y = yMin; y <= yMax; y += _multiplier)
+                    foreach (long y in yValues)
                     {
                         vertices.Add((xCenter, y, z));
                     }
