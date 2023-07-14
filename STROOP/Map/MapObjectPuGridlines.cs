@@ -161,31 +161,28 @@ namespace STROOP.Map
 
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            long size = (long)Math.Max(Size, 1);
-            long spacing = (long)(puSize * size);
-
-            long xOffset = 0;
-            long zOffset = 0;
-            long xOffsetReverse = 0;
-            long zOffsetReverse = 0;
+            long goThroughValueX = 0;
+            long goThroughValueZ = 0;
             if (_useMarioAsOrigin)
             {
                 (int puXIndex, int puYIndex, int puZIndex) = PuUtilities.GetMarioPuIndexes();
-                xOffset = (long)MoreMath.NonNegativeModulus(puXIndex, size);
-                zOffset = (long)MoreMath.NonNegativeModulus(puZIndex, size);
-                xOffsetReverse = size - xOffset;
-                zOffsetReverse = size - zOffset;
+                goThroughValueX = puXIndex * (long)puSize;
+                goThroughValueZ = puZIndex * (long)puSize;
             }
 
-            long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing - puSize * xOffsetReverse;
-            long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing + puSize * xOffset;
-            long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing - puSize * zOffsetReverse;
-            long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing + puSize * zOffset;
+            long size = (long)Math.Max(Size, 1);
+            long gap = puSize * size;
+            List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
+            List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (long x = xMin; x <= xMax; x += spacing)
+            foreach (long x in xValues)
             {
-                for (long z = zMin; z <= zMax; z += spacing)
+                foreach (long z in zValues)
                 {
                     vertices.Add((x, marioY, z));
                 }
