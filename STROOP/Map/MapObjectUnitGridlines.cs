@@ -38,18 +38,25 @@ namespace STROOP.Map
 
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int xMin = Normalize(Config.CurrentMapGraphics.MapViewXMin) - _multiplier;
-            int xMax = Normalize(Config.CurrentMapGraphics.MapViewXMax) + _multiplier;
-            int zMin = Normalize(Config.CurrentMapGraphics.MapViewZMin) - _multiplier;
-            int zMax = Normalize(Config.CurrentMapGraphics.MapViewZMax) + _multiplier;
+            List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+            List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+
+            float xMin = Config.CurrentMapGraphics.MapViewXMin;
+            float xMax = Config.CurrentMapGraphics.MapViewXMax;
+            float zMin = Config.CurrentMapGraphics.MapViewZMin;
+            float zMax = Config.CurrentMapGraphics.MapViewZMax;
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int x = xMin; x <= xMax; x += _multiplier)
+            foreach (long x in xValues)
             {
                 vertices.Add((x, marioY, zMin));
                 vertices.Add((x, marioY, zMax));
             }
-            for (int z = zMin; z <= zMax; z += _multiplier)
+            foreach (long z in zValues)
             {
                 vertices.Add((xMin, marioY, z));
                 vertices.Add((xMax, marioY, z));
@@ -67,15 +74,17 @@ namespace STROOP.Map
 
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int xMin = Normalize(Config.CurrentMapGraphics.MapViewXMin) - _multiplier;
-            int xMax = Normalize(Config.CurrentMapGraphics.MapViewXMax) + _multiplier;
-            int zMin = Normalize(Config.CurrentMapGraphics.MapViewZMin) - _multiplier;
-            int zMax = Normalize(Config.CurrentMapGraphics.MapViewZMax) + _multiplier;
+            List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+            List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int x = xMin; x <= xMax; x += _multiplier)
+            foreach (long x in xValues)
             {
-                for (int z = zMin; z <= zMax; z += _multiplier)
+                foreach (long z in zValues)
                 {
                     vertices.Add((x, marioY, z));
                 }
