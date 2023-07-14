@@ -21,14 +21,12 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            for (int i = -20; i <= 20; i++)
+            for (int gap = 1; gap <= 2; gap++)
             {
-                Config.Print($"{i} NORMALIZED {ExtendedLevelBoundariesUtilities.Normalize(i)}");
-            }
-
-            for (int i = -20; i <= 20; i++)
-            {
-                Config.Print($"{i} UNNORMALIZED {ExtendedLevelBoundariesUtilities.UnNormalize(i)}");
+                for (int i = -20; i <= 20; i++)
+                {
+                    Config.Print($"value={i} gap={gap} next={ExtendedLevelBoundariesUtilities.GetNext(i, gap)}");
+                }
             }
         }
     }

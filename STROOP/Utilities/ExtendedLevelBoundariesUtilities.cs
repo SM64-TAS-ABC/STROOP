@@ -11,12 +11,26 @@ namespace STROOP.Structs
 {
     public static class ExtendedLevelBoundariesUtilities
     {
-        public static List<int> GetPointsInRange(int min, int max, int gap, bool alignWithZero, bool convertBounds)
+        public static List<int> GetPointsInRange(int min, int max, int gap, bool convertBounds, bool convertGap)
         {
-            return null;
+            List<int> output = new List<int>();
+
+            return output;
+        }
+
+        public static short GetNext(int value, int gap)
+        {
+            int unconverted = MaybeUnconvert(value);
+            unconverted += gap;
+            return MaybeConvert(unconverted);
         }
 
         public static short Normalize(int value)
+        {
+            return MaybeConvert(MaybeUnconvert(value));
+        }
+
+        public static short MaybeConvert(int value)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
@@ -27,7 +41,7 @@ namespace STROOP.Structs
             return (short)newValue;
         }
 
-        public static short UnNormalize(int value)
+        public static short MaybeUnconvert(int value)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
