@@ -23,11 +23,6 @@ namespace STROOP.Map
             LineColor = Color.Black;
         }
 
-        private int Normalize(float number)
-        {
-            return (int)number / _multiplier * _multiplier;
-        }
-
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
             // failsafe to prevent filling the whole screen
