@@ -290,8 +290,8 @@ namespace STROOP.Map
                             for (int z = zMin; z <= zMax; z++)
                             {
                                 float? y = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(
-                                    ExtendedLevelBoundariesUtilities.Convert(x, true),
-                                    ExtendedLevelBoundariesUtilities.Convert(z, true));
+                                    ExtendedLevelBoundariesUtilities.Convert(x, false),
+                                    ExtendedLevelBoundariesUtilities.Convert(z, false));
                                 if (y.HasValue &&
                                     (!data.minHeight.HasValue || y.Value >= data.minHeight.Value) &&
                                     (!data.maxHeight.HasValue || y.Value <= data.maxHeight.Value))
