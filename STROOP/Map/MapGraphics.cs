@@ -45,12 +45,12 @@ namespace STROOP.Map
 
         public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
             _glControl.Width / 2, _glControl.Height / 2) / MapViewScaleValue; }
-        public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius - 1; }
-        public float MapViewXMax { get => MapViewCenterXValue + MapViewRadius + 1; }
-        public float MapViewYMin { get => MapViewCenterYValue - MapViewRadius - 1; }
-        public float MapViewYMax { get => MapViewCenterYValue + MapViewRadius + 1; }
-        public float MapViewZMin { get => MapViewCenterZValue - MapViewRadius - 1; }
-        public float MapViewZMax { get => MapViewCenterZValue + MapViewRadius + 1; }
+        public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius; }
+        public float MapViewXMax { get => MapViewCenterXValue + MapViewRadius; }
+        public float MapViewYMin { get => MapViewCenterYValue - MapViewRadius; }
+        public float MapViewYMax { get => MapViewCenterYValue + MapViewRadius; }
+        public float MapViewZMin { get => MapViewCenterZValue - MapViewRadius; }
+        public float MapViewZMax { get => MapViewCenterZValue + MapViewRadius; }
 
         public static readonly int MAX_COURSE_SIZE_X_MIN = -8191;
         public static readonly int MAX_COURSE_SIZE_X_MAX = 8192;
