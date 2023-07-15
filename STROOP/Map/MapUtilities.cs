@@ -295,41 +295,40 @@ namespace STROOP.Map
             List<List<(float x, float y, float z)>> quadList = new List<List<(float x, float y, float z)>>();
             Action<int, int, int, int> addQuad = (int xBase, int zBase, int xAdd, int zAdd) =>
             {
-                if (SavedSettingsConfig.UseExtendedLevelBoundaries)
-                {
-                    xAdd *= 4;
-                    zAdd *= 4;
-                }
+                float xBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(xBase, xAdd, false);
+                float zBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(zBase, zAdd, false);
                 quadList.Add(new List<(float x, float y, float z)>()
                 {
                     (xBase, 0, zBase),
-                    (xBase + xAdd, 0, zBase),
-                    (xBase + xAdd, 0, zBase + zAdd),
-                    (xBase, 0, zBase + zAdd),
+                    (xBaseAdded, 0, zBase),
+                    (xBaseAdded, 0, zBaseAdded),
+                    (xBase, 0, zBaseAdded),
                 });
             };
+
+            long zero = ExtendedLevelBoundariesUtilities.Normalize(0, false);
             foreach ((int x, int z) in unitPoints)
             {
-                if (x == 0 && z == 0)
+                if (x == zero && z == zero)
                 {
                     addQuad(x, z, 1, 1);
                     addQuad(x, z, 1, -1);
                     addQuad(x, z, -1, 1);
                     addQuad(x, z, -1, -1);
                 }
-                else if (x == 0)
+                else if (x == zero)
                 {
-                    addQuad(x, z, 1, MoreMath.Sign(z));
-                    addQuad(x, z, -1, MoreMath.Sign(z));
+                    addQuad(x, z, 1, MoreMath.Sign(z - zero));
+                    addQuad(x, z, -1, MoreMath.Sign(z - zero));
                 }
-                else if (z == 0)
+                else if (z == zero)
                 {
-                    addQuad(x, z, MoreMath.Sign(x), 1);
-                    addQuad(x, z, MoreMath.Sign(x), -1);
+                    addQuad(x, z, MoreMath.Sign(x - zero), 1);
+                    addQuad(x, z, MoreMath.Sign(x - zero), -1);
                 }
                 else
                 {
-                    addQuad(x, z, MoreMath.Sign(x), MoreMath.Sign(z));
+                    addQuad(x, z, MoreMath.Sign(x - zero), MoreMath.Sign(z - zero));
                 }
             }
             return quadList;

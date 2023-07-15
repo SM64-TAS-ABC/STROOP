@@ -235,10 +235,10 @@ namespace STROOP.Map
                 {
                     return tris.ConvertAll(tri =>
                     {
-                        int xMin = Math.Max(tri.GetMinX(), (int)(Config.CurrentMapGraphics.MapViewXMin / 4) * 4 - SavedSettingsConfig.TriangleVertexMultiplier);
-                        int xMax = Math.Min(tri.GetMaxX(), (int)(Config.CurrentMapGraphics.MapViewXMax / 4) * 4 + SavedSettingsConfig.TriangleVertexMultiplier);
-                        int zMin = Math.Max(tri.GetMinZ(), (int)(Config.CurrentMapGraphics.MapViewZMin / 4) * 4 - SavedSettingsConfig.TriangleVertexMultiplier);
-                        int zMax = Math.Min(tri.GetMaxZ(), (int)(Config.CurrentMapGraphics.MapViewZMax / 4) * 4 + SavedSettingsConfig.TriangleVertexMultiplier);
+                        int xMin = Math.Max(tri.GetMinX(), (int)Math.Floor(Config.CurrentMapGraphics.MapViewXMin - ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier));
+                        int xMax = Math.Min(tri.GetMaxX(), (int)Math.Ceiling(Config.CurrentMapGraphics.MapViewXMax + ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier));
+                        int zMin = Math.Max(tri.GetMinZ(), (int)Math.Floor(Config.CurrentMapGraphics.MapViewZMin - ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier));
+                        int zMax = Math.Min(tri.GetMaxZ(), (int)Math.Ceiling(Config.CurrentMapGraphics.MapViewZMax + ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier));
 
                         Color color = data.color;
                         if (_distinguishSlidingClasses)
@@ -260,11 +260,16 @@ namespace STROOP.Map
                             }
                         }
 
+                        int xMinNormalized = (int)ExtendedLevelBoundariesUtilities.Normalize(xMin, false);
+                        int xMaxNormalized = (int)ExtendedLevelBoundariesUtilities.Normalize(xMax, false);
+                        int zMinNormalized = (int)ExtendedLevelBoundariesUtilities.Normalize(zMin, false);
+                        int zMaxNormalized = (int)ExtendedLevelBoundariesUtilities.Normalize(zMax, false);
+
                         List<(int x, float y, int z, Color color, TriangleDataModel tri)> points =
                             new List<(int x, float y, int z, Color color, TriangleDataModel tri)>();
-                        for (int x = xMin; x <= xMax; x += SavedSettingsConfig.TriangleVertexMultiplier)
+                        for (int x = xMinNormalized; x <= xMaxNormalized; x = (int)ExtendedLevelBoundariesUtilities.GetNext(x, 1, false))
                         {
-                            for (int z = zMin; z <= zMax; z += SavedSettingsConfig.TriangleVertexMultiplier)
+                            for (int z = zMinNormalized; z <= zMaxNormalized; z = (int)ExtendedLevelBoundariesUtilities.GetNext(z, 1, false))
                             {
                                 float? y = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
                                 if (y.HasValue &&
