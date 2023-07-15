@@ -247,10 +247,10 @@ namespace STROOP.Map
 
                         if (SavedSettingsConfig.UseExtendedLevelBoundaries)
                         {
-                            triXMin = (int)ExtendedLevelBoundariesUtilities.Unconvert(triXMin, false);
-                            triXMax = (int)ExtendedLevelBoundariesUtilities.Unconvert(triXMax, false);
-                            triZMin = (int)ExtendedLevelBoundariesUtilities.Unconvert(triZMin, false);
-                            triZMax = (int)ExtendedLevelBoundariesUtilities.Unconvert(triZMax, false);
+                            triXMin = (int)ExtendedLevelBoundariesUtilities.Unconvert(triXMin);
+                            triXMax = (int)ExtendedLevelBoundariesUtilities.Unconvert(triXMax);
+                            triZMin = (int)ExtendedLevelBoundariesUtilities.Unconvert(triZMin);
+                            triZMax = (int)ExtendedLevelBoundariesUtilities.Unconvert(triZMax);
 
                             camXMin /= ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
                             camXMax /= ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
@@ -290,8 +290,8 @@ namespace STROOP.Map
                             for (int z = zMin; z <= zMax; z++)
                             {
                                 float? y = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(
-                                    ExtendedLevelBoundariesUtilities.Convert(x, false, true),
-                                    ExtendedLevelBoundariesUtilities.Convert(z, false, true));
+                                    ExtendedLevelBoundariesUtilities.Convert(x, true),
+                                    ExtendedLevelBoundariesUtilities.Convert(z, true));
                                 if (y.HasValue &&
                                     (!data.minHeight.HasValue || y.Value >= data.minHeight.Value) &&
                                     (!data.maxHeight.HasValue || y.Value <= data.maxHeight.Value))
@@ -300,8 +300,8 @@ namespace STROOP.Map
                                     int z0 = z;
                                     if (SavedSettingsConfig.UseExtendedLevelBoundaries)
                                     {
-                                        x0 = (int)ExtendedLevelBoundariesUtilities.Convert(x, false, true);
-                                        z0 = (int)ExtendedLevelBoundariesUtilities.Convert(z, false, true);
+                                        x0 = (int)ExtendedLevelBoundariesUtilities.Convert(x, true);
+                                        z0 = (int)ExtendedLevelBoundariesUtilities.Convert(z, true);
                                     }
                                     points.Add((x0, y.Value, z0, color, tri));
                                 }

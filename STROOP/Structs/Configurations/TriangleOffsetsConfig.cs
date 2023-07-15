@@ -36,26 +36,26 @@ namespace STROOP.Structs.Configurations
         public static readonly byte NoCamCollisionMask = 0x02;
         public static readonly byte XProjectionMask = 0x08;
 
-        public static short GetX1(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + X1), false, true);
-        public static short GetY1(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Y1), true, false);
-        public static short GetZ1(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Z1), false, true);
-        public static short GetX2(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + X2), false, true);
-        public static short GetY2(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Y2), true, false);
-        public static short GetZ2(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Z2), false, true);
-        public static short GetX3(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + X3), false, true);
-        public static short GetY3(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Y3), true, false);
-        public static short GetZ3(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Z3), false, true);
+        public static short GetX1(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + X1), true);
+        public static short GetY1(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Y1), false);
+        public static short GetZ1(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Z1), true);
+        public static short GetX2(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + X2), true);
+        public static short GetY2(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Y2), false);
+        public static short GetZ2(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Z2), true);
+        public static short GetX3(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + X3), true);
+        public static short GetY3(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Y3), false);
+        public static short GetZ3(uint triAddress) => (short)ExtendedLevelBoundariesUtilities.Convert(Config.Stream.GetShort(triAddress + Z3), true);
         public static float GetNormalOffset(uint triAddress) => ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier * Config.Stream.GetFloat(triAddress + NormOffset);
 
-        public static bool SetX1(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, false), triAddress + X1);
-        public static bool SetY1(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, true), triAddress + Y1);
-        public static bool SetZ1(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, false), triAddress + Z1);
-        public static bool SetX2(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, false), triAddress + X2);
-        public static bool SetY2(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, true), triAddress + Y2);
-        public static bool SetZ2(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, false), triAddress + Z2);
-        public static bool SetX3(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, false), triAddress + X3);
-        public static bool SetY3(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, true), triAddress + Y3);
-        public static bool SetZ3(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value, false), triAddress + Z3);
+        public static bool SetX1(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + X1);
+        public static bool SetY1(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + Y1);
+        public static bool SetZ1(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + Z1);
+        public static bool SetX2(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + X2);
+        public static bool SetY2(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + Y2);
+        public static bool SetZ2(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + Z2);
+        public static bool SetX3(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + X3);
+        public static bool SetY3(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + Y3);
+        public static bool SetZ3(short value, uint triAddress) => Config.Stream.SetValue((short)ExtendedLevelBoundariesUtilities.Unconvert(value), triAddress + Z3);
         public static bool SetNormalOffset(float value, uint triAddress) => Config.Stream.SetValue(value / ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier, triAddress + NormOffset);
     }
 }

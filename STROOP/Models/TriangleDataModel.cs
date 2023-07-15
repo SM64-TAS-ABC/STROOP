@@ -391,14 +391,14 @@ namespace STROOP.Models
 
             if (SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
-                px = ExtendedLevelBoundariesUtilities.Unconvert((long)px, false);
-                pz = ExtendedLevelBoundariesUtilities.Unconvert((long)pz, false);
-                x1 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x1, false);
-                z1 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z1, false);
-                x2 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x2, false);
-                z2 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z2, false);
-                x3 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x3, false);
-                z3 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z3, false);
+                px = ExtendedLevelBoundariesUtilities.Unconvert((long)px);
+                pz = ExtendedLevelBoundariesUtilities.Unconvert((long)pz);
+                x1 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x1);
+                z1 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z1);
+                x2 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x2);
+                z2 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z2);
+                x3 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x3);
+                z3 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z3);
             }
 
             return MoreMath.IsPointInsideTriangle(px, pz, x1, z1, x2, z2, x3, z3);

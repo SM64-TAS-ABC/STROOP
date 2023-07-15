@@ -30,10 +30,10 @@ namespace STROOP.Map
             int max = 8192;
             int gap = 1024;
             List<long> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(
-                min, max, gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, true, true, false);
+                min, max, gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, true, true, false);
 
-            long convertedMin = ExtendedLevelBoundariesUtilities.Convert(min, false, true);
-            long convertedMax = ExtendedLevelBoundariesUtilities.Convert(max, false, true);
+            long convertedMin = ExtendedLevelBoundariesUtilities.Convert(min, true);
+            long convertedMax = ExtendedLevelBoundariesUtilities.Convert(max, true);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (int x in values)
@@ -57,7 +57,7 @@ namespace STROOP.Map
             int max = 8192;
             int gap = 1024;
             List<long> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(
-                min, max, gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, true, true, false);
+                min, max, gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, true, true, false);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (int x in values)
