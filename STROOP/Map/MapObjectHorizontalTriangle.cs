@@ -240,18 +240,28 @@ namespace STROOP.Map
                         int triZMin = tri.GetMinZ();
                         int triZMax = tri.GetMaxZ();
 
+                        int camXMin = (int)Config.CurrentMapGraphics.MapViewXMin - 2;
+                        int camXMax = (int)Config.CurrentMapGraphics.MapViewXMax - 2;
+                        int camZMin = (int)Config.CurrentMapGraphics.MapViewZMin - 2;
+                        int camZMax = (int)Config.CurrentMapGraphics.MapViewZMax - 2;
+
                         if (SavedSettingsConfig.UseExtendedLevelBoundaries)
                         {
                             triXMin = (int)ExtendedLevelBoundariesUtilities.Unconvert(triXMin, false);
                             triXMax = (int)ExtendedLevelBoundariesUtilities.Unconvert(triXMax, false);
                             triZMin = (int)ExtendedLevelBoundariesUtilities.Unconvert(triZMin, false);
                             triZMax = (int)ExtendedLevelBoundariesUtilities.Unconvert(triZMax, false);
+
+                            camXMin /= ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                            camXMax /= ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                            camZMin /= ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                            camZMax /= ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
                         }
 
-                        int xMin = Math.Max(triXMin, (int)Math.Floor(Config.CurrentMapGraphics.MapViewXMin - 1));
-                        int xMax = Math.Min(triXMax, (int)Math.Ceiling(Config.CurrentMapGraphics.MapViewXMax + 1));
-                        int zMin = Math.Max(triZMin, (int)Math.Floor(Config.CurrentMapGraphics.MapViewZMin - 1));
-                        int zMax = Math.Min(triZMax, (int)Math.Ceiling(Config.CurrentMapGraphics.MapViewZMax + 1));
+                        int xMin = Math.Max(triXMin, camXMin);
+                        int xMax = Math.Min(triXMax, camXMax);
+                        int zMin = Math.Max(triZMin, camZMin);
+                        int zMax = Math.Min(triZMax, camZMax);
 
                         Color color = data.color;
                         if (_distinguishSlidingClasses)
