@@ -29,8 +29,8 @@ namespace STROOP.Map
 
             int size = (int)Size;
             if (size < 1) size = 1;
-            List<float> xValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.X);
-            List<float> zValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Z);
+            List<float> xValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.X, true);
+            List<float> zValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Z, true);
 
             long convertedMin = ExtendedLevelBoundariesUtilities.Convert(-8192, false);
             long convertedMax = ExtendedLevelBoundariesUtilities.Convert(8192, false);
@@ -55,8 +55,8 @@ namespace STROOP.Map
 
             int size = (int)Size;
             if (size < 1) size = 1;
-            List<float> xValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.X);
-            List<float> zValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Z);
+            List<float> xValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.X, true);
+            List<float> zValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Z, true);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (float x in xValues)
@@ -73,9 +73,9 @@ namespace STROOP.Map
         {
             int size = (int)Size;
             if (size < 1) size = 1;
-            List<float> xValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.X);
-            List<float> yValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Y);
-            List<float> zValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Z);
+            List<float> xValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.X, false);
+            List<float> yValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Y, false);
+            List<float> zValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Z, false);
 
             long convertedMin = ExtendedLevelBoundariesUtilities.Convert(-8192, false);
             long convertedMax = ExtendedLevelBoundariesUtilities.Convert(8192, false);
@@ -114,9 +114,9 @@ namespace STROOP.Map
 
             int size = (int)Size;
             if (size < 1) size = 1;
-            List<float> xValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.X);
-            List<float> yValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Y);
-            List<float> zValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Z);
+            List<float> xValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.X, false);
+            List<float> yValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Y, false);
+            List<float> zValues = ExtendedLevelBoundariesUtilities.GetCustomGridlinesValues(size, Coordinate.Z, false);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (float x in xValues)

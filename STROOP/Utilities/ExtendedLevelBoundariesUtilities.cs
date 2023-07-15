@@ -15,32 +15,41 @@ namespace STROOP.Structs
 
         public static int TriangleVertexMultiplier => SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
 
-        public static List<float> GetCustomGridlinesValues(int numSubdivides, Coordinate coordinate)
+        public static List<float> GetCustomGridlinesValues(int numSubdivides, Coordinate coordinate, bool showOnlyWhatIsVisible)
         {
-            float mapMin = 0;
-            float mapMax = 0;
-            if (coordinate == Coordinate.X)
-            {
-                mapMin = Config.CurrentMapGraphics.MapViewXMin;
-                mapMax = Config.CurrentMapGraphics.MapViewXMax;
-            }
-            if (coordinate == Coordinate.Y)
-            {
-                mapMin = Config.CurrentMapGraphics.MapViewYMin;
-                mapMax = Config.CurrentMapGraphics.MapViewYMax;
-            }
-            if (coordinate == Coordinate.Z)
-            {
-                mapMin = Config.CurrentMapGraphics.MapViewZMin;
-                mapMax = Config.CurrentMapGraphics.MapViewZMax;
-            }
+            long min = -8192 * TriangleVertexMultiplier;
+            long max = 8192 * TriangleVertexMultiplier;
 
-            long min = Math.Max(-8192 * TriangleVertexMultiplier, (long)Math.Floor(mapMin));
-            long max = Math.Min(8192 * TriangleVertexMultiplier, (long)Math.Ceiling(mapMax));
+            if (showOnlyWhatIsVisible)
+            {
+                float mapMin = 0;
+                float mapMax = 0;
+                if (coordinate == Coordinate.X)
+                {
+                    mapMin = Config.CurrentMapGraphics.MapViewXMin;
+                    mapMax = Config.CurrentMapGraphics.MapViewXMax;
+                }
+                if (coordinate == Coordinate.Y)
+                {
+                    mapMin = Config.CurrentMapGraphics.MapViewYMin;
+                    mapMax = Config.CurrentMapGraphics.MapViewYMax;
+                }
+                if (coordinate == Coordinate.Z)
+                {
+                    mapMin = Config.CurrentMapGraphics.MapViewZMin;
+                    mapMax = Config.CurrentMapGraphics.MapViewZMax;
+                }
+
+                min = Math.Max(min, (long)Math.Floor(mapMin));
+                max = Math.Min(max, (long)Math.Ceiling(mapMax));
+            }
 
             if (numSubdivides >= 2 && numSubdivides <= 16384 && 16384 % numSubdivides == 0)
             {
                 long gap = 16384 / numSubdivides;
+                float gapPixels = gap * Config.CurrentMapGraphics.MapViewScaleValue;
+                if (gapPixels < 4) return new List<float>();
+
                 return GetValuesInRange(min, max, gap, coordinate == Coordinate.Y, ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, false)
                     .ConvertAll(value => (float)value);
             }
