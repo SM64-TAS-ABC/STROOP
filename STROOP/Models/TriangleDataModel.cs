@@ -302,7 +302,7 @@ namespace STROOP.Models
             short shortY = (short)doubleY;
             short shortZ = (short)doubleZ;
 
-            if (!MoreMath.IsPointInsideTriangle(shortX, shortZ, X1, Z1, X2, Z2, X3, Z3)) return false;
+            if (!IsPointInsideTriangle(shortX, shortZ)) return false;
             
             double heightOnTriangle = GetHeightOnTriangle(shortX, shortZ, NormX, NormY, NormZ, NormOffset);
             if (shortY < heightOnTriangle - 78) return false;
@@ -316,7 +316,7 @@ namespace STROOP.Models
             short shortY = (short)doubleY;
             short shortZ = (short)doubleZ;
 
-            if (!MoreMath.IsPointInsideTriangle(shortX, shortZ, X1, Z1, X2, Z2, X3, Z3)) return false;
+            if (!IsPointInsideTriangle(shortX, shortZ)) return false;
 
             double heightOnTriangle = GetHeightOnTriangle(shortX, shortZ, NormX, NormY, NormZ, NormOffset);
             if (shortY > heightOnTriangle + 78) return false;
@@ -330,7 +330,7 @@ namespace STROOP.Models
             short shortY = (short)doubleY;
             short shortZ = (short)doubleZ;
 
-            if (!MoreMath.IsPointInsideTriangle(shortX, shortZ, X1, Z1, X2, Z2, X3, Z3)) return false;
+            if (!IsPointInsideTriangle(shortX, shortZ)) return false;
 
             double heightOnTriangle = GetHeightOnTriangle(shortX, shortZ, NormX, NormY, NormZ, NormOffset);
             if (shortY < heightOnTriangle - 78 || shortY > heightOnTriangle) return false;
@@ -345,7 +345,7 @@ namespace STROOP.Models
                 doubleX = (short)doubleX;
                 doubleZ = (short)doubleZ;
             }
-            return MoreMath.IsPointInsideTriangle(doubleX, doubleZ, X1, Z1, X2, Z2, X3, Z3);
+            return IsPointInsideTriangle(doubleX, doubleZ);
         }
 
         public double GetVerticalDistAwayFromTriangleHitbox(double doubleX, double doubleY, double doubleZ)
@@ -354,7 +354,7 @@ namespace STROOP.Models
             short shortY = (short)doubleY;
             short shortZ = (short)doubleZ;
 
-            //if (!MoreMath.IsPointInsideTriangle(shortX, shortZ, X1, Z1, X2, Z2, X3, Z3)) return null;
+            //if (!IsPointInsideTriangle(shortX, shortZ)) return null;
 
             double heightOnTriangle = GetHeightOnTriangle(shortX, shortZ, NormX, NormY, NormZ, NormOffset);
             if (shortY < heightOnTriangle - 78) return shortY - (heightOnTriangle - 78);
@@ -367,8 +367,30 @@ namespace STROOP.Models
         {
             short shortX = (short)doubleX;
             short shortZ = (short)doubleZ;
-            if (!MoreMath.IsPointInsideTriangle(shortX, shortZ, X1, Z1, X2, Z2, X3, Z3)) return null;
+            if (!IsPointInsideTriangle(shortX, shortZ)) return null;
             return GetTruncatedHeightOnTriangle(doubleX, doubleZ);
+        }
+
+        public bool IsPointInsideTriangle(double pX, double pZ)
+        {
+            int x1 = X1;
+            int z1 = Z1;
+            int x2 = X2;
+            int z2 = Z2;
+            int x3 = X3;
+            int z3 = Z3;
+
+            if (SavedSettingsConfig.UseExtendedLevelBoundaries)
+            {
+                x1 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x1, false);
+                z1 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z1, false);
+                x2 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x2, false);
+                z2 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z2, false);
+                x3 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x3, false);
+                z3 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z3, false);
+            }
+
+            return MoreMath.IsPointInsideTriangle(pX, pZ, x1, z1, x2, z2, x3, z3);
         }
 
         public bool IsTriWithinVerticalDistOfCenter(float? withinDistNullable, float centerY)
