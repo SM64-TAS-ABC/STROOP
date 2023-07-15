@@ -293,7 +293,6 @@ namespace STROOP.Models
                 int modZ = ((z % 4) + 4) % 4;
                 x = (short)(x - modX);
                 z = (short)(z - modZ);
-                Config.Print($"mx={doubleX} mz={doubleZ} fx={x} fz={z}");
             }
             return -(x * NormX + NormZ * z + NormOffset) / NormY;
         }
