@@ -240,10 +240,10 @@ namespace STROOP.Map
                         int triZMin = tri.GetMinZ();
                         int triZMax = tri.GetMaxZ();
 
-                        int camXMin = (int)Config.CurrentMapGraphics.MapViewXMin - 2;
-                        int camXMax = (int)Config.CurrentMapGraphics.MapViewXMax - 2;
-                        int camZMin = (int)Config.CurrentMapGraphics.MapViewZMin - 2;
-                        int camZMax = (int)Config.CurrentMapGraphics.MapViewZMax - 2;
+                        int camXMin = (int)Config.CurrentMapGraphics.MapViewXMin - ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                        int camXMax = (int)Config.CurrentMapGraphics.MapViewXMax + ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                        int camZMin = (int)Config.CurrentMapGraphics.MapViewZMin - ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
+                        int camZMax = (int)Config.CurrentMapGraphics.MapViewZMax + ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier;
 
                         if (SavedSettingsConfig.UseExtendedLevelBoundaries)
                         {
@@ -289,7 +289,9 @@ namespace STROOP.Map
                         {
                             for (int z = zMin; z <= zMax; z++)
                             {
-                                float? y = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                                float? y = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(
+                                    ExtendedLevelBoundariesUtilities.Convert(x, false),
+                                    ExtendedLevelBoundariesUtilities.Convert(z, false));
                                 if (y.HasValue &&
                                     (!data.minHeight.HasValue || y.Value >= data.minHeight.Value) &&
                                     (!data.maxHeight.HasValue || y.Value <= data.maxHeight.Value))
