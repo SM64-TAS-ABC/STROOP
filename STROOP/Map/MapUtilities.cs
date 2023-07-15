@@ -289,14 +289,22 @@ namespace STROOP.Map
             return triAddresses.FindAll(triAddress => triAddress != 0)
                 .ConvertAll(triAddress => TriangleDataModel.CreateLazy(triAddress));
         }
-        
+
         public static List<List<(float x, float y, float z)>> ConvertUnitPointsToQuads(List<(int x, int z)> unitPoints)
         {
+            return SavedSettingsConfig.UseExtendedLevelBoundaries ?
+                ConvertUnitPointsToQuads_ExtendedLevelBoundaries(unitPoints) :
+                ConvertUnitPointsToQuads_NonExtendedLevelBoundaries(unitPoints);
+        }
+
+        public static List<List<(float x, float y, float z)>> ConvertUnitPointsToQuads_ExtendedLevelBoundaries(List<(int x, int z)> unitPoints)
+        {
             List<List<(float x, float y, float z)>> quadList = new List<List<(float x, float y, float z)>>();
-            Action<int, int, int, int> addQuad = (int xBase, int zBase, int xAdd, int zAdd) =>
+            void addQuad(int xBase, int zBase)
             {
-                float xBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(xBase, xAdd, false);
-                float zBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(zBase, zAdd, false);
+                float xBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(xBase, 1, false);
+                float zBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(zBase, 1, false);
+
                 quadList.Add(new List<(float x, float y, float z)>()
                 {
                     (xBase, 0, zBase),
@@ -305,30 +313,48 @@ namespace STROOP.Map
                     (xBase, 0, zBaseAdded),
                 });
             };
-
-            long zero = ExtendedLevelBoundariesUtilities.Normalize(0, false);
             foreach ((int x, int z) in unitPoints)
             {
-                if (x == zero && z == zero)
+                addQuad(x, z);
+            }
+            return quadList;
+        }
+
+        public static List<List<(float x, float y, float z)>> ConvertUnitPointsToQuads_NonExtendedLevelBoundaries(List<(int x, int z)> unitPoints)
+        {
+            List<List<(float x, float y, float z)>> quadList = new List<List<(float x, float y, float z)>>();
+            void addQuad(int xBase, int zBase, int xAdd, int zAdd)
+            {
+                quadList.Add(new List<(float x, float y, float z)>()
+                {
+                    (xBase, 0, zBase),
+                    (xBase + xAdd, 0, zBase),
+                    (xBase + xAdd, 0, zBase + zAdd),
+                    (xBase, 0, zBase + zAdd),
+                });
+            };
+            foreach ((int x, int z) in unitPoints)
+            {
+                if (x == 0 && z == 0)
                 {
                     addQuad(x, z, 1, 1);
                     addQuad(x, z, 1, -1);
                     addQuad(x, z, -1, 1);
                     addQuad(x, z, -1, -1);
                 }
-                else if (x == zero)
+                else if (x == 0)
                 {
-                    addQuad(x, z, 1, MoreMath.Sign(z - zero));
-                    addQuad(x, z, -1, MoreMath.Sign(z - zero));
+                    addQuad(x, z, 1, MoreMath.Sign(z));
+                    addQuad(x, z, -1, MoreMath.Sign(z));
                 }
-                else if (z == zero)
+                else if (z == 0)
                 {
-                    addQuad(x, z, MoreMath.Sign(x - zero), 1);
-                    addQuad(x, z, MoreMath.Sign(x - zero), -1);
+                    addQuad(x, z, MoreMath.Sign(x), 1);
+                    addQuad(x, z, MoreMath.Sign(x), -1);
                 }
                 else
                 {
-                    addQuad(x, z, MoreMath.Sign(x - zero), MoreMath.Sign(z - zero));
+                    addQuad(x, z, MoreMath.Sign(x), MoreMath.Sign(z));
                 }
             }
             return quadList;
