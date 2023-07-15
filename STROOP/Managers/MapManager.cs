@@ -617,8 +617,8 @@ namespace STROOP.Managers
                 }
             };
 
-            ToolStripMenuItem itemPresentMovement = new ToolStripMenuItem("Add Preset for Movement");
-            itemPresentMovement.Click += (sender, e) =>
+            ToolStripMenuItem itemPresetMovement = new ToolStripMenuItem("Add Preset for Movement");
+            itemPresetMovement.Click += (sender, e) =>
             {
                 List<MapTracker> mapTrackers = new List<MapTracker>();
 
@@ -660,7 +660,7 @@ namespace STROOP.Managers
                 MapTracker mapTrackerMarioSlidingArrow = new MapTracker(new MapObjectMarioSlidingArrow(PositionAngle.Mario));
                 mapTrackerMarioSlidingArrow.SetSize(2000);
                 mapTrackerMarioSlidingArrow.SetLineWidth(2);
-                mapTrackerMarioFacingArrowBackwards.SetLineColor(ColorTranslator.FromHtml("#FF00FF"));
+                mapTrackerMarioSlidingArrow.SetLineColor(ColorTranslator.FromHtml("#FF00FF"));
                 mapTrackers.Add(mapTrackerMarioSlidingArrow);
 
                 MapTracker mapTrackerPuGridlines = new MapTracker(new MapObjectPuGridlines());
@@ -748,7 +748,7 @@ namespace STROOP.Managers
 
             ToolStripMenuItem itemPreset = new ToolStripMenuItem("Preset...");
             itemPreset.DropDownItems.Add(itemPresetForWallsFloorsCeilings);
-            itemPreset.DropDownItems.Add(itemPresentMovement);
+            itemPreset.DropDownItems.Add(itemPresetMovement);
 
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemObjects);
