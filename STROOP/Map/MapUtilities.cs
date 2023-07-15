@@ -212,7 +212,7 @@ namespace STROOP.Map
 
         public static List<(float x, float z)> GetPuCenters(int mod)
         {
-            int puSize = 65536 * (SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1) * mod;
+            int puSize = 65536 * ExtendedLevelBoundariesUtilities.TriangleVertexMultiplier * mod;
 
             int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / puSize) - 1) * puSize;
             int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / puSize) + 1) * puSize;
