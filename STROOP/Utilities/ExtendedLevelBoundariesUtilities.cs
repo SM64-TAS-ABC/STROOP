@@ -53,8 +53,28 @@ namespace STROOP.Structs
                 return GetValuesInRange(min, max, gap, coordinate == Coordinate.Y, ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, false)
                     .ConvertAll(value => (float)value);
             }
+            else
+            {
+                bool isOdd = numSubdivides % 2 == 1;
+                float gap = (16384 * TriangleVertexMultiplier) / (float)numSubdivides;
+                float gapPixels = gap * Config.CurrentMapGraphics.MapViewScaleValue;
+                if (gapPixels < 4) return new List<float>();
 
-            return new List<float>();
+                long minMultiple = (long)Math.Floor(min / gap);
+                long maxMultiple = (long)Math.Ceiling(max / gap);
+
+                List<float> values = new List<float>();
+                for (long multiple = minMultiple; isOdd ? multiple < maxMultiple : multiple <= maxMultiple; multiple++)
+                {
+                    float value = multiple * gap;
+                    if (isOdd)
+                    {
+                        value += gap / 2;
+                    }
+                    values.Add(value);
+                }
+                return values;
+            }
         }
 
         public static List<long> GetValuesInRange(
