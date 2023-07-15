@@ -287,6 +287,11 @@ namespace STROOP.Models
         {
             short x = (short)doubleX;
             short z = (short)doubleZ;
+            if (SavedSettingsConfig.UseExtendedLevelBoundaries)
+            {
+                x = (short)ExtendedLevelBoundariesUtilities.Normalize(x, false);
+                z = (short)ExtendedLevelBoundariesUtilities.Normalize(z, false);
+            }
             return -(x * NormX + NormZ * z + NormOffset) / NormY;
         }
 
