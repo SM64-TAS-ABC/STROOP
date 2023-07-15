@@ -154,40 +154,93 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
-            if (_setting != PuGridlineSetting.SETTING1)
+            switch (_setting)
             {
-                return new List<(float x, float y, float z)>();
+                case PuGridlineSetting.SETTING1:
+                    {
+                        float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+
+                        long goThroughValueX = 0;
+                        long goThroughValueZ = 0;
+                        if (_useMarioAsOrigin)
+                        {
+                            (int puXIndex, int puYIndex, int puZIndex) = PuUtilities.GetMarioPuIndexes();
+                            goThroughValueX = puXIndex * (long)puSize;
+                            goThroughValueZ = puZIndex * (long)puSize;
+                        }
+
+                        long size = (long)Math.Max(Size, 1);
+                        long gap = puSize * size;
+                        List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
+                        List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
+
+                        List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                        foreach (long x in xValues)
+                        {
+                            foreach (long z in zValues)
+                            {
+                                vertices.Add((x, marioY, z));
+                            }
+                        }
+                        return vertices;
+                    }
+                case PuGridlineSetting.SETTING2:
+                    {
+                        float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+
+                        List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                        List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+
+                        List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                        foreach (long x in xValues)
+                        {
+                            foreach (long z in zValues)
+                            {
+                                vertices.Add((x, marioY, z));
+                            }
+                        }
+                        return vertices;
+                    }
+                case PuGridlineSetting.SETTING3:
+                    {
+                        float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+
+                        List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
+                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                        List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
+                            (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
+                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+
+                        List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                        foreach (long x in xValues)
+                        {
+                            foreach (long z in zValues)
+                            {
+                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, false);
+                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, false);
+                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, false);
+                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, false);
+
+                                vertices.Add((x1, marioY, z1));
+                                vertices.Add((x1, marioY, z2));
+                                vertices.Add((x2, marioY, z1));
+                                vertices.Add((x2, marioY, z2));
+                            }
+                        }
+                        return vertices;
+                    }
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-
-            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
-
-            long goThroughValueX = 0;
-            long goThroughValueZ = 0;
-            if (_useMarioAsOrigin)
-            {
-                (int puXIndex, int puYIndex, int puZIndex) = PuUtilities.GetMarioPuIndexes();
-                goThroughValueX = puXIndex * (long)puSize;
-                goThroughValueZ = puZIndex * (long)puSize;
-            }
-
-            long size = (long)Math.Max(Size, 1);
-            long gap = puSize * size;
-            List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
-                (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
-            List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
-                (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
-
-            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            foreach (long x in xValues)
-            {
-                foreach (long z in zValues)
-                {
-                    vertices.Add((x, marioY, z));
-                }
-            }
-            return vertices;
         }
 
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
