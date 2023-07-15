@@ -35,25 +35,14 @@ namespace STROOP.Structs
                 mapMax = Config.CurrentMapGraphics.MapViewZMax;
             }
 
-            long min = Math.Max(Convert(-8192, false), (long)Math.Floor(mapMin));
-            long max = Math.Min(Convert(8192, false), (long)Math.Ceiling(mapMax));
+            long min = Math.Max(-8192 * TriangleVertexMultiplier, (long)Math.Floor(mapMin));
+            long max = Math.Min(8192 * TriangleVertexMultiplier, (long)Math.Ceiling(mapMax));
 
-            long courseWidth = 16384;
-
-            if (courseWidth >= numSubdivides && courseWidth % numSubdivides == 0 ||
-                numSubdivides >= courseWidth && numSubdivides % courseWidth == 0)
+            if (numSubdivides >= 2 && numSubdivides <= 16384 && 16384 % numSubdivides == 0)
             {
-                float gap = courseWidth / (float)numSubdivides;
-                long minMultiple = (long)Math.Floor(min / gap);
-                long maxMultiple = (long)Math.Ceiling(max / gap);
-
-                List<float> values = new List<float>();
-                for (long multiple = minMultiple; multiple <= maxMultiple; multiple++)
-                {
-                    float value = multiple * gap;
-                    values.Add(value);
-                }
-                return values;
+                long gap = 16384 / numSubdivides;
+                return GetValuesInRange(min, max, gap, coordinate == Coordinate.Y, ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, false)
+                    .ConvertAll(value => (float)value);
             }
 
             return new List<float>();
