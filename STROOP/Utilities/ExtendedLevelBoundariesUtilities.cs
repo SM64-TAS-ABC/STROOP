@@ -86,8 +86,8 @@ namespace STROOP.Structs
             {
                 min = (min / multipliedGap - padding) * multipliedGap;
                 max = (max / multipliedGap + padding) * multipliedGap;
-                min = GetNext(min, -gap / 2, isY, true);
-                max = GetNext(max, gap / 2, isY, true);
+                min = GetNext(min, -gap / 2, isY);
+                max = GetNext(max, gap / 2, isY);
             }
 
             if (convertBounds)
@@ -97,15 +97,15 @@ namespace STROOP.Structs
             }
             else if (SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
-                min = Normalize(min, isY, true);
-                max = Normalize(max, isY, true);
+                min = Normalize(min, isY);
+                max = Normalize(max, isY);
             }
 
             long increment(long i)
             {
                 if (convertGap)
                 {
-                    return GetNext(i, gap, isY, false);
+                    return GetNext(i, gap, isY);
                 }
                 else
                 {
@@ -121,16 +121,16 @@ namespace STROOP.Structs
             return values;
         }
 
-        public static long GetNext(long value, long gap, bool isY, bool negativeLeniency)
+        public static long GetNext(long value, long gap, bool isY)
         {
-            long unconverted = Unconvert(value, isY, negativeLeniency);
+            long unconverted = Unconvert(value, isY);
             unconverted += gap;
             return Convert(unconverted, isY);
         }
 
-        public static long Normalize(long value, bool isY, bool negativeLeniency)
+        public static long Normalize(long value, bool isY)
         {
-            return Convert(Unconvert(value, isY, negativeLeniency), isY);
+            return Convert(Unconvert(value, isY), isY);
         }
 
         public static long Convert(long value, bool isY)
@@ -144,15 +144,14 @@ namespace STROOP.Structs
             return value > 0 ? value * 4 : value * 4 - offset;
         }
 
-        public static long Unconvert(long value, bool isY, bool negativeLeniency)
+        public static long Unconvert(long value, bool isY)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
                 return value;
             }
 
-            long offset = isY || negativeLeniency ? 0 : 1;
-            return value > 0 ? value / 4 : (value + offset) / 4;
+            return value / 4;
         }
     }
 }

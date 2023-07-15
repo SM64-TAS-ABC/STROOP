@@ -127,10 +127,10 @@ namespace STROOP.Map
                         {
                             foreach (long z in zValues)
                             {
-                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, false);
-                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, false);
-                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, false);
-                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, false);
+                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false);
+                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false);
+                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false);
+                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false);
 
                                 vertices.Add((x1, marioY, z1));
                                 vertices.Add((x1, marioY, z2));
@@ -225,10 +225,10 @@ namespace STROOP.Map
                         {
                             foreach (long z in zValues)
                             {
-                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, false);
-                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, false);
-                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, false);
-                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, false);
+                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false);
+                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false);
+                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false);
+                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false);
 
                                 vertices.Add((x1, marioY, z1));
                                 vertices.Add((x1, marioY, z2));
@@ -420,10 +420,10 @@ namespace STROOP.Map
                             {
                                 foreach (long y in yValues)
                                 {
-                                    float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, false);
-                                    float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, false);
-                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true, false);
-                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true, false);
+                                    float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false);
+                                    float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false);
+                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true);
+                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true);
 
                                     vertices.Add((x1, y1, zCenter));
                                     vertices.Add((x1, y2, zCenter));
@@ -449,10 +449,10 @@ namespace STROOP.Map
                             {
                                 foreach (long y in yValues)
                                 {
-                                    float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, false);
-                                    float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, false);
-                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true, false);
-                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true, false);
+                                    float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false);
+                                    float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false);
+                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true);
+                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true);
 
                                     vertices.Add((xCenter, y1, z1));
                                     vertices.Add((xCenter, y2, z1));
@@ -644,10 +644,10 @@ namespace STROOP.Map
                             {
                                 foreach (long y in yValues)
                                 {
-                                    float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, false);
-                                    float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, false);
-                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true, false);
-                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true, false);
+                                    float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false);
+                                    float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false);
+                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true);
+                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true);
 
                                     vertices.Add((x1, y1, zCenter));
                                     vertices.Add((x1, y2, zCenter));
@@ -666,10 +666,10 @@ namespace STROOP.Map
                             {
                                 foreach (long y in yValues)
                                 {
-                                    float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, false);
-                                    float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, false);
-                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true, false);
-                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true, false);
+                                    float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false);
+                                    float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false);
+                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true);
+                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true);
 
                                     vertices.Add((xCenter, y1, z1));
                                     vertices.Add((xCenter, y2, z1));
