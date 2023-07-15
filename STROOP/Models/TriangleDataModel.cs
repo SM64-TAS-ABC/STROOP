@@ -378,30 +378,9 @@ namespace STROOP.Models
             return GetTruncatedHeightOnTriangle(doubleX, doubleZ);
         }
 
-        public bool IsPointInsideTriangle(double pointX, double pointZ)
+        public bool IsPointInsideTriangle(double pX, double pZ)
         {
-            double px = pointX;
-            double pz = pointZ;
-            int x1 = X1;
-            int z1 = Z1;
-            int x2 = X2;
-            int z2 = Z2;
-            int x3 = X3;
-            int z3 = Z3;
-
-            if (SavedSettingsConfig.UseExtendedLevelBoundaries)
-            {
-                px = ExtendedLevelBoundariesUtilities.Unconvert((long)px);
-                pz = ExtendedLevelBoundariesUtilities.Unconvert((long)pz);
-                x1 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x1);
-                z1 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z1);
-                x2 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x2);
-                z2 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z2);
-                x3 = (int)ExtendedLevelBoundariesUtilities.Unconvert(x3);
-                z3 = (int)ExtendedLevelBoundariesUtilities.Unconvert(z3);
-            }
-
-            return MoreMath.IsPointInsideTriangle(px, pz, x1, z1, x2, z2, x3, z3);
+            return MoreMath.IsPointInsideTriangle(pX, pZ, X1, Z1, X2, Z2, X3, Z3);
         }
 
         public bool IsTriWithinVerticalDistOfCenter(float? withinDistNullable, float centerY)
