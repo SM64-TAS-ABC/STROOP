@@ -118,6 +118,9 @@ namespace STROOP.Map
         public readonly bool ChangeUseExtendedLevelBoundaries;
         public readonly bool NewUseExtendedLevelBoundaries;
 
+        public readonly bool ChangeOverrideExtendedLevelBoundaries;
+        public readonly bool NewOverrideExtendedLevelBoundaries;
+
         public readonly bool ChangeAngleRangeUseRelativeAngles;
         public readonly bool NewAngleRangeUseRelativeAngles;
 
@@ -302,6 +305,9 @@ namespace STROOP.Map
             bool changeUseExtendedLevelBoundaries = false,
             bool newUseExtendedLevelBoundaries = false,
 
+            bool changeOverrideExtendedLevelBoundaries = false,
+            bool newOverrideExtendedLevelBoundaries = false,
+
             bool changeAngleRangeUseRelativeAngles = false,
             bool newAngleRangeUseRelativeAngles = false,
 
@@ -484,6 +490,9 @@ namespace STROOP.Map
 
             ChangeUseExtendedLevelBoundaries = changeUseExtendedLevelBoundaries;
             NewUseExtendedLevelBoundaries = newUseExtendedLevelBoundaries;
+
+            ChangeOverrideExtendedLevelBoundaries = changeOverrideExtendedLevelBoundaries;
+            NewOverrideExtendedLevelBoundaries = newOverrideExtendedLevelBoundaries;
 
             ChangeAngleRangeUseRelativeAngles = changeAngleRangeUseRelativeAngles;
             NewAngleRangeUseRelativeAngles = newAngleRangeUseRelativeAngles;
