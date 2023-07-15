@@ -30,7 +30,7 @@ namespace STROOP.Utilities
             bool convertGap = SpecialConfig.Custom2Z != 0;
 
             List<long> values = ExtendedLevelBoundariesUtilities.GetValuesInRange(
-                min, max, gap, isY, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, convertBounds, convertGap, false);
+                min, max, gap, isY, !isY, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, convertBounds, convertGap, false);
             Config.Print($"min={min} max={max} gap={gap} convertBounds={convertBounds} convertGap={convertGap}");
             Config.Print(string.Join(",", values));
             Config.Print();

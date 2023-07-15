@@ -40,10 +40,10 @@ namespace STROOP.Map
 
             List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
             List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
 
             float xMin = Config.CurrentMapGraphics.MapViewXMin;
             float xMax = Config.CurrentMapGraphics.MapViewXMax;
@@ -76,10 +76,10 @@ namespace STROOP.Map
 
             List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
             List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             foreach (long x in xValues)
@@ -113,13 +113,13 @@ namespace STROOP.Map
 
             List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
             List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
-                1, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, true, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
             List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
 
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -192,13 +192,13 @@ namespace STROOP.Map
 
             List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
             List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
-                1, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, true, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
             List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                 (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                1, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
+                1, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, !_overrideExtendedLevelBoundaries, true);
 
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||

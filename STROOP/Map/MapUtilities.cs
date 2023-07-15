@@ -302,8 +302,8 @@ namespace STROOP.Map
             List<List<(float x, float y, float z)>> quadList = new List<List<(float x, float y, float z)>>();
             void addQuad(int xBase, int zBase)
             {
-                float xBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(xBase, 1, false);
-                float zBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(zBase, 1, false);
+                float xBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(xBase, 1, false, true);
+                float zBaseAdded = ExtendedLevelBoundariesUtilities.GetNext(zBase, 1, false, true);
 
                 quadList.Add(new List<(float x, float y, float z)>()
                 {

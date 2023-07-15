@@ -59,10 +59,10 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
 
                         float xMin = Config.CurrentMapGraphics.MapViewXMin;
                         float xMax = Config.CurrentMapGraphics.MapViewXMax;
@@ -88,10 +88,10 @@ namespace STROOP.Map
 
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            puSize, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            puSize, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
 
                         float xMin = Config.CurrentMapGraphics.MapViewXMin;
                         float xMax = Config.CurrentMapGraphics.MapViewXMax;
@@ -117,20 +117,20 @@ namespace STROOP.Map
 
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            puSize, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            puSize, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         foreach (long x in xValues)
                         {
                             foreach (long z in zValues)
                             {
-                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false);
-                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false);
-                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false);
-                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false);
+                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, true);
+                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, true);
+                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, true);
+                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, true);
 
                                 vertices.Add((x1, marioY, z1));
                                 vertices.Add((x1, marioY, z2));
@@ -173,10 +173,10 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         foreach (long x in xValues)
@@ -194,10 +194,10 @@ namespace STROOP.Map
 
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            puSize, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            puSize, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         foreach (long x in xValues)
@@ -215,20 +215,20 @@ namespace STROOP.Map
 
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            puSize, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            puSize, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            puSize, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         foreach (long x in xValues)
                         {
                             foreach (long z in zValues)
                             {
-                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false);
-                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false);
-                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false);
-                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false);
+                                float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, true);
+                                float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, true);
+                                float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, true);
+                                float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, true);
 
                                 vertices.Add((x1, marioY, z1));
                                 vertices.Add((x1, marioY, z2));
@@ -275,13 +275,13 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
                         List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
-                            gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueY, false, true, true);
+                            gap, true, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueY, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -339,13 +339,13 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
                         List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
-                            gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            gap, true, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -403,13 +403,13 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
                         List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
-                            gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            gap, true, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -420,10 +420,10 @@ namespace STROOP.Map
                             {
                                 foreach (long y in yValues)
                                 {
-                                    float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false);
-                                    float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false);
-                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true);
-                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true);
+                                    float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, true);
+                                    float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, true);
+                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true, false);
+                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true, false);
 
                                     vertices.Add((x1, y1, zCenter));
                                     vertices.Add((x1, y2, zCenter));
@@ -449,10 +449,10 @@ namespace STROOP.Map
                             {
                                 foreach (long y in yValues)
                                 {
-                                    float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false);
-                                    float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false);
-                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true);
-                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true);
+                                    float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, true);
+                                    float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, true);
+                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true, false);
+                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true, false);
 
                                     vertices.Add((xCenter, y1, z1));
                                     vertices.Add((xCenter, y2, z1));
@@ -511,13 +511,13 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueX, false, true, true);
                         List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
-                            gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueY, false, true, true);
+                            gap, true, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueY, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, goThroughValueZ, false, true, true);
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -569,13 +569,13 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
                         List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
-                            gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            gap, true, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.SPACED_AROUND_ZERO, 0, false, true, true);
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -627,13 +627,13 @@ namespace STROOP.Map
                         long gap = puSize * size;
                         List<long> xValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewXMin, (long)Config.CurrentMapGraphics.MapViewXMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
                         List<long> yValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewYMin, (long)Config.CurrentMapGraphics.MapViewYMax,
-                            gap, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            gap, true, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
                         List<long> zValues = ExtendedLevelBoundariesUtilities.GetValuesInRange(
                             (long)Config.CurrentMapGraphics.MapViewZMin, (long)Config.CurrentMapGraphics.MapViewZMax,
-                            gap, false, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
+                            gap, false, true, ExtendedLevelBoundariesUtilities.ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, true);
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -644,10 +644,10 @@ namespace STROOP.Map
                             {
                                 foreach (long y in yValues)
                                 {
-                                    float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false);
-                                    float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false);
-                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true);
-                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true);
+                                    float x1 = ExtendedLevelBoundariesUtilities.GetNext(x, -halfCourseSize, false, true);
+                                    float x2 = ExtendedLevelBoundariesUtilities.GetNext(x, halfCourseSize, false, true);
+                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true, false);
+                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true, false);
 
                                     vertices.Add((x1, y1, zCenter));
                                     vertices.Add((x1, y2, zCenter));
@@ -666,10 +666,10 @@ namespace STROOP.Map
                             {
                                 foreach (long y in yValues)
                                 {
-                                    float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false);
-                                    float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false);
-                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true);
-                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true);
+                                    float z1 = ExtendedLevelBoundariesUtilities.GetNext(z, -halfCourseSize, false, true);
+                                    float z2 = ExtendedLevelBoundariesUtilities.GetNext(z, halfCourseSize, false, true);
+                                    float y1 = ExtendedLevelBoundariesUtilities.GetNext(y, -halfCourseSize, true, false);
+                                    float y2 = ExtendedLevelBoundariesUtilities.GetNext(y, halfCourseSize, true, false);
 
                                     vertices.Add((xCenter, y1, z1));
                                     vertices.Add((xCenter, y2, z1));

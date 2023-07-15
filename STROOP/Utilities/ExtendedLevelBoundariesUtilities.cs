@@ -50,7 +50,7 @@ namespace STROOP.Structs
                 float gapPixels = gap * Config.CurrentMapGraphics.MapViewScaleValue;
                 if (gapPixels < 4) return new List<float>();
 
-                return GetValuesInRange(min, max, gap, coordinate == Coordinate.Y, ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, false)
+                return GetValuesInRange(min, max, gap, coordinate == Coordinate.Y, coordinate != Coordinate.Y, ValueOffsetType.GO_THROUGH_VALUE, 0, false, true, false)
                     .ConvertAll(value => (float)value);
             }
             else
@@ -78,7 +78,7 @@ namespace STROOP.Structs
         }
 
         public static List<long> GetValuesInRange(
-            long min, long max, long gap, bool isY,
+            long min, long max, long gap, bool isY, bool offsetNegativesBy1,
             ValueOffsetType valueOffsetType, long goThroughValue, bool convertBounds, bool convertGap, bool padBounds)
         {
             long multiplier = convertGap && SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1;
@@ -89,7 +89,7 @@ namespace STROOP.Structs
             long distAfter = 0;
             if (padBounds && goThroughValue != 0)
             {
-                goThroughValue = Convert(goThroughValue, isY);
+                goThroughValue = Convert(goThroughValue, isY, offsetNegativesBy1);
                 long goThroughValueMod = ((goThroughValue % multipliedGap) + multipliedGap) % multipliedGap;
                 distBefore = goThroughValueMod;
                 distAfter = multipliedGap - goThroughValueMod;
@@ -104,26 +104,26 @@ namespace STROOP.Structs
             {
                 min = (min / multipliedGap - padding) * multipliedGap;
                 max = (max / multipliedGap + padding) * multipliedGap;
-                min = GetNext(min, -gap / 2, isY);
-                max = GetNext(max, gap / 2, isY);
+                min = GetNext(min, -gap / 2, isY, offsetNegativesBy1);
+                max = GetNext(max, gap / 2, isY, offsetNegativesBy1);
             }
 
             if (convertBounds)
             {
-                min = Convert(min, isY);
-                max = Convert(max, isY);
+                min = Convert(min, isY, offsetNegativesBy1);
+                max = Convert(max, isY, offsetNegativesBy1);
             }
             else if (SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
-                min = Normalize(min, isY);
-                max = Normalize(max, isY);
+                min = Normalize(min, isY, offsetNegativesBy1);
+                max = Normalize(max, isY, offsetNegativesBy1);
             }
 
             long increment(long i)
             {
                 if (convertGap)
                 {
-                    return GetNext(i, gap, isY);
+                    return GetNext(i, gap, isY, offsetNegativesBy1);
                 }
                 else
                 {
@@ -139,19 +139,19 @@ namespace STROOP.Structs
             return values;
         }
 
-        public static long GetNext(long value, long gap, bool isY)
+        public static long GetNext(long value, long gap, bool isY, bool offsetNegativesBy1)
         {
             long unconverted = Unconvert(value, isY);
             unconverted += gap;
-            return Convert(unconverted, isY);
+            return Convert(unconverted, isY, offsetNegativesBy1);
         }
 
-        public static long Normalize(long value, bool isY)
+        public static long Normalize(long value, bool isY, bool offsetNegativesBy1)
         {
-            return Convert(Unconvert(value, isY), isY);
+            return Convert(Unconvert(value, isY), isY, offsetNegativesBy1);
         }
 
-        public static long Convert(long value, bool isY)
+        public static long Convert(long value, bool isY, bool offsetNegativesBy1)
         {
             if (!SavedSettingsConfig.UseExtendedLevelBoundaries)
             {
