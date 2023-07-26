@@ -172,6 +172,9 @@ namespace STROOP.Map
         public readonly bool ChangePuGridlinesSetting;
         public readonly string NewPuGridlinesSetting;
 
+        public readonly bool ChangeNextPositionsDeFactoSpeedSetting;
+        public readonly string NewNextPositionsDeFactoSpeedSetting;
+
         public readonly bool ChangeMap;
         public readonly string NewMap;
 
@@ -359,6 +362,9 @@ namespace STROOP.Map
             bool changePuGridlinesSetting = false,
             string newPuGridlinesSetting = null,
 
+            bool changeNextPositionsDeFactoSpeedSetting = false,
+            string newNextPositionsDeFactoSpeedSetting = null,
+
             bool changeMap = false,
             string newMap = null,
 
@@ -544,6 +550,9 @@ namespace STROOP.Map
 
             ChangePuGridlinesSetting = changePuGridlinesSetting;
             NewPuGridlinesSetting = newPuGridlinesSetting;
+
+            ChangeNextPositionsDeFactoSpeedSetting = changeNextPositionsDeFactoSpeedSetting;
+            NewNextPositionsDeFactoSpeedSetting = newNextPositionsDeFactoSpeedSetting;
 
             ChangeMap = changeMap;
             NewMap = newMap;

@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using STROOP.Utilities;
-using STROOP.Structs.Configurations;
-using STROOP.Structs;
-using OpenTK;
-using System.Windows.Forms;
 using STROOP.Map.Map3D;
+using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using STROOP.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
     public class MapObjectNextPositions : MapObject
     {
+        public enum NextPositionsDeFactoSpeedSetting { AUTO, FORCE_ENABLE, FORCE_DISABLE };
+        private NextPositionsDeFactoSpeedSetting _deFactoSpeedSetting;
+
         private int _redMarioTex = -1;
         private int _blueMarioTex = -1;
         private int _orangeMarioTex = -1;
@@ -30,11 +31,17 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemSetNumFrames;
         private ToolStripMenuItem _itemUsePitch;
 
+        private ToolStripMenuItem _itemDeFactoSpeedSetting;
+        private ToolStripMenuItem _itemDeFactoSpeedSettingAuto;
+        private ToolStripMenuItem _itemDeFactoSpeedSettingForceEnable;
+        private ToolStripMenuItem _itemDeFactoSpeedSettingForceDisable;
+
         private static readonly string SET_NUM_FRAMES_TEXT = "Set Num Frames";
 
         public MapObjectNextPositions()
             : base()
         {
+            _deFactoSpeedSetting = NextPositionsDeFactoSpeedSetting.AUTO;
             InternalRotates = true;
         }
 
@@ -263,14 +270,38 @@ namespace STROOP.Map
                 };
                 _itemUsePitch.Checked = _usePitch;
 
+                _itemDeFactoSpeedSettingAuto = new ToolStripMenuItem("Auto");
+                _itemDeFactoSpeedSettingAuto.Click += (sender, e) => SetDeFactoSpeedSetting(NextPositionsDeFactoSpeedSetting.AUTO);
+                _itemDeFactoSpeedSettingAuto.Checked = true;
+
+                _itemDeFactoSpeedSettingForceEnable = new ToolStripMenuItem("Force Enable");
+                _itemDeFactoSpeedSettingForceEnable.Click += (sender, e) => SetDeFactoSpeedSetting(NextPositionsDeFactoSpeedSetting.FORCE_ENABLE);
+
+                _itemDeFactoSpeedSettingForceDisable = new ToolStripMenuItem("Force Disable");
+                _itemDeFactoSpeedSettingForceDisable.Click += (sender, e) => SetDeFactoSpeedSetting(NextPositionsDeFactoSpeedSetting.FORCE_DISABLE);
+
+                _itemDeFactoSpeedSetting = new ToolStripMenuItem("De Facto Speed...");
+                _itemDeFactoSpeedSetting.DropDownItems.Add(_itemDeFactoSpeedSettingAuto);
+                _itemDeFactoSpeedSetting.DropDownItems.Add(_itemDeFactoSpeedSettingForceEnable);
+                _itemDeFactoSpeedSetting.DropDownItems.Add(_itemDeFactoSpeedSettingForceDisable);
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseColoredMarios);
                 _contextMenuStrip.Items.Add(_itemShowQuarterSteps);
                 _contextMenuStrip.Items.Add(_itemSetNumFrames);
                 _contextMenuStrip.Items.Add(_itemUsePitch);
+                _contextMenuStrip.Items.Add(_itemDeFactoSpeedSetting);
             }
 
             return _contextMenuStrip;
+        }
+
+        private void SetDeFactoSpeedSetting(NextPositionsDeFactoSpeedSetting deFactoSpeedSetting)
+        {
+            MapObjectSettings settings = new MapObjectSettings(
+                changeNextPositionsDeFactoSpeedSetting: true,
+                newNextPositionsDeFactoSpeedSetting: deFactoSpeedSetting.ToString());
+            GetParentMapTracker().ApplySettings(settings);
         }
 
         public override void ApplySettings(MapObjectSettings settings)
@@ -300,6 +331,14 @@ namespace STROOP.Map
             {
                 _usePitch = settings.NewUsePitch;
                 _itemUsePitch.Checked = settings.NewUsePitch;
+            }
+
+            if (settings.ChangeNextPositionsDeFactoSpeedSetting)
+            {
+                _deFactoSpeedSetting = (NextPositionsDeFactoSpeedSetting)Enum.Parse(typeof(NextPositionsDeFactoSpeedSetting), settings.NewNextPositionsDeFactoSpeedSetting);
+                _itemDeFactoSpeedSettingAuto.Checked = _deFactoSpeedSetting == NextPositionsDeFactoSpeedSetting.AUTO;
+                _itemDeFactoSpeedSettingForceEnable.Checked = _deFactoSpeedSetting == NextPositionsDeFactoSpeedSetting.FORCE_ENABLE;
+                _itemDeFactoSpeedSettingForceDisable.Checked = _deFactoSpeedSetting == NextPositionsDeFactoSpeedSetting.FORCE_DISABLE;
             }
         }
 
