@@ -165,13 +165,24 @@ namespace STROOP.Map
             ushort marioYaw = MoreMath.NormalizeAngleTruncated(preYaw);
             short marioPitch = Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
 
-            float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-            float multiplier = 1;
-            if (marioY == floorY) // on the ground
+            uint floorTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            float yNorm = Config.Stream.GetFloat(floorTri + TriangleOffsetsConfig.NormY);
+
+            float multiplier;
+            switch (_deFactoSpeedSetting)
             {
-                uint floorTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                float yNorm = Config.Stream.GetFloat(floorTri + TriangleOffsetsConfig.NormY);
-                multiplier = yNorm;
+                case NextPositionsDeFactoSpeedSetting.AUTO:
+                    float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    multiplier = marioY == floorY ? yNorm : 1;
+                    break;
+                case NextPositionsDeFactoSpeedSetting.FORCE_ENABLE:
+                    multiplier = yNorm;
+                    break;
+                case NextPositionsDeFactoSpeedSetting.FORCE_DISABLE:
+                    multiplier = 1;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(_deFactoSpeedSetting.ToString());
             }
             float effectiveSpeed = marioHSpeed * multiplier;
 
