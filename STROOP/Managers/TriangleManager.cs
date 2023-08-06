@@ -254,22 +254,57 @@ namespace STROOP.Managers
 
             _repeatFirstVertexCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxRepeatFirstVertex"] as CheckBox;
 
-            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowLevelTris"] as Button).Click
-                += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetLevelTriangles());
+            void CopyTriCoordinates(List<TriangleDataModel> tris)
+            {
+                List<string> lines = tris.ConvertAll(tri => string.Join(", ", tri.GetCoordinates()));
+                string text = string.Join(",\r\n", lines);
+                Clipboard.SetText(text);
+            }
+
+            Button buttonTrianglesShowLevelTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowLevelTris"] as Button;
+            buttonTrianglesShowLevelTris.Click += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetLevelTriangles());
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonTrianglesShowLevelTris,
+                new List<string>()
+                {
+                    "Copy Coordinates",
+                },
+                new List<Action>()
+                {
+                    () => CopyTriCoordinates(TriangleUtilities.GetLevelTriangles()),
+                });
 
             Button buttonTriangleShowObjTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowObjTris"] as Button;
             buttonTriangleShowObjTris.Click += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles());
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTriangleShowObjTris,
-                new List<string>() { "Show All Object Tris", "Show Selected Object Tris" },
+                new List<string>()
+                {
+                    "Show All Object Tris",
+                    "Show Selected Object Tris",
+                    "Copy Coordinates for All Object Tris",
+                    "Copy Coordinates for Selected Object Tris",
+                },
                 new List<Action>()
                 {
                     () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles()),
                     () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetSelectedObjectTriangles()),
+                    () => CopyTriCoordinates(TriangleUtilities.GetObjectTriangles()),
+                    () => CopyTriCoordinates(TriangleUtilities.GetSelectedObjectTriangles()),
                 });
 
-            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button).Click
-                += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetAllTriangles());
+            Button buttonTrianglesShowAllTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button;
+            buttonTrianglesShowAllTris.Click += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetAllTriangles());
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonTrianglesShowAllTris,
+                new List<string>()
+                {
+                    "Copy Coordinates",
+                },
+                new List<Action>()
+                {
+                    () => CopyTriCoordinates(TriangleUtilities.GetAllTriangles()),
+                });
 
             var buttonTriangleNeutralizeAllTriangles = splitContainerTriangles.Panel1.Controls["buttonTriangleNeutralizeAllTriangles"] as Button;
             buttonTriangleNeutralizeAllTriangles.Click += (sender, e) => TriangleUtilities.NeutralizeTriangles();
