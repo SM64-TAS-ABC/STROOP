@@ -267,11 +267,17 @@ namespace STROOP.Managers
                 buttonTrianglesShowLevelTris,
                 new List<string>()
                 {
-                    "Copy Coordinates",
+                    "Copy Coordinates for Level Tris",
+                    "Copy Coordinates for Level Floors",
+                    "Copy Coordinates for Level Walls",
+                    "Copy Coordinates for Level Ceilings",
                 },
                 new List<Action>()
                 {
                     () => CopyTriCoordinates(TriangleUtilities.GetLevelTriangles()),
+                    () => CopyTriCoordinates(TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsFloor())),
+                    () => CopyTriCoordinates(TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsWall())),
+                    () => CopyTriCoordinates(TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsCeiling())),
                 });
 
             Button buttonTriangleShowObjTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowObjTris"] as Button;
@@ -283,14 +289,26 @@ namespace STROOP.Managers
                     "Show All Object Tris",
                     "Show Selected Object Tris",
                     "Copy Coordinates for All Object Tris",
+                    "Copy Coordinates for All Object Floors",
+                    "Copy Coordinates for All Object Walls",
+                    "Copy Coordinates for All Object Ceilings",
                     "Copy Coordinates for Selected Object Tris",
+                    "Copy Coordinates for Selected Object Floors",
+                    "Copy Coordinates for Selected Object Walls",
+                    "Copy Coordinates for Selected Object Ceilings",
                 },
                 new List<Action>()
                 {
                     () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles()),
                     () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetSelectedObjectTriangles()),
                     () => CopyTriCoordinates(TriangleUtilities.GetObjectTriangles()),
+                    () => CopyTriCoordinates(TriangleUtilities.GetObjectTriangles().FindAll(tri => tri.IsFloor())),
+                    () => CopyTriCoordinates(TriangleUtilities.GetObjectTriangles().FindAll(tri => tri.IsWall())),
+                    () => CopyTriCoordinates(TriangleUtilities.GetObjectTriangles().FindAll(tri => tri.IsCeiling())),
                     () => CopyTriCoordinates(TriangleUtilities.GetSelectedObjectTriangles()),
+                    () => CopyTriCoordinates(TriangleUtilities.GetSelectedObjectTriangles().FindAll(tri => tri.IsFloor())),
+                    () => CopyTriCoordinates(TriangleUtilities.GetSelectedObjectTriangles().FindAll(tri => tri.IsWall())),
+                    () => CopyTriCoordinates(TriangleUtilities.GetSelectedObjectTriangles().FindAll(tri => tri.IsCeiling())),
                 });
 
             Button buttonTrianglesShowAllTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button;
@@ -299,11 +317,17 @@ namespace STROOP.Managers
                 buttonTrianglesShowAllTris,
                 new List<string>()
                 {
-                    "Copy Coordinates",
+                    "Copy Coordinates for All Tris",
+                    "Copy Coordinates for All Floors",
+                    "Copy Coordinates for All Walls",
+                    "Copy Coordinates for All Ceilings",
                 },
                 new List<Action>()
                 {
                     () => CopyTriCoordinates(TriangleUtilities.GetAllTriangles()),
+                    () => CopyTriCoordinates(TriangleUtilities.GetAllTriangles().FindAll(tri => tri.IsFloor())),
+                    () => CopyTriCoordinates(TriangleUtilities.GetAllTriangles().FindAll(tri => tri.IsWall())),
+                    () => CopyTriCoordinates(TriangleUtilities.GetAllTriangles().FindAll(tri => tri.IsCeiling())),
                 });
 
             var buttonTriangleNeutralizeAllTriangles = splitContainerTriangles.Panel1.Controls["buttonTriangleNeutralizeAllTriangles"] as Button;
