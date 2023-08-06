@@ -251,6 +251,11 @@ namespace STROOP.Models
             };
         }
 
+        public List<int> GetCoordinates()
+        {
+            return new List<int>() { X1, Y1, Z1, X2, Y2, Z2, X3, Y3, Z3 };
+        }
+
         public double GetDistToMidpoint()
         {
             float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
