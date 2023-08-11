@@ -456,6 +456,12 @@ namespace STROOP.Managers
             double? zMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMax.Text);
             double? yDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsY.Text);
 
+            if (!xMinDouble.HasValue && !xMaxDouble.HasValue && !zMaxDouble.HasValue && !zMaxDouble.HasValue && !yDouble.HasValue)
+            {
+                CalculateInvisibleWallsViaEdgeGaps();
+                return;
+            }
+
             bool onlyLonePoints = _checkBoxTestingInvisibleWallsOnlyLonePoints.Checked;
             bool useMapObjectBounds = !xMinDouble.HasValue && !xMaxDouble.HasValue && !zMinDouble.HasValue && !zMaxDouble.HasValue;
 
@@ -543,6 +549,139 @@ namespace STROOP.Managers
             List<string> lines = units.ConvertAll(unit => unit.x + "\t" + unit.z);
             string output = string.Join("\r\n", lines);
             InfoForm.ShowValue(output, "Invisible Wall Points", $"Invisible Wall Points ({units.Count} found / {counter} checked)");
+        }
+
+        public void CalculateInvisibleWallsViaEdgeGaps()
+        {
+            CellSnapshot cellSnapshot = new CellSnapshot();
+            List<TriangleDataModel> floors = TriangleUtilities.GetAllTriangles().FindAll(tri => tri.IsFloor());
+            List<(int x, float y, int z)> invisibleWallPoints = new List<(int x, float y, int z)>();
+            foreach (TriangleDataModel floor in floors)
+            {
+                List<(int x, float y, int z)> points = GetInvisibleWallPointsAroundEdge(floor, cellSnapshot);
+                invisibleWallPoints.AddRange(points);
+            }
+
+            List<string> lines = invisibleWallPoints.ConvertAll(unit => unit.x + "\t" + unit.y + "\t" + unit.z);
+            string output = string.Join("\r\n", lines);
+            InfoForm.ShowValue(output, "Invisible Wall Points", "Invisible Wall Points");
+        }
+
+        public List<(int x, float y, int z)> GetInvisibleWallPointsAroundEdge(TriangleDataModel triangle, CellSnapshot cellSnapshot)
+        {
+            List<(float x, float y, float z)> vertices = triangle.Get3DVertices();
+            HashSet<(int x, int z)> pointsOnLineSet = new HashSet<(int x, int z)>();
+            for (int i = 0; i < 3; i++)
+            {
+                (float x1, float y1, float z1) = vertices[i];
+                (float x2, float y2, float z2) = vertices[(i + 1) % 3];
+
+                double dist = MoreMath.GetDistanceBetween(x1, z1, x2, z2);
+                int cap = (int)(dist * 2);
+                for (int j = 0; j <= cap; j++)
+                {
+                    float p = j / (float)cap;
+                    float x = Lerp(x1, x2, p);
+                    float z = Lerp(z1, z2, p);
+                    pointsOnLineSet.Add(((int)x, (int)z));
+                }
+            }
+
+            List<(int x, int z)> pointsOnLineList = pointsOnLineSet.ToList();
+            foreach (var point in pointsOnLineList)
+            {
+                for (int dx = -1; dx <= 1; dx++)
+                {
+                    for (int dz = -1; dz <= 1; dz++)
+                    {
+                        pointsOnLineSet.Add((point.x + dx, point.z + dz));
+                    }
+                }
+            }
+
+            Dictionary<(int x, int z, bool add100), float?> cache = new Dictionary<(int x, int z, bool add100), float?>();
+            
+            float? GetValue(int x, int z, bool add100)
+            {
+                if (!cache.ContainsKey((x, z, add100)))
+                {
+                    float y = triangle.GetTruncatedHeightOnTriangle(x, z) + (add100 ? 100 : 0);
+                    (TriangleDataModel floor, float floorY) = cellSnapshot.FindFloorAndY(x, y, z);
+                    if (floor == null)
+                    {
+                        cache[(x, z, add100)] = null;
+                        return null;
+                    }
+                    (TriangleDataModel ceiling, float ceilingY) = cellSnapshot.FindCeilingAndY(x, floorY + 80, z);
+                    if (y + 160.0f > ceilingY)
+                    {
+                        cache[(x, z, add100)] = null;
+                        return null;
+                    }
+                    cache[(x, z, add100)] = floorY;
+                    return floorY;
+                }
+
+                return cache[(x, z, add100)];
+            }
+
+            bool satisfiesCondition(int x, int z, bool add100) 
+            {
+                float? value = GetValue(x, z, add100);
+                if (value.HasValue)
+                {
+                    int numSurroundingMuchHigher = 0;
+                    for (int dx = -1; dx <= 1; dx++)
+                    {
+                        for (int dz = -1; dz <= 1; dz++)
+                        {
+                            if (dx == 0 && dz == 0) continue;
+
+                            float? value2 = GetValue(x + dx, z + dz, add100);
+                            if (value2.HasValue && value2.Value > value.Value + 100)
+                            {
+                                numSurroundingMuchHigher++;
+                            }
+                        }
+                    }
+                    return numSurroundingMuchHigher >= 6;
+                }
+                else
+                {
+                    int numSurroundingInBounds = 0;
+                    for (int dx = -1; dx <= 1; dx++)
+                    {
+                        for (int dz = -1; dz <= 1; dz++)
+                        {
+                            if (dx == 0 && dz == 0) continue;
+
+                            float? value2 = GetValue(x + dx, z + dz, add100);
+                            if (value2.HasValue)
+                            {
+                                numSurroundingInBounds++;
+                            }
+                        }
+                    }
+                    return numSurroundingInBounds >= 6;
+                }
+            }
+
+            List<(int x, float y, int z)> output = new List<(int x, float y, int z)>();
+            foreach (var point in pointsOnLineSet)
+            {
+                if (satisfiesCondition(point.x, point.z, false) &&
+                    satisfiesCondition(point.x, point.z, true))
+                {
+                    float y = triangle.GetTruncatedHeightOnTriangle(point.x, point.z);
+                    output.Add((point.x, y, point.z));
+                }
+            }
+            return output;
+        }
+
+        public float Lerp(float a, float b, float t)
+        {
+            return a + t * (b - a);
         }
 
         private List<uint> GetScuttlebugAddresses()
