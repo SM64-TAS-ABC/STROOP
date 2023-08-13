@@ -1045,7 +1045,12 @@ namespace STROOP
                 }
                 else if (control is Button button)
                 {
-                    button.BackColor = Color.Black;
+                    button.FlatStyle = FlatStyle.Flat;
+                    // colors ripped from win10 aero.msstyles @ DarkMode_Explorer Button_PUSHBUTTON_534
+                    button.FlatAppearance.BorderColor = Color.FromArgb(155, 155, 155);
+                    button.FlatAppearance.MouseOverBackColor = Color.FromArgb(69, 69, 69);
+                    button.FlatAppearance.CheckedBackColor = button.FlatAppearance.MouseDownBackColor = Color.FromArgb(102,102,102);
+                    button.BackColor = Color.FromArgb(51, 51, 51);
                     button.ForeColor = Color.White;
                 }
                 else if (control is WatchVariableControl watchVariableControl)
@@ -1111,6 +1116,7 @@ namespace STROOP
                 }
                 else if (control is Button button)
                 {
+                    button.FlatStyle = FlatStyle.Standard;
                     button.BackColor = Color.Transparent;
                     button.ForeColor = Color.Black;
                 }
