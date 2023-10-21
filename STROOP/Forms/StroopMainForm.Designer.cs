@@ -1456,6 +1456,7 @@ namespace STROOP
             this.labelObjAtHOLP = new System.Windows.Forms.Label();
             this.groupBoxTestingInvisibleWalls = new System.Windows.Forms.GroupBox();
             this.textBoxTestingInvisibleWallsY = new STROOP.BetterTextbox();
+            this.checkBoxTestingInvisibleWallsOnlyLonePoints = new System.Windows.Forms.CheckBox();
             this.textBoxTestingInvisibleWallsZMin = new STROOP.BetterTextbox();
             this.textBoxTestingInvisibleWallsZMax = new STROOP.BetterTextbox();
             this.textBoxTestingInvisibleWallsXMax = new STROOP.BetterTextbox();
@@ -1662,7 +1663,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.pictureBoxLock = new System.Windows.Forms.PictureBox();
-            this.checkBoxTestingInvisibleWallsOnlyLonePoints = new System.Windows.Forms.CheckBox();
+            this.radioButtonTriMapAccum = new System.Windows.Forms.RadioButton();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -4983,6 +4984,7 @@ namespace STROOP
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowLevelTris);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowData);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonNeutralizeTriangle);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriMapAccum);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriMapHover);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriWall);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowCoords);
@@ -5996,7 +5998,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 597F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 598F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9735,7 +9737,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(454, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(457, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -13073,7 +13075,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 721;
+            this.splitContainerMemory.SplitterDistance = 724;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -13114,7 +13116,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(721, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(724, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13329,7 +13331,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(721, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(724, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13358,7 +13360,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(620, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(623, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13370,7 +13372,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(181, 451);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(178, 451);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14524,7 +14526,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(102, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(85, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14556,7 +14558,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(96, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(79, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14612,7 +14614,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(96, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(79, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -18785,6 +18787,16 @@ namespace STROOP
             this.textBoxTestingInvisibleWallsY.Text = "100";
             this.textBoxTestingInvisibleWallsY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // checkBoxTestingInvisibleWallsOnlyLonePoints
+            // 
+            this.checkBoxTestingInvisibleWallsOnlyLonePoints.AutoSize = true;
+            this.checkBoxTestingInvisibleWallsOnlyLonePoints.Location = new System.Drawing.Point(10, 144);
+            this.checkBoxTestingInvisibleWallsOnlyLonePoints.Name = "checkBoxTestingInvisibleWallsOnlyLonePoints";
+            this.checkBoxTestingInvisibleWallsOnlyLonePoints.Size = new System.Drawing.Size(106, 17);
+            this.checkBoxTestingInvisibleWallsOnlyLonePoints.TabIndex = 17;
+            this.checkBoxTestingInvisibleWallsOnlyLonePoints.Text = "Only Lone Points";
+            this.checkBoxTestingInvisibleWallsOnlyLonePoints.UseVisualStyleBackColor = true;
+            // 
             // textBoxTestingInvisibleWallsZMin
             // 
             this.textBoxTestingInvisibleWallsZMin.Location = new System.Drawing.Point(47, 67);
@@ -19347,7 +19359,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20531,7 +20543,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(41, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(42, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -21593,15 +21605,15 @@ namespace STROOP
             this.pictureBoxLock.TabIndex = 23;
             this.pictureBoxLock.TabStop = false;
             // 
-            // checkBoxTestingInvisibleWallsOnlyLonePoints
+            // radioButtonTriMapAccum
             // 
-            this.checkBoxTestingInvisibleWallsOnlyLonePoints.AutoSize = true;
-            this.checkBoxTestingInvisibleWallsOnlyLonePoints.Location = new System.Drawing.Point(10, 144);
-            this.checkBoxTestingInvisibleWallsOnlyLonePoints.Name = "checkBoxTestingInvisibleWallsOnlyLonePoints";
-            this.checkBoxTestingInvisibleWallsOnlyLonePoints.Size = new System.Drawing.Size(106, 17);
-            this.checkBoxTestingInvisibleWallsOnlyLonePoints.TabIndex = 17;
-            this.checkBoxTestingInvisibleWallsOnlyLonePoints.Text = "Only Lone Points";
-            this.checkBoxTestingInvisibleWallsOnlyLonePoints.UseVisualStyleBackColor = true;
+            this.radioButtonTriMapAccum.AutoSize = true;
+            this.radioButtonTriMapAccum.Location = new System.Drawing.Point(86, 42);
+            this.radioButtonTriMapAccum.Name = "radioButtonTriMapAccum";
+            this.radioButtonTriMapAccum.Size = new System.Drawing.Size(82, 17);
+            this.radioButtonTriMapAccum.TabIndex = 1;
+            this.radioButtonTriMapAccum.Text = "Map Accum";
+            this.radioButtonTriMapAccum.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -23851,6 +23863,7 @@ namespace STROOP
         private CheckBox checkBoxMapOptionsEnableObjectDrag;
         private CheckBox checkBoxMapOptionsUseCrossSection;
         private CheckBox checkBoxTestingInvisibleWallsOnlyLonePoints;
+        private RadioButton radioButtonTriMapAccum;
     }
 }
 
