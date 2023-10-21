@@ -25,7 +25,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.GreenMarioMapImage;
+            return Config.ObjectAssociations.YellowMarioMapImage;
         }
 
         public override PositionAngle GetPositionAngle()
