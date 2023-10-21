@@ -207,13 +207,21 @@ namespace STROOP.Map
                         MapObjectHoverData.LastTriangleAddress = hoverData.Tri.Address;
                     }
                 }
+
+
+                string prefix = "";
+                if (Config.TriangleManager.AccumulatedTriangles.Count > 0)
+                {
+                    prefix = $"({Config.TriangleManager.AccumulatedTriangles.Count} Tris)";
+                }
+
                 if (hoverData == null)
                 {
-                    Config.HideDebugText();
+                    Config.SetDebugText(prefix);
                 }
                 else
                 {
-                    Config.SetDebugText(hoverData);
+                    Config.SetDebugText(prefix + " " + hoverData);
                 }
             }
 

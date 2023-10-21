@@ -30,6 +30,8 @@ namespace STROOP.Managers
         private readonly RadioButton _radioButtonTriMapHover;
         private readonly RadioButton _radioButtonTriMapAccum;
 
+        public HashSet<uint> AccumulatedTriangles;
+
         CheckBox _checkBoxNeutralizeTriangle;
 
         CheckBox _recordTriangleDataCheckbox;
@@ -118,6 +120,8 @@ namespace STROOP.Managers
             _radioButtonTriMapHover.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.MapHover);
             _radioButtonTriMapAccum = splitContainerTriangles.Panel1.Controls["radioButtonTriMapAccum"] as RadioButton;
             _radioButtonTriMapAccum.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.MapAccum);
+
+            AccumulatedTriangles = new HashSet<uint>();
 
             ControlUtilities.AddContextMenuStripFunctions(
                 _radioButtonTriCustom,
@@ -598,6 +602,11 @@ namespace STROOP.Managers
                 case TriangleMode.MapHover:
                     TrianglePointerAddress = null;
                     SetTriangleAddresses(MapObjectHoverData.LastTriangleAddress);
+                    break;
+
+                case TriangleMode.MapAccum:
+                    TrianglePointerAddress = null;
+                    AccumulatedTriangles.Add(MapObjectHoverData.LastTriangleAddress);
                     break;
 
                 default:
