@@ -520,7 +520,7 @@ namespace STROOP.Managers
 
         public int? GetSlotIndexFromObj(ObjectDataModel obj)
         {
-            return ObjectSlots.FirstOrDefault(o => o.CurrentObject?.Equals(obj) ?? false)?.Index;
+            return ObjectUtilities.GetObjectIndex(obj.Address);
         }
 
         public ObjectDataModel GetObjectFromAddress(uint objAddress)
