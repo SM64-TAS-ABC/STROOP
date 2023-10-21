@@ -205,12 +205,18 @@ namespace STROOP.Map
                     if (hoverData != null && hoverData.Tri != null)
                     {
                         MapObjectHoverData.LastTriangleAddress = hoverData.Tri.Address;
+                        if (Config.TriangleManager.Mode == Managers.TriangleManager.TriangleMode.MapAccum &&
+                            KeyboardUtilities.IsShiftHeld())
+                        {
+                            Config.TriangleManager.AccumulatedTriangles.Add(hoverData.Tri.Address);
+                        }
                     }
                 }
 
 
                 string prefix = "";
-                if (Config.TriangleManager.AccumulatedTriangles.Count > 0)
+                if (Config.TriangleManager.Mode == Managers.TriangleManager.TriangleMode.MapAccum &&
+                    Config.TriangleManager.AccumulatedTriangles.Count > 0)
                 {
                     prefix = $"({Config.TriangleManager.AccumulatedTriangles.Count} Tris)";
                 }

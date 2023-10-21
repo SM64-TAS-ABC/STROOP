@@ -12,6 +12,7 @@ using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Forms;
 using STROOP.Map;
+using System.Windows.Input;
 
 namespace STROOP.Managers
 {
@@ -606,12 +607,24 @@ namespace STROOP.Managers
 
                 case TriangleMode.MapAccum:
                     TrianglePointerAddress = null;
-                    AccumulatedTriangles.Add(MapObjectHoverData.LastTriangleAddress);
+                    if (AccumulatedTriangles.Count == 0)
+                    {
+                        SetTriangleAddresses(0);
+                    }
+                    else
+                    {
+                        SetTriangleAddresses(AccumulatedTriangles.ToList());
+                    }
                     break;
 
                 default:
                     TrianglePointerAddress = null;
                     break;
+            }
+
+            if (Mode != TriangleMode.MapAccum || Keyboard.IsKeyDown(Key.Escape))
+            {
+                AccumulatedTriangles.Clear();
             }
 
             if (_checkBoxNeutralizeTriangle.Checked)
