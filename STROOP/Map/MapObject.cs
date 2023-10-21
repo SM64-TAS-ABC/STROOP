@@ -588,6 +588,12 @@ namespace STROOP.Map
                 case "MapObjectPushHitboxCylinder":
                     mapObject = new MapObjectPushHitboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
+                case "MapObjectPyramidNormal":
+                    mapObject = new MapObjectPyramidNormal(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectPyramidNormalTarget":
+                    mapObject = new MapObjectPyramidNormalTarget(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 case "MapObjectPyramidPlatformNormals":
                     mapObject = new MapObjectPyramidPlatformNormals(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
