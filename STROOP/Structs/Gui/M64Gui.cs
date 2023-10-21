@@ -43,6 +43,7 @@ namespace STROOP.Structs.Gui
 
         public BetterTextbox TextBoxOnValue;
 
+        public GroupBox GroupBoxM64Selection;
         public BetterTextbox TextBoxSelectionStartFrame;
         public BetterTextbox TextBoxSelectionEndFrame;
         public BetterTextbox TextBoxSelectionInputs;

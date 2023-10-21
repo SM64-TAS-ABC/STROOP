@@ -421,6 +421,15 @@ namespace STROOP.Managers
                 _gui.DataGridViewInputs.Refresh();
                 UpdateSelectionTextboxes();
             }
+
+            (int? startFrame, int? endFrame) = GetFrameBounds();
+            string suffix = "";
+            if (startFrame.HasValue && endFrame.HasValue)
+            {
+                int diffFrames = endFrame.Value - startFrame.Value + 1;
+                suffix = $" ({diffFrames})";
+            }
+            _gui.GroupBoxM64Selection.Text = "Selection Range" + suffix;
         }
     }
 }

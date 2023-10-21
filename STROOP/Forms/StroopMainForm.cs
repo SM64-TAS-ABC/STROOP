@@ -408,6 +408,7 @@ namespace STROOP
 
                 TextBoxOnValue = textBoxM64OnValue,
 
+                GroupBoxM64Selection = groupBoxM64Selection,
                 TextBoxSelectionStartFrame = textBoxM64SelectionStartFrame,
                 TextBoxSelectionEndFrame = textBoxM64SelectionEndFrame,
                 TextBoxSelectionInputs = textBoxM64SelectionInputs,
