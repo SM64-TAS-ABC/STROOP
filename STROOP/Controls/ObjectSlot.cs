@@ -204,6 +204,12 @@ namespace STROOP
                 Clipboard.SetText(string.Join(",", getObjects().ConvertAll(obj => HexUtilities.FormatValue(obj.Address))));
             };
 
+            ToolStripMenuItem itemCopyLabel = new ToolStripMenuItem("Copy Label");
+            itemCopyLabel.Click += (sender, e) =>
+            {
+                Clipboard.SetText(string.Join(",", getObjects().ConvertAll(obj => Config.ObjectSlotsManager.GetSlotLabelFromObject(obj))));
+            };
+
             ToolStripMenuItem itemCopyPosition = new ToolStripMenuItem("Copy Position");
             itemCopyPosition.Click += (sender, e) => Clipboard.SetText(
                 String.Format("{0},{1},{2}", CurrentObject.X, CurrentObject.Y, CurrentObject.Z));
@@ -295,6 +301,7 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemUnmark);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemCopyAddress);
+            ContextMenuStrip.Items.Add(itemCopyLabel);
             ContextMenuStrip.Items.Add(itemCopyPosition);
             ContextMenuStrip.Items.Add(itemPastePosition);
             ContextMenuStrip.Items.Add(itemCopyGraphics);
