@@ -20,7 +20,7 @@ namespace STROOP.Managers
         BetterTextbox _addressBox;
         CheckBox _useMisalignmentOffsetCheckbox;
 
-        public enum TriangleMode { Floor, Wall, Ceiling, Custom, MapHover };
+        public enum TriangleMode { Floor, Wall, Ceiling, Custom, MapHover, MapAccum };
         public TriangleMode Mode = TriangleMode.Floor;
 
         private readonly RadioButton _radioButtonTriFloor;
@@ -28,6 +28,7 @@ namespace STROOP.Managers
         private readonly RadioButton _radioButtonTriCeiling;
         private readonly RadioButton _radioButtonTriCustom;
         private readonly RadioButton _radioButtonTriMapHover;
+        private readonly RadioButton _radioButtonTriMapAccum;
 
         CheckBox _checkBoxNeutralizeTriangle;
 
@@ -115,6 +116,8 @@ namespace STROOP.Managers
             _radioButtonTriCustom.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Custom);
             _radioButtonTriMapHover = splitContainerTriangles.Panel1.Controls["radioButtonTriMapHover"] as RadioButton;
             _radioButtonTriMapHover.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.MapHover);
+            _radioButtonTriMapAccum = splitContainerTriangles.Panel1.Controls["radioButtonTriMapAccum"] as RadioButton;
+            _radioButtonTriMapAccum.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.MapAccum);
 
             ControlUtilities.AddContextMenuStripFunctions(
                 _radioButtonTriCustom,
