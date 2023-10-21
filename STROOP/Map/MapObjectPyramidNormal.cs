@@ -20,12 +20,12 @@ namespace STROOP.Map
         public MapObjectPyramidNormal(PositionAngle posAngle)
             : base()
         {
-            _posAngle = posAngle;
+            _posAngle = PositionAngle.PyramidNormal(posAngle.GetObjAddress());
         }
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.YellowMarioMapImage;
+            return Config.ObjectAssociations.OrangeMarioMapImage;
         }
 
         public override PositionAngle GetPositionAngle()

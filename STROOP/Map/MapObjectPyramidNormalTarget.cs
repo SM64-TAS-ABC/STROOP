@@ -20,7 +20,7 @@ namespace STROOP.Map
         public MapObjectPyramidNormalTarget(PositionAngle posAngle)
             : base()
         {
-            _posAngle = posAngle;
+            _posAngle = PositionAngle.PyramidNormalTarget(posAngle.GetObjAddress());
         }
 
         public override Image GetInternalImage()
