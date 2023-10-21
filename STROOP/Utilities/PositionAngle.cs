@@ -1298,7 +1298,28 @@ namespace STROOP.Utilities
 
         public static double GetPyramidNormal(uint address, Coordinate coord)
         {
-            return 0;
+            float posX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+            float posY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+            float posZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
+
+            float normalX = Config.Stream.GetFloat(address + ObjectConfig.PyramidPlatformNormalXOffset);
+            float normalY = Config.Stream.GetFloat(address + ObjectConfig.PyramidPlatformNormalYOffset);
+            float normalZ = Config.Stream.GetFloat(address + ObjectConfig.PyramidPlatformNormalZOffset);
+
+            if (coord == Coordinate.X)
+            {
+                return posX + 500 * normalX;
+            }
+            if (coord == Coordinate.Y)
+            {
+                return posY + 500 * normalY;
+            }
+            if (coord == Coordinate.Z)
+            {
+                return posZ + 500 * normalZ;
+            }
+
+            throw new ArgumentOutOfRangeException(coord.ToString());
         }
 
         public static double GetPyramidNormalTarget(uint address, Coordinate coord)

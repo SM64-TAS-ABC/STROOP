@@ -35,7 +35,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Pyramid Normal for " + _posAngle.GetMapName();
+            return _posAngle.GetMapName();
         }
 
         public override List<XAttribute> GetXAttributes()
