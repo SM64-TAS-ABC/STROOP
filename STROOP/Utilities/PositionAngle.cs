@@ -1324,7 +1324,40 @@ namespace STROOP.Utilities
 
         public static double GetPyramidNormalTarget(uint address, Coordinate coord)
         {
-            return 0;
+            float posX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+            float posY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+            float posZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
+
+            uint stoodOnObjectAddress = Config.Stream.GetUInt(MarioConfig.StoodOnObjectPointerAddress);
+            float marioFloorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            bool isOnPlatform = stoodOnObjectAddress == address && Math.Abs(marioY - marioFloorY) < 4;
+            if (!isOnPlatform)
+            {
+                if (coord == Coordinate.X) return posX;
+                if (coord == Coordinate.Y) return posY + 500;
+                if (coord == Coordinate.Z) return posZ;
+                throw new ArgumentOutOfRangeException(coord.ToString());
+            }
+
+            float dx = marioX - posX;
+            float dy = 500.0f;
+            float dz = marioZ - posZ;
+            float d = (float)Math.Sqrt(dx * dx + dy * dy + dz * dz);
+
+            d = 500f / d;
+            dx *= d;
+            dy *= d;
+            dz *= d;
+
+            if (coord == Coordinate.X) return posX + dx;
+            if (coord == Coordinate.Y) return posY + dy;
+            if (coord == Coordinate.Z) return posZ + dz;
+            throw new ArgumentOutOfRangeException(coord.ToString());
         }
 
         private static double GetTriangleVertexComponent(uint address, int index, Coordinate coordinate)
