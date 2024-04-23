@@ -1,5 +1,4 @@
-﻿using STROOP.Exceptions;
-using STROOP.Structs;
+﻿using STROOP.Structs;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +12,7 @@ namespace STROOP.Utilities
 {
     class DolphinProcessIO : WindowsProcessRamIO
     {
-        class DolphinProcessException : Exception
+        public class DolphinProcessException : Exception
         {
             public DolphinProcessException(string message) : base(message) { }
         }

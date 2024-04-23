@@ -1,5 +1,4 @@
-﻿using STROOP.Exceptions;
-using STROOP.Structs;
+﻿using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Concurrent;
@@ -143,7 +142,7 @@ namespace STROOP.Utilities
             {
                 newIo = newProcess != null ? _ioCreationTable[emulator.IOType](newProcess, emulator) : null;
             }
-            catch (DolphinNotRunningGameException e)
+            catch (DolphinProcessIO.DolphinProcessException e)
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
