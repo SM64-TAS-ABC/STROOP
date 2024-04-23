@@ -13,6 +13,11 @@ namespace STROOP.Utilities
 {
     class DolphinProcessIO : WindowsProcessRamIO
     {
+        class DolphinProcessException : Exception
+        {
+            public DolphinProcessException(string message) : base(message) { }
+        }
+
         public DolphinProcessIO(Process process, Emulator emulator)
             : base(process, emulator) { }
 
@@ -59,7 +64,7 @@ namespace STROOP.Utilities
                 }
             }
             if (_baseOffset.ToUInt64() == 0)
-                throw new DolphinNotRunningGameException();
+                throw new DolphinProcessException("Dolphin running, but emulator hasn't started");
 
             _baseOffset = (UIntPtr)(_baseOffset.ToUInt64() + _emulator.RamStart);
         }

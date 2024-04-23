@@ -255,7 +255,6 @@
     <Compile Include="Enums\RelativeDirection.cs" />
     <Compile Include="Enums\RomVersionSelection.cs" />
     <Compile Include="Enums\TriangleClassificationExtended.cs" />
-    <Compile Include="Exceptions\DolphinNotRunningGameException.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="Forms\ImageForm.cs">
       <SubType>Form</SubType>
