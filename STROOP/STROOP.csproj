@@ -342,7 +342,6 @@
     <Compile Include="Forms\VariableCreationForm.Designer.cs">
       <DependentUpon>VariableCreationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Controls\WatchVariableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -1,6 +1,5 @@
 ﻿using STROOP.Controls;
 using STROOP.Forms;
-using STROOP.Interfaces;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
