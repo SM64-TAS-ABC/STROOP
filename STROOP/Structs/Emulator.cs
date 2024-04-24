@@ -14,5 +14,6 @@ namespace STROOP.Structs
         public string Dll;
         public Type IOType; 
         public EndiannessType Endianness = EndiannessType.Little;
+        public bool AutoDetect = false;
     }
 }

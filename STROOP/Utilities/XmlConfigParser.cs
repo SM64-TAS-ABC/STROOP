@@ -66,16 +66,21 @@ namespace STROOP.Utilities
                         {
                             string special = subElement.Attribute(XName.Get("special")) != null ?
                                 subElement.Attribute(XName.Get("special")).Value : null;
+                            bool autoDetect = subElement.Attribute(XName.Get("autoDetect")) != null ?
+                                bool.Parse(subElement.Attribute(XName.Get("autoDetect")).Value) : false;
+                            uint ramStart = subElement.Attribute(XName.Get("ramStart")) != null ?
+                                ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value) : 0;
                             Config.Emulators.Add(new Emulator()
                             {
                                 Name = subElement.Attribute(XName.Get("name")).Value,
                                 ProcessName = subElement.Attribute(XName.Get("processName")).Value,
-                                RamStart = ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value),
+                                RamStart = ramStart,
                                 Dll = subElement.Attribute(XName.Get("offsetDll")) != null
                                     ? subElement.Attribute(XName.Get("offsetDll")).Value : null,
                                 Endianness = subElement.Attribute(XName.Get("endianness")).Value == "big" 
                                     ? EndiannessType.Big : EndiannessType.Little,
                                 IOType = special == "dolphin" ? typeof(DolphinProcessIO) : typeof(WindowsProcessRamIO),
+                                AutoDetect = autoDetect,
                             });
                         }
                         break;
