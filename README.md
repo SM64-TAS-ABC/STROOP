@@ -9,7 +9,7 @@
 
 The latest release of STROOP can be downloaded from our [Releases Page](https://github.com/SM64-TAS-ABC/STROOP/releases). From here .zip files of recent builds can be found. The files can then be extracted and stroop.exe can be started.
 
-Latest development builds with the newest features, bug fixes (...I mean bug introductions) can be found on the continuous [Development Release](https://github.com/SM64-TAS-ABC/STROOP/releases/vDev). Likewise, stroop.exe can be started.
+Latest development builds with the newest features, bug fixes can be found on the continuous [Development Release](https://github.com/SM64-TAS-ABC/STROOP/releases/vDev). Likewise, stroop.exe can be started.
   
 ## Requirements
 
@@ -19,11 +19,7 @@ Latest development builds with the newest features, bug fixes (...I mean bug int
   * .NET Framework 4.6.1 (See [.NET Framework System Requirements](https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx) for more information)
   * [Mupen 0.5 rerecording](http://adelikat.tasvideos.org/emulatordownloads/mupen64-rr/Mupen64%20v8%20installer.zip) (0.5.1 will not work) (Bizhawk + Nemu partially supported on Development branch)
   * 64 Marios (Must be super)
-  * Marios must be American, Japanese or PAL
-  
-## Status 
- 
-  STROOP is currently under a development phase; however, pre-releases have been made.
+  * Marios must be American, Japanese, PAL, or Shindou
  
 ## Building
 
