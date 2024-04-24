@@ -1,4 +1,4 @@
-﻿using STROOP.Structs;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Concurrent;
@@ -341,11 +341,6 @@ namespace STROOP.Utilities
         public bool ReadProcessMemory(UIntPtr address, byte[] buffer, EndiannessType endianness)
         {
             return _io?.ReadAbsolute(address, buffer, endianness) ?? false;
-        }
-
-        public byte[] ReadAllMemory()
-        {
-            return _io?.ReadAllMemory();
         }
 
         public bool CheckReadonlyOff()
