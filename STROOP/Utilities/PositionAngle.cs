@@ -66,6 +66,8 @@ namespace STROOP.Utilities
             GoombaProjection,
             BullyPivot,
             KoopaTheQuick,
+            PyramidNormal,
+            PyramidNormalTarget,
             Ghost,
             Tri,
             ObjTri,
@@ -107,6 +109,8 @@ namespace STROOP.Utilities
                 posAngleType == PositionAngleTypeEnum.ObjScale ||
                 posAngleType == PositionAngleTypeEnum.GoombaProjection ||
                 PosAngleType == PositionAngleTypeEnum.BullyPivot ||
+                PosAngleType == PositionAngleTypeEnum.PyramidNormal ||
+                PosAngleType == PositionAngleTypeEnum.PyramidNormalTarget ||
                 posAngleType == PositionAngleTypeEnum.Tri ||
                 posAngleType == PositionAngleTypeEnum.ObjTri;
         }
@@ -296,6 +300,10 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.GoombaProjection, address: address);
         public static PositionAngle BullyPivot(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.BullyPivot, address: address);
+        public static PositionAngle PyramidNormal(uint address) =>
+            new PositionAngle(PositionAngleTypeEnum.PyramidNormal, address: address);
+        public static PositionAngle PyramidNormalTarget(uint address) =>
+            new PositionAngle(PositionAngleTypeEnum.PyramidNormalTarget, address: address);
         public static PositionAngle Tri(uint address, int index) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address: address, index: index);
         public static PositionAngle ObjTri(uint address, int index, int index2) =>
@@ -437,6 +445,18 @@ namespace STROOP.Utilities
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
                 return BullyPivot(address.Value);
+            }
+            else if (parts.Count == 2 && parts[0] == "pyramidnormal")
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
+                if (!address.HasValue) return null;
+                return PyramidNormal(address.Value);
+            }
+            else if (parts.Count == 2 && parts[0] == "pyramidnormaltarget")
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
+                if (!address.HasValue) return null;
+                return PyramidNormalTarget(address.Value);
             }
             else if (parts.Count == 1 && parts[0] == "koopathequick")
             {
@@ -750,6 +770,10 @@ namespace STROOP.Utilities
                         return GetGoombaProjection(Address.Value).x;
                     case PositionAngleTypeEnum.BullyPivot:
                         return GetBullyPivot(Address.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.PyramidNormal:
+                        return GetPyramidNormal(Address.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.PyramidNormalTarget:
+                        return GetPyramidNormalTarget(Address.Value, Coordinate.X);
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetX();
                     case PositionAngleTypeEnum.Ghost:
@@ -876,6 +900,10 @@ namespace STROOP.Utilities
                         return Config.Stream.GetFloat(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.BullyPivot:
                         return Config.Stream.GetFloat(Address.Value + ObjectConfig.YOffset);
+                    case PositionAngleTypeEnum.PyramidNormal:
+                        return GetPyramidNormal(Address.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.PyramidNormalTarget:
+                        return GetPyramidNormalTarget(Address.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetY();
                     case PositionAngleTypeEnum.Ghost:
@@ -1002,6 +1030,10 @@ namespace STROOP.Utilities
                         return GetGoombaProjection(Address.Value).z;
                     case PositionAngleTypeEnum.BullyPivot:
                         return GetBullyPivot(Address.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.PyramidNormal:
+                        return GetPyramidNormal(Address.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.PyramidNormalTarget:
+                        return GetPyramidNormalTarget(Address.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetZ();
                     case PositionAngleTypeEnum.Ghost:
@@ -1127,6 +1159,10 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GoombaProjection:
                         return MoreMath.NormalizeAngleUshort(Config.Stream.GetInt(Address.Value + ObjectConfig.GoombaTargetAngleOffset));
                     case PositionAngleTypeEnum.BullyPivot:
+                        return double.NaN;
+                    case PositionAngleTypeEnum.PyramidNormal:
+                        return double.NaN;
+                    case PositionAngleTypeEnum.PyramidNormalTarget:
                         return double.NaN;
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetAngle();
@@ -1258,6 +1294,70 @@ namespace STROOP.Utilities
                 (double nextX, double nextZ) = MoreMath.AddVectorToPoint(hSpeed, truncated, x, z);
                 return coord == Coordinate.X ? nextX : nextZ;
             }
+        }
+
+        public static double GetPyramidNormal(uint address, Coordinate coord)
+        {
+            float posX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+            float posY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+            float posZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
+
+            float normalX = Config.Stream.GetFloat(address + ObjectConfig.PyramidPlatformNormalXOffset);
+            float normalY = Config.Stream.GetFloat(address + ObjectConfig.PyramidPlatformNormalYOffset);
+            float normalZ = Config.Stream.GetFloat(address + ObjectConfig.PyramidPlatformNormalZOffset);
+
+            if (coord == Coordinate.X)
+            {
+                return posX + 500 * normalX;
+            }
+            if (coord == Coordinate.Y)
+            {
+                return posY + 500 * normalY;
+            }
+            if (coord == Coordinate.Z)
+            {
+                return posZ + 500 * normalZ;
+            }
+
+            throw new ArgumentOutOfRangeException(coord.ToString());
+        }
+
+        public static double GetPyramidNormalTarget(uint address, Coordinate coord)
+        {
+            float posX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+            float posY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+            float posZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
+
+            uint stoodOnObjectAddress = Config.Stream.GetUInt(MarioConfig.StoodOnObjectPointerAddress);
+            float marioFloorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            bool isOnPlatform = stoodOnObjectAddress == address && Math.Abs(marioY - marioFloorY) < 4;
+            if (!isOnPlatform)
+            {
+                if (coord == Coordinate.X) return posX;
+                if (coord == Coordinate.Y) return posY + 500;
+                if (coord == Coordinate.Z) return posZ;
+                throw new ArgumentOutOfRangeException(coord.ToString());
+            }
+
+            float dx = marioX - posX;
+            float dy = 500.0f;
+            float dz = marioZ - posZ;
+            float d = (float)Math.Sqrt(dx * dx + dy * dy + dz * dz);
+
+            d = 500f / d;
+            dx *= d;
+            dy *= d;
+            dz *= d;
+
+            if (coord == Coordinate.X) return posX + dx;
+            if (coord == Coordinate.Y) return posY + dy;
+            if (coord == Coordinate.Z) return posZ + dz;
+            throw new ArgumentOutOfRangeException(coord.ToString());
         }
 
         private static double GetTriangleVertexComponent(uint address, int index, Coordinate coordinate)
@@ -1581,6 +1681,10 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.BullyPivot:
                     return false;
+                case PositionAngleTypeEnum.PyramidNormal:
+                    return false;
+                case PositionAngleTypeEnum.PyramidNormalTarget:
+                    return false;
                 case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
@@ -1707,6 +1811,10 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.BullyPivot:
                     return false;
+                case PositionAngleTypeEnum.PyramidNormal:
+                    return false;
+                case PositionAngleTypeEnum.PyramidNormalTarget:
+                    return false;
                 case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
@@ -1832,6 +1940,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
                 case PositionAngleTypeEnum.BullyPivot:
+                    return false;
+                case PositionAngleTypeEnum.PyramidNormal:
+                    return false;
+                case PositionAngleTypeEnum.PyramidNormalTarget:
                     return false;
                 case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
@@ -1967,6 +2079,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
                 case PositionAngleTypeEnum.BullyPivot:
+                    return false;
+                case PositionAngleTypeEnum.PyramidNormal:
+                    return false;
+                case PositionAngleTypeEnum.PyramidNormalTarget:
                     return false;
                 case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;

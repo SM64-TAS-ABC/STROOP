@@ -1,4 +1,3 @@
-﻿using STROOP.Exceptions;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
@@ -143,7 +142,7 @@ namespace STROOP.Utilities
             {
                 newIo = newProcess != null ? _ioCreationTable[emulator.IOType](newProcess, emulator) : null;
             }
-            catch (DolphinNotRunningGameException e)
+            catch (DolphinProcessIO.DolphinProcessException e)
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -342,11 +341,6 @@ namespace STROOP.Utilities
         public bool ReadProcessMemory(UIntPtr address, byte[] buffer, EndiannessType endianness)
         {
             return _io?.ReadAbsolute(address, buffer, endianness) ?? false;
-        }
-
-        public byte[] ReadAllMemory()
-        {
-            return _io?.ReadAllMemory();
         }
 
         public bool CheckReadonlyOff()

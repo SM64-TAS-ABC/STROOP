@@ -18,7 +18,6 @@ namespace STROOP.Utilities
         protected abstract bool ReadFunc(UIntPtr address, byte[] buffer);
         protected abstract UIntPtr BaseOffset { get; }
         protected abstract EndiannessType Endianness { get; }
-        public abstract byte[] ReadAllMemory();
 
         public abstract bool IsSuspended { get; }
 

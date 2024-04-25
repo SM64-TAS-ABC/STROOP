@@ -73,6 +73,7 @@ namespace STROOP.Controls
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
             Control.MouseDown += Control_MouseClick;
+            Control.MouseWheel += Control_MouseScroll;
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.DepthTest);
@@ -88,14 +89,15 @@ namespace STROOP.Controls
             _mousePressedWithin = true;
         }
 
-        bool _mousePressed = false;
-
-        Vector2 _pMouseCoords;
-        float? _pMouseScroll = null;
-        public void CameraFly()
+        private void Control_MouseScroll(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             KeyboardState keyState = Keyboard.GetState();
+            float speedMul = GetSpeedMultiplier(keyState);
+            _zoom += e.Delta * 0.002f * speedMul;
+        }
 
+        private float GetSpeedMultiplier(KeyboardState keyState)
+        {
             // Calculate key speed multiplier
             float speedMul = 1f;
             if (keyState.IsKeyDown(Key.ControlLeft) || keyState.IsKeyDown(Key.ControlRight))
@@ -104,6 +106,16 @@ namespace STROOP.Controls
                 speedMul = 3.0f;
             else if (keyState.IsKeyDown(Key.AltLeft) || keyState.IsKeyDown(Key.AltRight))
                 speedMul = 0.3f;
+            return speedMul;
+        }
+
+        bool _mousePressed = false;
+
+        Vector2 _pMouseCoords;
+        public void CameraFly()
+        {
+            KeyboardState keyState = Keyboard.GetState();
+            float speedMul = GetSpeedMultiplier(keyState);
 
             // Handle mouse
             MouseState mouseState = Mouse.GetState();
@@ -151,12 +163,6 @@ namespace STROOP.Controls
             // Don't do anything if we don't have focus
             if (!Control.Focused)
                 return;
-
-            if (!_pMouseScroll.HasValue)
-                _pMouseScroll = mouseState.ScrollWheelValue;
-            float deltaScroll = mouseState.ScrollWheelValue - _pMouseScroll.Value;
-            _zoom += deltaScroll * 0.1f * speedMul;
-            _pMouseScroll = mouseState.ScrollWheelValue;
 
             Vector3 relDeltaPos = new Vector3(0, 0, 0);
             float posSpeed = speedMul * _modelRadius * 0.01f; // Move at a rate relative to the model size

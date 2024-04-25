@@ -1,6 +1,5 @@
 ﻿using STROOP.Controls;
 using STROOP.Forms;
-using STROOP.Interfaces;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -205,15 +204,29 @@ namespace STROOP.Map
                     if (hoverData != null && hoverData.Tri != null)
                     {
                         MapObjectHoverData.LastTriangleAddress = hoverData.Tri.Address;
+                        if (Config.TriangleManager.Mode == Managers.TriangleManager.TriangleMode.MapAccum &&
+                            KeyboardUtilities.IsShiftHeld())
+                        {
+                            Config.TriangleManager.AccumulatedTriangles.Add(hoverData.Tri.Address);
+                        }
                     }
                 }
+
+
+                string prefix = "";
+                if (Config.TriangleManager.Mode == Managers.TriangleManager.TriangleMode.MapAccum &&
+                    Config.TriangleManager.AccumulatedTriangles.Count > 0)
+                {
+                    prefix = $"({Config.TriangleManager.AccumulatedTriangles.Count} Tris)";
+                }
+
                 if (hoverData == null)
                 {
-                    Config.HideDebugText();
+                    Config.SetDebugText(prefix);
                 }
                 else
                 {
-                    Config.SetDebugText(hoverData);
+                    Config.SetDebugText(prefix + " " + hoverData);
                 }
             }
 

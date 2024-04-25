@@ -82,12 +82,5 @@ namespace STROOP.Utilities
             Array.Copy(_data, (uint)address, buffer, 0, buffer.Length);
             return true;
         }
-
-        public override byte[] ReadAllMemory()
-        {
-            byte[] output = new byte[_data.Length];
-            Array.Copy(_data, output, _data.Length);
-            return output;
-        }
     }
 }

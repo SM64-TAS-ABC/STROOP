@@ -12,7 +12,6 @@ using STROOP.Utilities;
 using System.Xml.Linq;
 using STROOP.Structs.Configurations;
 using System.Drawing.Drawing2D;
-using STROOP.Interfaces;
 using STROOP.Models;
 using OpenTK;
 using STROOP.Controls;
@@ -832,6 +831,30 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
             });
 
+            ToolStripMenuItem itemPyramidNormal = new ToolStripMenuItem("Add Tracker for Pyramid Normal");
+            setUpClickAction(itemPyramidNormal, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapObjectPyramidNormal(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
+            ToolStripMenuItem itemPyramidNormalTarget = new ToolStripMenuItem("Add Tracker for Pyramid Normal Target");
+            setUpClickAction(itemPyramidNormalTarget, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapObjectPyramidNormalTarget(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
             ToolStripMenuItem itemChuckyaMapObjects = new ToolStripMenuItem("Add Trackers for Chuckya Map Objects");
             itemChuckyaMapObjects.Click += (sender, e) =>
             {
@@ -1020,6 +1043,8 @@ namespace STROOP.Map
             itemObjectSpecific.DropDownItems.Add(itemCoffinBox);
             itemObjectSpecific.DropDownItems.Add(itemFlyGuyZoneDividers);
             itemObjectSpecific.DropDownItems.Add(itemPyramidPlatformNormals);
+            itemObjectSpecific.DropDownItems.Add(itemPyramidNormal);
+            itemObjectSpecific.DropDownItems.Add(itemPyramidNormalTarget);
 
             ToolStripMenuItem itemPreset = new ToolStripMenuItem("Preset...");
             itemPreset.DropDownItems.Add(itemChuckyaMapObjects);

@@ -278,12 +278,6 @@ namespace STROOP.Utilities
             InfoForm.ShowValue(string.Join(",", addresses));
         }
 
-        public static void SearchForRamStart()
-        {
-            byte[] memory = Config.Stream.ReadAllMemory();
-            InfoForm.ShowValue(memory.Length);
-        }
-
         public static void GetFirstBytes()
         {
             byte[] byteArray = Config.Stream.ReadRam(0x80000000, 100, EndiannessType.Little, false);
