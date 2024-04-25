@@ -95,8 +95,6 @@ namespace STROOP
 
             // Load process
             buttonRefresh_Click(this, new EventArgs());
-            panelConnect.Location = new Point();
-            panelConnect.Size = this.Size;
         }
 
         private void InitializeTabRemoval()
@@ -509,7 +507,6 @@ namespace STROOP
         {
             this.BeginInvoke(new Action(() => {
                 buttonRefresh_Click(this, new EventArgs());
-                panelConnect.Size = this.Size;
                 panelConnect.Visible = true;
             }));
         }
@@ -839,11 +836,6 @@ namespace STROOP
             buttonTabAdd.ContextMenuStrip.Show(Cursor.Position);
         }
 
-        private void StroopMainForm_Resize(object sender, EventArgs e)
-        {
-            panelConnect.Size = this.Size;
-        }
-
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             var selectedProcess = (ProcessSelection?)listBoxProcessesList.SelectedItem;
@@ -884,7 +876,6 @@ namespace STROOP
         {
             Task.Run(() => Config.Stream.SwitchProcess(null, null));
             buttonRefresh_Click(this, new EventArgs());
-            panelConnect.Size = this.Size;
             panelConnect.Visible = true;
         }
 
