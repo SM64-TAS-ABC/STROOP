@@ -206,9 +206,14 @@ namespace STROOP.Controls
             // Y unit is the world Y unit since the Y coordinate is always up.
             // The Z unit is the normalized camera look vector (to move towards the look),
             // Hence, move formard.
-            _cameraPosition += Vector3.Cross(Vector3.UnitY, _cameraLook) * relDeltaPos.X
-                + Vector3.UnitY * relDeltaPos.Y
-                + _cameraLook * relDeltaPos.Z;
+            Vector3 forward = _cameraLook;
+            Vector3 right = new Vector3(forward.Z, 0, -forward.X).Normalized();
+            Vector3 up = Vector3.Cross(forward, right);
+            if (up.Y < 0)
+                up = new Vector3(up.X, -up.Y, up.Z);
+            _cameraPosition += right * relDeltaPos.X
+                + up * relDeltaPos.Y
+                + forward * relDeltaPos.Z;
         }
 
         public void OnPaint(object sender, EventArgs e)
