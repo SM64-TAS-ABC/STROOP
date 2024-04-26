@@ -32,8 +32,8 @@ namespace STROOP.Utilities
                 if (_yamlDeserializer == null)
                 {
                     // Initialize the deserializer
-                    var deserializer = new DeserializerBuilder()
-                        .WithNamingConvention(CamelCaseNamingConvention.Instance) // Adjust this if your YAML uses a different convention
+                    _yamlDeserializer = new DeserializerBuilder()
+                        .WithNamingConvention(PascalCaseNamingConvention.Instance) // Adjust this if your YAML uses a different convention
                         .Build();
                 }
                 return _yamlDeserializer;
@@ -1815,57 +1815,29 @@ namespace STROOP.Utilities
             return null;
         }
 
+        private class YamlWaypointTable
+        {
+            public WaypointTable.WaypointReference[] Waypoints;
+        }
         public static WaypointTable OpenWaypointTable(string path)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            List<WaypointTable.WaypointReference> waypoints = new List<WaypointTable.WaypointReference>();
-            foreach (XElement element in doc.Root.Elements())
-            {
-                short index = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("index")).Value);
-                short x = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("x")).Value);
-                short y = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("y")).Value);
-                short z = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("z")).Value);
-                waypoints.Add(new WaypointTable.WaypointReference()
-                {
-                    Index = index,
-                    X = x,
-                    Y = y,
-                    Z = z,
-                });
-            }
-
-            return new WaypointTable(waypoints);
-        }
-
-        private class YamlWayPoint
-        {
-            public int index;
-            public float x;
-            public float y;
-            public float z;
-        }
-        private class YamlWayPointTable
-        {
-            public PointTable.PointReference[] points;
-        }
-
-        public static PointTable OpenPointTable(string path)
-        {
-            // Read the YAML file
             using (var reader = new StreamReader(path))
             {
-                YamlWayPointTable table = YamlDserializer.Deserialize<YamlWayPointTable>(reader);
-                return new PointTable(table.points);
+                YamlWaypointTable table = YamlDserializer.Deserialize<YamlWaypointTable>(reader);
+                return new WaypointTable(table.Waypoints);
+            }
+        }
+
+        private class YamlPointTable
+        {
+            public PointTable.PointReference[] Points;
+        }
+        public static PointTable OpenPointTable(string path)
+        {
+            using (var reader = new StreamReader(path))
+            {
+                YamlPointTable table = YamlDserializer.Deserialize<YamlPointTable>(reader);
+                return new PointTable(table.Points);
             }
         }
 

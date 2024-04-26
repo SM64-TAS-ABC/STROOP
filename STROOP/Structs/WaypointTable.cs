@@ -29,7 +29,7 @@ namespace STROOP.Structs
         private Dictionary<WaypointReference, WaypointReference?> _nextWaypointDictionary;
         private int _maxIndex = -1;
 
-        public WaypointTable(List<WaypointReference> waypoints)
+        public WaypointTable(IEnumerable<WaypointReference> waypoints)
         {
             _maxIndex = waypoints.Max(wp => wp.Index);
 
