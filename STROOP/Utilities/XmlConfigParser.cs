@@ -17,11 +17,28 @@ using STROOP.Structs.Configurations;
 using STROOP.Controls;
 using STROOP.Models;
 using STROOP.Map;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace STROOP.Utilities
 {
     public static class XmlConfigParser
     {
+        private static IDeserializer _yamlDeserializer = null;
+        public static IDeserializer YamlDserializer 
+        {
+            get
+            {
+                if (_yamlDeserializer == null)
+                {
+                    // Initialize the deserializer
+                    var deserializer = new DeserializerBuilder()
+                        .WithNamingConvention(CamelCaseNamingConvention.Instance) // Adjust this if your YAML uses a different convention
+                        .Build();
+                }
+                return _yamlDeserializer;
+            }
+        }
         public class ResourceXmlResolver : XmlResolver
         {
             /// <summary>
@@ -1830,36 +1847,26 @@ namespace STROOP.Utilities
             return new WaypointTable(waypoints);
         }
 
+        private class YamlWayPoint
+        {
+            public int index;
+            public float x;
+            public float y;
+            public float z;
+        }
+        private class YamlWayPointTable
+        {
+            public PointTable.PointReference[] points;
+        }
+
         public static PointTable OpenPointTable(string path)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            List<PointTable.PointReference> points = new List<PointTable.PointReference>();
-            foreach (XElement element in doc.Root.Elements())
+            // Read the YAML file
+            using (var reader = new StreamReader(path))
             {
-                int index = ParsingUtilities.ParseInt (element.Attribute(XName.Get("index")).Value);
-                double x = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("x")).Value);
-                double y = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("y")).Value);
-                double z = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("z")).Value);
-                points.Add(new PointTable.PointReference()
-                {
-                    Index = index,
-                    X = x,
-                    Y = y,
-                    Z = z,
-                });
+                YamlWayPointTable table = YamlDserializer.Deserialize<YamlWayPointTable>(reader);
+                return new PointTable(table.points);
             }
-
-            return new PointTable(points);
         }
 
         public static MusicTable OpenMusicTable(string path)

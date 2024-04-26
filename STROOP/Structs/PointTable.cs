@@ -25,7 +25,7 @@ namespace STROOP.Structs
 
         private Dictionary<int, PointReference> _pointDictionary;
 
-        public PointTable(List<PointReference> pointRefs)
+        public PointTable(IEnumerable<PointReference> pointRefs)
         {
             _pointDictionary = new Dictionary<int, PointReference>();
             foreach (PointReference pointRef in pointRefs)
