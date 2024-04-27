@@ -19,8 +19,9 @@ using STROOP.Models;
 
 namespace STROOP.Utilities
 {
-    public class LazyImage
+    public class LazyImage : IDisposable
     {
+        private bool _disposing;
         private string _filePath;
         private LazyImage _preLazyImage;
         private float? _opacity;
@@ -31,6 +32,11 @@ namespace STROOP.Utilities
         {
             get
             {
+                if (_disposing)
+                {
+                    return null;
+                }
+
                 if (_image == null)
                 {
                     if (_filePath != null)
@@ -60,6 +66,12 @@ namespace STROOP.Utilities
         public LazyImage(Image image)
         {
             _image = image;
+        }
+
+        public void Dispose()
+        {
+            _disposing = true;
+            _image?.Dispose();
         }
     }
 }
