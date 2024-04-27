@@ -1740,38 +1740,22 @@ namespace STROOP.Utilities
             return animationTable;
         }
 
+        public class YamlTriangleInfoTable
+        {
+            public TriangleInfoTable.TriangleInfoReference[] TriangleInfo;
+        }
+
         public static TriangleInfoTable OpenTriangleInfoTable(string path)
         {
-            TriangleInfoTable table = new TriangleInfoTable();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/TriangleInfoTableSchema.xsd", "TriangleInfoTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
+            TriangleInfoTable infoTable = new TriangleInfoTable();
+            using (var reader = new StreamReader(path))
             {
-                short type = short.Parse(element.Attribute(XName.Get("type")).Value);
-                string description = element.Attribute(XName.Get("description")).Value;
-                short slipperiness = (short)ParsingUtilities.ParseHex(
-                    element.Attribute(XName.Get("slipperiness")).Value);
-                bool exertion = bool.Parse(element.Attribute(XName.Get("exertion")).Value);
+                YamlTriangleInfoTable yamlTable = YamlDserializer.Deserialize<YamlTriangleInfoTable>(reader);
 
-                table?.Add(new TriangleInfoTable.TriangleInfoReference()
-                {
-                    Type = type,
-                    Description = description,
-                    Slipperiness = slipperiness,
-                    Exertion = exertion,
-                });
+                foreach (var t in yamlTable.TriangleInfo)
+                    infoTable.Add(t);
+                return infoTable;
             }
-
-            return table;
         }
 
         public static CourseDataTable OpenCourseDataTable(string path)

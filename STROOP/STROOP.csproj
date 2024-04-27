@@ -1088,8 +1088,7 @@
     <Content Include="Config\PendulumSwings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Config\TriangleInfo.xml">
-      <SubType>Designer</SubType>
+    <Content Include="Config\TriangleInfo.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Forms\StroopMainForm.resx">

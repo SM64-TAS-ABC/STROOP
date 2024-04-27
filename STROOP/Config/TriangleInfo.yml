@@ -1,0 +1,129 @@
+﻿TriangleInfo:
+- { Type: 0, Description: "Default", Slipperiness: 0x00, Exertion: false }
+- { Type: 1, Description: "Lava", Slipperiness: 0x00, Exertion: false }
+- { Type: 5, Description: "Climbable", Slipperiness: 0x00, Exertion: false }
+- { Type: 9, Description: "Slow Movement", Slipperiness: 0x00, Exertion: false }
+- { Type: 10, Description: "Death Plane", Slipperiness: 0x00, Exertion: false }
+- { Type: 11, Description: "Close Camera", Slipperiness: 0x00, Exertion: false }
+- { Type: 13, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 14, Description: "Flowing Water", Slipperiness: 0x00, Exertion: true  }
+- { Type: 18, Description: "Intangible", Slipperiness: 0x00, Exertion: false }
+- { Type: 19, Description: "Slide Default", Slipperiness: 0x13, Exertion: false }
+- { Type: 20, Description: "Slippery Default", Slipperiness: 0x14, Exertion: false }
+- { Type: 21, Description: "Non-slippery Default", Slipperiness: 0x15, Exertion: false }
+- { Type: 26, Description: "Different Noise", Slipperiness: 0x00, Exertion: false }
+- { Type: 27, Description: "Loading Zone", Slipperiness: 0x00, Exertion: false }
+- { Type: 28, Description: "Loading Zone", Slipperiness: 0x00, Exertion: false }
+- { Type: 29, Description: "Loading Zone", Slipperiness: 0x00, Exertion: false }
+- { Type: 30, Description: "Loading Zone", Slipperiness: 0x00, Exertion: false }
+- { Type: 33, Description: "Shallow Quicksand", Slipperiness: 0x00, Exertion: false }
+- { Type: 34, Description: "Deep Quicksand", Slipperiness: 0x00, Exertion: false }
+- { Type: 35, Description: "Instant Quicksand", Slipperiness: 0x00, Exertion: false }
+- { Type: 36, Description: "Deep Moving Quicksand", Slipperiness: 0x00, Exertion: "true" }
+- { Type: 37, Description: "Shallow Moving Quicksand", Slipperiness: 0x00, Exertion: "true" }
+- { Type: 38, Description: "Quicksand", Slipperiness: 0x00, Exertion: false }
+- { Type: 39, Description: "Moving Quicksand", Slipperiness: 0x00, Exertion: "true" }
+- { Type: 40, Description: "Constructions", Slipperiness: 0x00, Exertion: false }
+- { Type: 41, Description: "Default with Noise", Slipperiness: 0x00, Exertion: false }
+- { Type: 42, Description: "Slippery with Noise", Slipperiness: 0x14, Exertion: false }
+- { Type: 44, Description: "Horizontal Wind", Slipperiness: 0x00, Exertion: "true" }
+- { Type: 45, Description: "Instant Moving Quicksand", Slipperiness: 0x00, Exertion: false }
+- { Type: 46, Description: "Ice", Slipperiness: 0x13, Exertion: false }
+- { Type: 47, Description: "TotWC Trigger", Slipperiness: 0x00, Exertion: false }
+- { Type: 48, Description: "Hard Default", Slipperiness: 0x00, Exertion: false }
+- { Type: 50, Description: "Unbounded Death Plane", Slipperiness: 0x00, Exertion: false }
+- { Type: 51, Description: "Slide Timer Start", Slipperiness: 0x00, Exertion: false }
+- { Type: 52, Description: "Slide Timer End", Slipperiness: 0x00, Exertion: false }
+- { Type: 53, Description: "Hard Slippery", Slipperiness: 0x14, Exertion: false }
+- { Type: 54, Description: "Hard Slide", Slipperiness: 0x13, Exertion: false }
+- { Type: 55, Description: "Hard Non-Slippery", Slipperiness: 0x15, Exertion: false }
+- { Type: 56, Description: "Upwards Wind", Slipperiness: 0x00, Exertion: false }
+- { Type: 101, Description: "Far Camera", Slipperiness: 0x00, Exertion: false }
+- { Type: 102, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 104, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 105, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 110, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 111, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 112, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 114, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 115, Description: "", Slipperiness: 0x13, Exertion: false }
+- { Type: 116, Description: "", Slipperiness: 0x13, Exertion: false }
+- { Type: 117, Description: "Snowman's Path", Slipperiness: 0x13, Exertion: false }
+- { Type: 118, Description: "Surfaces with Flags", Slipperiness: 0x00, Exertion: false }
+- { Type: 120, Description: "", Slipperiness: 0x13, Exertion: false }
+- { Type: 121, Description: "", Slipperiness: 0x14, Exertion: false }
+- { Type: 122, Description: "Switch Surface", Slipperiness: 0x15, Exertion: false }
+- { Type: 123, Description: "Invisi-Cap Mesh's", Slipperiness: 0x00, Exertion: false }
+- { Type: 166, Description: "BoB/TTM Slide Entrance", Slipperiness: 0x00, Exertion: false }
+- { Type: 167, Description: "BoB/TTM Slide Entrance", Slipperiness: 0x00, Exertion: false }
+- { Type: 168, Description: "BoB/TTM Slide Entrance", Slipperiness: 0x00, Exertion: false }
+- { Type: 169, Description: "CCM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 170, Description: "CCM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 171, Description: "CCM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 172, Description: "WF Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 173, Description: "WF Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 174, Description: "WF Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 175, Description: "JRB Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 176, Description: "JRB Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 177, Description: "JRB Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 178, Description: "LLL Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 179, Description: "LLL Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 180, Description: "LLL Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 181, Description: "SSL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 182, Description: "SSL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 183, Description: "SSL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 187, Description: "DDD Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 190, Description: "WDW Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 191, Description: "WDW Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 192, Description: "WDW Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 193, Description: "THI-Small Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 194, Description: "THI-Small Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 195, Description: "THI-Small Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 196, Description: "TTM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 197, Description: "TTM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 198, Description: "TTM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 205, Description: "THI-Large Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 206, Description: "THI-Large Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 207, Description: "THI-Large Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 208, Description: "HMC/CotMC Pool Loading", Slipperiness: 0x00, Exertion: false }
+- { Type: 211, Description: "BoB/TTM Slide Entrance", Slipperiness: 0x00, Exertion: false }
+- { Type: 212, Description: "BoB/TTM Slide Entrance", Slipperiness: 0x00, Exertion: false }
+- { Type: 213, Description: "BoB/TTM Slide Entrance", Slipperiness: 0x00, Exertion: false }
+- { Type: 214, Description: "CCM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 215, Description: "CCM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 216, Description: "CCM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 217, Description: "WF Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 218, Description: "WF Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 219, Description: "WF Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 220, Description: "JRB Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 221, Description: "JRB Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 222, Description: "JRB Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 223, Description: "LLL Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 224, Description: "LLL Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 225, Description: "LLL Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 226, Description: "SSL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 227, Description: "SSL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 228, Description: "SSL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 232, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 233, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 234, Description: "", Slipperiness: 0x00, Exertion: false }
+- { Type: 235, Description: "WDW Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 236, Description: "WDW Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 237, Description: "WDW Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 238, Description: "THI Tiny Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 239, Description: "THI Tiny Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 240, Description: "THI Tiny Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 241, Description: "TTM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 242, Description: "TTM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 243, Description: "TTM Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 244, Description: "TTC Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 245, Description: "TTC Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 246, Description: "TTC Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 247, Description: "SL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 248, Description: "SL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 249, Description: "SL Wall", Slipperiness: 0x00, Exertion: false }
+- { Type: 250, Description: "THI Huge Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 251, Description: "THI Huge Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 252, Description: "THI Huge Painting", Slipperiness: 0x00, Exertion: false }
+- { Type: 253, Description: "Hole Course Entry", Slipperiness: 0x00, Exertion: false }
+- { Type: 255, Description: "BitDW Entry", Slipperiness: 0x00, Exertion: false }
