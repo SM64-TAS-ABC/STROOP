@@ -1,0 +1,23 @@
+Data:
+  - { Name: "Mode", Type: int, Offset: 0x00, Base: CamHack }
+  - { Name: "Absolute Angle", Type: ushort, Offset: 0x1C, Base: CamHack, Subclass: Boolean }
+  - { Name: "Object to Follow", Type: uint, Offset: 0x28, Base: CamHack, Subclass: Object }
+  - { Name: "Camera X", Type: float, Offset: 0x04, Base: CamHack, Coord: "X" }
+  - { Name: "Camera Y", Type: float, Offset: 0x08, Base: CamHack, Coord: "Y" }
+  - { Name: "Camera Z", Type: float, Offset: 0x0C, Base: CamHack, Coord: "Z" }
+  - { Name: "Camera Yaw", Base: None, SpecialType: CamHackYaw, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "Camera Pitch", Base: None, SpecialType: CamHackPitch, Subclass: Angle, Display: short }
+  - { Name: "Focus X", Type: float, Offset: 0x10, Base: CamHack, Coord: "X" }
+  - { Name: "Focus Y", Type: float, Offset: 0x14, Base: CamHack, Coord: "Y" }
+  - { Name: "Focus Z", Type: float, Offset: 0x18, Base: CamHack, Coord: "Z" }
+  - { Name: "Radius", Type: float, Offset: 0x20, Base: CamHack }
+  - { Name: "Theta", Type: short, Offset: 0x1E, Base: CamHack, Subclass: Angle, Yaw: true }
+  - { Name: "Relative Height", Type: float, Offset: 0x24, Base: CamHack }
+  - { Name: "FOV", Type: float, OffsetUS: 0x8033C5A4, OffsetJP: 0x8033B234, Base: Relative }
+  - { Name: "Num Pans", Base: None, SpecialType: NumPans, Color: Grey }
+  - { Name: "Current Pan", Base: None, SpecialType: CurrentPan, Color: Grey }
+  - { Name: "Pan Cam Pos", Base: None, SpecialType: PanCamPos, Color: Grey, Subclass: Boolean }
+  - { Name: "Pan Cam Angle", Base: None, SpecialType: PanCamAngle, Color: Grey, Subclass: Boolean }
+  - { Name: "Pan Cam Rotation", Base: None, SpecialType: PanCamRotation, Color: Grey, Subclass: Boolean }
+  - { Name: "Pan FOV", Base: None, SpecialType: PanFOV, Color: Grey, Subclass: Boolean }
+  - { Name: "Buffer", Base: None, SpecialType: Buffer, Color: Grey }

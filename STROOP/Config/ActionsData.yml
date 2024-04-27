@@ -1,0 +1,41 @@
+Data:
+  - { Name: "Action", Type: uint, Offset: 0x0C, Base: Mario, UseHex: true, Color: Red }
+  - { Name: "Action Description", Base: None, SpecialType: ActionDescription, Subclass: String, Color: Red }
+  - { Name: "Previous Action", Type: uint, Offset: 0x10, Base: Mario, UseHex: true, Color: Red }
+  - { Name: "Prev. Action Desc.", Base: None, SpecialType: PrevActionDescription, Subclass: String, Color: Red }
+  - { Name: "Action Phase", Type: short, Offset: 0x18, Base: Mario, Color: Yellow }
+  - { Name: "Action Timer", Type: short, Offset: 0x1A, Base: Mario, Color: Yellow }
+  - { Name: "Action Parameter", Type: uint, Offset: 0x1C, Base: Mario, UseHex: true, Color: Green }
+  - { Name: "Wall Kick Timer", Type: byte, Offset: 0x2A, Base: Mario, Color: Green }
+  - { Name: "Landing Timer", Type: byte, Offset: 0x2B, Base: Mario, Color: Green }
+  - { Name: "A Press Timer", Type: byte, Offset: 0x28, Base: Mario, Color: Green }
+  - { Name: "B Press Timer", Type: byte, Offset: 0x29, Base: Mario, Color: Green }
+  - { Name: "Animation", Type: short, Offset: 0x38, Base: MarioObj, Color: LightBlue }
+  - { Name: "Animation Description", Base: None, SpecialType: AnimationDescription, Subclass: String, Color: LightBlue }
+  - { Name: "Animation Timer", Type: short, Offset: 0x40, Base: MarioObj, Color: LightBlue }
+  - { Name: "Action ID", Type: uint, Offset: 0x0C, Base: Mario, Mask: 0x000001FF, Display: ushort, UseHex: true, Color: Pink }
+  - { Name: "Action Group", Type: uint, Offset: 0x0C, Base: Mario, Mask: 0x000001C0, Display: ushort, UseHex: true, Color: Pink }
+  - { Name: "Action Group Desc.", Base: None, SpecialType: ActionGroupDescription, Subclass: String, Color: Pink }
+  - { Name: "09 Stationary", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00000200 }
+  - { Name: "10 Moving", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00000400 }
+  - { Name: "11 Airborne", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00000800 }
+  - { Name: "12 Intangible", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00001000 }
+  - { Name: "13 Swimming", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00002000 }
+  - { Name: "14 Metal Water", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00004000 }
+  - { Name: "15 Short Hitbox", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00008000 }
+  - { Name: "16 Riding Shell", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00010000 }
+  - { Name: "17 Invulnerable", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00020000 }
+  - { Name: "18 Butt/Stomach Slide", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00040000 }
+  - { Name: "19 Diving", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00080000 }
+  - { Name: "20 On Pole", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00100000 }
+  - { Name: "21 Hanging", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00200000 }
+  - { Name: "22 Idle", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00400000 }
+  - { Name: "23 Attacking", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x00800000 }
+  - { Name: "24 Interruptable by Wind", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x01000000 }
+  - { Name: "25 Control Jump Height", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x02000000 }
+  - { Name: "26 Allow First Person", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x04000000 }
+  - { Name: "27 Pause Exit", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x08000000 }
+  - { Name: "28 Swimming/Flying", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x10000000 }
+  - { Name: "29 Water/Text", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x20000000 }
+  - { Name: "30 (Never)", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x40000000 }
+  - { Name: "31 Throwing", Type: uint, Offset: 0x0C, Base: Mario, Subclass: Boolean, Mask: 0x80000000 }

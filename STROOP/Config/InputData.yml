@@ -1,0 +1,57 @@
+Data:
+  - { Name: "Effective X", Type: float, OffsetUS: 0x8033AF94, OffsetJP: 0x80339C24, Base: Relative, Color: LightBlue }
+  - { Name: "Effective Y", Type: float, OffsetUS: 0x8033AF98, OffsetJP: 0x80339C28, Base: Relative, Color: LightBlue }
+  - { Name: "Magnitude", Type: float, OffsetUS: 0x8033AF9C, OffsetJP: 0x80339C2C, Base: Relative, Color: LightBlue }
+  - { Name: "Scaled Magnitude", Type: float, Offset: 0x20, Base: Mario, Color: LightBlue }
+  - { Name: "Current X", Type: sbyte, Offset: 0x02, Base: InputCurrent }
+  - { Name: "Current Y", Type: sbyte, Offset: 0x03, Base: InputCurrent }
+  - { Name: "Current A", Type: byte, Offset: 0x00, Base: InputCurrent, Subclass: Boolean, Mask: 0x80, Color: Blue }
+  - { Name: "Current B", Type: byte, Offset: 0x00, Base: InputCurrent, Subclass: Boolean, Mask: 0x40, Color: Green }
+  - { Name: "Current Z", Type: byte, Offset: 0x00, Base: InputCurrent, Subclass: Boolean, Mask: 0x20, Color: Grey }
+  - { Name: "Current S", Type: byte, Offset: 0x00, Base: InputCurrent, Subclass: Boolean, Mask: 0x10, Color: Red }
+  - { Name: "Current R", Type: byte, Offset: 0x01, Base: InputCurrent, Subclass: Boolean, Mask: 0x10, Color: Grey }
+  - { Name: "Current L", Type: byte, Offset: 0x01, Base: InputCurrent, Subclass: Boolean, Mask: 0x20, Color: Grey }
+  - { Name: "Current C^", Type: byte, Offset: 0x01, Base: InputCurrent, Subclass: Boolean, Mask: 0x08, Color: Yellow }
+  - { Name: "Current Cv", Type: byte, Offset: 0x01, Base: InputCurrent, Subclass: Boolean, Mask: 0x04, Color: Yellow }
+  - { Name: "Current C<", Type: byte, Offset: 0x01, Base: InputCurrent, Subclass: Boolean, Mask: 0x02, Color: Yellow }
+  - { Name: "Current C>", Type: byte, Offset: 0x01, Base: InputCurrent, Subclass: Boolean, Mask: 0x01, Color: Yellow }
+  - { Name: "Current D^", Type: byte, Offset: 0x00, Base: InputCurrent, Subclass: Boolean, Mask: 0x08, Color: Grey }
+  - { Name: "Current Dv", Type: byte, Offset: 0x00, Base: InputCurrent, Subclass: Boolean, Mask: 0x04, Color: Grey }
+  - { Name: "Current D<", Type: byte, Offset: 0x00, Base: InputCurrent, Subclass: Boolean, Mask: 0x02, Color: Grey }
+  - { Name: "Current D>", Type: byte, Offset: 0x00, Base: InputCurrent, Subclass: Boolean, Mask: 0x01, Color: Grey }
+  - { Name: "Current U1", Type: byte, Offset: 0x01, Base: InputCurrent, Subclass: Boolean, Mask: 0x40, Color: Purple }
+  - { Name: "Current U2", Type: byte, Offset: 0x01, Base: InputCurrent, Subclass: Boolean, Mask: 0x80, Color: Purple }
+  - { Name: "Just Pressed A", Type: byte, Offset: 0x00, Base: InputJustPressed, Subclass: Boolean, Mask: 0x80, Color: Blue }
+  - { Name: "Just Pressed B", Type: byte, Offset: 0x00, Base: InputJustPressed, Subclass: Boolean, Mask: 0x40, Color: Green }
+  - { Name: "Just Pressed Z", Type: byte, Offset: 0x00, Base: InputJustPressed, Subclass: Boolean, Mask: 0x20, Color: Grey }
+  - { Name: "Just Pressed S", Type: byte, Offset: 0x00, Base: InputJustPressed, Subclass: Boolean, Mask: 0x10, Color: Red }
+  - { Name: "Just Pressed R", Type: byte, Offset: 0x01, Base: InputJustPressed, Subclass: Boolean, Mask: 0x10, Color: Grey }
+  - { Name: "Just Pressed L", Type: byte, Offset: 0x01, Base: InputJustPressed, Subclass: Boolean, Mask: 0x20, Color: Grey }
+  - { Name: "Just Pressed C^", Type: byte, Offset: 0x01, Base: InputJustPressed, Subclass: Boolean, Mask: 0x08, Color: Yellow }
+  - { Name: "Just Pressed Cv", Type: byte, Offset: 0x01, Base: InputJustPressed, Subclass: Boolean, Mask: 0x04, Color: Yellow }
+  - { Name: "Just Pressed C<", Type: byte, Offset: 0x01, Base: InputJustPressed, Subclass: Boolean, Mask: 0x02, Color: Yellow }
+  - { Name: "Just Pressed C>", Type: byte, Offset: 0x01, Base: InputJustPressed, Subclass: Boolean, Mask: 0x01, Color: Yellow }
+  - { Name: "Just Pressed D^", Type: byte, Offset: 0x00, Base: InputJustPressed, Subclass: Boolean, Mask: 0x08, Color: Grey }
+  - { Name: "Just Pressed Dv", Type: byte, Offset: 0x00, Base: InputJustPressed, Subclass: Boolean, Mask: 0x04, Color: Grey }
+  - { Name: "Just Pressed D<", Type: byte, Offset: 0x00, Base: InputJustPressed, Subclass: Boolean, Mask: 0x02, Color: Grey }
+  - { Name: "Just Pressed D>", Type: byte, Offset: 0x00, Base: InputJustPressed, Subclass: Boolean, Mask: 0x01, Color: Grey }
+  - { Name: "Just Pressed U1", Type: byte, Offset: 0x01, Base: InputJustPressed, Subclass: Boolean, Mask: 0x40, Color: Purple }
+  - { Name: "Just Pressed U2", Type: byte, Offset: 0x01, Base: InputJustPressed, Subclass: Boolean, Mask: 0x80, Color: Purple }
+  - { Name: "Buffered X", Type: sbyte, Offset: 0x02, Base: InputBuffered }
+  - { Name: "Buffered Y", Type: sbyte, Offset: 0x03, Base: InputBuffered }
+  - { Name: "Buffered A", Type: byte, Offset: 0x00, Base: InputBuffered, Subclass: Boolean, Mask: 0x80, Color: Blue }
+  - { Name: "Buffered B", Type: byte, Offset: 0x00, Base: InputBuffered, Subclass: Boolean, Mask: 0x40, Color: Green }
+  - { Name: "Buffered Z", Type: byte, Offset: 0x00, Base: InputBuffered, Subclass: Boolean, Mask: 0x20, Color: Grey }
+  - { Name: "Buffered S", Type: byte, Offset: 0x00, Base: InputBuffered, Subclass: Boolean, Mask: 0x10, Color: Red }
+  - { Name: "Buffered R", Type: byte, Offset: 0x01, Base: InputBuffered, Subclass: Boolean, Mask: 0x10, Color: Grey }
+  - { Name: "Buffered L", Type: byte, Offset: 0x01, Base: InputBuffered, Subclass: Boolean, Mask: 0x20, Color: Grey }
+  - { Name: "Buffered C^", Type: byte, Offset: 0x01, Base: InputBuffered, Subclass: Boolean, Mask: 0x08, Color: Yellow }
+  - { Name: "Buffered Cv", Type: byte, Offset: 0x01, Base: InputBuffered, Subclass: Boolean, Mask: 0x04, Color: Yellow }
+  - { Name: "Buffered C<", Type: byte, Offset: 0x01, Base: InputBuffered, Subclass: Boolean, Mask: 0x02, Color: Yellow }
+  - { Name: "Buffered C>", Type: byte, Offset: 0x01, Base: InputBuffered, Subclass: Boolean, Mask: 0x01, Color: Yellow }
+  - { Name: "Buffered D^", Type: byte, Offset: 0x00, Base: InputBuffered, Subclass: Boolean, Mask: 0x08, Color: Grey }
+  - { Name: "Buffered Dv", Type: byte, Offset: 0x00, Base: InputBuffered, Subclass: Boolean, Mask: 0x04, Color: Grey }
+  - { Name: "Buffered D<", Type: byte, Offset: 0x00, Base: InputBuffered, Subclass: Boolean, Mask: 0x02, Color: Grey }
+  - { Name: "Buffered D>", Type: byte, Offset: 0x00, Base: InputBuffered, Subclass: Boolean, Mask: 0x01, Color: Grey }
+  - { Name: "Buffered U1", Type: byte, Offset: 0x01, Base: InputBuffered, Subclass: Boolean, Mask: 0x40, Color: Purple }
+  - { Name: "Buffered U2", Type: byte, Offset: 0x01, Base: InputBuffered, Subclass: Boolean, Mask: 0x80, Color: Purple }

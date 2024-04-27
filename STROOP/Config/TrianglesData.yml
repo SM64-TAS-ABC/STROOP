@@ -1,0 +1,151 @@
+Data:
+  - { Name: "Classification", GroupList: Basic, Base: Triangle, SpecialType: Classification, Subclass: String }
+  - { Name: "Surface Type", GroupList: Basic, Type: short, Display: byte, Offset: 0x00, Base: Triangle, UseHex: true }
+  - { Name: "Description", GroupList: Basic, Base: Triangle, SpecialType: TriangleTypeDescription, Subclass: String }
+  - { Name: "Slipperiness", GroupList: Basic, Base: Triangle, SpecialType: TriangleSlipperiness, Display: byte, UseHex: true }
+  - { Name: "Slipperiness Description", GroupList: Basic, Base: Triangle, SpecialType: TriangleSlipperinessDescription, Subclass: String }
+  - { Name: "Friction Multiplier", GroupList: Basic, Base: Triangle, SpecialType: TriangleFrictionMultiplier }
+  - { Name: "Flags", GroupList: Basic, Type: byte, Offset: 0x04, Base: Triangle, UseHex: true }
+  - { Name: "X Projection", GroupList: Basic, Type: byte, Offset: 0x04, Base: Triangle, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "Z Projection", GroupList: Basic, Type: byte, Offset: 0x04, Base: Triangle, Subclass: Boolean, InvertBool: true, Mask: 0x08 }
+  - { Name: "Belongs to Object", GroupList: Basic, Type: byte, Offset: 0x04, Base: Triangle, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "No Cam Collision", GroupList: Basic, Type: byte, Offset: 0x04, Base: Triangle, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "Room", GroupList: Basic, Type: byte, Offset: 0x05, Base: Triangle }
+  - { Name: "Exertion", GroupList: Basic, Base: Triangle, SpecialType: TriangleExertion, Subclass: Boolean }
+  - { Name: "Exertion Angle", GroupList: Basic, Type: byte, Offset: 0x03, Base: Triangle }
+  - { Name: "Exertion Force Index", GroupList: Basic, Type: byte, Offset: 0x02, Base: Triangle }
+  - { Name: "Exertion Force", GroupList: Basic, Type: short, Offset: 0x00, Base: TriangleExertionForceTable }
+  - { Name: "Y Min - 5", GroupList: Basic, Type: short, Offset: 0x06, Base: Triangle }
+  - { Name: "Y Max + 5", GroupList: Basic, Type: short, Offset: 0x08, Base: Triangle }
+  - { Name: "X1", GroupList: Basic, Type: short, Offset: 0x0A, Base: Triangle, Coord: "X" }
+  - { Name: "Y1", GroupList: Basic, Type: short, Offset: 0x0C, Base: Triangle, Coord: "Y" }
+  - { Name: "Z1", GroupList: Basic, Type: short, Offset: 0x0E, Base: Triangle, Coord: "Z" }
+  - { Name: "X2", GroupList: Basic, Type: short, Offset: 0x10, Base: Triangle, Coord: "X" }
+  - { Name: "Y2", GroupList: Basic, Type: short, Offset: 0x12, Base: Triangle, Coord: "Y" }
+  - { Name: "Z2", GroupList: Basic, Type: short, Offset: 0x14, Base: Triangle, Coord: "Z" }
+  - { Name: "X3", GroupList: Basic, Type: short, Offset: 0x16, Base: Triangle, Coord: "X" }
+  - { Name: "Y3", GroupList: Basic, Type: short, Offset: 0x18, Base: Triangle, Coord: "Y" }
+  - { Name: "Z3", GroupList: Basic, Type: short, Offset: 0x1A, Base: Triangle, Coord: "Z" }
+  - { Name: "X1", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleX1, Base: Triangle, Color: Orange, Coord: "X" }
+  - { Name: "Y1", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleY1, Base: Triangle, Color: Orange, Coord: "Y" }
+  - { Name: "Z1", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleZ1, Base: Triangle, Color: Orange, Coord: "Z" }
+  - { Name: "X2", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleX2, Base: Triangle, Color: Orange, Coord: "X" }
+  - { Name: "Y2", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleY2, Base: Triangle, Color: Orange, Coord: "Y" }
+  - { Name: "Z2", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleZ2, Base: Triangle, Color: Orange, Coord: "Z" }
+  - { Name: "X3", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleX3, Base: Triangle, Color: Orange, Coord: "X" }
+  - { Name: "Y3", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleY3, Base: Triangle, Color: Orange, Coord: "Y" }
+  - { Name: "Z3", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleZ3, Base: Triangle, Color: Orange, Coord: "Z" }
+  - { Name: "Mario X", GroupList: Intermediate, Type: float, Offset: 0x3C, Base: Mario, Color: Red, Coord: "X" }
+  - { Name: "Mario Y", GroupList: Intermediate, Type: float, Offset: 0x40, Base: Mario, Color: Red, Coord: "Y" }
+  - { Name: "Mario Z", GroupList: Intermediate, Type: float, Offset: 0x44, Base: Mario, Color: Red, Coord: "Z" }
+  - { Name: "Closest Vertex", GroupList: Intermediate, Base: Triangle, SpecialType: ClosestVertexIndex, Color: Purple }
+  - { Name: "Closest Vertex X", GroupList: Intermediate, Base: Triangle, SpecialType: ClosestVertexX, Color: Purple, Coord: "X" }
+  - { Name: "Closest Vertex Y", GroupList: Intermediate, Base: Triangle, SpecialType: ClosestVertexY, Color: Purple, Coord: "Y" }
+  - { Name: "Closest Vertex Z", GroupList: Intermediate, Base: Triangle, SpecialType: ClosestVertexZ, Color: Purple, Coord: "Z" }
+  - { Name: "Steepness", GroupList: Intermediate, Base: Triangle, SpecialType: Steepness, Subclass: Angle, Display: ushort, Color: Blue }
+  - { Name: "Uphill Angle", GroupList: Intermediate, Base: Triangle, SpecialType: UpHillAngle, Subclass: Angle, Display: ushort, Color: Blue }
+  - { Name: "Downhill Angle", GroupList: Intermediate, Base: Triangle, SpecialType: DownHillAngle, Subclass: Angle, Display: ushort, Color: Blue }
+  - { Name: "Left Hill Angle", GroupList: Intermediate, Base: Triangle, SpecialType: LeftHillAngle, Subclass: Angle, Display: ushort, Color: Blue }
+  - { Name: "Right Hill Angle", GroupList: Intermediate, Base: Triangle, SpecialType: RightHillAngle, Subclass: Angle, Display: ushort, Color: Blue }
+  - { Name: "M. Yaw Intended", GroupList: Intermediate, Type: ushort, Offset: 0x24, Base: Mario, Subclass: Angle, Color: Red }
+  - { Name: "M. Yaw Facing", GroupList: Intermediate, Type: ushort, Offset: 0x2E, Base: Mario, Subclass: Angle, Color: Red }
+  - { Name: "Uphill DAngle", GroupList: Intermediate, Base: Triangle, SpecialType: UpHillDeltaAngle, Subclass: Angle, Display: short, Color: Purple }
+  - { Name: "Downhill DAngle", GroupList: Intermediate, Base: Triangle, SpecialType: DownHillDeltaAngle, Subclass: Angle, Display: short, Color: Purple }
+  - { Name: "Left Hill DAngle", GroupList: Intermediate, Base: Triangle, SpecialType: LeftHillDeltaAngle, Subclass: Angle, Display: short, Color: Purple }
+  - { Name: "Right Hill DAngle", GroupList: Intermediate, Base: Triangle, SpecialType: RightHillDeltaAngle, Subclass: Angle, Display: short, Color: Purple }
+  - { Name: "Hill Status", GroupList: Intermediate, Base: Triangle, SpecialType: HillStatus, Subclass: String, Color: Purple }
+  - { Name: "Wall Kick Angle Away", GroupList: Intermediate, Base: Triangle, SpecialType: WallKickAngleAway, Subclass: Angle, Display: short, Color: Purple }
+  - { Name: "Wall Kick Post Angle", GroupList: Intermediate, Base: Triangle, SpecialType: WallKickPostAngle, Subclass: Angle, Display: ushort, Color: Purple }
+  - { Name: "Normal X", GroupList: Basic, Type: float, Offset: 0x1C, Base: Triangle, Round: 10, Coord: "X" }
+  - { Name: "Normal Y", GroupList: Basic, Type: float, Offset: 0x20, Base: Triangle, Round: 10, Coord: "Y" }
+  - { Name: "Normal Z", GroupList: Basic, Type: float, Offset: 0x24, Base: Triangle, Round: 10, Coord: "Z" }
+  - { Name: "Normal H", GroupList: Basic, Base: Triangle, SpecialType: TriangleHorizontalNormal, Round: 10 }
+  - { Name: "Normal Offset", GroupList: Basic, Type: float, Offset: 0x28, Base: Triangle }
+  - { Name: "Normal Offset", GroupList: ExtendedLevelBoundaries, SpecialType: TriangleNormalOffset, Base: Triangle, Color: Orange }
+  - { Name: "Associated Object", GroupList: Basic, Type: uint, Offset: 0x2C, Base: Triangle, Subclass: Object }
+  - { Name: "Floor Triangle", GroupList: Intermediate, Type: uint, Offset: 0x68, Base: Mario, Subclass: Triangle, Color: Yellow }
+  - { Name: "Wall Triangle", GroupList: Intermediate, Type: uint, Offset: 0x60, Base: Mario, Subclass: Triangle, Color: Yellow }
+  - { Name: "Ceiling Triangle", GroupList: Intermediate, Type: uint, Offset: 0x64, Base: Mario, Subclass: Triangle, Color: Yellow }
+  - { Name: "Floor Height", GroupList: Intermediate, Type: float, Offset: 0x70, Base: Mario, Color: Yellow }
+  - { Name: "Ceiling Height", GroupList: Intermediate, Type: float, Offset: 0x6C, Base: Mario, Color: Yellow }
+  - { Name: "Dist Above Floor", GroupList: Intermediate, Base: None, SpecialType: DistanceAboveFloor, Color: Green }
+  - { Name: "Dist Below Ceiling", GroupList: Intermediate, Base: None, SpecialType: DistanceBelowCeiling, Color: Green }
+  - { Name: "Normal Dist Away", GroupList: Intermediate, Base: Triangle, SpecialType: NormalDistAway, Color: Purple }
+  - { Name: "Vertical Dist Away", GroupList: Intermediate, Base: Triangle, SpecialType: VerticalDistAway, Color: Purple }
+  - { Name: "Height On Triangle", GroupList: Intermediate, Base: Triangle, SpecialType: HeightOnTriangle, Color: Purple }
+  - { Name: "Syncing Speed", GroupList: Advanced, Base: Triangle, SpecialType: TriangleSyncingSpeed, Color: Pink }
+  - { Name: "Max Hspd Uphill", GroupList: Advanced, Base: Triangle, SpecialType: MaxHSpeedUphill, Color: Pink }
+  - { Name: "Max Hspd Uphill at Ang", GroupList: Advanced, Base: Triangle, SpecialType: MaxHSpeedUphillAtAngle, Color: Pink }
+  - { Name: "Max Hspd Downhill", GroupList: Advanced, Base: Triangle, SpecialType: MaxHSpeedDownhill, Color: Pink }
+  - { Name: "Max Hspd Downhill at Ang", GroupList: Advanced, Base: Triangle, SpecialType: MaxHSpeedDownhillAtAngle, Color: Pink }
+  - { Name: "Cells", GroupList: Advanced, Base: Triangle, SpecialType: TriangleCells, Subclass: String, Color: Grey }
+  - { Name: "Mario Cell", GroupList: Advanced, Base: None, SpecialType: MarioCell, Subclass: String, Color: Grey }
+  - { Name: "Tri List Pointer", GroupList: Advanced, Type: uint, OffsetUS: 0x8038EE9C, OffsetJP: 0x8038EE9C, Base: Relative, Subclass: Address, Color: Grey }
+  - { Name: "Tri List Capacity", GroupList: Advanced, Type: short, OffsetUS: 0x8038EEA0, OffsetJP: 0x8038EEA0, Base: Relative, Color: Grey }
+  - { Name: "Level Tri Count", GroupList: Advanced, Type: int, OffsetUS: 0x80361178, OffsetJP: 0x8035FE08, Base: Relative, Color: Grey }
+  - { Name: "Object Tri Count", GroupList: Advanced, Base: None, SpecialType: ObjectTriCount, Color: Grey }
+  - { Name: "Total Tri Count", GroupList: Advanced, Type: int, OffsetUS: 0x80361170, OffsetJP: 0x8035FE00, Base: Relative, Color: Grey }
+  - { Name: "Current Tri Index", GroupList: Advanced, Base: Triangle, SpecialType: CurrentTriangleIndex, Color: Grey }
+  - { Name: "Current Tri Obj Index", GroupList: Advanced, Base: Triangle, SpecialType: CurrentTriangleObjectIndex, Color: Grey }
+  - { Name: "Current Tri Address", GroupList: Advanced, Base: Triangle, SpecialType: CurrentTriangleAddress, Subclass: Triangle, Color: Grey }
+  - { Name: "Node List Pointer", GroupList: Advanced, Type: uint, OffsetUS: 0x8038EE98, OffsetJP: 0x8038EE98, Base: Relative, Subclass: Address, Color: Grey }
+  - { Name: "Level Node Count", GroupList: Advanced, Type: int, OffsetUS: 0x80361174, OffsetJP: 0x8035FE04, Base: Relative, Color: Grey }
+  - { Name: "Object Node Count", GroupList: Advanced, Base: None, SpecialType: ObjectNodeCount, Color: Grey }
+  - { Name: "Total Node Count", GroupList: Advanced, Type: int, OffsetUS: 0x8036116C, OffsetJP: 0x8035FDFC, Base: Relative, Color: Grey }
+  - { Name: "X Min", GroupList: Advanced, Base: Triangle, SpecialType: TriMinX, Color: Blue }
+  - { Name: "X Max", GroupList: Advanced, Base: Triangle, SpecialType: TriMaxX, Color: Blue }
+  - { Name: "Y Min", GroupList: Advanced, Base: Triangle, SpecialType: TriMinY, Color: Blue }
+  - { Name: "Y Max", GroupList: Advanced, Base: Triangle, SpecialType: TriMaxY, Color: Blue }
+  - { Name: "Z Min", GroupList: Advanced, Base: Triangle, SpecialType: TriMinZ, Color: Blue }
+  - { Name: "Z Max", GroupList: Advanced, Base: Triangle, SpecialType: TriMaxZ, Color: Blue }
+  - { Name: "X Range", GroupList: Advanced, Base: Triangle, SpecialType: TriRangeX, Coord: "X", Color: Blue }
+  - { Name: "Y Range", GroupList: Advanced, Base: Triangle, SpecialType: TriRangeY, Coord: "Y", Color: Blue }
+  - { Name: "Z Range", GroupList: Advanced, Base: Triangle, SpecialType: TriRangeZ, Coord: "Z", Color: Blue }
+  - { Name: "X Midpoint", GroupList: Advanced, Base: Triangle, SpecialType: TriMidpointX, Coord: "X", Color: Blue }
+  - { Name: "Y Midpoint", GroupList: Advanced, Base: Triangle, SpecialType: TriMidpointY, Coord: "Y", Color: Blue }
+  - { Name: "Z Midpoint", GroupList: Advanced, Base: Triangle, SpecialType: TriMidpointZ, Coord: "Z", Color: Blue }
+  - { Name: "XDist to V1", GroupList: Advanced, Base: Triangle, SpecialType: XDistTriV1ToMario, Color: Purple, Coord: "X" }
+  - { Name: "YDist to V1", GroupList: Advanced, Base: Triangle, SpecialType: YDistTriV1ToMario, Color: Purple, Coord: "Y" }
+  - { Name: "ZDist to V1", GroupList: Advanced, Base: Triangle, SpecialType: ZDistTriV1ToMario, Color: Purple, Coord: "Z" }
+  - { Name: "HDist to V1", GroupList: Advanced, Base: Triangle, SpecialType: HDistTriV1ToMario, Color: Purple }
+  - { Name: "Dist to V1", GroupList: Advanced, Base: Triangle, SpecialType: DistTriV1ToMario, Color: Purple }
+  - { Name: "XDist to V2", GroupList: Advanced, Base: Triangle, SpecialType: XDistTriV2ToMario, Color: Purple, Coord: "X" }
+  - { Name: "YDist to V2", GroupList: Advanced, Base: Triangle, SpecialType: YDistTriV2ToMario, Color: Purple, Coord: "Y" }
+  - { Name: "ZDist to V2", GroupList: Advanced, Base: Triangle, SpecialType: ZDistTriV2ToMario, Color: Purple, Coord: "Z" }
+  - { Name: "HDist to V2", GroupList: Advanced, Base: Triangle, SpecialType: HDistTriV2ToMario, Color: Purple }
+  - { Name: "Dist to V2", GroupList: Advanced, Base: Triangle, SpecialType: DistTriV2ToMario, Color: Purple }
+  - { Name: "XDist to V3", GroupList: Advanced, Base: Triangle, SpecialType: XDistTriV3ToMario, Color: Purple, Coord: "X" }
+  - { Name: "YDist to V3", GroupList: Advanced, Base: Triangle, SpecialType: YDistTriV3ToMario, Color: Purple, Coord: "Y" }
+  - { Name: "ZDist to V3", GroupList: Advanced, Base: Triangle, SpecialType: ZDistTriV3ToMario, Color: Purple, Coord: "Z" }
+  - { Name: "HDist to V3", GroupList: Advanced, Base: Triangle, SpecialType: HDistTriV3ToMario, Color: Purple }
+  - { Name: "Dist to V3", GroupList: Advanced, Base: Triangle, SpecialType: DistTriV3ToMario, Color: Purple }
+  - { Name: "Dist to Line12", GroupList: Advanced, Base: Triangle, SpecialType: DistanceToLine12, Color: LightBlue }
+  - { Name: "Dist to Line23", GroupList: Advanced, Base: Triangle, SpecialType: DistanceToLine23, Color: LightBlue }
+  - { Name: "Dist to Line31", GroupList: Advanced, Base: Triangle, SpecialType: DistanceToLine31, Color: LightBlue }
+  - { Name: "Angle Mario to V1", GroupList: Advanced, Base: Triangle, SpecialType: AngleMarioToTriV1, Subclass: Angle, Display: ushort, Yaw: true, Color: Purple }
+  - { Name: "DAngle Mario to V1", GroupList: Advanced, Base: Triangle, SpecialType: DAngleMarioToTriV1, Subclass: Angle, Display: short, Color: Purple }
+  - { Name: "Angle V1 to Mario", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV1ToMario, Subclass: Angle, Display: ushort, Yaw: true, Color: Purple }
+  - { Name: "Angle Mario to V2", GroupList: Advanced, Base: Triangle, SpecialType: AngleMarioToTriV2, Subclass: Angle, Display: ushort, Yaw: true, Color: Purple }
+  - { Name: "DAngle Mario to V2", GroupList: Advanced, Base: Triangle, SpecialType: DAngleMarioToTriV2, Subclass: Angle, Display: short, Color: Purple }
+  - { Name: "Angle V2 to Mario", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV2ToMario, Subclass: Angle, Display: ushort, Yaw: true, Color: Purple }
+  - { Name: "Angle Mario to V3", GroupList: Advanced, Base: Triangle, SpecialType: AngleMarioToTriV3, Subclass: Angle, Display: ushort, Yaw: true, Color: Purple }
+  - { Name: "DAngle Mario to V3", GroupList: Advanced, Base: Triangle, SpecialType: DAngleMarioToTriV3, Subclass: Angle, Display: short, Color: Purple }
+  - { Name: "Angle V3 to Mario", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV3ToMario, Subclass: Angle, Display: ushort, Yaw: true, Color: Purple }
+  - { Name: "Angle V1 to V2", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV1ToTriV2, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "Angle V2 to V1", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV2ToTriV1, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "Angle V2 to V3", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV2ToTriV3, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "Angle V3 to V2", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV3ToTriV2, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "Angle V3 to V1", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV3ToTriV1, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "Angle V1 to V3", GroupList: Advanced, Base: Triangle, SpecialType: AngleTriV1ToTriV3, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "DAngle Line12", GroupList: Advanced, Base: Triangle, SpecialType: DeltaAngleLine12, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "DAngle Line21", GroupList: Advanced, Base: Triangle, SpecialType: DeltaAngleLine21, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "DAngle Line23", GroupList: Advanced, Base: Triangle, SpecialType: DeltaAngleLine23, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "DAngle Line32", GroupList: Advanced, Base: Triangle, SpecialType: DeltaAngleLine32, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "DAngle Line31", GroupList: Advanced, Base: Triangle, SpecialType: DeltaAngleLine31, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "DAngle Line13", GroupList: Advanced, Base: Triangle, SpecialType: DeltaAngleLine13, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "Self Normal Dist Away", GroupList: Self, Base: Triangle, SpecialType: SelfNormalDistAway, Color: Orange }
+  - { Name: "Self Vertical Dist Away", GroupList: Self, Base: Triangle, SpecialType: SelfVerticalDistAway, Color: Orange }
+  - { Name: "Self Height On Triangle", GroupList: Self, Base: Triangle, SpecialType: SelfHeightOnTriangle, Color: Orange }
+  - { Name: "Self Dist to Line12", GroupList: Self, Base: Triangle, SpecialType: SelfDistanceToLine12, Color: Orange }
+  - { Name: "Self Dist to Line23", GroupList: Self, Base: Triangle, SpecialType: SelfDistanceToLine23, Color: Orange }
+  - { Name: "Self Dist to Line31", GroupList: Self, Base: Triangle, SpecialType: SelfDistanceToLine31, Color: Orange }

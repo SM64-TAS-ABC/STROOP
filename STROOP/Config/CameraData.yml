@@ -1,0 +1,58 @@
+Data:
+  - { Name: "Mario Cam Possible", Type: byte, Offset: 0x165, Base: Camera, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "Mario Cam", Type: byte, Offset: 0x165, Base: Camera, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "Fixed Cam", Type: byte, Offset: 0x16D, Base: Camera, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "Close Cam", Type: byte, Offset: 0x328, Base: Camera, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "Far Cam", Type: byte, Offset: 0x329, Base: Camera, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "Left Cam", Type: byte, Offset: 0x329, Base: Camera, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "Right Cam", Type: byte, Offset: 0x329, Base: Camera, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "Camera X", Type: float, Offset: 0x184, Base: Camera, Coord: "X" }
+  - { Name: "Camera Y", Type: float, Offset: 0x188, Base: Camera, Coord: "Y" }
+  - { Name: "Camera Z", Type: float, Offset: 0x18C, Base: Camera, Coord: "Z" }
+  - { Name: "Camera Goal X", Type: float, Offset: 0x19C, Base: Camera, Coord: "X" }
+  - { Name: "Camera Goal Y", Type: float, Offset: 0x1A0, Base: Camera, Coord: "Y" }
+  - { Name: "Camera Goal Z", Type: float, Offset: 0x1A4, Base: Camera, Coord: "Z" }
+  - { Name: "Camera Yaw", Type: ushort, Offset: 0x1C6, Base: Camera, Subclass: Angle, Yaw: true }
+  - { Name: "Camera Pitch", Type: short, Offset: 0x1C4, Base: Camera, Subclass: Angle }
+  - { Name: "Fixed Cent Angle", Type: ushort, Offset: 0x258, Base: Camera, Subclass: Angle, Yaw: true }
+  - { Name: "Target Cent Angle", Type: ushort, Offset: 0x1F6, Base: Camera, Subclass: Angle, Yaw: true }
+  - { Name: "Cent Angle", Type: ushort, Offset: 0x1F4, Base: Camera, Subclass: Angle, Yaw: true }
+  - { Name: "Camera Focus X", Type: float, Offset: 0x178, Base: Camera, Coord: "X" }
+  - { Name: "Camera Focus Y", Type: float, Offset: 0x17C, Base: Camera, Coord: "Y" }
+  - { Name: "Camera Focus Z", Type: float, Offset: 0x180, Base: Camera, Coord: "Z" }
+  - { Name: "Camera Goal Focus X", Type: float, Offset: 0x190, Base: Camera, Coord: "X" }
+  - { Name: "Camera Goal Focus Y", Type: float, Offset: 0x194, Base: Camera, Coord: "Y" }
+  - { Name: "Camera Goal Focus Z", Type: float, Offset: 0x198, Base: Camera, Coord: "Z" }
+  - { Name: "Focus Veer Dist", Type: float, Offset: 0x25C, Base: Camera }
+  - { Name: "Dist Cam to Focus", Type: float, Offset: 0x1C0, Base: Camera }
+  - { Name: "Dist Cam to Mario", Base: None, SpecialType: DistMarioToCamera }
+  - { Name: "Camera Mode", Type: short, Offset: 0x1B4, Base: Camera, UseHex: true }
+  - { Name: "Secondary Object", Type: uint, OffsetUS: 0x8032DF30, OffsetJP: 0x8032CFD0, Base: Relative, Subclass: Object }
+  - { Name: "FOV", Type: float, Offset: 0x1C, Base: CameraSettings, Color: Green }
+  - { Name: "Near Dist", Type: short, Offset: 0x20, Base: CameraSettings, Color: Green }
+  - { Name: "Far Dist", Type: short, Offset: 0x22, Base: CameraSettings, Color: Green }
+  - { Name: "FOV", Type: float, OffsetUS: 0x8033C5A4, OffsetJP: 0x8033B234, Base: Relative, Color: LightBlue }
+  - { Name: "FOV Awake", Type: uint, OffsetUS: 0x8029A7C8, OffsetJP: 0x8029A0AC, Base: Relative, UseHex: true, Color: LightBlue }
+  - { Name: "FOV Sleeping", Type: uint, OffsetUS: 0x8029A774, OffsetJP: 0x8029A058, Base: Relative, UseHex: true, Color: LightBlue }
+  - { Name: "FOV Use Door", Type: uint, OffsetUS: 0x8029AA20, OffsetJP: 0x8029A304, Base: Relative, UseHex: true, Color: LightBlue }
+  - { Name: "FOV Collect Star", Type: uint, OffsetUS: 0x8029A984, OffsetJP: 0x8029A268, Base: Relative, UseHex: true, Color: LightBlue }
+  - { Name: "FOV Updating", Type: uint, OffsetUS: 0x8029AB68, OffsetJP: 0x8029A44C, Base: Relative, UseHex: true, Color: LightBlue }
+  - { Name: "Yaw Shake Function", Type: uint, OffsetUS: 0x8028AFE8, OffsetJP: 0x8028AA00, Base: Relative, UseHex: true, Color: Purple }
+  - { Name: "Roll Shake Function", Type: uint, OffsetUS: 0x8028B044, OffsetJP: 0x8028AA5C, Base: Relative, UseHex: true, Color: Purple }
+  - { Name: "Zoom Shake Function", Type: uint, OffsetUS: 0x8029A3F8, OffsetJP: 0x80299CDC, Base: Relative, UseHex: true, Color: Purple }
+  - { Name: "Yaw Shake", Type: short, Offset: 0x1CC, Base: Camera, Color: Blue }
+  - { Name: "Yaw Shake Speed", Type: short, Offset: 0x218, Base: Camera, Color: Blue }
+  - { Name: "Yaw Shake Decrease", Type: short, Offset: 0x21A, Base: Camera, Color: Blue }
+  - { Name: "Yaw Shake Osc.", Type: short, Offset: 0x216, Base: Camera, Color: Blue }
+  - { Name: "Pitch Shake", Type: short, Offset: 0x1CA, Base: Camera, Color: Blue }
+  - { Name: "Pitch Shake Speed", Type: short, Offset: 0x1D2, Base: Camera, Color: Blue }
+  - { Name: "Pitch Shake Decrease", Type: short, Offset: 0x1D4, Base: Camera, Color: Blue }
+  - { Name: "Pitch Shake Osc.", Type: short, Offset: 0x1D0, Base: Camera, Color: Blue }
+  - { Name: "Roll Shake", Type: short, Offset: 0x1CE, Base: Camera, Color: Blue }
+  - { Name: "Roll Shake Speed", Type: short, Offset: 0x212, Base: Camera, Color: Blue }
+  - { Name: "Roll Shake Decrease", Type: short, Offset: 0x214, Base: Camera, Color: Blue }
+  - { Name: "Roll Shake Osc.", Type: short, Offset: 0x210, Base: Camera, Color: Blue }
+  - { Name: "Zoom Shake", Type: float, OffsetUS: 0x8033C5B0, OffsetJP: 0x8033B240, Base: Relative, Color: Blue }
+  - { Name: "Zoom Shake Speed", Type: short, OffsetUS: 0x8033C5B6, OffsetJP: 0x8033B246, Base: Relative, Color: Blue }
+  - { Name: "Zoom Shake Decrease", Type: short, OffsetUS: 0x8033C5B8, OffsetJP: 0x8033B248, Base: Relative, Color: Blue }
+  - { Name: "Zoom Shake Osc.", Type: short, OffsetUS: 0x8033C5B4, OffsetJP: 0x8033B244, Base: Relative, Color: Blue }

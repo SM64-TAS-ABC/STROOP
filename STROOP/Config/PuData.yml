@@ -1,0 +1,51 @@
+Data:
+  - { Name: "X", GroupList: Intermediate, Type: float, Offset: 0x3C, Base: Mario, Color: Red, Coord: "X" }
+  - { Name: "Y", GroupList: Intermediate, Type: float, Offset: 0x40, Base: Mario, Color: Red, Coord: "Y" }
+  - { Name: "Z", GroupList: Intermediate, Type: float, Offset: 0x44, Base: Mario, Color: Red, Coord: "Z" }
+  - { Name: "X Speed", GroupList: Intermediate, Type: float, Offset: 0x48, Base: Mario, Color: Red, Coord: "X" }
+  - { Name: "Y Speed", GroupList: Intermediate, Type: float, Offset: 0x4C, Base: Mario, Color: Red, Coord: "Y" }
+  - { Name: "Z Speed", GroupList: Intermediate, Type: float, Offset: 0x50, Base: Mario, Color: Red, Coord: "Z" }
+  - { Name: "De Facto Speed", GroupList: Basic, Base: None, SpecialType: DeFactoSpeed, Color: Red }
+  - { Name: "H Speed", GroupList: Basic, Type: float, Offset: 0x54, Base: Mario, Color: Red }
+  - { Name: "Syncing Speed", GroupList: Basic, Base: None, SpecialType: SyncingSpeed, Color: LightBlue, Round: 0 }
+  - { Name: "QPU Speed", GroupList: Basic, Base: None, SpecialType: QpuSpeed, Color: LightBlue }
+  - { Name: "PU Speed", GroupList: Basic, Base: None, SpecialType: PuSpeed, Color: LightBlue }
+  - { Name: "QPU Speed Comp", GroupList: Basic, Base: None, SpecialType: QpuSpeedComponent, Color: LightBlue }
+  - { Name: "PU Speed Comp", GroupList: Basic, Base: None, SpecialType: PuSpeedComponent, Color: LightBlue }
+  - { Name: "Relative Speed", GroupList: Basic, Base: None, SpecialType: RelativeSpeed, Color: LightBlue }
+  - { Name: "Relative X Speed", GroupList: Intermediate, Base: None, SpecialType: Qs4RelativeXSpeed, Color: Blue, Coord: "X" }
+  - { Name: "Relative Z Speed", GroupList: Intermediate, Base: None, SpecialType: Qs4RelativeZSpeed, Color: Blue, Coord: "Z" }
+  - { Name: "Relative Intended X", GroupList: Intermediate, Base: None, SpecialType: Qs4RelativeIntendedNextX, Color: Blue, Coord: "X" }
+  - { Name: "Relative Intended Z", GroupList: Intermediate, Base: None, SpecialType: Qs4RelativeIntendedNextZ, Color: Blue, Coord: "Z" }
+  - { Name: "Yaw Facing", GroupList: Intermediate, Type: ushort, Offset: 0x2E, Base: Mario, Subclass: Angle, Yaw: true, Color: Red }
+  - { Name: "Yaw Intended", GroupList: Intermediate, Type: ushort, Offset: 0x24, Base: Mario, Subclass: Angle, Yaw: true, Color: Red }
+  - { Name: "DYaw Intend-Face", GroupList: Intermediate, Base: None, SpecialType: DeltaYawIntendedFacing, Subclass: Angle, Display: short, Color: Red }
+  - { Name: "PU Params", GroupList: Basic, Base: None, SpecialType: PuParams, Subclass: String, Color: Yellow }
+  - { Name: "Dist Above Floor", GroupList: Intermediate, Base: None, SpecialType: DistanceAboveFloor, Color: Green }
+  - { Name: "Normal Y", GroupList: Intermediate, Type: float, Offset: 0x20, Base: Triangle, Round: 10, Color: Green }
+  - { Name: "De Facto Multiplier", GroupList: Intermediate, Base: None, SpecialType: DeFactoMultiplier, Round: 10, Color: Green }
+  - { Name: "QPU X", GroupList: Basic, Base: None, SpecialType: MarioXQpuIndex, Color: Pink, Coord: "X" }
+  - { Name: "QPU Y", GroupList: Basic, Base: None, SpecialType: MarioYQpuIndex, Color: Pink, Coord: "Y" }
+  - { Name: "QPU Z", GroupList: Basic, Base: None, SpecialType: MarioZQpuIndex, Color: Pink, Coord: "Z" }
+  - { Name: "PU X", GroupList: Basic, Base: None, SpecialType: MarioXPuIndex, Color: Pink, Coord: "X" }
+  - { Name: "PU Y", GroupList: Basic, Base: None, SpecialType: MarioYPuIndex, Color: Pink, Coord: "Y" }
+  - { Name: "PU Z", GroupList: Basic, Base: None, SpecialType: MarioZPuIndex, Color: Pink, Coord: "Z" }
+  - { Name: "Relative X", GroupList: Basic, Base: None, SpecialType: MarioXPuRelative, Color: Pink, Coord: "X" }
+  - { Name: "Relative Y", GroupList: Basic, Base: None, SpecialType: MarioYPuRelative, Color: Pink, Coord: "Y" }
+  - { Name: "Relative Z", GroupList: Basic, Base: None, SpecialType: MarioZPuRelative, Color: Pink, Coord: "Z" }
+  - { Name: "QS1 Rel X Speed", GroupList: Advanced, Base: None, SpecialType: Qs1RelativeXSpeed, Color: Grey, Coord: "X" }
+  - { Name: "QS1 Rel Z Speed", GroupList: Advanced, Base: None, SpecialType: Qs1RelativeZSpeed, Color: Grey, Coord: "Z" }
+  - { Name: "QS1 Rel Intended X", GroupList: Advanced, Base: None, SpecialType: Qs1RelativeIntendedNextX, Color: Grey, Coord: "X" }
+  - { Name: "QS1 Rel Intended Z", GroupList: Advanced, Base: None, SpecialType: Qs1RelativeIntendedNextZ, Color: Grey, Coord: "Z" }
+  - { Name: "QS2 Rel X Speed", GroupList: Advanced, Base: None, SpecialType: Qs2RelativeXSpeed, Color: Grey, Coord: "X" }
+  - { Name: "QS2 Rel Z Speed", GroupList: Advanced, Base: None, SpecialType: Qs2RelativeZSpeed, Color: Grey, Coord: "Z" }
+  - { Name: "QS2 Rel Intended X", GroupList: Advanced, Base: None, SpecialType: Qs2RelativeIntendedNextX, Color: Grey, Coord: "X" }
+  - { Name: "QS2 Rel Intended Z", GroupList: Advanced, Base: None, SpecialType: Qs2RelativeIntendedNextZ, Color: Grey, Coord: "Z" }
+  - { Name: "QS3 Rel X Speed", GroupList: Advanced, Base: None, SpecialType: Qs3RelativeXSpeed, Color: Grey, Coord: "X" }
+  - { Name: "QS3 Rel Z Speed", GroupList: Advanced, Base: None, SpecialType: Qs3RelativeZSpeed, Color: Grey, Coord: "Z" }
+  - { Name: "QS3 Rel Intended X", GroupList: Advanced, Base: None, SpecialType: Qs3RelativeIntendedNextX, Color: Grey, Coord: "X" }
+  - { Name: "QS3 Rel Intended Z", GroupList: Advanced, Base: None, SpecialType: Qs3RelativeIntendedNextZ, Color: Grey, Coord: "Z" }
+  - { Name: "QS4 Rel X Speed", GroupList: Advanced, Base: None, SpecialType: Qs4RelativeXSpeed, Color: Grey, Coord: "X" }
+  - { Name: "QS4 Rel Z Speed", GroupList: Advanced, Base: None, SpecialType: Qs4RelativeZSpeed, Color: Grey, Coord: "Z" }
+  - { Name: "QS4 Rel Intended X", GroupList: Advanced, Base: None, SpecialType: Qs4RelativeIntendedNextX, Color: Grey, Coord: "X" }
+  - { Name: "QS4 Rel Intended Z", GroupList: Advanced, Base: None, SpecialType: Qs4RelativeIntendedNextZ, Color: Grey, Coord: "Z" }

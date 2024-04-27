@@ -1,0 +1,43 @@
+Data:
+  - { Name: "Current Address", Base: None, SpecialType: CurrentCellsTriangleAddress, Subclass: Triangle, Color: Pink }
+  - { Name: "Floor Triangle", Type: uint, Offset: 0x68, Base: Mario, Subclass: Triangle, Color: Yellow }
+  - { Name: "Wall Triangle", Type: uint, Offset: 0x60, Base: Mario, Subclass: Triangle, Color: Yellow }
+  - { Name: "Ceiling Triangle", Type: uint, Offset: 0x64, Base: Mario, Subclass: Triangle, Color: Yellow }
+  - { Name: "Level Node Count", Type: int, OffsetUS: 0x80361174, OffsetJP: 0x8035FE04, Base: Relative, Color: Grey }
+  - { Name: "Object Node Count", Base: None, SpecialType: ObjectNodeCount, Color: Grey }
+  - { Name: "Total Node Count", Type: int, OffsetUS: 0x8036116C, OffsetJP: 0x8035FDFC, Base: Relative, Color: Grey }
+  - { Name: "Mario Cell", Base: None, SpecialType: MarioCell, Subclass: String, Color: Grey }
+  - { Name: "Cells", Base: CellsTriangle, SpecialType: TriangleCells, Subclass: String, Color: Grey }
+  - { Name: "Classification", Base: CellsTriangle, SpecialType: Classification, Subclass: String }
+  - { Name: "Surface Type", Type: short, Display: byte, Offset: 0x00, Base: CellsTriangle, UseHex: true }
+  - { Name: "Description", Base: CellsTriangle, SpecialType: TriangleTypeDescription, Subclass: String }
+  - { Name: "Slipperiness", Base: CellsTriangle, SpecialType: TriangleSlipperiness, Display: byte, UseHex: true }
+  - { Name: "Slipperiness Description", Base: CellsTriangle, SpecialType: TriangleSlipperinessDescription, Subclass: String }
+  - { Name: "Friction Multiplier", Base: CellsTriangle, SpecialType: TriangleFrictionMultiplier }
+  - { Name: "Flags", Type: byte, Offset: 0x04, Base: CellsTriangle, UseHex: true }
+  - { Name: "X Projection", Type: byte, Offset: 0x04, Base: CellsTriangle, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "Z Projection", Type: byte, Offset: 0x04, Base: CellsTriangle, Subclass: Boolean, InvertBool: true, Mask: 0x08 }
+  - { Name: "Belongs to Object", Type: byte, Offset: 0x04, Base: CellsTriangle, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "No Cam Collision", Type: byte, Offset: 0x04, Base: CellsTriangle, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "Room", Type: byte, Offset: 0x05, Base: CellsTriangle }
+  - { Name: "Exertion", Base: CellsTriangle, SpecialType: TriangleExertion, Subclass: Boolean }
+  - { Name: "Exertion Angle", Type: byte, Offset: 0x03, Base: CellsTriangle }
+  - { Name: "Exertion Force Index", Type: byte, Offset: 0x02, Base: CellsTriangle }
+  - { Name: "Exertion Force", Type: short, Offset: 0x00, Base: CellsTriangleExertionForceTable }
+  - { Name: "Y Min - 5", Type: short, Offset: 0x06, Base: CellsTriangle }
+  - { Name: "Y Max + 5", Type: short, Offset: 0x08, Base: CellsTriangle }
+  - { Name: "X1", Type: short, Offset: 0x0A, Base: CellsTriangle, Coord: "X" }
+  - { Name: "Y1", Type: short, Offset: 0x0C, Base: CellsTriangle, Coord: "Y" }
+  - { Name: "Z1", Type: short, Offset: 0x0E, Base: CellsTriangle, Coord: "Z" }
+  - { Name: "X2", Type: short, Offset: 0x10, Base: CellsTriangle, Coord: "X" }
+  - { Name: "Y2", Type: short, Offset: 0x12, Base: CellsTriangle, Coord: "Y" }
+  - { Name: "Z2", Type: short, Offset: 0x14, Base: CellsTriangle, Coord: "Z" }
+  - { Name: "X3", Type: short, Offset: 0x16, Base: CellsTriangle, Coord: "X" }
+  - { Name: "Y3", Type: short, Offset: 0x18, Base: CellsTriangle, Coord: "Y" }
+  - { Name: "Z3", Type: short, Offset: 0x1A, Base: CellsTriangle, Coord: "Z" }
+  - { Name: "Normal X", Type: float, Offset: 0x1C, Base: CellsTriangle, Round: 10, Coord: "X" }
+  - { Name: "Normal Y", Type: float, Offset: 0x20, Base: CellsTriangle, Round: 10, Coord: "Y" }
+  - { Name: "Normal Z", Type: float, Offset: 0x24, Base: CellsTriangle, Round: 10, Coord: "Z" }
+  - { Name: "Normal H", Base: CellsTriangle, SpecialType: TriangleHorizontalNormal, Round: 10 }
+  - { Name: "Normal Offset", Type: float, Offset: 0x28, Base: CellsTriangle }
+  - { Name: "Associated Object", Type: uint, Offset: 0x2C, Base: CellsTriangle, Subclass: Object }

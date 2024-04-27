@@ -1,0 +1,41 @@
+Data:
+  - { Name: "Mode", Base: None, SpecialType: Map3DMode, Subclass: String }
+  - { Name: "Camera X", Base: None, SpecialType: Map3DCameraX }
+  - { Name: "Camera Y", Base: None, SpecialType: Map3DCameraY }
+  - { Name: "Camera Z", Base: None, SpecialType: Map3DCameraZ }
+  - { Name: "Camera Yaw", Base: None, SpecialType: Map3DCameraYaw }
+  - { Name: "Camera Pitch", Base: None, SpecialType: Map3DCameraPitch }
+  - { Name: "Camera Roll", Base: None, SpecialType: Map3DCameraRoll }
+  - { Name: "Focus X", Base: None, SpecialType: Map3DFocusX }
+  - { Name: "Focus Y", Base: None, SpecialType: Map3DFocusY }
+  - { Name: "Focus Z", Base: None, SpecialType: Map3DFocusZ }
+  - { Name: "Camera Pos PA", Base: None, SpecialType: Map3DCameraPosPA, Subclass: String }
+  - { Name: "Camera Angle PA", Base: None, SpecialType: Map3DCameraAnglePA, Subclass: String }
+  - { Name: "Focus Pos PA", Base: None, SpecialType: Map3DFocusPosPA, Subclass: String }
+  - { Name: "Focus Angle PA", Base: None, SpecialType: Map3DFocusAnglePA, Subclass: String }
+  - { Name: "Following Radius", Base: None, SpecialType: Map3DFollowingRadius }
+  - { Name: "Following Y Offset", Base: None, SpecialType: Map3DFollowingYOffset }
+  - { Name: "Following Yaw", Base: None, SpecialType: Map3DFollowingYaw }
+  - { Name: "FOV", Base: None, SpecialType: Map3DFOV }
+  - { Name: "Scale Value", Base: None, SpecialType: MapScaleValue }
+  - { Name: "Center X Value", Base: None, SpecialType: MapCenterXValue }
+  - { Name: "Center Y Value", Base: None, SpecialType: MapCenterYValue }
+  - { Name: "Center Z Value", Base: None, SpecialType: MapCenterZValue }
+  - { Name: "Yaw Value", Base: None, SpecialType: MapYawValue }
+  - { Name: "Pitch Value", Base: None, SpecialType: MapPitchValue }
+  - { Name: "2D Zoom Speed", Base: None, SpecialType: Map2DZoomSpeed }
+  - { Name: "Orth H Rotate Speed", Base: None, SpecialType: Map2DOrthographicHorizontalRotateSpeed }
+  - { Name: "Orth V Rotate Speed", Base: None, SpecialType: Map2DOrthographicVerticalRotateSpeed }
+  - { Name: "3D Zoom Speed", Base: None, SpecialType: Map3DZoomSpeed }
+  - { Name: "3D Translate Speed", Base: None, SpecialType: Map3DTranslateSpeed }
+  - { Name: "3D Rotate Speed", Base: None, SpecialType: Map3DRotateSpeed }
+  - { Name: "Num Circle Points", Base: None, SpecialType: MapCircleNumPoints2D }
+  - { Name: "Num Sphere Points", Base: None, SpecialType: MapCircleNumPoints3D }
+  - { Name: "Unit Precision Threshold", Base: None, SpecialType: MapUnitPrecisionThreshold }
+  - { Name: "Sort Orthographic Tris", Base: None, SpecialType: MapSortOrthographicTris, Subclass: Boolean }
+  - { Name: "Use Not for Ceilings", Base: None, SpecialType: MapUseNotForCeilings, Subclass: Boolean }
+  - { Name: "Use X for Ceilings", Base: None, SpecialType: MapUseXForCeilings, Subclass: Boolean }
+  - { Name: "Allow Keyboard Controls", Base: None, SpecialType: MapAllowKeyboardControls, Subclass: Boolean }
+  - { Name: "Keyboard Translate Speed", Base: None, SpecialType: MapKeyboardTranslateSpeed }
+  - { Name: "Keyboard Rotate Speed", Base: None, SpecialType: MapKeyboardRotateSpeed }
+  - { Name: "Keyboard Zoom Speed", Base: None, SpecialType: MapKeyboardZoomSpeed }

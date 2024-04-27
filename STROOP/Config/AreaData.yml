@@ -1,0 +1,34 @@
+Data:
+  - { Name: "Current Area Ptr (M)", Type: uint, Offset: 0x90, Base: Mario, Subclass: Address, Color: Red }
+  - { Name: "Current Area Index (M)", Base: None, SpecialType: CurrentAreaIndexMario, Color: Red }
+  - { Name: "Current Area Ptr", Type: uint, OffsetUS: 0x8032DDCC, OffsetJP: 0x8032CE6C, Base: Relative, Subclass: Address, Color: LightBlue }
+  - { Name: "Current Area Index", Base: None, SpecialType: CurrentAreaIndex, Color: LightBlue }
+  - { Name: "Area ID", Type: byte, Offset: 0x00, Base: Area }
+  - { Name: "Is Current Area", Type: byte, Offset: 0x01, Base: Area, Subclass: Boolean }
+  - { Name: "Terrain Type", Type: short, Offset: 0x02, Base: Area }
+  - { Name: "Terrain Description", Base: None, SpecialType: AreaTerrainDescription, Subclass: String }
+  - { Name: "Geo Layout Ptr", Type: uint, Offset: 0x04, Base: Area, Subclass: Address }
+  - { Name: "Collision Ptr", Type: uint, Offset: 0x08, Base: Area, Subclass: Address }
+  - { Name: "Mystery 1", Type: uint, Offset: 0x0C, Base: Area, Subclass: Address }
+  - { Name: "Mini Objects Ptr", Type: uint, Offset: 0x10, Base: Area, Subclass: Address }
+  - { Name: "Warp Links Head Ptr", Type: uint, Offset: 0x14, Base: Area, Subclass: Address }
+  - { Name: "Mystery 2", Type: uint, Offset: 0x18, Base: Area, Subclass: Address }
+  - { Name: "Mystery 3", Type: uint, Offset: 0x1C, Base: Area, Subclass: Address }
+  - { Name: "Objects Head Ptr", Type: uint, Offset: 0x20, Base: Area, Subclass: Address }
+  - { Name: "Level Camera Ptr", Type: uint, Offset: 0x24, Base: Area, Subclass: Address }
+  - { Name: "Mystery 4", Type: uint, Offset: 0x28, Base: Area, Subclass: Address }
+  - { Name: "Whirlpools", Type: uint, Offset: 0x2C, Base: Area, Subclass: Address }
+  - { Name: "Whirlpool 1 X", Type: short, Offset: 0x00, Base: Whirlpool1, Coord: "X" }
+  - { Name: "Whirlpool 1 Y", Type: short, Offset: 0x02, Base: Whirlpool1, Coord: "Y" }
+  - { Name: "Whirlpool 1 Z", Type: short, Offset: 0x04, Base: Whirlpool1, Coord: "Z" }
+  - { Name: "Whirlpool 1 Strength", Type: short, Offset: 0x06, Base: Whirlpool1 }
+  - { Name: "Whirlpool 2 X", Type: short, Offset: 0x00, Base: Whirlpool2, Coord: "X" }
+  - { Name: "Whirlpool 2 Y", Type: short, Offset: 0x02, Base: Whirlpool2, Coord: "Y" }
+  - { Name: "Whirlpool 2 Z", Type: short, Offset: 0x04, Base: Whirlpool2, Coord: "Z" }
+  - { Name: "Whirlpool 2 Strength", Type: short, Offset: 0x06, Base: Whirlpool2 }
+  - { Name: "Mystery 6", Type: uint, Offset: 0x30, Base: Area, Subclass: Address }
+  - { Name: "Level Dialog Index", Type: sbyte, Offset: 0x34, Base: Area }
+  - { Name: "Always 0xFF", Type: byte, Offset: 0x35, Base: Area, UseHex: true }
+  - { Name: "Music Param 1", Type: short, Offset: 0x36, Base: Area }
+  - { Name: "Music Param 2", Type: short, Offset: 0x38, Base: Area }
+  - { Name: "Unused", Type: ushort, Offset: 0x3A, Base: Area, UseHex: true }

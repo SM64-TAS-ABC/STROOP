@@ -1,0 +1,106 @@
+Data:
+  - { Name: "Mario X", GroupList: Basic, Type: float, Offset: 0x3C, Base: Mario, Color: Red, Coord: "X" }
+  - { Name: "Mario Y", GroupList: Basic, Type: float, Offset: 0x40, Base: Mario, Color: Red, Coord: "Y" }
+  - { Name: "Mario Z", GroupList: Basic, Type: float, Offset: 0x44, Base: Mario, Color: Red, Coord: "Z" }
+  - { Name: "Mario V Speed", GroupList: Basic, Type: float, Offset: 0x4C, Base: Mario, Color: Red }
+  - { Name: "Mario H Speed", GroupList: Basic, Type: float, Offset: 0x54, Base: Mario, Color: Red }
+  - { Name: "De Facto Speed", GroupList: Basic, Base: None, SpecialType: DeFactoSpeed, Color: Red }
+  - { Name: "Yaw Facing", GroupList: Basic, Type: ushort, Offset: 0x2E, Base: Mario, Subclass: Angle, Yaw: true, Color: Red }
+  - { Name: "Yaw Intended", GroupList: Basic, Type: ushort, Offset: 0x24, Base: Mario, Subclass: Angle, Yaw: true, Color: Red }
+  - { Name: "DYaw Intend-Face", GroupList: Basic, Base: None, SpecialType: DeltaYawIntendedFacing, Subclass: Angle, Display: short, Color: Red }
+  - { Name: "Global Timer", GroupList: Advanced, Type: int, OffsetUS: 0x8032D5D4, OffsetJP: 0x8032C694, Base: Relative, Color: Green }
+  - { Name: "RNG Value", GroupList: Advanced, Type: ushort, OffsetUS: 0x8038EEE0, OffsetJP: 0x8038EEE0, OffsetSH: 0x8038BBC0, Base: Relative, Color: Green }
+  - { Name: "RNG Index", GroupList: Advanced, Base: None, SpecialType: RngIndex, Color: Green }
+  - { Name: "Cent Angle", GroupList: Advanced, Type: ushort, Offset: 0x1F4, Base: Camera, Subclass: Angle, Yaw: true, Color: Green }
+  - { Name: "Current X", GroupList: Advanced, Type: sbyte, Offset: 0x02, Base: InputCurrent, Color: Green }
+  - { Name: "Current Y", GroupList: Advanced, Type: sbyte, Offset: 0x03, Base: InputCurrent, Color: Green }
+  - { Name: "H Speed", GroupList: TAS, Base: Mario, Offset: 0x54, Type: float, Color: Red }
+  - { Name: "V Speed", GroupList: TAS, Base: Mario, Offset: 0x4C, Type: float, Color: Red }
+  - { Name: "H Movement", GroupList: TAS, Base: None, SpecialType: HorizontalMovement, Color: Red }
+  - { Name: "Yaw Facing", GroupList: TAS, Base: Mario, Offset: 0x2E, Type: ushort, Subclass: Angle, Yaw: true, Color: Red }
+  - { Name: "Yaw Intended", GroupList: TAS, Base: Mario, Offset: 0x24, Type: ushort, Subclass: Angle, Yaw: true, Color: Red }
+  - { Name: "DYaw Intend-Face", GroupList: TAS, Base: None, Display: short, SpecialType: DeltaYawIntendedFacing, Subclass: Angle, Color: Red }
+  - { Name: "Mario X", GroupList: TAS, Base: Mario, Offset: 0x3C, Type: float, Color: Red, Coord: "X" }
+  - { Name: "Mario Y", GroupList: TAS, Base: Mario, Offset: 0x40, Type: float, Color: Red, Coord: "Y" }
+  - { Name: "Mario Z", GroupList: TAS, Base: Mario, Offset: 0x44, Type: float, Color: Red, Coord: "Z" }
+  - { Name: "Ghost X", GroupList: TAS, Base: GhostHack, Offset: 0x00, Type: float, Color: Blue }
+  - { Name: "Ghost Y", GroupList: TAS, Base: GhostHack, Offset: 0x28, Type: float, Color: Blue }
+  - { Name: "Ghost Z", GroupList: TAS, Base: GhostHack, Offset: 0x08, Type: float, Color: Blue }
+  - { Name: "Ghost H Speed", GroupList: TAS, Base: GhostHack, Offset: 0x18, Type: float, Color: Blue }
+  - { Name: "Ghost Y Speed", GroupList: TAS, Base: GhostHack, Offset: 0x1C, Type: float, Color: Blue }
+  - { Name: "Ghost Yaw Facing", GroupList: TAS, Base: GhostHack, Offset: 0x06, Type: ushort, Subclass: Angle, Yaw: true, Color: Blue }
+  - { Name: "Ghost Yaw Intended", GroupList: TAS, Base: GhostHack, Offset: 0x24, Type: ushort, Subclass: Angle, Yaw: true, Color: Blue }
+  - { Name: "Ghost Action", GroupList: TAS, Base: GhostHack, Offset: 0x20, Type: uint, UseHex: true, Color: Blue }
+  - { Name: "Ghost Action Desc.", GroupList: TAS, Base: None, SpecialType: GhostActionDescription, Subclass: String, Color: Blue }
+  - { Name: "Ghost Frame", GroupList: TAS, Base: Relative, Offset: 0x804003FC, Type: int, Color: Blue }
+  - { Name: "Ghost XDist", GroupList: TAS, Base: None, SpecialType: XDistGhostToMario, Color: Purple }
+  - { Name: "Ghost YDist", GroupList: TAS, Base: None, SpecialType: YDistGhostToMario, Color: Purple }
+  - { Name: "Ghost ZDist", GroupList: TAS, Base: None, SpecialType: ZDistGhostToMario, Color: Purple }
+  - { Name: "Ghost HDist", GroupList: TAS, Base: None, SpecialType: HDistGhostToMario, Color: Purple }
+  - { Name: "Ghost FDist", GroupList: TAS, Base: None, SpecialType: FDistGhostToMario, Color: Purple }
+  - { Name: "Ghost SDist", GroupList: TAS, Base: None, SpecialType: SDistGhostToMario, Color: Purple }
+  - { Name: "Ghost D HSpeed", GroupList: TAS, Base: None, SpecialType: GhostDeltaHSpeed, Color: Purple }
+  - { Name: "Ghost D YSpeed", GroupList: TAS, Base: None, SpecialType: GhostDeltaYSpeed, Color: Purple }
+  - { Name: "Ghost D Yaw Facing", GroupList: TAS, Base: None, SpecialType: GhostDeltaYawFacing, Color: Purple }
+  - { Name: "Ghost D Yaw Intended", GroupList: TAS, Base: None, SpecialType: GhostDeltaYawIntended, Color: Purple }
+  - { Name: "Global Timer", GroupList: TAS, Type: int, OffsetUS: 0x8032D5D4, OffsetJP: 0x8032C694, Base: Relative, Color: Green }
+  - { Name: "RNG Value", GroupList: TAS, Type: ushort, OffsetUS: 0x8038EEE0, OffsetJP: 0x8038EEE0, Base: Relative, Color: Green }
+  - { Name: "RNG Index", GroupList: TAS, Base: None, SpecialType: RngIndex, Color: Green }
+  - { Name: "Yaw Velocity", GroupList: TAS, Type: short, Offset: 0x34, Base: Mario, Subclass: Angle, Color: Pink }
+  - { Name: "Pitch", GroupList: TAS, Type: short, Offset: 0x2C, Base: Mario, Subclass: Angle, Color: Pink }
+  - { Name: "Pitch Velocity", GroupList: TAS, Type: short, Offset: 0x32, Base: Mario, Subclass: Angle, Color: Pink }
+  - { Name: "Lag", GroupList: TAS, Base: None, SpecialType: MupenLag, Color: Grey }
+  - { Name: "Self Pos Type", GroupList: Point, Base: None, SpecialType: SelfPosType, Subclass: String, Color: Blue }
+  - { Name: "Self X", GroupList: Point, Base: None, SpecialType: SelfX, Color: Blue, Coord: "X" }
+  - { Name: "Self Y", GroupList: Point, Base: None, SpecialType: SelfY, Color: Blue, Coord: "Y" }
+  - { Name: "Self Z", GroupList: Point, Base: None, SpecialType: SelfZ, Color: Blue, Coord: "Z" }
+  - { Name: "Self Angle Type", GroupList: Point, Base: None, SpecialType: SelfAngleType, Subclass: String, Color: Blue }
+  - { Name: "Self Angle", GroupList: Point, Base: None, SpecialType: SelfAngle, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "Point Pos Type", GroupList: Point, Base: None, SpecialType: PointPosType, Subclass: String, Color: Blue }
+  - { Name: "Point X", GroupList: Point, Base: None, SpecialType: PointX, Color: Blue, Coord: "X" }
+  - { Name: "Point Y", GroupList: Point, Base: None, SpecialType: PointY, Color: Blue, Coord: "Y" }
+  - { Name: "Point Z", GroupList: Point, Base: None, SpecialType: PointZ, Color: Blue, Coord: "Z" }
+  - { Name: "Point Angle Type", GroupList: Point, Base: None, SpecialType: PointAngleType, Subclass: String, Color: Blue }
+  - { Name: "Point Angle", GroupList: Point, Base: None, SpecialType: PointAngle, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "XDist Point to Self", GroupList: Point, Base: None, SpecialType: XDistPointToSelf, Color: LightBlue, Coord: "X" }
+  - { Name: "YDist Point to Self", GroupList: Point, Base: None, SpecialType: YDistPointToSelf, Color: LightBlue, Coord: "Y" }
+  - { Name: "ZDist Point to Self", GroupList: Point, Base: None, SpecialType: ZDistPointToSelf, Color: LightBlue, Coord: "Z" }
+  - { Name: "HDist Point to Self", GroupList: Point, Base: None, SpecialType: HDistPointToSelf, Color: LightBlue }
+  - { Name: "Dist Point to Self", GroupList: Point, Base: None, SpecialType: DistPointToSelf, Color: LightBlue }
+  - { Name: "Angle Point to Self", GroupList: Point, Base: None, SpecialType: AnglePointToSelf, Subclass: Angle, Display: ushort, Yaw: true, Color: LightBlue }
+  - { Name: "DAngle Point to Self", GroupList: Point, Base: None, SpecialType: DAnglePointToSelf, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "Angle Self to Point", GroupList: Point, Base: None, SpecialType: AngleSelfToPoint, Subclass: Angle, Display: ushort, Yaw: true, Color: LightBlue }
+  - { Name: "DAngle Self to Point", GroupList: Point, Base: None, SpecialType: DAngleSelfToPoint, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "DAngle Self to Angle", GroupList: Point, Base: None, SpecialType: AngleDiffSelfToPoint, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "FDist Point to Self", GroupList: Point, Base: None, SpecialType: FDistPointToSelf, Color: LightBlue }
+  - { Name: "SDist Point to Self", GroupList: Point, Base: None, SpecialType: SDistPointToSelf, Color: LightBlue }
+  - { Name: "FSDist Point to Self", GroupList: Point, Base: None, SpecialType: FSDistPointToSelf, Subclass: String, Color: LightBlue }
+  - { Name: "Self2 Pos Type", GroupList: Point2, Base: None, SpecialType: Self2PosType, Subclass: String, Color: Blue }
+  - { Name: "Self2 X", GroupList: Point2, Base: None, SpecialType: Self2X, Color: Blue, Coord: "X" }
+  - { Name: "Self2 Y", GroupList: Point2, Base: None, SpecialType: Self2Y, Color: Blue, Coord: "Y" }
+  - { Name: "Self2 Z", GroupList: Point2, Base: None, SpecialType: Self2Z, Color: Blue, Coord: "Z" }
+  - { Name: "Self2 Angle Type", GroupList: Point2, Base: None, SpecialType: Self2AngleType, Subclass: String, Color: Blue }
+  - { Name: "Self2 Angle", GroupList: Point2, Base: None, SpecialType: Self2Angle, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "Point2 Pos Type", GroupList: Point2, Base: None, SpecialType: Point2PosType, Subclass: String, Color: Blue }
+  - { Name: "Point2 X", GroupList: Point2, Base: None, SpecialType: Point2X, Color: Blue, Coord: "X" }
+  - { Name: "Point2 Y", GroupList: Point2, Base: None, SpecialType: Point2Y, Color: Blue, Coord: "Y" }
+  - { Name: "Point2 Z", GroupList: Point2, Base: None, SpecialType: Point2Z, Color: Blue, Coord: "Z" }
+  - { Name: "Point2 Angle Type", GroupList: Point2, Base: None, SpecialType: Point2AngleType, Subclass: String, Color: Blue }
+  - { Name: "Point2 Angle", GroupList: Point2, Base: None, SpecialType: Point2Angle, Subclass: Angle, Display: ushort, Yaw: true, Color: Blue }
+  - { Name: "XDist Point2 to Self2", GroupList: Point2, Base: None, SpecialType: XDistPoint2ToSelf2, Color: LightBlue, Coord: "X" }
+  - { Name: "YDist Point2 to Self2", GroupList: Point2, Base: None, SpecialType: YDistPoint2ToSelf2, Color: LightBlue, Coord: "Y" }
+  - { Name: "ZDist Point2 to Self2", GroupList: Point2, Base: None, SpecialType: ZDistPoint2ToSelf2, Color: LightBlue, Coord: "Z" }
+  - { Name: "HDist Point2 to Self2", GroupList: Point2, Base: None, SpecialType: HDistPoint2ToSelf2, Color: LightBlue }
+  - { Name: "Dist Point2 to Self2", GroupList: Point2, Base: None, SpecialType: DistPoint2ToSelf2, Color: LightBlue }
+  - { Name: "Angle Point2 to Self2", GroupList: Point2, Base: None, SpecialType: AnglePoint2ToSelf2, Subclass: Angle, Display: ushort, Yaw: true, Color: LightBlue }
+  - { Name: "DAngle Point2 to Self2", GroupList: Point2, Base: None, SpecialType: DAnglePoint2ToSelf2, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "Angle Self2 to Point2", GroupList: Point2, Base: None, SpecialType: AngleSelf2ToPoint2, Subclass: Angle, Display: ushort, Yaw: true, Color: LightBlue }
+  - { Name: "DAngle Self2 to Point2", GroupList: Point2, Base: None, SpecialType: DAngleSelf2ToPoint2, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "DAngle Self2 to Angle", GroupList: Point2, Base: None, SpecialType: AngleDiffSelf2ToPoint2, Subclass: Angle, Display: short, Color: LightBlue }
+  - { Name: "FDist Point2 to Self2", GroupList: Point2, Base: None, SpecialType: FDistPoint2ToSelf2, Color: LightBlue }
+  - { Name: "SDist Point2 to Self2", GroupList: Point2, Base: None, SpecialType: SDistPoint2ToSelf2, Color: LightBlue }
+  - { Name: "FSDist Point2 to Self2", GroupList: Point2, Base: None, SpecialType: FSDistPoint2ToSelf2, Subclass: String, Color: LightBlue }
+  - { Name: "Pitch Self to Point", GroupList: MorePoint, Base: None, SpecialType: PitchSelfToPoint, Subclass: Angle, Display: short, Color: Pink }
+  - { Name: "Walking Distance", GroupList: MorePoint, Base: None, SpecialType: WalkingDistance, Color: Pink }
+  - { Name: "Walking Distance Diff", GroupList: MorePoint, Base: None, SpecialType: WalkingDistanceDifferenceMarioToPoint, Color: Pink }
+  - { Name: "Schedule Offset", GroupList: MorePoint, Base: None, SpecialType: ScheduleOffset, Color: Pink }

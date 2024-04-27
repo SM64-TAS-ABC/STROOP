@@ -1,0 +1,101 @@
+Data:
+  - { Name: "X", GroupList: Basic, Type: float, Offset: 0x3C, Base: Mario, Coord: "X" }
+  - { Name: "Y", GroupList: Basic, Type: float, Offset: 0x40, Base: Mario, Coord: "Y" }
+  - { Name: "Z", GroupList: Basic, Type: float, Offset: 0x44, Base: Mario, Coord: "Z" }
+  - { Name: "X Speed", GroupList: Basic, Type: float, Offset: 0x48, Base: Mario, Coord: "X" }
+  - { Name: "Y Speed", GroupList: Basic, Type: float, Offset: 0x4C, Base: Mario, Coord: "Y" }
+  - { Name: "Z Speed", GroupList: Basic, Type: float, Offset: 0x50, Base: Mario, Coord: "Z" }
+  - { Name: "H Speed", GroupList: Basic, Type: float, Offset: 0x54, Base: Mario }
+  - { Name: "Speed Multiplier", GroupList: Advanced, Base: None, SpecialType: SpeedMultiplier }
+  - { Name: "Rot Disp X", GroupList: Advanced, Base: None, SpecialType: RotationDisplacementX }
+  - { Name: "Rot Disp Y", GroupList: Advanced, Base: None, SpecialType: RotationDisplacementY }
+  - { Name: "Rot Disp Z", GroupList: Advanced, Base: None, SpecialType: RotationDisplacementZ }
+  - { Name: "Traj Remaining Height", GroupList: Trajectory, Base: None, SpecialType: TrajectoryRemainingHeight }
+  - { Name: "Traj Peak Height", GroupList: Trajectory, Base: None, SpecialType: TrajectoryPeakHeight }
+  - { Name: "DJ V Speed", GroupList: Trajectory, Base: None, SpecialType: DoubleJumpVerticalSpeed }
+  - { Name: "DJ Height", GroupList: Trajectory, Base: None, SpecialType: DoubleJumpHeight }
+  - { Name: "DJ Peak Height", GroupList: Trajectory, Base: None, SpecialType: DoubleJumpPeakHeight }
+  - { Name: "De Facto Speed", GroupList: Basic, Base: None, SpecialType: DeFactoSpeed }
+  - { Name: "Sideways Speed", GroupList: Basic, Base: None, SpecialType: SidewaysSpeed }
+  - { Name: "X Sliding Speed", GroupList: Basic, Type: float, Offset: 0x58, Base: Mario }
+  - { Name: "Z Sliding Speed", GroupList: Basic, Type: float, Offset: 0x5C, Base: Mario }
+  - { Name: "H Sliding Speed", GroupList: Basic, Base: None, SpecialType: SlidingSpeed }
+  - { Name: "Sliding Yaw", GroupList: Basic, Base: None, SpecialType: SlidingAngle, Display: ushort, Subclass: Angle, Yaw: true }
+  - { Name: "Yaw Moving", GroupList: Basic, Type: ushort, Offset: 0x38, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "Yaw Facing", GroupList: Basic, Type: ushort, Offset: 0x2E, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "Yaw Intended", GroupList: Basic, Type: ushort, Offset: 0x24, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "DYaw Intend-Face", GroupList: Basic, Base: None, SpecialType: DeltaYawIntendedFacing, Subclass: Angle, Display: short }
+  - { Name: "DYaw Intend-Back", GroupList: Intermediate, Base: None, SpecialType: DeltaYawIntendedBackwards, Subclass: Angle, Display: short }
+  - { Name: "IG DYaw", GroupList: Advanced, Base: None, SpecialType: MarioInGameDeltaYaw }
+  - { Name: "Twirl Yaw", GroupList: Intermediate, Type: ushort, Offset: 0x3A, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "Twirl Yaw Mod 2048", GroupList: Advanced, Base: None, SpecialType: TwirlYawMod2048 }
+  - { Name: "Floor Yaw", GroupList: Intermediate, Type: ushort, Offset: 0x74, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "Yaw Velocity", GroupList: Intermediate, Type: short, Offset: 0x34, Base: Mario, Subclass: Angle }
+  - { Name: "Pitch", GroupList: Intermediate, Type: short, Offset: 0x2C, Base: Mario, Subclass: Angle }
+  - { Name: "Pitch Velocity", GroupList: Intermediate, Type: short, Offset: 0x32, Base: Mario, Subclass: Angle }
+  - { Name: "Roll", GroupList: Intermediate, Type: short, Offset: 0x30, Base: Mario, Subclass: Angle }
+  - { Name: "Roll Velocity", GroupList: Intermediate, Type: short, Offset: 0x36, Base: Mario, Subclass: Angle }
+  - { Name: "Flying Energy", GroupList: Intermediate, Base: None, SpecialType: FlyingEnergy }
+  - { Name: "Torso Yaw", GroupList: Advanced, Type: short, Offset: 0x24E, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "Torso Pitch", GroupList: Advanced, Type: short, Offset: 0x24C, Base: Mario, Subclass: Angle }
+  - { Name: "Torso Roll", GroupList: Advanced, Type: short, Offset: 0x250, Base: Mario, Subclass: Angle }
+  - { Name: "First Person Yaw", GroupList: Advanced, Type: short, Offset: 0x1602, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "First Person Pitch", GroupList: Advanced, Type: short, Offset: 0x1600, Base: Mario, Subclass: Angle }
+  - { Name: "First Person Yaw 2", GroupList: Advanced, Type: short, Offset: 0x13C8, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "First Person Pitch 2", GroupList: Advanced, Type: short, Offset: 0x13C6, Base: Mario, Subclass: Angle }
+  - { Name: "Stood On Object", GroupList: Basic, Type: uint, OffsetUS: 0x80330E34, OffsetJP: 0x8032FED4, OffsetSH: 0x80310564, Base: Relative, Subclass: Object }
+  - { Name: "Ridden Object", GroupList: Intermediate, Type: uint, Offset: 0x84, Base: Mario, Subclass: Object }
+  - { Name: "Interaction Object", GroupList: Intermediate, Type: uint, Offset: 0x78, Base: Mario, Subclass: Object }
+  - { Name: "Used Object", GroupList: Intermediate, Type: uint, Offset: 0x80, Base: Mario, Subclass: Object }
+  - { Name: "Held Object", GroupList: Basic, Type: uint, Offset: 0x7C, Base: Mario, Subclass: Object }
+  - { Name: "HOLP X", GroupList: Basic, Type: float, Offset: 0x258, Base: Mario, Coord: "X" }
+  - { Name: "HOLP Y", GroupList: Basic, Type: float, Offset: 0x25C, Base: Mario, Coord: "Y" }
+  - { Name: "HOLP Z", GroupList: Basic, Type: float, Offset: 0x260, Base: Mario, Coord: "Z" }
+  - { Name: "XDist Mario to HOLP", GroupList: HolpMario, Base: None, SpecialType: XDistMarioToHolp, Coord: "X" }
+  - { Name: "YDist Mario to HOLP", GroupList: HolpMario, Base: None, SpecialType: YDistMarioToHolp, Coord: "Y" }
+  - { Name: "ZDist Mario to HOLP", GroupList: HolpMario, Base: None, SpecialType: ZDistMarioToHolp, Coord: "Z" }
+  - { Name: "HDist Mario to HOLP", GroupList: HolpMario, Base: None, SpecialType: HDistMarioToHolp }
+  - { Name: "Dist Mario to HOLP", GroupList: HolpMario, Base: None, SpecialType: DistMarioToHolp }
+  - { Name: "Angle Mario to HOLP", GroupList: HolpMario, Base: None, SpecialType: AngleMarioToHolp, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "DAngle Mario to HOLP", GroupList: HolpMario, Base: None, SpecialType: DAngleMarioToHolp, Subclass: Angle, Display: short }
+  - { Name: "Angle HOLP to Mario", GroupList: HolpMario, Base: None, SpecialType: AngleHolpToMario, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "Point Pos Type", GroupList: HolpPoint, Base: None, SpecialType: PointPosType, Subclass: String }
+  - { Name: "Point X", GroupList: HolpPoint, Base: None, SpecialType: PointX, Coord: "X" }
+  - { Name: "Point Y", GroupList: HolpPoint, Base: None, SpecialType: PointY, Coord: "Y" }
+  - { Name: "Point Z", GroupList: HolpPoint, Base: None, SpecialType: PointZ, Coord: "Z" }
+  - { Name: "Point Angle Type", GroupList: HolpPoint, Base: None, SpecialType: PointAngleType, Subclass: String }
+  - { Name: "Point Angle", GroupList: HolpPoint, Base: None, SpecialType: PointAngle, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "XDist Point to HOLP", GroupList: HolpPoint, Base: None, SpecialType: XDistPointToHolp, Coord: "X" }
+  - { Name: "YDist Point to HOLP", GroupList: HolpPoint, Base: None, SpecialType: YDistPointToHolp, Coord: "Y" }
+  - { Name: "ZDist Point to HOLP", GroupList: HolpPoint, Base: None, SpecialType: ZDistPointToHolp, Coord: "Z" }
+  - { Name: "HDist Point to HOLP", GroupList: HolpPoint, Base: None, SpecialType: HDistPointToHolp }
+  - { Name: "Dist Point to HOLP", GroupList: HolpPoint, Base: None, SpecialType: DistPointToHolp }
+  - { Name: "Angle Point to HOLP", GroupList: HolpPoint, Base: None, SpecialType: AnglePointToHolp, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "DAngle Point to HOLP", GroupList: HolpPoint, Base: None, SpecialType: DAnglePointToHolp, Subclass: Angle, Display: short }
+  - { Name: "Angle HOLP to Point", GroupList: HolpPoint, Base: None, SpecialType: AngleHolpToPoint, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "Bob-omb Traj Frames", GroupList: HolpPoint, Base: None, SpecialType: BobombTrajectoryFramesToPoint }
+  - { Name: "Cork Box Traj Frames", GroupList: HolpPoint, Base: None, SpecialType: CorkBoxTrajectoryFramesToPoint }
+  - { Name: "HOLP Type", GroupList: Basic, Type: byte, Offset: 0x24A, Base: Mario }
+  - { Name: "Hat on Head", GroupList: Basic, Type: uint, Offset: 0x04, Base: Mario, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "Hat in Hand", GroupList: Basic, Type: uint, Offset: 0x04, Base: Mario, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "Wing Cap", GroupList: Basic, Type: uint, Offset: 0x04, Base: Mario, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "Metal Cap", GroupList: Basic, Type: uint, Offset: 0x04, Base: Mario, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "Vanish Cap", GroupList: Basic, Type: uint, Offset: 0x04, Base: Mario, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "Should Have Hat", GroupList: Basic, Type: uint, Offset: 0x04, Base: Mario, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "Cap Timer", GroupList: Basic, Type: ushort, Offset: 0xB6, Base: Mario }
+  - { Name: "Hitstun Timer", GroupList: Intermediate, Type: short, Offset: 0x26, Base: Mario }
+  - { Name: "Unsquishing Timer", GroupList: Intermediate, Type: sbyte, Offset: 0xB4, Base: Mario }
+  - { Name: "Squished Timer", GroupList: Intermediate, Type: ushort, Offset: 0x1E, Base: Mario }
+  - { Name: "Water Shell Timer", GroupList: Intermediate, Type: short, Offset: 0x1A, Base: Mario }
+  - { Name: "Peak Height", GroupList: Intermediate, Type: float, Offset: 0xBC, Base: Mario }
+  - { Name: "Floor Height", GroupList: Intermediate, Type: float, Offset: 0x70, Base: Mario }
+  - { Name: "Fall Height", GroupList: Intermediate, Base: None, SpecialType: FallHeight }
+  - { Name: "Quicksand Height", GroupList: Advanced, Type: float, Offset: 0xC0, Base: Mario }
+  - { Name: "Current Room", GroupList: Intermediate, Type: short, OffsetUS: 0x80361250, OffsetJP: 0x8035FEE0, Base: Relative }
+  - { Name: "Swimming Strength", GroupList: Intermediate, Type: short, OffsetUS: 0x8032DD34, OffsetJP: 0x8032CDD4, OffsetSH: 0x8030D464, OffsetEU: 0x802F9F04, Base: Relative }
+  - { Name: "Floor Footstep Type", GroupList: Advanced, Type: short, Offset: 0x14, Base: Mario }
+  - { Name: "Just Teleported", GroupList: Advanced, Type: byte, OffsetUS: 0x8032DA94, OffsetJP: 0x8032CB34, Base: Relative, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "Blinking State", GroupList: Advanced, Type: int, OffsetUS: 0x800F0A5C, OffsetJP: 0x800EDBDC, Base: Relative }
+  - { Name: "Blinking Timer", GroupList: Advanced, Type: short, OffsetUS: 0x8032DF08, OffsetJP: 0x8032CFA8, Base: Relative }
+  - { Name: "Effective Mario Object", GroupList: Intermediate, Type: uint, OffsetUS: 0x80361158, OffsetJP: 0x8035FDE8, OffsetSH: 0x80343318, Base: Relative, Subclass: Object }
+  - { Name: "Visual Mario Object", GroupList: Intermediate, Type: uint, Offset: 0x88, Base: Mario, Subclass: Object }

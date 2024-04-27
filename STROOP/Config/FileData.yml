@@ -1,0 +1,207 @@
+Data:
+  - { Name: "Current File", GroupList: Basic, Type: short, OffsetUS: 0x8032DDF4, OffsetJP: 0x8032CE94, OffsetSH: 0x8030D524, Base: Relative }
+  - { Name: "Star Count", GroupList: Basic, Type: short, Offset: 0xAA, Base: Mario, Color: Yellow }
+  - { Name: "Star Display", GroupList: Basic, Type: short, Offset: 0xF4, Base: Mario, Color: Yellow }
+  - { Name: "Previous Star Count", GroupList: Basic, Type: short, Offset: 0xB8, Base: Mario, Color: Yellow }
+  - { Name: "Stars in File", GroupList: Basic, Base: File, SpecialType: StarsInFile, Color: Yellow }
+  - { Name: "BoB Stars", GroupList: Basic, Type: byte, Offset: 0x0C, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "WF Stars", GroupList: Basic, Type: byte, Offset: 0x0D, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "JRB Stars", GroupList: Basic, Type: byte, Offset: 0x0E, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "CCM Stars", GroupList: Basic, Type: byte, Offset: 0x0F, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "BBH Stars", GroupList: Basic, Type: byte, Offset: 0x10, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "HMC Stars", GroupList: Basic, Type: byte, Offset: 0x11, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "LLL Stars", GroupList: Basic, Type: byte, Offset: 0x12, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "SSL Stars", GroupList: Basic, Type: byte, Offset: 0x13, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "DDD Stars", GroupList: Basic, Type: byte, Offset: 0x14, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "SL Stars", GroupList: Basic, Type: byte, Offset: 0x15, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "WDW Stars", GroupList: Basic, Type: byte, Offset: 0x16, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "TTM Stars", GroupList: Basic, Type: byte, Offset: 0x17, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "THI Stars", GroupList: Basic, Type: byte, Offset: 0x18, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "TTC Stars", GroupList: Basic, Type: byte, Offset: 0x19, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "RR Stars", GroupList: Basic, Type: byte, Offset: 0x1A, Base: File, Mask: 0x7F, Color: LightBlue }
+  - { Name: "Castle Stars", GroupList: Advanced, Type: byte, Offset: 0x08, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "TotWC Stars", GroupList: Advanced, Type: byte, Offset: 0x20, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "CotMC Stars", GroupList: Advanced, Type: byte, Offset: 0x1F, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "VCutM Stars", GroupList: Advanced, Type: byte, Offset: 0x21, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "PSS Stars", GroupList: Advanced, Type: byte, Offset: 0x1E, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "SA Stars", GroupList: Advanced, Type: byte, Offset: 0x23, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "WMotR Stars", GroupList: Advanced, Type: byte, Offset: 0x22, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "BitDW Stars", GroupList: Advanced, Type: byte, Offset: 0x1B, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "BitFS Stars", GroupList: Advanced, Type: byte, Offset: 0x1C, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "BitS Stars", GroupList: Advanced, Type: byte, Offset: 0x1D, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "Cake Stars", GroupList: Advanced, Type: byte, Offset: 0x24, Base: File, Mask: 0x7F, Color: Orange }
+  - { Name: "TotWC Star", GroupList: Basic, Type: byte, Offset: 0x20, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "CotMC Star", GroupList: Basic, Type: byte, Offset: 0x1F, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "VCutM Star", GroupList: Basic, Type: byte, Offset: 0x21, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "PSS Star", GroupList: Basic, Type: byte, Offset: 0x1E, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "PSS Under 21\" Star", GroupList: Basic, Type: byte, Offset: 0x1E, Base: File, Subclass: Boolean, Mask: 0x02, Color: Blue }
+  - { Name: "SA Star", GroupList: Basic, Type: byte, Offset: 0x23, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "WMotR Star", GroupList: Basic, Type: byte, Offset: 0x22, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "BitDW Star", GroupList: Basic, Type: byte, Offset: 0x1B, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "BitFS Star", GroupList: Basic, Type: byte, Offset: 0x1C, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "BitS Star", GroupList: Basic, Type: byte, Offset: 0x1D, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "Toad 1 Star", GroupList: Basic, Type: byte, Offset: 0x08, Base: File, Subclass: Boolean, Mask: 0x01, Color: Blue }
+  - { Name: "Toad 2 Star", GroupList: Basic, Type: byte, Offset: 0x08, Base: File, Subclass: Boolean, Mask: 0x02, Color: Blue }
+  - { Name: "Toad 3 Star", GroupList: Basic, Type: byte, Offset: 0x08, Base: File, Subclass: Boolean, Mask: 0x04, Color: Blue }
+  - { Name: "MIPS 1 Star", GroupList: Basic, Type: byte, Offset: 0x08, Base: File, Subclass: Boolean, Mask: 0x08, Color: Blue }
+  - { Name: "MIPS 2 Star", GroupList: Basic, Type: byte, Offset: 0x08, Base: File, Subclass: Boolean, Mask: 0x10, Color: Blue }
+  - { Name: "BoB Cannon", GroupList: Basic, Type: byte, Offset: 0x0D, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "WF Cannon", GroupList: Basic, Type: byte, Offset: 0x0E, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "JRB Cannon", GroupList: Basic, Type: byte, Offset: 0x0F, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "CCM Cannon", GroupList: Basic, Type: byte, Offset: 0x10, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "SSL Cannon", GroupList: Basic, Type: byte, Offset: 0x14, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "SL Cannon", GroupList: Basic, Type: byte, Offset: 0x16, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "WDW Cannon", GroupList: Basic, Type: byte, Offset: 0x17, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "TTM Cannon", GroupList: Basic, Type: byte, Offset: 0x18, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "THI Cannon", GroupList: Basic, Type: byte, Offset: 0x19, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "RR Cannon", GroupList: Basic, Type: byte, Offset: 0x1B, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "WMotR Cannon", GroupList: Basic, Type: byte, Offset: 0x23, Base: File, Subclass: Boolean, Mask: 0x80, Color: Green }
+  - { Name: "BoB Coin Score", GroupList: Basic, Type: byte, Offset: 0x25, Base: File, Color: Yellow }
+  - { Name: "WF Coin Score", GroupList: Basic, Type: byte, Offset: 0x26, Base: File, Color: Yellow }
+  - { Name: "JRB Coin Score", GroupList: Basic, Type: byte, Offset: 0x27, Base: File, Color: Yellow }
+  - { Name: "CCM Coin Score", GroupList: Basic, Type: byte, Offset: 0x28, Base: File, Color: Yellow }
+  - { Name: "BBH Coin Score", GroupList: Basic, Type: byte, Offset: 0x29, Base: File, Color: Yellow }
+  - { Name: "HMC Coin Score", GroupList: Basic, Type: byte, Offset: 0x2A, Base: File, Color: Yellow }
+  - { Name: "LLL Coin Score", GroupList: Basic, Type: byte, Offset: 0x2B, Base: File, Color: Yellow }
+  - { Name: "SSL Coin Score", GroupList: Basic, Type: byte, Offset: 0x2C, Base: File, Color: Yellow }
+  - { Name: "DDD Coin Score", GroupList: Basic, Type: byte, Offset: 0x2D, Base: File, Color: Yellow }
+  - { Name: "SL Coin Score", GroupList: Basic, Type: byte, Offset: 0x2E, Base: File, Color: Yellow }
+  - { Name: "WDW Coin Score", GroupList: Basic, Type: byte, Offset: 0x2F, Base: File, Color: Yellow }
+  - { Name: "TTM Coin Score", GroupList: Basic, Type: byte, Offset: 0x30, Base: File, Color: Yellow }
+  - { Name: "THI Coin Score", GroupList: Basic, Type: byte, Offset: 0x31, Base: File, Color: Yellow }
+  - { Name: "TTC Coin Score", GroupList: Basic, Type: byte, Offset: 0x32, Base: File, Color: Yellow }
+  - { Name: "RR Coin Score", GroupList: Basic, Type: byte, Offset: 0x33, Base: File, Color: Yellow }
+  - { Name: "Wing Cap", GroupList: Basic, Type: byte, Offset: 0x0B, Base: File, Subclass: Boolean, Mask: 0x02, Color: Red }
+  - { Name: "Metal Cap", GroupList: Basic, Type: byte, Offset: 0x0B, Base: File, Subclass: Boolean, Mask: 0x04, Color: Red }
+  - { Name: "Vanish Cap", GroupList: Basic, Type: byte, Offset: 0x0B, Base: File, Subclass: Boolean, Mask: 0x08, Color: Red }
+  - { Name: "Bowser 1 Key", GroupList: Basic, Type: byte, Offset: 0x0B, Base: File, Subclass: Boolean, Mask: 0x10, Color: Purple }
+  - { Name: "Basement Door", GroupList: Basic, Type: byte, Offset: 0x0B, Base: File, Subclass: Boolean, Mask: 0x40, Color: Purple }
+  - { Name: "Bowser 2 Key", GroupList: Basic, Type: byte, Offset: 0x0B, Base: File, Subclass: Boolean, Mask: 0x20, Color: Purple }
+  - { Name: "Upstairs Door", GroupList: Basic, Type: byte, Offset: 0x0B, Base: File, Subclass: Boolean, Mask: 0x80, Color: Purple }
+  - { Name: "WF Door", GroupList: Basic, Type: byte, Offset: 0x0A, Base: File, Subclass: Boolean, Mask: 0x08, Color: Purple }
+  - { Name: "JRB Door", GroupList: Basic, Type: byte, Offset: 0x0A, Base: File, Subclass: Boolean, Mask: 0x20, Color: Purple }
+  - { Name: "CCM Door", GroupList: Basic, Type: byte, Offset: 0x0A, Base: File, Subclass: Boolean, Mask: 0x10, Color: Purple }
+  - { Name: "PSS Door", GroupList: Basic, Type: byte, Offset: 0x0A, Base: File, Subclass: Boolean, Mask: 0x04, Color: Purple }
+  - { Name: "BitDW Door", GroupList: Basic, Type: byte, Offset: 0x0A, Base: File, Subclass: Boolean, Mask: 0x40, Color: Purple }
+  - { Name: "BitFS Door", GroupList: Basic, Type: byte, Offset: 0x0A, Base: File, Subclass: Boolean, Mask: 0x80, Color: Purple }
+  - { Name: "50 Star Door", GroupList: Basic, Type: byte, Offset: 0x09, Base: File, Subclass: Boolean, Mask: 0x10, Color: Purple }
+  - { Name: "Hat on Ground", GroupList: Basic, Type: byte, Offset: 0x09, Base: File, Subclass: Boolean, Mask: 0x01, Color: Red }
+  - { Name: "Hat on Klepto", GroupList: Basic, Type: byte, Offset: 0x09, Base: File, Subclass: Boolean, Mask: 0x02, Color: Red }
+  - { Name: "Hat on Snowman", GroupList: Basic, Type: byte, Offset: 0x09, Base: File, Subclass: Boolean, Mask: 0x08, Color: Red }
+  - { Name: "Hat on Ukiki", GroupList: Basic, Type: byte, Offset: 0x09, Base: File, Subclass: Boolean, Mask: 0x04, Color: Red }
+  - { Name: "Hat Level", GroupList: Basic, Type: byte, Offset: 0x00, Base: File, Color: Red }
+  - { Name: "Hat Area", GroupList: Basic, Type: byte, Offset: 0x01, Base: File, Color: Red }
+  - { Name: "Hat X", GroupList: Basic, Type: short, Offset: 0x02, Base: File, Color: Red }
+  - { Name: "Hat Y", GroupList: Basic, Type: short, Offset: 0x04, Base: File, Color: Red }
+  - { Name: "Hat Z", GroupList: Basic, Type: short, Offset: 0x06, Base: File, Color: Red }
+  - { Name: "File Exists", GroupList: Basic, Type: byte, Offset: 0x0B, Base: File, Subclass: Boolean, Mask: 0x01, Color: Pink }
+  - { Name: "DDD Moved Back", GroupList: Basic, Type: byte, Offset: 0x0A, Base: File, Subclass: Boolean, Mask: 0x01, Color: Pink }
+  - { Name: "Moat Drained", GroupList: Basic, Type: byte, Offset: 0x0A, Base: File, Subclass: Boolean, Mask: 0x02, Color: Pink }
+  - { Name: "Checksum Constant", GroupList: Basic, Type: ushort, Offset: 0x34, Base: File, UseHex: true, Color: Grey }
+  - { Name: "Checksum", GroupList: Basic, Type: ushort, Offset: 0x36, Base: File, UseHex: true, Color: Grey }
+  - { Name: "Checksum Calculated", GroupList: Basic, Base: File, SpecialType: FileChecksumCalculated, Display: ushort, UseHex: true, Color: Grey }
+  - { Name: "BoB: Big Bob-omb on the Summit", GroupList: Intermediate, Type: byte, Offset: 0x0C, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "BoB: Footrace with Koopa the Quick", GroupList: Intermediate, Type: byte, Offset: 0x0C, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "BoB: Shoot to the Island in the Sky", GroupList: Intermediate, Type: byte, Offset: 0x0C, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "BoB: Find the 8 Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x0C, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "BoB: Mario Wings to the Sky", GroupList: Intermediate, Type: byte, Offset: 0x0C, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "BoB: Behind Chain Chomp's Gate", GroupList: Intermediate, Type: byte, Offset: 0x0C, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "BoB: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x0C, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "WF: Chip Off Whomp's Block", GroupList: Intermediate, Type: byte, Offset: 0x0D, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "WF: To the Top of the Fortress", GroupList: Intermediate, Type: byte, Offset: 0x0D, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "WF: Shoot into the Wild Blue", GroupList: Intermediate, Type: byte, Offset: 0x0D, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "WF: Red Coins on the Floating Isle", GroupList: Intermediate, Type: byte, Offset: 0x0D, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "WF: Fall onto the Caged Island", GroupList: Intermediate, Type: byte, Offset: 0x0D, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "WF: Blast Away the Wall", GroupList: Intermediate, Type: byte, Offset: 0x0D, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "WF: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x0D, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "JRB: Plunder in the Sunken Ship", GroupList: Intermediate, Type: byte, Offset: 0x0E, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "JRB: Can the Eel Come Out to Play?", GroupList: Intermediate, Type: byte, Offset: 0x0E, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "JRB: Treasure of the Ocean Cave", GroupList: Intermediate, Type: byte, Offset: 0x0E, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "JRB: Red Coins on the Ship Afloat", GroupList: Intermediate, Type: byte, Offset: 0x0E, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "JRB: Blast to the Stone Pillar", GroupList: Intermediate, Type: byte, Offset: 0x0E, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "JRB: Through the Jet Stream", GroupList: Intermediate, Type: byte, Offset: 0x0E, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "JRB: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x0E, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "CCM: Slip Slidin' Away", GroupList: Intermediate, Type: byte, Offset: 0x0F, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "CCM: Li'l Penguin Lost", GroupList: Intermediate, Type: byte, Offset: 0x0F, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "CCM: Big Penguin Race", GroupList: Intermediate, Type: byte, Offset: 0x0F, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "CCM: Frosty Slide for 8 Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x0F, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "CCM: Snowman's Lost His Head", GroupList: Intermediate, Type: byte, Offset: 0x0F, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "CCM: Wall Kicks Will Work", GroupList: Intermediate, Type: byte, Offset: 0x0F, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "CCM: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x0F, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "BBH: Go On a Ghost Hunt", GroupList: Intermediate, Type: byte, Offset: 0x10, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "BBH: Ride Big Boo's Merry-Go-Round", GroupList: Intermediate, Type: byte, Offset: 0x10, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "BBH: Secret of the Haunted Books", GroupList: Intermediate, Type: byte, Offset: 0x10, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "BBH: Seek the 8 Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x10, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "BBH: Big Boo's Balcony", GroupList: Intermediate, Type: byte, Offset: 0x10, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "BBH: Eye to Eye in the Secret Room", GroupList: Intermediate, Type: byte, Offset: 0x10, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "BBH: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x10, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "HMC: Swimming Beast in the Cavern", GroupList: Intermediate, Type: byte, Offset: 0x11, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "HMC: Elevate for 8 Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x11, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "HMC: Metal-Head Mario Can Move!", GroupList: Intermediate, Type: byte, Offset: 0x11, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "HMC: Navigating the Toxic Maze", GroupList: Intermediate, Type: byte, Offset: 0x11, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "HMC: A-Maze-ing Emergency Exit", GroupList: Intermediate, Type: byte, Offset: 0x11, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "HMC: Watch for Rolling Rocks", GroupList: Intermediate, Type: byte, Offset: 0x11, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "HMC: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x11, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "LLL: Boil the Big Bully", GroupList: Intermediate, Type: byte, Offset: 0x12, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "LLL: Bully the Bullies", GroupList: Intermediate, Type: byte, Offset: 0x12, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "LLL: 8-Coin Puzzle with 15 Pieces", GroupList: Intermediate, Type: byte, Offset: 0x12, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "LLL: Red-Hot Log Rolling", GroupList: Intermediate, Type: byte, Offset: 0x12, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "LLL: Hot-Foot-It into the Volcano", GroupList: Intermediate, Type: byte, Offset: 0x12, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "LLL: Elevator Tour in the Volcano", GroupList: Intermediate, Type: byte, Offset: 0x12, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "LLL: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x12, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "SSL: In the Talons of the Big Bird", GroupList: Intermediate, Type: byte, Offset: 0x13, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "SSL: Shining Atop the Pyramid", GroupList: Intermediate, Type: byte, Offset: 0x13, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "SSL: Inside the Ancient Pyramid", GroupList: Intermediate, Type: byte, Offset: 0x13, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "SSL: Stand Tall on the Four Pillars", GroupList: Intermediate, Type: byte, Offset: 0x13, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "SSL: Free Flying for 8 Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x13, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "SSL: Pyramid Puzzle", GroupList: Intermediate, Type: byte, Offset: 0x13, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "SSL: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x13, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "DDD: Board Bowser's Sub", GroupList: Intermediate, Type: byte, Offset: 0x14, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "DDD: Chests in the Current", GroupList: Intermediate, Type: byte, Offset: 0x14, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "DDD: Pole-Jumping for Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x14, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "DDD: Through the Jet Stream", GroupList: Intermediate, Type: byte, Offset: 0x14, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "DDD: The Manta Ray's Reward", GroupList: Intermediate, Type: byte, Offset: 0x14, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "DDD: Collect the Caps…", GroupList: Intermediate, Type: byte, Offset: 0x14, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "DDD: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x14, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "SL: Snowman's Big Head", GroupList: Intermediate, Type: byte, Offset: 0x15, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "SL: Chill with the Bully", GroupList: Intermediate, Type: byte, Offset: 0x15, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "SL: In the Deep Freeze", GroupList: Intermediate, Type: byte, Offset: 0x15, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "SL: Whirl from the Freezing Pond", GroupList: Intermediate, Type: byte, Offset: 0x15, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "SL: Shell Shreddin' for Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x15, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "SL: Into the Igloo", GroupList: Intermediate, Type: byte, Offset: 0x15, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "SL: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x15, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "WDW: Shocking Arrow Lifts!", GroupList: Intermediate, Type: byte, Offset: 0x16, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "WDW: Top O' the Town", GroupList: Intermediate, Type: byte, Offset: 0x16, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "WDW: Secrets in the Shallows & Sky", GroupList: Intermediate, Type: byte, Offset: 0x16, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "WDW: Express Elevator--Hurry Up!", GroupList: Intermediate, Type: byte, Offset: 0x16, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "WDW: Go to Town for Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x16, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "WDW: Quick Race Through Downtown!", GroupList: Intermediate, Type: byte, Offset: 0x16, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "WDW: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x16, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "TTM: Scale the Mountain", GroupList: Intermediate, Type: byte, Offset: 0x17, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "TTM: Mystery of the Monkey Cage", GroupList: Intermediate, Type: byte, Offset: 0x17, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "TTM: Scary 'Shrooms, Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x17, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "TTM: Mysterious Mountainside", GroupList: Intermediate, Type: byte, Offset: 0x17, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "TTM: Breathtaking View from Bridge", GroupList: Intermediate, Type: byte, Offset: 0x17, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "TTM: Blast to the Lonely Mushroom", GroupList: Intermediate, Type: byte, Offset: 0x17, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "TTM: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x17, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "THI: Pluck the Piranha Flower", GroupList: Intermediate, Type: byte, Offset: 0x18, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "THI: The Tip Top of the Huge Island", GroupList: Intermediate, Type: byte, Offset: 0x18, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "THI: Rematch with Koopa the Quick", GroupList: Intermediate, Type: byte, Offset: 0x18, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "THI: Five Itty Bitty Secrets", GroupList: Intermediate, Type: byte, Offset: 0x18, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "THI: Wiggler's Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x18, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "THI: Make Wiggler Squirm", GroupList: Intermediate, Type: byte, Offset: 0x18, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "THI: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x18, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "TTC: Roll into the Cage", GroupList: Intermediate, Type: byte, Offset: 0x19, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "TTC: The Pit and the Pendulums", GroupList: Intermediate, Type: byte, Offset: 0x19, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "TTC: Get a Hand", GroupList: Intermediate, Type: byte, Offset: 0x19, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "TTC: Stomp on the Thwomp", GroupList: Intermediate, Type: byte, Offset: 0x19, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "TTC: Timed Jumps on Moving Bars", GroupList: Intermediate, Type: byte, Offset: 0x19, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "TTC: Stop Time for Red Coins", GroupList: Intermediate, Type: byte, Offset: 0x19, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "TTC: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x19, Base: File, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "RR: Cruiser Crossing the Rainbow", GroupList: Intermediate, Type: byte, Offset: 0x1A, Base: File, Subclass: Boolean, Mask: 0x01 }
+  - { Name: "RR: The Big House in the Sky", GroupList: Intermediate, Type: byte, Offset: 0x1A, Base: File, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "RR: Coins Amassed in a Maze", GroupList: Intermediate, Type: byte, Offset: 0x1A, Base: File, Subclass: Boolean, Mask: 0x04 }
+  - { Name: "RR: Swingin' in the Breeze", GroupList: Intermediate, Type: byte, Offset: 0x1A, Base: File, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "RR: Tricky Triangles!", GroupList: Intermediate, Type: byte, Offset: 0x1A, Base: File, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "RR: Somewhere Over the Rainbow", GroupList: Intermediate, Type: byte, Offset: 0x1A, Base: File, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "RR: 100 Coins", GroupList: Intermediate, Type: byte, Offset: 0x1A, Base: File, Subclass: Boolean, Mask: 0x40 }

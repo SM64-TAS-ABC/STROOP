@@ -1,0 +1,22 @@
+Data:
+  - { Name: "Enabled", Base: Music, Offset: 0x000, Type: byte, Subclass: Boolean, Mask: 0x80 }
+  - { Name: "Finished", Base: Music, Offset: 0x000, Type: byte, Subclass: Boolean, Mask: 0x40 }
+  - { Name: "Muted", Base: Music, Offset: 0x000, Type: byte, Subclass: Boolean, Mask: 0x20 }
+  - { Name: "seqDmaInProgress", Base: Music, Offset: 0x000, Type: byte, Subclass: Boolean, Mask: 0x10 }
+  - { Name: "bankDmaInProgress", Base: Music, Offset: 0x000, Type: byte, Subclass: Boolean, Mask: 0x08 }
+  - { Name: "seqVariation", Base: Music, Offset: 0x001, Type: sbyte }
+  - { Name: "state", Base: Music, Offset: 0x002, Type: byte }
+  - { Name: "noteAllocPolicy", Base: Music, Offset: 0x003, Type: byte }
+  - { Name: "muteBehavior", Base: Music, Offset: 0x004, Type: byte }
+  - { Name: "seqId", Base: Music, Offset: 0x005, Type: byte }
+  - { Name: "loadingBankNumInstruments", Base: Music, Offset: 0x008, Type: byte }
+  - { Name: "loadingBankNumDrums", Base: Music, Offset: 0x009, Type: byte }
+  - { Name: "tempo", Base: Music, Offset: 0x00A, Type: ushort }
+  - { Name: "tempoAcc", Base: Music, Offset: 0x00C, Type: ushort }
+  - { Name: "fadeTimer", Base: Music, Offset: 0x00E, Type: ushort }
+  - { Name: "transposition", Base: Music, Offset: 0x010, Type: short }
+  - { Name: "delay", Base: Music, Offset: 0x012, Type: ushort }
+  - { Name: "fadeVolume", Base: Music, Offset: 0x018, Type: float }
+  - { Name: "fadeVelocity", Base: Music, Offset: 0x01C, Type: float }
+  - { Name: "volume", Base: Music, Offset: 0x020, Type: float }
+  - { Name: "muteVolumeScale", Base: Music, Offset: 0x024, Type: float }

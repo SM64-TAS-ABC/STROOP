@@ -1,0 +1,31 @@
+Data:
+  - { Name: "Advanced Mode", Type: byte, OffsetUS: 0x8033D263, OffsetJP: 0x8033BEF3, Base: Relative }
+  - { Name: "Advanced Mode Sttg", Type: byte, OffsetUS: 0x80330E94, OffsetJP: 0x8032FF34, Base: Relative }
+  - { Name: "Resource Meter", Type: byte, OffsetUS: 0x8032D594, OffsetJP: 0x8032C654, Base: Relative }
+  - { Name: "Resource Meter Sttg", Type: ushort, OffsetUS: 0x8032DF10, OffsetJP: 0x8032CFB0, Base: Relative }
+  - { Name: "Classic Mode", Type: byte, OffsetUS: 0x8032D598, OffsetJP: 0x8032C658, Base: Relative }
+  - { Name: "Spawn Mode", Type: byte, OffsetUS: 0x8033D2DF, OffsetJP: 0x8033BF6F, Base: Relative }
+  - { Name: "Stage Select", Type: byte, OffsetUS: 0x8032D58C, OffsetJP: 0x8032C64C, Base: Relative }
+  - { Name: "Free Movement", Type: ushort, OffsetUS: 0x80269BDA, OffsetJP: 0x8026976E, Base: Relative, UseHex: true }
+  - { Name: "A0", Type: short, OffsetUS: 0x8033D2C0, OffsetJP: 0x8033BF50, Base: Relative, Color: LightBlue }
+  - { Name: "A1", Type: short, OffsetUS: 0x8033D2C2, OffsetJP: 0x8033BF52, Base: Relative, Color: LightBlue }
+  - { Name: "A2", Type: short, OffsetUS: 0x8033D2C4, OffsetJP: 0x8033BF54, Base: Relative, Color: LightBlue }
+  - { Name: "A3", Type: short, OffsetUS: 0x8033D2C6, OffsetJP: 0x8033BF56, Base: Relative, Color: LightBlue }
+  - { Name: "A4", Type: short, OffsetUS: 0x8033D2C8, OffsetJP: 0x8033BF58, Base: Relative, Color: LightBlue }
+  - { Name: "A5", Type: short, OffsetUS: 0x8033D2CA, OffsetJP: 0x8033BF5A, Base: Relative, Color: LightBlue }
+  - { Name: "A6", Type: short, OffsetUS: 0x8033D2CC, OffsetJP: 0x8033BF5C, Base: Relative, Color: LightBlue }
+  - { Name: "A7", Type: short, OffsetUS: 0x8033D2CE, OffsetJP: 0x8033BF5E, Base: Relative, Color: LightBlue }
+  - { Name: "B0", Type: short, OffsetUS: 0x8033D2D0, OffsetJP: 0x8033BF60, Base: Relative, Color: Red }
+  - { Name: "B1", Type: short, OffsetUS: 0x8033D2D2, OffsetJP: 0x8033BF62, Base: Relative, Color: Red }
+  - { Name: "B2", Type: short, OffsetUS: 0x8033D2D4, OffsetJP: 0x8033BF64, Base: Relative, Color: Red }
+  - { Name: "B3", Type: short, OffsetUS: 0x8033D2D6, OffsetJP: 0x8033BF66, Base: Relative, Color: Red }
+  - { Name: "B4", Type: short, OffsetUS: 0x8033D2D8, OffsetJP: 0x8033BF68, Base: Relative, Color: Red }
+  - { Name: "B5", Type: short, OffsetUS: 0x8033D2DA, OffsetJP: 0x8033BF6A, Base: Relative, Color: Red }
+  - { Name: "B6", Type: short, OffsetUS: 0x8033D2DC, OffsetJP: 0x8033BF6C, Base: Relative, Color: Red }
+  - { Name: "B7", Type: short, OffsetUS: 0x8033D2DE, OffsetJP: 0x8033BF6E, Base: Relative, Color: Red }
+  - { Name: "D> Spawn 1", Type: ushort, OffsetUS: 0x802CB2BE, OffsetJP: 0x802CABA2, Base: Relative, UseHex: true, Color: Grey }
+  - { Name: "D> Spawn 2", Type: ushort, OffsetUS: 0x802CB2C2, OffsetJP: 0x802CABA6, Base: Relative, UseHex: true, Color: Grey }
+  - { Name: "D< Spawn 1", Type: ushort, OffsetUS: 0x802CB30A, OffsetJP: 0x802CABEE, Base: Relative, UseHex: true, Color: Grey }
+  - { Name: "D< Spawn 2", Type: ushort, OffsetUS: 0x802CB30E, OffsetJP: 0x802CABF2, Base: Relative, UseHex: true, Color: Grey }
+  - { Name: "Dv Spawn 1", Type: ushort, OffsetUS: 0x802CB356, OffsetJP: 0x802CAC3A, Base: Relative, UseHex: true, Color: Grey }
+  - { Name: "Dv Spawn 2", Type: ushort, OffsetUS: 0x802CB35A, OffsetJP: 0x802CAC3E, Base: Relative, UseHex: true, Color: Grey }

@@ -1,0 +1,302 @@
+Data:
+  - { Name: "X", GroupList: Basic, Type: float, Offset: 0xA0, Base: Object, Coord: "X" }
+  - { Name: "Y", GroupList: Basic, Type: float, Offset: 0xA4, Base: Object, Coord: "Y" }
+  - { Name: "Z", GroupList: Basic, Type: float, Offset: 0xA8, Base: Object, Coord: "Z" }
+  - { Name: "X Speed", GroupList: Basic, Type: float, Offset: 0xAC, Base: Object, Coord: "X" }
+  - { Name: "Y Speed", GroupList: Basic, Type: float, Offset: 0xB0, Base: Object, Coord: "Y" }
+  - { Name: "Z Speed", GroupList: Basic, Type: float, Offset: 0xB4, Base: Object, Coord: "Z" }
+  - { Name: "H Speed", GroupList: Basic, Type: float, Offset: 0xB8, Base: Object }
+  - { Name: "Yaw Facing", GroupList: Basic, Type: int, Display: ushort, Offset: 0xD4, Base: Object, Subclass: Angle, Yaw: true }
+  - { Name: "IG DYaw", GroupList: Advanced, Base: Object, SpecialType: ObjectInGameDeltaYaw }
+  - { Name: "Pitch Facing", GroupList: Basic, Type: int, Display: short, Offset: 0xD0, Base: Object, Subclass: Angle }
+  - { Name: "Roll Facing", GroupList: Basic, Type: int, Display: short, Offset: 0xD8, Base: Object, Subclass: Angle }
+  - { Name: "Yaw Moving", GroupList: Basic, Type: int, Display: ushort, Offset: 0xC8, Base: Object, Subclass: Angle, Yaw: true }
+  - { Name: "Pitch Moving", GroupList: Basic, Type: int, Display: short, Offset: 0xC4, Base: Object, Subclass: Angle }
+  - { Name: "Roll Moving", GroupList: Basic, Type: int, Display: short, Offset: 0xCC, Base: Object, Subclass: Angle }
+  - { Name: "Yaw Velocity", GroupList: Basic, Type: int, Offset: 0x118, Base: Object, Subclass: Angle }
+  - { Name: "Pitch Velocity", GroupList: Basic, Type: int, Offset: 0x114, Base: Object, Subclass: Angle }
+  - { Name: "Roll Velocity", GroupList: Basic, Type: int, Offset: 0x11C, Base: Object, Subclass: Angle }
+  - { Name: "Graphics X", GroupList: Advanced, Type: float, Offset: 0x20, Base: Object, Coord: "X" }
+  - { Name: "Graphics Y", GroupList: Advanced, Type: float, Offset: 0x24, Base: Object, Coord: "Y" }
+  - { Name: "Graphics Z", GroupList: Advanced, Type: float, Offset: 0x28, Base: Object, Coord: "Z" }
+  - { Name: "Graphics Yaw", GroupList: Advanced, Type: ushort, Offset: 0x1C, Base: Object, Subclass: Angle, Yaw: true }
+  - { Name: "Graphics Pitch", GroupList: Advanced, Type: short, Offset: 0x1A, Base: Object, Subclass: Angle }
+  - { Name: "Graphics Roll", GroupList: Advanced, Type: short, Offset: 0x1E, Base: Object, Subclass: Angle }
+  - { Name: "Camera View X", GroupList: Advanced, Type: float, Offset: 0x54, Base: Object, Coord: "X" }
+  - { Name: "Camera View Y", GroupList: Advanced, Type: float, Offset: 0x58, Base: Object, Coord: "Y" }
+  - { Name: "Camera View Z", GroupList: Advanced, Type: float, Offset: 0x5C, Base: Object, Coord: "Z" }
+  - { Name: "XDist Obj to Mario", GroupList: Advanced, Base: Object, SpecialType: XDistObjToMario, Coord: "X" }
+  - { Name: "YDist Obj to Mario", GroupList: Intermediate, Base: Object, SpecialType: YDistObjToMario, Coord: "Y" }
+  - { Name: "ZDist Obj to Mario", GroupList: Advanced, Base: Object, SpecialType: ZDistObjToMario, Coord: "Z" }
+  - { Name: "FDist Obj to Mario", GroupList: Advanced, Base: Object, SpecialType: FDistObjToMario }
+  - { Name: "SDist Obj to Mario", GroupList: Advanced, Base: Object, SpecialType: SDistObjToMario }
+  - { Name: "HDist Obj to Mario", GroupList: Intermediate, Base: Object, SpecialType: HDistObjToMario }
+  - { Name: "Dist Obj to Mario", GroupList: Intermediate, Base: Object, SpecialType: DistObjToMario }
+  - { Name: "\"Dist to Mario\"", GroupList: Advanced, Type: float, Offset: 0x015C, Base: Object }
+  - { Name: "XDist Home to Mario", GroupList: Advanced, Base: Object, SpecialType: XDistObjHomeToMario, Coord: "X" }
+  - { Name: "YDist Home to Mario", GroupList: Intermediate, Base: Object, SpecialType: YDistObjHomeToMario, Coord: "Y" }
+  - { Name: "ZDist Home to Mario", GroupList: Advanced, Base: Object, SpecialType: ZDistObjHomeToMario, Coord: "Z" }
+  - { Name: "HDist Home to Mario", GroupList: Intermediate, Base: Object, SpecialType: HDistObjHomeToMario }
+  - { Name: "Dist Home to Mario", GroupList: Intermediate, Base: Object, SpecialType: DistObjHomeToMario }
+  - { Name: "XDist Home to Obj", GroupList: Advanced, Base: Object, SpecialType: XDistObjHomeToObj, Coord: "X" }
+  - { Name: "YDist Home to Obj", GroupList: Advanced, Base: Object, SpecialType: YDistObjHomeToObj, Coord: "Y" }
+  - { Name: "ZDist Home to Obj", GroupList: Advanced, Base: Object, SpecialType: ZDistObjHomeToObj, Coord: "Z" }
+  - { Name: "HDist Home to Obj", GroupList: Advanced, Base: Object, SpecialType: HDistObjHomeToObj }
+  - { Name: "Dist Home to Obj", GroupList: Advanced, Base: Object, SpecialType: DistObjHomeToObj }
+  - { Name: "\"Angle to Mario\"", GroupList: Advanced, Type: ushort, Offset: 0x0162, Base: Object, Subclass: Angle, Yaw: true }
+  - { Name: "Angle Obj to Mario", GroupList: Intermediate, Base: Object, SpecialType: AngleObjToMario, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "DAngle Obj to Mario", GroupList: Intermediate, Base: Object, SpecialType: DAngleObjToMario, Subclass: Angle, Display: short }
+  - { Name: "Angle Mario to Obj", GroupList: Intermediate, Base: Object, SpecialType: AngleMarioToObj, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "DAngle Mario to Obj", GroupList: Intermediate, Base: Object, SpecialType: DAngleMarioToObj, Subclass: Angle, Display: short }
+  - { Name: "DAngle Mario to Obj Mod 512", GroupList: Advanced, Base: Object, SpecialType: DAngleMarioToObjMod512, Subclass: Angle, Display: short }
+  - { Name: "Pitch Mario to Obj", GroupList: Advanced, Base: Object, SpecialType: PitchMarioToObj, Subclass: Angle, Display: short }
+  - { Name: "DPitch Mario to Obj", GroupList: Advanced, Base: Object, SpecialType: DPitchMarioToObj, Subclass: Angle, Display: short }
+  - { Name: "Angle Obj to Home", GroupList: Advanced, Base: Object, SpecialType: AngleObjToObjHome, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "DAngle Obj to Home", GroupList: Advanced, Base: Object, SpecialType: DAngleObjToObjHome, Subclass: Angle, Display: short }
+  - { Name: "Angle Home to Obj", GroupList: Advanced, Base: Object, SpecialType: AngleObjHomeToObj, Subclass: Angle, Display: ushort, Yaw: true }
+  - { Name: "Hitbox Pointer", GroupList: Advanced, Type: uint, Offset: 0x218, Base: Object, Subclass: Address }
+  - { Name: "Hitbox Height", GroupList: Advanced, Type: float, Offset: 0x1FC, Base: Object }
+  - { Name: "Hitbox Radius", GroupList: Advanced, Type: float, Offset: 0x1F8, Base: Object }
+  - { Name: "Effective Hitbox Radius", GroupList: Advanced, Base: Object, SpecialType: EffectiveHitboxRadius }
+  - { Name: "Hurtbox Height", GroupList: Advanced, Type: float, Offset: 0x204, Base: Object }
+  - { Name: "Hurtbox Radius", GroupList: Advanced, Type: float, Offset: 0x200, Base: Object }
+  - { Name: "Effective Hurtbox Radius", GroupList: Advanced, Base: Object, SpecialType: EffectiveHurtboxRadius }
+  - { Name: "Hitbox Down Offset", GroupList: Advanced, Type: float, Offset: 0x208, Base: Object }
+  - { Name: "Mario Hitbox Away", GroupList: Intermediate, Base: Object, SpecialType: MarioHitboxAwayFromObject }
+  - { Name: "Mario Hitbox Above", GroupList: Intermediate, Base: Object, SpecialType: MarioHitboxAboveObject }
+  - { Name: "Mario Hitbox Below", GroupList: Intermediate, Base: Object, SpecialType: MarioHitboxBelowObject }
+  - { Name: "Mario Hitbox Overlap", GroupList: Intermediate, Base: Object, SpecialType: MarioHitboxOverlapsObject, Subclass: Boolean }
+  - { Name: "Mario Hurtbox Away", GroupList: Advanced, Base: Object, SpecialType: MarioHurtboxAwayFromObject }
+  - { Name: "Mario Hurtbox Above", GroupList: Advanced, Base: Object, SpecialType: MarioHurtboxAboveObject }
+  - { Name: "Mario Hurtbox Below", GroupList: Advanced, Base: Object, SpecialType: MarioHurtboxBelowObject }
+  - { Name: "Mario Hurtbox Overlap", GroupList: Advanced, Base: Object, SpecialType: MarioHurtboxOverlapsObject, Subclass: Boolean }
+  - { Name: "Punch Angle Away", GroupList: Advanced, Base: Object, SpecialType: MarioPunchAngleAway, Subclass: Angle, Display: short }
+  - { Name: "Wall Radius", GroupList: Advanced, Type: float, Offset: 0x128, Base: Object }
+  - { Name: "Tangible Dist", GroupList: Intermediate, Type: float, Offset: 0x0194, Base: Object }
+  - { Name: "Draw Dist", GroupList: Intermediate, Type: float, Offset: 0x019C, Base: Object }
+  - { Name: "Floor Height", GroupList: Advanced, Type: float, Offset: 0xE8, Base: Object }
+  - { Name: "Gravity", GroupList: Advanced, Type: float, Offset: 0xE4, Base: Object }
+  - { Name: "Water Buoyancy", GroupList: Advanced, Type: float, Offset: 0x174, Base: Object }
+  - { Name: "Bounce Coefficient", GroupList: Advanced, Type: float, Offset: 0x158, Base: Object }
+  - { Name: "Friction", GroupList: Advanced, Type: float, Offset: 0x170, Base: Object }
+  - { Name: "Drag Strength", GroupList: Advanced, Type: float, Offset: 0x12C, Base: Object }
+  - { Name: "Damage", GroupList: Advanced, Type: int, Offset: 0x180, Base: Object }
+  - { Name: "Health", GroupList: Advanced, Type: int, Offset: 0x184, Base: Object }
+  - { Name: "Opacity", GroupList: Advanced, Type: int, Offset: 0x17C, Base: Object }
+  - { Name: "Native Room", GroupList: Intermediate, Type: int, Offset: 0x1A0, Base: Object }
+  - { Name: "Talking State", GroupList: Advanced, Type: short, Offset: 0x92, Base: Object }
+  - { Name: "Active During Timestop", GroupList: Advanced, Type: ushort, Offset: 0x74, Base: Object, Mask: 0x0030, Subclass: Boolean }
+  - { Name: "Platform Object", GroupList: Advanced, Type: uint, Offset: 0x214, Base: Object, Subclass: Object }
+  - { Name: "PG B Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033D0B8, OffsetJP: 0x8033BD48, Base: Relative, Subclass: Object, Color: Pink }
+  - { Name: "PG B Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033D0BC, OffsetJP: 0x8033BD4C, Base: Relative, Subclass: Object, Color: Pink }
+  - { Name: "PG 9 Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CFE8, OffsetJP: 0x8033BC78, Base: Relative, Subclass: Object, Color: Red }
+  - { Name: "PG 9 Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CFEC, OffsetJP: 0x8033BC7C, Base: Relative, Subclass: Object, Color: Red }
+  - { Name: "PG A Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033D050, OffsetJP: 0x8033BCE0, Base: Relative, Subclass: Object, Color: Orange }
+  - { Name: "PG A Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033D054, OffsetJP: 0x8033BCE4, Base: Relative, Subclass: Object, Color: Orange }
+  - { Name: "PG 0 Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CC40, OffsetJP: 0x8033B8D0, Base: Relative, Subclass: Object, Color: Orange }
+  - { Name: "PG 0 Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CC44, OffsetJP: 0x8033B8D4, Base: Relative, Subclass: Object, Color: Orange }
+  - { Name: "PG 5 Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CE48, OffsetJP: 0x8033BAD8, Base: Relative, Subclass: Object, Color: Yellow }
+  - { Name: "PG 5 Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CE4C, OffsetJP: 0x8033BADC, Base: Relative, Subclass: Object, Color: Yellow }
+  - { Name: "PG 4 Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CDE0, OffsetJP: 0x8033BA70, Base: Relative, Subclass: Object, Color: Green }
+  - { Name: "PG 4 Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CDE4, OffsetJP: 0x8033BA74, Base: Relative, Subclass: Object, Color: Green }
+  - { Name: "PG 2 Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CD10, OffsetJP: 0x8033B9A0, Base: Relative, Subclass: Object, Color: LightBlue }
+  - { Name: "PG 2 Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CD14, OffsetJP: 0x8033B9A4, Base: Relative, Subclass: Object, Color: LightBlue }
+  - { Name: "PG 6 Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CEB0, OffsetJP: 0x8033BB40, Base: Relative, Subclass: Object, Color: Blue }
+  - { Name: "PG 6 Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CEB4, OffsetJP: 0x8033BB44, Base: Relative, Subclass: Object, Color: Blue }
+  - { Name: "PG 8 Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CF80, OffsetJP: 0x8033BC10, Base: Relative, Subclass: Object, Color: Purple }
+  - { Name: "PG 8 Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033CF84, OffsetJP: 0x8033BC14, Base: Relative, Subclass: Object, Color: Purple }
+  - { Name: "PG C Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033D120, OffsetJP: 0x8033BDB0, Base: Relative, Subclass: Object, Color: Pink }
+  - { Name: "PG C Prev", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x8033D124, OffsetJP: 0x8033BDB4, Base: Relative, Subclass: Object, Color: Pink }
+  - { Name: "Vacant Next", GroupList: ProcessGroup, Type: uint, OffsetUS: 0x80361150, OffsetJP: 0x8035FDE0, Base: Relative, Subclass: Object, Color: Grey }
+  - { Name: "Process Group", GroupList: Advanced, Base: ProcessGroup, SpecialType: ObjectProcessGroup, Display: sbyte, UseHex: true }
+  - { Name: "Process Group Desc.", GroupList: Advanced, Base: ProcessGroup, SpecialType: ObjectProcessGroupDescription, Subclass: String }
+  - { Name: "Prev Memory Obj", GroupList: Advanced, Type: uint, Offset: 0x04, Base: Object, Subclass: Object }
+  - { Name: "Next Memory Obj", GroupList: Advanced, Type: uint, Offset: 0x08, Base: Object, Subclass: Object }
+  - { Name: "Prev Processed Obj", GroupList: Advanced, Type: uint, Offset: 0x64, Base: Object, Subclass: Object }
+  - { Name: "Next Processed Obj", GroupList: Advanced, Type: uint, Offset: 0x60, Base: Object, Subclass: Object }
+  - { Name: "Parent Obj", GroupList: Intermediate, Type: uint, Offset: 0x68, Base: Object, Subclass: Object }
+  - { Name: "Behavior Script", GroupList: Advanced, Type: uint, Offset: 0x020C, Base: Object, Subclass: Address }
+  - { Name: "Graphics", GroupList: Intermediate, Type: uint, Offset: 0x14, Base: Object, Subclass: Address }
+  - { Name: "Model", GroupList: Intermediate, Type: uint, Offset: 0x218, Base: Object, Subclass: Address }
+  - { Name: "Shadow Radius", GroupList: Advanced, Type: short, Offset: 0x14, Base: Graphics }
+  - { Name: "Shadow Opacity", GroupList: Advanced, Type: byte, Offset: 0x16, Base: Graphics }
+  - { Name: "Shadow Type", GroupList: Advanced, Type: byte, Offset: 0x17, Base: Graphics }
+  - { Name: "Visible", GroupList: Intermediate, Type: byte, Offset: 0x3, Mask: 0x10, Base: Object, Subclass: Boolean, InvertBool: true }
+  - { Name: "Active", GroupList: Intermediate, Type: byte, Offset: 0x3, Mask: 0x01, Base: Object, Subclass: Boolean }
+  - { Name: "Visual Pos Updates", GroupList: Advanced, Type: int, Offset: 0x8c, Base: Object, Subclass: Boolean, Mask: 0x00000001 }
+  - { Name: "Visual Angle Updates", GroupList: Advanced, Type: int, Offset: 0x8c, Base: Object, Subclass: Boolean, Mask: 0x00000008 }
+  - { Name: "Face Camera", GroupList: Intermediate, Type: byte, Offset: 0x3, Mask: 0x04, Base: Object, Subclass: Boolean }
+  - { Name: "Forward Movement", GroupList: Advanced, Type: int, Offset: 0x8c, Base: Object, Subclass: Boolean, Mask: 0x00000002 }
+  - { Name: "Mario Close", GroupList: Advanced, Type: byte, Offset: 0x77, Base: Object, Subclass: Boolean }
+  - { Name: "Tangible", GroupList: Advanced, Type: int, Offset: 0x9C, Base: Object }
+  - { Name: "Use Relative Pos", GroupList: Advanced, Type: int, Offset: 0x8c, Base: Object, Subclass: Boolean, Mask: 0x00000200 }
+  - { Name: "Relative X", GroupList: Advanced, Type: float, Offset: 0x138, Base: Object, Coord: "X" }
+  - { Name: "Relative Y", GroupList: Advanced, Type: float, Offset: 0x13C, Base: Object, Coord: "Y" }
+  - { Name: "Relative Z", GroupList: Advanced, Type: float, Offset: 0x140, Base: Object, Coord: "Z" }
+  - { Name: "00 Update Gfx Pos and Angle", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000001 }
+  - { Name: "01 Move XZ Using FVel", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000002 }
+  - { Name: "02 Move Y with Terminal Vel", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000004 }
+  - { Name: "03 Set Face Yaw to Move Yaw", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000008 }
+  - { Name: "04 Set Face Angle to Move Angle", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000010 }
+  - { Name: "05 OBJ_FLAG_0020", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000020 }
+  - { Name: "06 Compute Dist to Mario", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000040 }
+  - { Name: "07 Active from Afar", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000080 }
+  - { Name: "08 OBJ_FLAG_0100", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000100 }
+  - { Name: "09 Transform Relative to Parent", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000200 }
+  - { Name: "10 Holdable", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000400 }
+  - { Name: "11 Set Throw Matrix from Transform", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00000800 }
+  - { Name: "12 OBJ_FLAG_1000", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00001000 }
+  - { Name: "13 Compute Angle to Mario", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00002000 }
+  - { Name: "14 Persistent Respawn", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00004000 }
+  - { Name: "15 OBJ_FLAG_8000", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00008000 }
+  - { Name: "16", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00010000 }
+  - { Name: "17", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00020000 }
+  - { Name: "18", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00040000 }
+  - { Name: "19", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00080000 }
+  - { Name: "20", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00100000 }
+  - { Name: "21", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00200000 }
+  - { Name: "22", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00400000 }
+  - { Name: "23", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x00800000 }
+  - { Name: "24", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x01000000 }
+  - { Name: "25", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x02000000 }
+  - { Name: "26", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x04000000 }
+  - { Name: "27", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x08000000 }
+  - { Name: "28", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x10000000 }
+  - { Name: "29", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x20000000 }
+  - { Name: "30 OBJ_FLAG_30", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x40000000 }
+  - { Name: "31", GroupList: Flags, Type: uint, Offset: 0x8C, Base: Object, Subclass: Boolean, Mask: 0x80000000 }
+  - { Name: "Collision Type", GroupList: "Advanced,Collision", Type: uint, Offset: 0x130, Base: Object, UseHex: true }
+  - { Name: "00 Hoot", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000001 }
+  - { Name: "01 Grabbable", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000002 }
+  - { Name: "02 Door", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000004 }
+  - { Name: "03 Hurtbox", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000008 }
+  - { Name: "04 Coin", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000010 }
+  - { Name: "05 Cap", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000020 }
+  - { Name: "06 Pole", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000040 }
+  - { Name: "07 Koopa", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000080 }
+  - { Name: "08 Spiny", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000100 }
+  - { Name: "09 Breakable Block", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000200 }
+  - { Name: "10 Wind", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000400 }
+  - { Name: "11 Warp Door", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00000800 }
+  - { Name: "12 Star / Key", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00001000 }
+  - { Name: "13 Warp", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00002000 }
+  - { Name: "14 Cannon Base", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00004000 }
+  - { Name: "15 Bounce Top", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00008000 }
+  - { Name: "16 Water Ring", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00010000 }
+  - { Name: "17 Bully", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00020000 }
+  - { Name: "18 Burns", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00040000 }
+  - { Name: "19 Koopa Shell", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00080000 }
+  - { Name: "20 (unused)", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00100000 }
+  - { Name: "21 Hurtbox 2", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00200000 }
+  - { Name: "22 Bounce Top/Bottom", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00400000 }
+  - { Name: "23 Text", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x00800000 }
+  - { Name: "24 Tornado", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x01000000 }
+  - { Name: "25 Whirlpool", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x02000000 }
+  - { Name: "26 Clam / Bubba", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x04000000 }
+  - { Name: "27 BBH Entrance", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x08000000 }
+  - { Name: "28 Snufit Bullet", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x10000000 }
+  - { Name: "29 Shocks", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x20000000 }
+  - { Name: "30 Igloo Barrier", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x40000000 }
+  - { Name: "31 (unused)", GroupList: Collision, Type: uint, Offset: 0x130, Base: Object, Subclass: Boolean, Mask: 0x80000000 }
+  - { Name: "Num Collided Objs", GroupList: Advanced, Type: ushort, Offset: 0x76, Base: Object }
+  - { Name: "Collided Obj 1", GroupList: Advanced, Type: uint, Offset: 0x78, Base: Object, Subclass: Object }
+  - { Name: "Collided Obj 2", GroupList: Advanced, Type: uint, Offset: 0x7C, Base: Object, Subclass: Object }
+  - { Name: "Collided Obj 3", GroupList: Advanced, Type: uint, Offset: 0x80, Base: Object, Subclass: Object }
+  - { Name: "Collided Obj 4", GroupList: Advanced, Type: uint, Offset: 0x84, Base: Object, Subclass: Object }
+  - { Name: "Movement Flags", GroupList: "Advanced,Movement", Type: uint, Offset: 0xEC, Base: Object, UseHex: true }
+  - { Name: "00 Landing", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000001 }
+  - { Name: "01 On Ground", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000002 }
+  - { Name: "02 Leaving Ground", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000004 }
+  - { Name: "03 Entering Water", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000008 }
+  - { Name: "04 Surface of Water", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000010 }
+  - { Name: "05 In Water", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000020 }
+  - { Name: "06 On Ground Under Water", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000040 }
+  - { Name: "07 In Air", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000080 }
+  - { Name: "08", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000100 }
+  - { Name: "09 Wall", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000200 }
+  - { Name: "10 Ledge", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000400 }
+  - { Name: "11 Above Lava", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00000800 }
+  - { Name: "12", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00001000 }
+  - { Name: "13 Hard Landing", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00002000 }
+  - { Name: "14 Above Death Barrier", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00004000 }
+  - { Name: "15", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00008000 }
+  - { Name: "16", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00010000 }
+  - { Name: "17", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00020000 }
+  - { Name: "18", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00040000 }
+  - { Name: "19", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00080000 }
+  - { Name: "20", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00100000 }
+  - { Name: "21", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00200000 }
+  - { Name: "22", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00400000 }
+  - { Name: "23", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x00800000 }
+  - { Name: "24", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x01000000 }
+  - { Name: "25", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x02000000 }
+  - { Name: "26", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x04000000 }
+  - { Name: "27", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x08000000 }
+  - { Name: "28", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x10000000 }
+  - { Name: "29", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x20000000 }
+  - { Name: "30", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x40000000 }
+  - { Name: "31", GroupList: Movement, Type: uint, Offset: 0xEC, Base: Object, Subclass: Boolean, Mask: 0x80000000 }
+  - { Name: "Animation", GroupList: Intermediate, Type: uint, Offset: 0x3C, Base: Object, Subclass: Address }
+  - { Name: "Don't Loop Animation", GroupList: Advanced, Type: short, Offset: 0x00, Base: Animation, Mask: 0x0001, Subclass: Boolean }
+  - { Name: "Reverse Animation", GroupList: Advanced, Type: short, Offset: 0x00, Base: Animation, Mask: 0x0002, Subclass: Boolean }
+  - { Name: "Freeze Animation", GroupList: Advanced, Type: short, Offset: 0x00, Base: Animation, Mask: 0x0004, Subclass: Boolean }
+  - { Name: "Animation Max", GroupList: Advanced, Type: short, Offset: 0x08, Base: Animation }
+  - { Name: "Animation Frame", GroupList: Intermediate, Type: short, Offset: 0x40, Base: Object }
+  - { Name: "Animation Frame 2", GroupList: Advanced, Type: short, Offset: 0x44, Base: Object }
+  - { Name: "Animation Timer", GroupList: Intermediate, Type: short, Offset: 0x42, Base: Object }
+  - { Name: "Animation Speed", GroupList: Intermediate, Type: short, Offset: 0x48, Base: Object }
+  - { Name: "Graphics Timer", GroupList: Intermediate, Type: int, Offset: 0xF0, Base: Object }
+  - { Name: "Transform [0][0]", GroupList: Transformation, Type: float, Offset: 0x21C, Base: Object }
+  - { Name: "Transform [1][0]", GroupList: Transformation, Type: float, Offset: 0x220, Base: Object }
+  - { Name: "Transform [2][0]", GroupList: Transformation, Type: float, Offset: 0x224, Base: Object }
+  - { Name: "Transform [3][0]", GroupList: Transformation, Type: float, Offset: 0x228, Base: Object }
+  - { Name: "Transform [0][1]", GroupList: Transformation, Type: float, Offset: 0x22C, Base: Object }
+  - { Name: "Transform [1][1]", GroupList: Transformation, Type: float, Offset: 0x230, Base: Object }
+  - { Name: "Transform [2][1]", GroupList: Transformation, Type: float, Offset: 0x234, Base: Object }
+  - { Name: "Transform [3][1]", GroupList: Transformation, Type: float, Offset: 0x238, Base: Object }
+  - { Name: "Transform [0][2]", GroupList: Transformation, Type: float, Offset: 0x23C, Base: Object }
+  - { Name: "Transform [1][2]", GroupList: Transformation, Type: float, Offset: 0x240, Base: Object }
+  - { Name: "Transform [2][2]", GroupList: Transformation, Type: float, Offset: 0x244, Base: Object }
+  - { Name: "Transform [3][2]", GroupList: Transformation, Type: float, Offset: 0x248, Base: Object }
+  - { Name: "Transform [0][3]", GroupList: Transformation, Type: float, Offset: 0x24C, Base: Object }
+  - { Name: "Transform [1][3]", GroupList: Transformation, Type: float, Offset: 0x250, Base: Object }
+  - { Name: "Transform [2][3]", GroupList: Transformation, Type: float, Offset: 0x254, Base: Object }
+  - { Name: "Transform [3][3]", GroupList: Transformation, Type: float, Offset: 0x258, Base: Object }
+  - { Name: "Scale Width", GroupList: Intermediate, Type: float, Offset: 0x2C, Base: Object, Coord: "X" }
+  - { Name: "Scale Height", GroupList: Intermediate, Type: float, Offset: 0x30, Base: Object, Coord: "Y" }
+  - { Name: "Scale Depth", GroupList: Intermediate, Type: float, Offset: 0x34, Base: Object, Coord: "Z" }
+  - { Name: "Home X", GroupList: Basic, Type: float, Offset: 0x164, Base: Object, Coord: "X" }
+  - { Name: "Home Y", GroupList: Basic, Type: float, Offset: 0x168, Base: Object, Coord: "Y" }
+  - { Name: "Home Z", GroupList: Basic, Type: float, Offset: 0x16C, Base: Object, Coord: "Z" }
+  - { Name: "Initial Release Status", GroupList: Advanced, Type: uint, Offset: 0x1D4, Base: Object, Subclass: Address }
+  - { Name: "Release Status", GroupList: Basic, Type: uint, Offset: 0x1CC, Base: Object, Subclass: Address }
+  - { Name: "Stack Index", GroupList: Advanced, Type: int, Offset: 0x1D0, Base: Object }
+  - { Name: "Interaction Status", GroupList: Basic, Type: uint, Offset: 0x134, Base: Object, UseHex: true }
+  - { Name: "Active Flags", GroupList: Advanced, Type: ushort, Offset: 0x74, Base: Object, UseHex: true }
+  - { Name: "Subtype", GroupList: Basic, Type: int, Offset: 0x144, Base: Object }
+  - { Name: "Action", GroupList: Basic, Type: int, Offset: 0x14C, Base: Object }
+  - { Name: "Action 2", GroupList: Advanced, Type: int, Offset: 0x18C, Base: Object }
+  - { Name: "Sub Action", GroupList: Advanced, Type: int, Offset: 0x150, Base: Object }
+  - { Name: "Timer", GroupList: Basic, Type: int, Offset: 0x154, Base: Object }
+  - { Name: "X Min", GroupList: Coordinate, Base: Object, SpecialType: MinXCoordinate, Color: Blue }
+  - { Name: "X Max", GroupList: Coordinate, Base: Object, SpecialType: MaxXCoordinate, Color: Blue }
+  - { Name: "Y Min", GroupList: Coordinate, Base: Object, SpecialType: MinYCoordinate, Color: Blue }
+  - { Name: "Y Max", GroupList: Coordinate, Base: Object, SpecialType: MaxYCoordinate, Color: Blue }
+  - { Name: "Z Min", GroupList: Coordinate, Base: Object, SpecialType: MinZCoordinate, Color: Blue }
+  - { Name: "Z Max", GroupList: Coordinate, Base: Object, SpecialType: MaxZCoordinate, Color: Blue }
+  - { Name: "X Range", GroupList: Coordinate, Base: Object, SpecialType: RangeXCoordinate, Coord: "X", Color: Blue }
+  - { Name: "Y Range", GroupList: Coordinate, Base: Object, SpecialType: RangeYCoordinate, Coord: "Y", Color: Blue }
+  - { Name: "Z Range", GroupList: Coordinate, Base: Object, SpecialType: RangeZCoordinate, Coord: "Z", Color: Blue }
+  - { Name: "X Midpoint", GroupList: Coordinate, Base: Object, SpecialType: MidpointXCoordinate, Coord: "X", Color: Blue }
+  - { Name: "Y Midpoint", GroupList: Coordinate, Base: Object, SpecialType: MidpointYCoordinate, Coord: "Y", Color: Blue }
+  - { Name: "Z Midpoint", GroupList: Coordinate, Base: Object, SpecialType: MidpointZCoordinate, Coord: "Z", Color: Blue }
+  - { Name: "Farthest Dist", GroupList: Coordinate, Base: Object, SpecialType: FarthestCoordinateDistance, Color: Blue }
+  - { Name: "Floor X Min", GroupList: FloorCoordinate, Base: Object, SpecialType: MinXFloorCoordinate, Color: LightBlue }
+  - { Name: "Floor X Max", GroupList: FloorCoordinate, Base: Object, SpecialType: MaxXFloorCoordinate, Color: LightBlue }
+  - { Name: "Floor Y Min", GroupList: FloorCoordinate, Base: Object, SpecialType: MinYFloorCoordinate, Color: LightBlue }
+  - { Name: "Floor Y Max", GroupList: FloorCoordinate, Base: Object, SpecialType: MaxYFloorCoordinate, Color: LightBlue }
+  - { Name: "Floor Z Min", GroupList: FloorCoordinate, Base: Object, SpecialType: MinZFloorCoordinate, Color: LightBlue }
+  - { Name: "Floor Z Max", GroupList: FloorCoordinate, Base: Object, SpecialType: MaxZFloorCoordinate, Color: LightBlue }
+  - { Name: "Object RNG Value", GroupList: Rng, Type: ushort, Offset: 0xCA, Base: Object, Color: Orange }
+  - { Name: "Object RNG Index", GroupList: Rng, Base: Object, SpecialType: ObjectRngIndex, Color: Orange }
+  - { Name: "Object RNG Index Diff", GroupList: Rng, Base: Object, SpecialType: ObjectRngIndexDiff, Color: Orange }

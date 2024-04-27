@@ -1,0 +1,73 @@
+Data:
+  - { Name: "Water Level", Type: short, Offset: 0x76, Base: Mario, Color: LightBlue }
+  - { Name: "Water Level Median", Type: short, OffsetUS: 0x8036118A, OffsetJP: 0x8035FE1A, OffsetSH: 0x8034334A, Base: Relative, Color: LightBlue }
+  - { Name: "Water Above Median", Base: None, SpecialType: WaterAboveMedian, Color: LightBlue }
+  - { Name: "Mario Above Water", Base: None, SpecialType: MarioAboveWater, Color: Red }
+  - { Name: "Mario Y", Type: float, Offset: 0x40, Base: Mario, Color: Red }
+  - { Name: "WDW Main WL", Type: short, OffsetUS: 0x801112E2, OffsetJP: 0x8010E462, OffsetSH: 0x8010E482, Base: Relative, Color: Blue }
+  - { Name: "WDW Town WL", Type: short, OffsetUS: 0x8011342E, OffsetJP: 0x801105AE, OffsetSH: 0x801105CE, Base: Relative, Color: Blue }
+  - { Name: "WDW Painting Level", Type: float, OffsetUS: 0x80330F3C, OffsetJP: 0x8032FFDC, Base: Relative }
+  - { Name: "Castle Lake WL", Type: short, OffsetUS: 0x8010C81C, OffsetJP: 0x801090E4, Base: Relative }
+  - { Name: "Castle Moat WL", Type: short, OffsetUS: 0x8010C810, OffsetJP: 0x801090D8, Base: Relative }
+  - { Name: "Basement Pillars WL", Type: short, OffsetUS: 0x80361192, OffsetJP: 0x8035FE22, Base: Relative }
+  - { Name: "Basement Valley WL", Type: short, OffsetUS: 0x8036118A, OffsetJP: 0x8035FE1A, Base: Relative }
+  - { Name: "Basement Halls WL", Type: short, OffsetUS: 0x80173CD4, OffsetJP: 0x80170E54, Base: Relative }
+  - { Name: "Castle Courtyard WL", Type: short, OffsetUS: 0x80101B1A, OffsetJP: 0x800FEC9A, Base: Relative }
+  - { Name: "WF WL", Type: short, OffsetUS: 0x8010D332, OffsetJP: 0x8010A4B2, Base: Relative }
+  - { Name: "JRB Main WL", Type: short, OffsetUS: 0x80107ABC, OffsetJP: 0x80104C3C, Base: Relative }
+  - { Name: "JRB Cave WL", Type: short, OffsetUS: 0x80107AC8, OffsetJP: 0x80104C48, Base: Relative }
+  - { Name: "JRB Fog", Type: short, OffsetUS: 0x80107AD4, OffsetJP: 0x80104C54, Base: Relative }
+  - { Name: "JRB Ship WL", Type: short, OffsetUS: 0x8010C95C, OffsetJP: 0x80109ADC, Base: Relative }
+  - { Name: "JRB Ship Goal WL", Type: short, OffsetUS: 0x802F810E, OffsetJP: 0x802F707E, Base: Relative }
+  - { Name: "JRB Ship End WL", Type: short, OffsetUS: 0x802F8122, OffsetJP: 0x802F7092, Base: Relative }
+  - { Name: "CCM WL", Type: short, OffsetUS: 0x8011136E, OffsetJP: 0x8010E4DE, Base: Relative }
+  - { Name: "BBH Shallow WL", Type: short, OffsetUS: 0x80121B1C, OffsetJP: 0x8011EC9C, Base: Relative }
+  - { Name: "BBH Deep WL", Type: short, OffsetUS: 0x80121B28, OffsetJP: 0x8011ECA8, Base: Relative }
+  - { Name: "HMC WL", Type: short, OffsetUS: 0x8012614C, OffsetJP: 0x801232CC, Base: Relative }
+  - { Name: "HMC Haze (Real)", Type: short, OffsetUS: 0x80126158, OffsetJP: 0x801232D8, Base: Relative }
+  - { Name: "HMC Haze (Fake)", Type: short, OffsetUS: 0x80126164, OffsetJP: 0x801232E4, Base: Relative }
+  - { Name: "LLL Volcano WL", Type: short, OffsetUS: 0x80123D00, OffsetJP: 0x80120F10, Base: Relative }
+  - { Name: "SSL Sand 1", Type: short, OffsetUS: 0x8010D766, OffsetJP: 0x8010A8E6, Base: Relative }
+  - { Name: "SSL Sand 2", Type: short, OffsetUS: 0x8010D772, OffsetJP: 0x8010A8F2, Base: Relative }
+  - { Name: "SSL WL", Type: short, OffsetUS: 0x8010D77E, OffsetJP: 0x8010A8FE, Base: Relative }
+  - { Name: "DDD Main WL", Type: short, OffsetUS: 0x80108EDA, OffsetJP: 0x8010605A, Base: Relative }
+  - { Name: "DDD Other WL", Type: short, OffsetUS: 0x80109F5E, OffsetJP: 0x801070DE, Base: Relative }
+  - { Name: "SL Bully WL", Type: short, OffsetUS: 0x80109CFE, OffsetJP: 0x80106E7E, Base: Relative }
+  - { Name: "SL Lake WL", Type: short, OffsetUS: 0x80109CF2, OffsetJP: 0x80106E72, Base: Relative }
+  - { Name: "TTM 1 WL", Type: short, OffsetUS: 0x8011273E, OffsetJP: 0x8010F8BE, Base: Relative }
+  - { Name: "TTM 2 WL", Type: short, OffsetUS: 0x80112756, OffsetJP: 0x8010F8D6, Base: Relative }
+  - { Name: "TTM 3 WL", Type: short, OffsetUS: 0x8011274A, OffsetJP: 0x8010F8CA, Base: Relative }
+  - { Name: "TTM 4 WL", Type: short, OffsetUS: 0x80112762, OffsetJP: 0x8010F8E2, Base: Relative }
+  - { Name: "THI Tiny 1 WL", Type: short, OffsetUS: 0x801086A8, OffsetJP: 0x80105828, Base: Relative }
+  - { Name: "THI Tiny 2 WL", Type: short, OffsetUS: 0x801086B4, OffsetJP: 0x80105834, Base: Relative }
+  - { Name: "THI Water Drained", Type: byte, OffsetUS: 0x80361257, OffsetJP: 0x8035FEE7, Base: Relative, Subclass: Boolean }
+  - { Name: "THI Tiny Mt WL", Type: short, OffsetUS: 0x801086C0, OffsetJP: 0x80105840, Base: Relative }
+  - { Name: "THI Huge 1 WL", Type: short, OffsetUS: 0x80106FC2, OffsetJP: 0x80104142, Base: Relative }
+  - { Name: "THI Huge 2 WL", Type: short, OffsetUS: 0x80106FCE, OffsetJP: 0x8010414E, Base: Relative }
+  - { Name: "THI Huge Mt WL", Type: short, OffsetUS: 0x80106FDA, OffsetJP: 0x8010415A, Base: Relative }
+  - { Name: "CotMC WL", Type: short, OffsetUS: 0x801069C4, OffsetJP: 0x80103B44, Base: Relative }
+  - { Name: "SA WL", Type: short, OffsetUS: 0x800FDEBE, OffsetJP: 0x800FB03E, Base: Relative }
+  - { Name: "Current Water", Base: None, SpecialType: CurrentWater, Color: Purple }
+  - { Name: "Water Pointer", Type: uint, OffsetUS: 0x80361184, OffsetJP: 0x8035FE14, Base: Relative, Subclass: Address, Color: Purple }
+  - { Name: "Num Water Levels", Type: short, Offset: 0x00, Base: Water, Color: Purple }
+  - { Name: "Water 1 Y", Type: short, Offset: 0x0C, Base: Water, Color: Purple }
+  - { Name: "Water 1 X Min", Type: short, Offset: 0x04, Base: Water, Color: Purple }
+  - { Name: "Water 1 X Max", Type: short, Offset: 0x08, Base: Water, Color: Purple }
+  - { Name: "Water 1 Z Min", Type: short, Offset: 0x06, Base: Water, Color: Purple }
+  - { Name: "Water 1 Z Max", Type: short, Offset: 0x0A, Base: Water, Color: Purple }
+  - { Name: "Water 2 Y", Type: short, Offset: 0x18, Base: Water, Color: Purple }
+  - { Name: "Water 2 X Min", Type: short, Offset: 0x10, Base: Water, Color: Purple }
+  - { Name: "Water 2 X Max", Type: short, Offset: 0x14, Base: Water, Color: Purple }
+  - { Name: "Water 2 Z Min", Type: short, Offset: 0x12, Base: Water, Color: Purple }
+  - { Name: "Water 2 Z Max", Type: short, Offset: 0x16, Base: Water, Color: Purple }
+  - { Name: "Water 3 Y", Type: short, Offset: 0x24, Base: Water, Color: Purple }
+  - { Name: "Water 3 X Min", Type: short, Offset: 0x1C, Base: Water, Color: Purple }
+  - { Name: "Water 3 X Max", Type: short, Offset: 0x20, Base: Water, Color: Purple }
+  - { Name: "Water 3 Z Min", Type: short, Offset: 0x1E, Base: Water, Color: Purple }
+  - { Name: "Water 3 Z Max", Type: short, Offset: 0x22, Base: Water, Color: Purple }
+  - { Name: "Water 4 Y", Type: short, Offset: 0x30, Base: Water, Color: Purple }
+  - { Name: "Water 4 X Min", Type: short, Offset: 0x28, Base: Water, Color: Purple }
+  - { Name: "Water 4 X Max", Type: short, Offset: 0x2C, Base: Water, Color: Purple }
+  - { Name: "Water 4 Z Min", Type: short, Offset: 0x2A, Base: Water, Color: Purple }
+  - { Name: "Water 4 Z Max", Type: short, Offset: 0x2E, Base: Water, Color: Purple }
+  - { Name: "Default WL", Type: float, OffsetUS: 0x8038BBA8, OffsetJP: 0x8038BBA8, Base: Relative, Color: Green }

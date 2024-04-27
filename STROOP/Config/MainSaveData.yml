@@ -1,0 +1,71 @@
+Data:
+  - { Name: "Current File", Type: short, OffsetUS: 0x8032DDF4, OffsetJP: 0x8032CE94, Base: Relative }
+  - { Name: "File A Coin Ranks", Type: uint, Offset: 0x0, Base: MainSave, UseHex: true, Color: LightBlue }
+  - { Name: "File B Coin Ranks", Type: uint, Offset: 0x4, Base: MainSave, UseHex: true, Color: LightBlue }
+  - { Name: "File C Coin Ranks", Type: uint, Offset: 0x8, Base: MainSave, UseHex: true, Color: LightBlue }
+  - { Name: "File D Coin Ranks", Type: uint, Offset: 0xC, Base: MainSave, UseHex: true, Color: LightBlue }
+  - { Name: "Sound Mode", Type: ushort, Offset: 0x10, Base: MainSave, Color: Pink }
+  - { Name: "In-Game Sound Mode", Type: byte, OffsetUS: 0x80226B7F, OffsetJP: 0x80226D7F, Base: Relative, Color: Pink }
+  - { Name: "Checksum Constant", Type: ushort, Offset: 0x1C, Base: MainSave, UseHex: true, Color: Grey }
+  - { Name: "Checksum", Type: ushort, Offset: 0x1E, Base: MainSave, UseHex: true, Color: Grey }
+  - { Name: "Checksum Calculated", Base: MainSave, SpecialType: MainSaveChecksumCalculated, Display: ushort, UseHex: true, Color: Grey }
+  - { Name: "File A BoB Coin Rank", Type: uint, Offset: 0x0, Mask: 0x00000003, Shift: 0, Base: MainSave }
+  - { Name: "File B BoB Coin Rank", Type: uint, Offset: 0x4, Mask: 0x00000003, Shift: 0, Base: MainSave }
+  - { Name: "File C BoB Coin Rank", Type: uint, Offset: 0x8, Mask: 0x00000003, Shift: 0, Base: MainSave }
+  - { Name: "File D BoB Coin Rank", Type: uint, Offset: 0xC, Mask: 0x00000003, Shift: 0, Base: MainSave }
+  - { Name: "File A WF Coin Rank", Type: uint, Offset: 0x0, Mask: 0x0000000C, Shift: 2, Base: MainSave }
+  - { Name: "File B WF Coin Rank", Type: uint, Offset: 0x4, Mask: 0x0000000C, Shift: 2, Base: MainSave }
+  - { Name: "File C WF Coin Rank", Type: uint, Offset: 0x8, Mask: 0x0000000C, Shift: 2, Base: MainSave }
+  - { Name: "File D WF Coin Rank", Type: uint, Offset: 0xC, Mask: 0x0000000C, Shift: 2, Base: MainSave }
+  - { Name: "File A JRB Coin Rank", Type: uint, Offset: 0x0, Mask: 0x00000030, Shift: 4, Base: MainSave }
+  - { Name: "File B JRB Coin Rank", Type: uint, Offset: 0x4, Mask: 0x00000030, Shift: 4, Base: MainSave }
+  - { Name: "File C JRB Coin Rank", Type: uint, Offset: 0x8, Mask: 0x00000030, Shift: 4, Base: MainSave }
+  - { Name: "File D JRB Coin Rank", Type: uint, Offset: 0xC, Mask: 0x00000030, Shift: 4, Base: MainSave }
+  - { Name: "File A CCM Coin Rank", Type: uint, Offset: 0x0, Mask: 0x000000C0, Shift: 6, Base: MainSave }
+  - { Name: "File B CCM Coin Rank", Type: uint, Offset: 0x4, Mask: 0x000000C0, Shift: 6, Base: MainSave }
+  - { Name: "File C CCM Coin Rank", Type: uint, Offset: 0x8, Mask: 0x000000C0, Shift: 6, Base: MainSave }
+  - { Name: "File D CCM Coin Rank", Type: uint, Offset: 0xC, Mask: 0x000000C0, Shift: 6, Base: MainSave }
+  - { Name: "File A BBH Coin Rank", Type: uint, Offset: 0x0, Mask: 0x00000300, Shift: 8, Base: MainSave }
+  - { Name: "File B BBH Coin Rank", Type: uint, Offset: 0x4, Mask: 0x00000300, Shift: 8, Base: MainSave }
+  - { Name: "File C BBH Coin Rank", Type: uint, Offset: 0x8, Mask: 0x00000300, Shift: 8, Base: MainSave }
+  - { Name: "File D BBH Coin Rank", Type: uint, Offset: 0xC, Mask: 0x00000300, Shift: 8, Base: MainSave }
+  - { Name: "File A HMC Coin Rank", Type: uint, Offset: 0x0, Mask: 0x00000C00, Shift: 10, Base: MainSave }
+  - { Name: "File B HMC Coin Rank", Type: uint, Offset: 0x4, Mask: 0x00000C00, Shift: 10, Base: MainSave }
+  - { Name: "File C HMC Coin Rank", Type: uint, Offset: 0x8, Mask: 0x00000C00, Shift: 10, Base: MainSave }
+  - { Name: "File D HMC Coin Rank", Type: uint, Offset: 0xC, Mask: 0x00000C00, Shift: 10, Base: MainSave }
+  - { Name: "File A LLL Coin Rank", Type: uint, Offset: 0x0, Mask: 0x00003000, Shift: 12, Base: MainSave }
+  - { Name: "File B LLL Coin Rank", Type: uint, Offset: 0x4, Mask: 0x00003000, Shift: 12, Base: MainSave }
+  - { Name: "File C LLL Coin Rank", Type: uint, Offset: 0x8, Mask: 0x00003000, Shift: 12, Base: MainSave }
+  - { Name: "File D LLL Coin Rank", Type: uint, Offset: 0xC, Mask: 0x00003000, Shift: 12, Base: MainSave }
+  - { Name: "File A SSL Coin Rank", Type: uint, Offset: 0x0, Mask: 0x0000C000, Shift: 14, Base: MainSave }
+  - { Name: "File B SSL Coin Rank", Type: uint, Offset: 0x4, Mask: 0x0000C000, Shift: 14, Base: MainSave }
+  - { Name: "File C SSL Coin Rank", Type: uint, Offset: 0x8, Mask: 0x0000C000, Shift: 14, Base: MainSave }
+  - { Name: "File D SSL Coin Rank", Type: uint, Offset: 0xC, Mask: 0x0000C000, Shift: 14, Base: MainSave }
+  - { Name: "File A DDD Coin Rank", Type: uint, Offset: 0x0, Mask: 0x00030000, Shift: 16, Base: MainSave }
+  - { Name: "File B DDD Coin Rank", Type: uint, Offset: 0x4, Mask: 0x00030000, Shift: 16, Base: MainSave }
+  - { Name: "File C DDD Coin Rank", Type: uint, Offset: 0x8, Mask: 0x00030000, Shift: 16, Base: MainSave }
+  - { Name: "File D DDD Coin Rank", Type: uint, Offset: 0xC, Mask: 0x00030000, Shift: 16, Base: MainSave }
+  - { Name: "File A SL Coin Rank", Type: uint, Offset: 0x0, Mask: 0x000C0000, Shift: 18, Base: MainSave }
+  - { Name: "File B SL Coin Rank", Type: uint, Offset: 0x4, Mask: 0x000C0000, Shift: 18, Base: MainSave }
+  - { Name: "File C SL Coin Rank", Type: uint, Offset: 0x8, Mask: 0x000C0000, Shift: 18, Base: MainSave }
+  - { Name: "File D SL Coin Rank", Type: uint, Offset: 0xC, Mask: 0x000C0000, Shift: 18, Base: MainSave }
+  - { Name: "File A WDW Coin Rank", Type: uint, Offset: 0x0, Mask: 0x00300000, Shift: 20, Base: MainSave }
+  - { Name: "File B WDW Coin Rank", Type: uint, Offset: 0x4, Mask: 0x00300000, Shift: 20, Base: MainSave }
+  - { Name: "File C WDW Coin Rank", Type: uint, Offset: 0x8, Mask: 0x00300000, Shift: 20, Base: MainSave }
+  - { Name: "File D WDW Coin Rank", Type: uint, Offset: 0xC, Mask: 0x00300000, Shift: 20, Base: MainSave }
+  - { Name: "File A TTM Coin Rank", Type: uint, Offset: 0x0, Mask: 0x00C00000, Shift: 22, Base: MainSave }
+  - { Name: "File B TTM Coin Rank", Type: uint, Offset: 0x4, Mask: 0x00C00000, Shift: 22, Base: MainSave }
+  - { Name: "File C TTM Coin Rank", Type: uint, Offset: 0x8, Mask: 0x00C00000, Shift: 22, Base: MainSave }
+  - { Name: "File D TTM Coin Rank", Type: uint, Offset: 0xC, Mask: 0x00C00000, Shift: 22, Base: MainSave }
+  - { Name: "File A THI Coin Rank", Type: uint, Offset: 0x0, Mask: 0x03000000, Shift: 24, Base: MainSave }
+  - { Name: "File B THI Coin Rank", Type: uint, Offset: 0x4, Mask: 0x03000000, Shift: 24, Base: MainSave }
+  - { Name: "File C THI Coin Rank", Type: uint, Offset: 0x8, Mask: 0x03000000, Shift: 24, Base: MainSave }
+  - { Name: "File D THI Coin Rank", Type: uint, Offset: 0xC, Mask: 0x03000000, Shift: 24, Base: MainSave }
+  - { Name: "File A TTC Coin Rank", Type: uint, Offset: 0x0, Mask: 0x0C000000, Shift: 26, Base: MainSave }
+  - { Name: "File B TTC Coin Rank", Type: uint, Offset: 0x4, Mask: 0x0C000000, Shift: 26, Base: MainSave }
+  - { Name: "File C TTC Coin Rank", Type: uint, Offset: 0x8, Mask: 0x0C000000, Shift: 26, Base: MainSave }
+  - { Name: "File D TTC Coin Rank", Type: uint, Offset: 0xC, Mask: 0x0C000000, Shift: 26, Base: MainSave }
+  - { Name: "File A RR Coin Rank", Type: uint, Offset: 0x0, Mask: 0x30000000, Shift: 28, Base: MainSave }
+  - { Name: "File B RR Coin Rank", Type: uint, Offset: 0x4, Mask: 0x30000000, Shift: 28, Base: MainSave }
+  - { Name: "File C RR Coin Rank", Type: uint, Offset: 0x8, Mask: 0x30000000, Shift: 28, Base: MainSave }
+  - { Name: "File D RR Coin Rank", Type: uint, Offset: 0xC, Mask: 0x30000000, Shift: 28, Base: MainSave }

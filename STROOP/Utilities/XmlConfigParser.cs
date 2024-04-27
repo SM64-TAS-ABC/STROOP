@@ -213,32 +213,60 @@ namespace STROOP.Utilities
                 .ConvertAll(precursor => precursor.CreateWatchVariableControl());
         }
 
+        public class YamlWatchVariable
+        {
+            public string Name;
+            public string Type;
+            public string SpecialType;
+            public string Base;
+            public uint? OffsetUS;
+            public uint? OffsetJP;
+            public uint? OffsetEU;
+            public uint? OffsetSH;
+            public uint? Offset;
+            public uint? Mask;
+            public int Shift;
+            public bool HandleMapping = true;
+            public string Subclass;
+            public string GroupList;
+            public string Color;
+            public string Display;
+            public int? Round;
+            public bool? UseHex;
+            public bool? InvertBool;
+            public bool? Yaw;
+            public string Coord;
+            public string Fixed;
+        }
+        public class YamlWatchVariableList
+        {
+            public YamlWatchVariable[] Data;
+        }
+
         public static List<WatchVariableControlPrecursor> OpenWatchVariableControlPrecursors(string path)
         {
-            string schemaFile = "MiscDataSchema.xsd";
-            var objectData = new List<WatchVariableControlPrecursor>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", schemaFile);
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
+            using (var reader = new StreamReader(path))
             {
-                if (element.Name.ToString() != "Data")
-                    continue;
+                YamlWatchVariableList watchVars = YamlDserializer.Deserialize<YamlWatchVariableList>(reader);
+                
+                var precursors = new List<WatchVariableControlPrecursor>(); 
+                foreach (YamlWatchVariable w in watchVars.Data)
+                {
+                    BaseAddressTypeEnum baseType = WatchVariableUtilities.GetBaseAddressType(w.Base);
+                    WatchVariableSubclass subclass = WatchVariableUtilities.GetSubclass(w.Subclass);
+                    Color? color = w.Color == null ? null : (Color?)ColorUtilities.GetColorFromString(w.Color);
+                    Type displayType = w.Display == null ? null : TypeUtilities.StringToType[w.Display];
+                    Coordinate? coord = w.Coord == null ? null : (Coordinate?)WatchVariableUtilities.GetCoordinate(w.Coord);
+                    List<VariableGroup> groupList = WatchVariableUtilities.ParseVariableGroupList(w.GroupList);
+                    List<uint> fixedAddresses = w.Fixed == null ? null : ParsingUtilities.ParseHexList(w.Fixed);
+                    var precursor = new WatchVariableControlPrecursor(w.Type, w.SpecialType, baseType, w.OffsetUS, w.OffsetJP, 
+                        w.OffsetSH, w.OffsetEU, w.Offset, w.Mask, w.Shift, w.HandleMapping, w.Name, subclass, color, 
+                        displayType, w.Round, w.UseHex, w.InvertBool, w.Yaw, coord, groupList, fixedAddresses);
+                    precursors.Add(precursor);
+                }
 
-                WatchVariableControlPrecursor watchVarControl = new WatchVariableControlPrecursor(element);
-                objectData.Add(watchVarControl);
+                return precursors;
             }
-
-            return objectData;
         }
 
         public static ObjectAssociations OpenObjectAssoc(string path, ObjectSlotManagerGui objectSlotManagerGui)

@@ -1,0 +1,5 @@
+Data:
+  - { Name: "gAreas", GroupList: Basic, Type: uint, OffsetUS: 0x8032DDC8, OffsetJP: 0x8032DDC8, Base: Relative, Subclass: Address, Color: LightBlue }
+  - { Name: "Current Area Index", GroupList: Basic, Type: short, OffsetUS: 0x8033BACA, OffsetJP: 0x8033BACA, Base: Relative, Color: LightBlue }
+  - { Name: "Warp Nodes Address", GroupList: Basic, SpecialType: WarpNodesAddress, Base: None, Subclass: Address, Color: LightBlue }
+  - { Name: "Num Warp Nodes", GroupList: Basic, SpecialType: NumWarpNodes, Base: None, Color: LightBlue }

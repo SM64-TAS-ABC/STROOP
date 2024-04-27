@@ -1,0 +1,31 @@
+Data:
+  - { Name: "ID", Base: Painting, Offset: 0x0, Type: short }
+  - { Name: "Face Count", Base: Painting, Offset: 0x2, Type: sbyte }
+  - { Name: "Ripple Type", Base: Painting, Offset: 0x3, Type: sbyte }
+  - { Name: "Last Floor", Base: Painting, Offset: 0x4, Type: sbyte }
+  - { Name: "Current Floor", Base: Painting, Offset: 0x5, Type: sbyte }
+  - { Name: "Floor Entered", Base: Painting, Offset: 0x6, Type: sbyte }
+  - { Name: "Ripple Status", Base: Painting, Offset: 0x7, Type: sbyte }
+  - { Name: "X Rotation", Base: Painting, Offset: 0x8, Type: float }
+  - { Name: "Y Rotation", Base: Painting, Offset: 0xC, Type: float }
+  - { Name: "X", Base: Painting, Offset: 0x10, Type: float }
+  - { Name: "Y", Base: Painting, Offset: 0x14, Type: float }
+  - { Name: "Z", Base: Painting, Offset: 0x18, Type: float }
+  - { Name: "Current Ripple Magnitude", Base: Painting, Offset: 0x1C, Type: float }
+  - { Name: "Passive Ripple Magnitude", Base: Painting, Offset: 0x20, Type: float }
+  - { Name: "Entry Ripple Magnitude", Base: Painting, Offset: 0x24, Type: float }
+  - { Name: "Current Ripple Rate", Base: Painting, Offset: 0x28, Type: float }
+  - { Name: "Passive Ripple Rate", Base: Painting, Offset: 0x2C, Type: float }
+  - { Name: "Entry Ripple Rate", Base: Painting, Offset: 0x30, Type: float }
+  - { Name: "Dispersion Factor", Base: Painting, Offset: 0x34, Type: float }
+  - { Name: "Passive Dispersion Factor", Base: Painting, Offset: 0x38, Type: float }
+  - { Name: "Entry Dispersion Factor", Base: Painting, Offset: 0x3C, Type: float }
+  - { Name: "Ripple Timer", Base: Painting, Offset: 0x40, Type: float }
+  - { Name: "Horizontal Ripple Spot", Base: Painting, Offset: 0x44, Type: float }
+  - { Name: "Vertical Ripple Spot", Base: Painting, Offset: 0x48, Type: float }
+  - { Name: "Ripple Trigger", Base: Painting, Offset: 0x6C, Type: sbyte }
+  - { Name: "Brightness", Base: Painting, Offset: 0x6D, Type: byte }
+  - { Name: "Last Mario Under Painting", Base: Painting, Offset: 0x6E, Type: sbyte }
+  - { Name: "Current Mario Under Painting", Base: Painting, Offset: 0x6F, Type: sbyte }
+  - { Name: "New Mario Under Painting", Base: Painting, Offset: 0x70, Type: sbyte }
+  - { Name: "Size", Base: Painting, Offset: 0x74, Type: float }

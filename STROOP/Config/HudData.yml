@@ -1,0 +1,34 @@
+Data:
+  - { Name: "Life Count", Type: sbyte, Offset: 0xAD, Base: Mario }
+  - { Name: "Life Display", Type: short, Offset: 0xF0, Base: Mario }
+  - { Name: "HP (Hex)", Type: short, Offset: 0xAE, Base: Mario, UseHex: true }
+  - { Name: "HP (Dec)", Type: short, Offset: 0xAE, Base: Mario }
+  - { Name: "HP (Remainder)", Type: byte, Offset: 0xAF, Base: Mario }
+  - { Name: "HP (Integer)", Type: byte, Offset: 0xAE, Base: Mario }
+  - { Name: "HP Display", Type: short, Offset: 0xF6, Base: Mario }
+  - { Name: "HP Increase Counter", Type: byte, Offset: 0xB3, Base: Mario }
+  - { Name: "HP Decrease Counter", Type: byte, Offset: 0xB2, Base: Mario }
+  - { Name: "Coin Count", Type: short, Offset: 0xA8, Base: Mario }
+  - { Name: "Coin Display", Type: short, Offset: 0xF2, Base: Mario }
+  - { Name: "Coin Counter", Type: ushort, OffsetUS: 0x803316D2, OffsetJP: 0x803305CA, Base: Relative }
+  - { Name: "Red Coin Count", Type: sbyte, OffsetUS: 0x803613FE, OffsetJP: 0x8036008E, Base: Relative }
+  - { Name: "Star Count", Type: short, Offset: 0xAA, Base: Mario }
+  - { Name: "Star Display", Type: short, Offset: 0xF4, Base: Mario }
+  - { Name: "Previous Star Count", Type: short, Offset: 0xB8, Base: Mario }
+  - { Name: "Stars in File", Base: File, SpecialType: StarsInFile }
+  - { Name: "Time Counting", Type: byte, Offset: 0xEE, Mask: 0x01, Base: Mario, Subclass: Boolean, Color: Purple }
+  - { Name: "Time (Number)", Type: ushort, Offset: 0xFC, Base: Mario, Color: Purple }
+  - { Name: "Time (Text)", Base: None, SpecialType: HudTimeText, Subclass: String, Color: Purple }
+  - { Name: "PSS Slide Race", Type: byte, OffsetUS: 0x8032DA98, OffsetJP: 0x8032CB38, Base: Relative, Subclass: Boolean, Color: Purple }
+  - { Name: "HUD On Lives", Type: byte, Offset: 0xFB, Mask: 0x01, Base: Mario, Subclass: Boolean, Color: Yellow }
+  - { Name: "HUD On HP/Camera", Type: byte, Offset: 0xFB, Mask: 0x08, Base: Mario, Subclass: Boolean, Color: Yellow }
+  - { Name: "HUD On Coins", Type: byte, Offset: 0xFB, Mask: 0x02, Base: Mario, Subclass: Boolean, Color: Yellow }
+  - { Name: "HUD On Stars", Type: byte, Offset: 0xFB, Mask: 0x04, Base: Mario, Subclass: Boolean, Color: Yellow }
+  - { Name: "HUD On Time", Type: byte, Offset: 0xFB, Mask: 0x40, Base: Mario, Subclass: Boolean, Color: Yellow }
+  - { Name: "Level Index", Type: short, OffsetUS: 0x8033BAC6, OffsetJP: 0x8033A756, Base: Relative, Color: Yellow }
+  - { Name: "Enable Coin Display", Type: uint, OffsetUS: 0x8024B19C, OffsetJP: 0x8024B01C, Base: Relative, UseHex: true, Color: Green }
+  - { Name: "Disable Coin Display", Type: uint, OffsetUS: 0x8024B1B4, OffsetJP: 0x8024B034, Base: Relative, UseHex: true, Color: Green }
+  - { Name: "HP HUD State", Type: byte, OffsetUS: 0x803325F0, OffsetJP: 0x803314E0, Base: Relative, Color: Blue }
+  - { Name: "HP HUD Timer", Type: int, OffsetUS: 0x803325FC, OffsetJP: 0x803314EC, Base: Relative, Color: Blue }
+  - { Name: "HP HUD X", Type: short, OffsetUS: 0x803325F2, OffsetJP: 0x803314E2, Base: Relative, Color: Blue }
+  - { Name: "HP HUD Y", Type: short, OffsetUS: 0x803325F4, OffsetJP: 0x803314E4, Base: Relative, Color: Blue }

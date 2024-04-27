@@ -1,0 +1,8 @@
+Data:
+  - { Name: "X", Type: float, Offset: 0x3C, Base: Mario, Coord: "X" }
+  - { Name: "Y", Type: float, Offset: 0x40, Base: Mario, Coord: "Y" }
+  - { Name: "Z", Type: float, Offset: 0x44, Base: Mario, Coord: "Z" }
+  - { Name: "Y Speed", Type: float, Offset: 0x4C, Base: Mario }
+  - { Name: "H Speed", Type: float, Offset: 0x54, Base: Mario }
+  - { Name: "Yaw Facing", Type: ushort, Offset: 0x2E, Base: Mario, Subclass: Angle, Yaw: true }
+  - { Name: "Yaw Intended", Type: ushort, Offset: 0x24, Base: Mario, Subclass: Angle, Yaw: true }

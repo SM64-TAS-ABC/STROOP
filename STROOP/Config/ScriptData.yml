@@ -1,0 +1,14 @@
+Data:
+  - { Name: "Mario X", Type: float, Offset: 0x3C, Base: Mario, Color: Red, Coord: "X" }
+  - { Name: "Mario Y", Type: float, Offset: 0x40, Base: Mario, Color: Red, Coord: "Y" }
+  - { Name: "Mario Z", Type: float, Offset: 0x44, Base: Mario, Color: Red, Coord: "Z" }
+  - { Name: "Mario V Speed", Type: float, Offset: 0x4C, Base: Mario, Color: Red }
+  - { Name: "Mario H Speed", Type: float, Offset: 0x54, Base: Mario, Color: Red }
+  - { Name: "Yaw Facing", Type: ushort, Offset: 0x2E, Base: Mario, Subclass: Angle, Yaw: true, Color: Red }
+  - { Name: "Yaw Intended", Type: ushort, Offset: 0x24, Base: Mario, Subclass: Angle, Yaw: true, Color: Red }
+  - { Name: "Global Timer", Type: int, OffsetUS: 0x8032D5D4, OffsetJP: 0x8032C694, Base: Relative, Color: Green }
+  - { Name: "RNG Value", Type: ushort, OffsetUS: 0x8038EEE0, OffsetJP: 0x8038EEE0, OffsetSH: 0x8038BBC0, Base: Relative, Color: Green }
+  - { Name: "RNG Index", Base: None, SpecialType: RngIndex, Color: Green }
+  - { Name: "Cent Angle", Type: ushort, Offset: 0x1F4, Base: Camera, Subclass: Angle, Yaw: true, Color: Green }
+  - { Name: "Current X", Type: sbyte, Offset: 0x02, Base: InputCurrent, Color: Green }
+  - { Name: "Current Y", Type: sbyte, Offset: 0x03, Base: InputCurrent, Color: Green }

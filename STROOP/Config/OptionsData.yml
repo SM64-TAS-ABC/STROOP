@@ -1,0 +1,9 @@
+Data:
+  - { Name: "Goto Above Offset", Base: None, SpecialType: GotoAboveOffset }
+  - { Name: "Goto Infront Offset", Base: None, SpecialType: GotoInfrontOffset }
+  - { Name: "Retrieve Above Offset", Base: None, SpecialType: RetrieveAboveOffset }
+  - { Name: "Retrieve Infront Offset", Base: None, SpecialType: RetrieveInfrontOffset }
+  - { Name: "FPS", Base: None, SpecialType: FramesPerSecond }
+  - { Name: "Pos Controller Relativity", Base: None, SpecialType: PositionControllerRelativity, Subclass: String }
+  - { Name: "Object Slot Size", Base: None, SpecialType: ObjectSlotSize }
+  - { Name: "Custom Release Status", Base: None, SpecialType: CustomReleaseStatus, UseHex: true }

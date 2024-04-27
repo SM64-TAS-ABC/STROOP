@@ -1,0 +1,138 @@
+Data:
+  - { Name: "Movement Action", GroupList: QuarterFrameHack, Type: int, Offset: 0x104, Base: HackedArea, UseHex: true, Color: Yellow }
+  - { Name: "#0 result", GroupList: QuarterFrameHack, Type: int, Offset: 0x108, Base: HackedArea, Color: Purple }
+  - { Name: "#0 water Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x10C, Base: HackedArea }
+  - { Name: "#0 floor Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x110, Base: HackedArea }
+  - { Name: "#0 ceiling Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x114, Base: HackedArea }
+  - { Name: "#0 floor tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x118, Base: HackedArea, UseHex: true }
+  - { Name: "#0 ceiling tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x11C, Base: HackedArea, UseHex: true }
+  - { Name: "#0 low wall tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x120, Base: HackedArea, UseHex: true }
+  - { Name: "#0 high wall tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x124, Base: HackedArea, UseHex: true }
+  - { Name: "#0 pos X", GroupList: QuarterFrameHack, Type: float, Offset: 0x128, Base: HackedArea, Coord: "X" }
+  - { Name: "#0 pos Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x12C, Base: HackedArea, Coord: "Y" }
+  - { Name: "#0 pos Z", GroupList: QuarterFrameHack, Type: float, Offset: 0x130, Base: HackedArea, Coord: "Z" }
+  - { Name: "#1 result", GroupList: QuarterFrameHack, Type: int, Offset: 0x138, Base: HackedArea, Color: Purple }
+  - { Name: "#1 water Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x13C, Base: HackedArea }
+  - { Name: "#1 floor Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x140, Base: HackedArea }
+  - { Name: "#1 ceiling Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x144, Base: HackedArea }
+  - { Name: "#1 floor tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x148, Base: HackedArea, UseHex: true }
+  - { Name: "#1 ceiling tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x14C, Base: HackedArea, UseHex: true }
+  - { Name: "#1 low wall tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x150, Base: HackedArea, UseHex: true }
+  - { Name: "#1 high wall tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x154, Base: HackedArea, UseHex: true }
+  - { Name: "#1 pos X", GroupList: QuarterFrameHack, Type: float, Offset: 0x158, Base: HackedArea, Coord: "X" }
+  - { Name: "#1 pos Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x15C, Base: HackedArea, Coord: "Y" }
+  - { Name: "#1 pos Z", GroupList: QuarterFrameHack, Type: float, Offset: 0x160, Base: HackedArea, Coord: "Z" }
+  - { Name: "#2 result", GroupList: QuarterFrameHack, Type: int, Offset: 0x168, Base: HackedArea, Color: Purple }
+  - { Name: "#2 water Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x16C, Base: HackedArea }
+  - { Name: "#2 floor Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x170, Base: HackedArea }
+  - { Name: "#2 ceiling Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x174, Base: HackedArea }
+  - { Name: "#2 floor tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x178, Base: HackedArea, UseHex: true }
+  - { Name: "#2 ceiling tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x17C, Base: HackedArea, UseHex: true }
+  - { Name: "#2 low wall tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x180, Base: HackedArea, UseHex: true }
+  - { Name: "#2 high wall tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x184, Base: HackedArea, UseHex: true }
+  - { Name: "#2 pos X", GroupList: QuarterFrameHack, Type: float, Offset: 0x188, Base: HackedArea, Coord: "X" }
+  - { Name: "#2 pos Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x18C, Base: HackedArea, Coord: "Y" }
+  - { Name: "#2 pos Z", GroupList: QuarterFrameHack, Type: float, Offset: 0x190, Base: HackedArea, Coord: "Z" }
+  - { Name: "#3 result", GroupList: QuarterFrameHack, Type: int, Offset: 0x198, Base: HackedArea, Color: Purple }
+  - { Name: "#3 water Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x19C, Base: HackedArea }
+  - { Name: "#3 floor Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x1A0, Base: HackedArea }
+  - { Name: "#3 ceiling Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x1A4, Base: HackedArea }
+  - { Name: "#3 floor tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x1A8, Base: HackedArea, UseHex: true }
+  - { Name: "#3 ceiling tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x1AC, Base: HackedArea, UseHex: true }
+  - { Name: "#3 low wall tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x1B0, Base: HackedArea, UseHex: true }
+  - { Name: "#3 high wall tri", GroupList: QuarterFrameHack, Type: int, Offset: 0x1B4, Base: HackedArea, UseHex: true }
+  - { Name: "#3 pos X", GroupList: QuarterFrameHack, Type: float, Offset: 0x1B8, Base: HackedArea, Coord: "X" }
+  - { Name: "#3 pos Y", GroupList: QuarterFrameHack, Type: float, Offset: 0x1BC, Base: HackedArea, Coord: "Y" }
+  - { Name: "#3 pos Z", GroupList: QuarterFrameHack, Type: float, Offset: 0x1C0, Base: HackedArea, Coord: "Z" }
+  - { Name: "Pos 1 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F00, Base: Relative, Coord: "X", Color: Pink }
+  - { Name: "Pos 1 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F04, Base: Relative, Coord: "Y", Color: Pink }
+  - { Name: "Pos 1 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F08, Base: Relative, Coord: "Z", Color: Pink }
+  - { Name: "Pos 1 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F0E, Base: Relative, Color: Pink }
+  - { Name: "Pos 2 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F10, Base: Relative, Coord: "X", Color: Yellow }
+  - { Name: "Pos 2 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F14, Base: Relative, Coord: "Y", Color: Yellow }
+  - { Name: "Pos 2 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F18, Base: Relative, Coord: "Z", Color: Yellow }
+  - { Name: "Pos 2 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F1E, Base: Relative, Color: Yellow }
+  - { Name: "Pos 3 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F20, Base: Relative, Coord: "X", Color: Purple }
+  - { Name: "Pos 3 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F24, Base: Relative, Coord: "Y", Color: Purple }
+  - { Name: "Pos 3 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F28, Base: Relative, Coord: "Z", Color: Purple }
+  - { Name: "Pos 3 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F2E, Base: Relative, Color: Purple }
+  - { Name: "Pos 4 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F30, Base: Relative, Coord: "X", Color: Grey }
+  - { Name: "Pos 4 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F34, Base: Relative, Coord: "Y", Color: Grey }
+  - { Name: "Pos 4 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F38, Base: Relative, Coord: "Z", Color: Grey }
+  - { Name: "Pos 4 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F3E, Base: Relative, Color: Grey }
+  - { Name: "Pos 5 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F40, Base: Relative, Coord: "X", Color: Turquoise }
+  - { Name: "Pos 5 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F44, Base: Relative, Coord: "Y", Color: Turquoise }
+  - { Name: "Pos 5 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F48, Base: Relative, Coord: "Z", Color: Turquoise }
+  - { Name: "Pos 5 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F4E, Base: Relative, Color: Turquoise }
+  - { Name: "Pos 6 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F50, Base: Relative, Coord: "X", Color: Green }
+  - { Name: "Pos 6 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F54, Base: Relative, Coord: "Y", Color: Green }
+  - { Name: "Pos 6 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F58, Base: Relative, Coord: "Z", Color: Green }
+  - { Name: "Pos 6 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F5E, Base: Relative, Color: Green }
+  - { Name: "Pos 7 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F60, Base: Relative, Coord: "X", Color: Brown }
+  - { Name: "Pos 7 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F64, Base: Relative, Coord: "Y", Color: Brown }
+  - { Name: "Pos 7 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F68, Base: Relative, Coord: "Z", Color: Brown }
+  - { Name: "Pos 7 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F6E, Base: Relative, Color: Brown }
+  - { Name: "Pos 8 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F70, Base: Relative, Coord: "X", Color: Orange }
+  - { Name: "Pos 8 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F74, Base: Relative, Coord: "Y", Color: Orange }
+  - { Name: "Pos 8 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F78, Base: Relative, Coord: "Z", Color: Orange }
+  - { Name: "Pos 8 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F7E, Base: Relative, Color: Orange }
+  - { Name: "Pos 9 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F80, Base: Relative, Coord: "X", Color: Turquoise }
+  - { Name: "Pos 9 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F84, Base: Relative, Coord: "Y", Color: Turquoise }
+  - { Name: "Pos 9 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F88, Base: Relative, Coord: "Z", Color: Turquoise }
+  - { Name: "Pos 9 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F8E, Base: Relative, Color: Turquoise }
+  - { Name: "Pos 10 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372F90, Base: Relative, Coord: "X", Color: Green }
+  - { Name: "Pos 10 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372F94, Base: Relative, Coord: "Y", Color: Green }
+  - { Name: "Pos 10 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372F98, Base: Relative, Coord: "Z", Color: Green }
+  - { Name: "Pos 10 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372F9E, Base: Relative, Color: Green }
+  - { Name: "Pos 11 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372FA0, Base: Relative, Coord: "X", Color: Blue }
+  - { Name: "Pos 11 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372FA4, Base: Relative, Coord: "Y", Color: Blue }
+  - { Name: "Pos 11 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372FA8, Base: Relative, Coord: "Z", Color: Blue }
+  - { Name: "Pos 11 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372FAE, Base: Relative, Color: Blue }
+  - { Name: "Pos 12 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372FB0, Base: Relative, Coord: "X", Color: Orange }
+  - { Name: "Pos 12 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372FB4, Base: Relative, Coord: "Y", Color: Orange }
+  - { Name: "Pos 12 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372FB8, Base: Relative, Coord: "Z", Color: Orange }
+  - { Name: "Pos 12 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372FBE, Base: Relative, Color: Orange }
+  - { Name: "Pos 13 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372FC0, Base: Relative, Coord: "X", Color: Turquoise }
+  - { Name: "Pos 13 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372FC4, Base: Relative, Coord: "Y", Color: Turquoise }
+  - { Name: "Pos 13 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372FC8, Base: Relative, Coord: "Z", Color: Turquoise }
+  - { Name: "Pos 13 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372FCE, Base: Relative, Color: Turquoise }
+  - { Name: "Pos 14 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372FD0, Base: Relative, Coord: "X", Color: Green }
+  - { Name: "Pos 14 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372FD4, Base: Relative, Coord: "Y", Color: Green }
+  - { Name: "Pos 14 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372FD8, Base: Relative, Coord: "Z", Color: Green }
+  - { Name: "Pos 14 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372FDE, Base: Relative, Color: Green }
+  - { Name: "Pos 15 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372FE0, Base: Relative, Coord: "X", Color: Blue }
+  - { Name: "Pos 15 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372FE4, Base: Relative, Coord: "Y", Color: Blue }
+  - { Name: "Pos 15 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372FE8, Base: Relative, Coord: "Z", Color: Blue }
+  - { Name: "Pos 15 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372FEE, Base: Relative, Color: Blue }
+  - { Name: "Pos 16 X", GroupList: PreviousPositions, Type: float, Offset: 0x80372FF0, Base: Relative, Coord: "X", Color: Orange }
+  - { Name: "Pos 16 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80372FF4, Base: Relative, Coord: "Y", Color: Orange }
+  - { Name: "Pos 16 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80372FF8, Base: Relative, Coord: "Z", Color: Orange }
+  - { Name: "Pos 16 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x80372FFE, Base: Relative, Color: Orange }
+  - { Name: "Pos 17 X", GroupList: PreviousPositions, Type: float, Offset: 0x80373000, Base: Relative, Coord: "X", Color: Turquoise }
+  - { Name: "Pos 17 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80373004, Base: Relative, Coord: "Y", Color: Turquoise }
+  - { Name: "Pos 17 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80373008, Base: Relative, Coord: "Z", Color: Turquoise }
+  - { Name: "Pos 17 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x8037300E, Base: Relative, Color: Turquoise }
+  - { Name: "Pos 18 X", GroupList: PreviousPositions, Type: float, Offset: 0x80373010, Base: Relative, Coord: "X", Color: Green }
+  - { Name: "Pos 18 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80373014, Base: Relative, Coord: "Y", Color: Green }
+  - { Name: "Pos 18 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80373018, Base: Relative, Coord: "Z", Color: Green }
+  - { Name: "Pos 18 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x8037301E, Base: Relative, Color: Green }
+  - { Name: "Pos 19 X", GroupList: PreviousPositions, Type: float, Offset: 0x80373020, Base: Relative, Coord: "X", Color: Blue }
+  - { Name: "Pos 19 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80373024, Base: Relative, Coord: "Y", Color: Blue }
+  - { Name: "Pos 19 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80373028, Base: Relative, Coord: "Z", Color: Blue }
+  - { Name: "Pos 19 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x8037302E, Base: Relative, Color: Blue }
+  - { Name: "Pos 20 X", GroupList: PreviousPositions, Type: float, Offset: 0x80373030, Base: Relative, Coord: "X", Color: Orange }
+  - { Name: "Pos 20 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80373034, Base: Relative, Coord: "Y", Color: Orange }
+  - { Name: "Pos 20 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80373038, Base: Relative, Coord: "Z", Color: Orange }
+  - { Name: "Pos 20 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x8037303E, Base: Relative, Color: Orange }
+  - { Name: "Pos 21 X", GroupList: PreviousPositions, Type: float, Offset: 0x80373040, Base: Relative, Coord: "X", Color: Turquoise }
+  - { Name: "Pos 21 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80373044, Base: Relative, Coord: "Y", Color: Turquoise }
+  - { Name: "Pos 21 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80373048, Base: Relative, Coord: "Z", Color: Turquoise }
+  - { Name: "Pos 21 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x8037304E, Base: Relative, Color: Turquoise }
+  - { Name: "Pos 22 X", GroupList: PreviousPositions, Type: float, Offset: 0x80373050, Base: Relative, Coord: "X", Color: Green }
+  - { Name: "Pos 22 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80373054, Base: Relative, Coord: "Y", Color: Green }
+  - { Name: "Pos 22 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80373058, Base: Relative, Coord: "Z", Color: Green }
+  - { Name: "Pos 22 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x8037305E, Base: Relative, Color: Green }
+  - { Name: "Pos 23 X", GroupList: PreviousPositions, Type: float, Offset: 0x80373060, Base: Relative, Coord: "X", Color: Blue }
+  - { Name: "Pos 23 Y", GroupList: PreviousPositions, Type: float, Offset: 0x80373064, Base: Relative, Coord: "Y", Color: Blue }
+  - { Name: "Pos 23 Z", GroupList: PreviousPositions, Type: float, Offset: 0x80373068, Base: Relative, Coord: "Z", Color: Blue }
+  - { Name: "Pos 23 Angle", GroupList: PreviousPositions, Type: ushort, Offset: 0x8037306E, Base: Relative, Color: Blue }

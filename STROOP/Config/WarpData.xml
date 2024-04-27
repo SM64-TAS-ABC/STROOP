@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<VarData>
-  <Data groupList="Basic" type="uint" offsetUS="0x8032DDC8" offsetJP="0x8032DDC8" base="Relative" subclass="Address" color="LightBlue">gAreas</Data>
-  <Data groupList="Basic" type="short" offsetUS="0x8033BACA" offsetJP="0x8033BACA" base="Relative" color="LightBlue">Current Area Index</Data>
-  <Data groupList="Basic" specialType="WarpNodesAddress" base="None" subclass="Address" color="LightBlue">Warp Nodes Address</Data>
-  <Data groupList="Basic" specialType="NumWarpNodes" base="None" color="LightBlue">Num Warp Nodes</Data>
-</VarData>

@@ -1,0 +1,17 @@
+Data:
+  - { Name: "Global Timer", GroupList: Basic, Type: uint, OffsetUS: 0x8032D5D4, OffsetJP: 0x8032C694, Base: Relative, Color: Yellow }
+  - { Name: "Global Timer Mod 64", GroupList: Basic, Base: None, SpecialType: GlobalTimerMod64, Color: Yellow }
+  - { Name: "RNG Value", GroupList: Basic, Type: ushort, OffsetUS: 0x8038EEE0, OffsetJP: 0x8038EEE0, Base: Relative, Color: Yellow }
+  - { Name: "RNG Index", GroupList: Basic, Base: None, SpecialType: RngIndex, Color: Yellow }
+  - { Name: "RNG Index Mod 4", GroupList: Basic, Base: None, SpecialType: RngIndexMod4, Color: Yellow }
+  - { Name: "JRB Ship Snow Type", GroupList: Advanced, Type: short, OffsetUS: 0x80180B06, OffsetJP: 0x8017DC86, Base: Relative, Color: Green }
+  - { Name: "CCM Snow Type", GroupList: Advanced, Type: short, OffsetUS: 0x80184E8A, OffsetJP: 0x80181FFA, Base: Relative, Color: Green }
+  - { Name: "SL Snow Type", GroupList: Advanced, Type: short, OffsetUS: 0x80170CF6, OffsetJP: 0x8016DE76, Base: Relative, Color: Green }
+  - { Name: "SA Snow Type", GroupList: Advanced, Type: short, OffsetUS: 0x80151EB2, OffsetJP: 0x8014F032, Base: Relative, Color: Green }
+  - { Name: "Snow Array Address", GroupList: Advanced, Type: uint, OffsetUS: 0x80361400, OffsetJP: 0x80360090, Base: Relative, Subclass: Address, Color: Green }
+  - { Name: "Snow Counter", GroupList: Intermediate, Type: short, OffsetUS: 0x80361414, OffsetJP: 0x803600A4, Base: Relative, Color: LightBlue }
+  - { Name: "Snow Max", GroupList: Intermediate, Type: short, OffsetUS: 0x80361416, OffsetJP: 0x803600A6, Base: Relative, Color: LightBlue }
+  - { Name: "Snow Center X", GroupList: Intermediate, Type: int, OffsetUS: 0x80361408, OffsetJP: 0x80360098, Base: Relative, Coord: "X", Color: LightBlue }
+  - { Name: "Snow Center Y", GroupList: Intermediate, Type: int, OffsetUS: 0x8036140C, OffsetJP: 0x8036009C, Base: Relative, Coord: "Y", Color: LightBlue }
+  - { Name: "Snow Center Z", GroupList: Intermediate, Type: int, OffsetUS: 0x80361410, OffsetJP: 0x803600A0, Base: Relative, Coord: "Z", Color: LightBlue }
+  - { Name: "Snow Function", GroupList: Advanced, Type: uint, OffsetUS: 0x802DF8A8 , OffsetJP: 0x802DE998 , Base: Relative, UseHex: true, Color: Grey }

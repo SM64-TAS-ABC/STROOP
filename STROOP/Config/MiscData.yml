@@ -1,0 +1,72 @@
+Data:
+  - { Name: "Global Timer", GroupList: Basic, Type: uint, OffsetUS: 0x8032D5D4, OffsetJP: 0x8032C694, OffsetSH: 0x8030CD04, OffsetEU: 0x802F9784, Base: Relative }
+  - { Name: "Global Timer Mod 64", GroupList: Basic, Base: None, SpecialType: GlobalTimerMod64 }
+  - { Name: "RNG Value", GroupList: "Basic,Coin", Type: ushort, OffsetUS: 0x8038EEE0, OffsetJP: 0x8038EEE0, OffsetSH: 0x8038BBC0, OffsetEU: 0x80389C60, Base: Relative }
+  - { Name: "RNG Index", GroupList: "Basic,Coin", Base: None, SpecialType: RngIndex }
+  - { Name: "RNG Index Mod 4", GroupList: Basic, Base: None, SpecialType: RngIndexMod4 }
+  - { Name: "Num Non-Obj RNG Calls", GroupList: Basic, Type: int, OffsetUS: 0x80367C60, OffsetJP: 0x80367C60, Base: Relative }
+  - { Name: "Num RNG Calls", GroupList: Basic, Base: None, SpecialType: NumRngCalls }
+  - { Name: "Coin RNG Value", GroupList: Coin, Base: LastCoin, Offset: 0xCA, Type: ushort, Color: Orange }
+  - { Name: "Coin RNG Index", GroupList: Coin, Base: LastCoin, SpecialType: LastCoinRngIndex, Color: Orange }
+  - { Name: "Coin RNG Index Diff", GroupList: Coin, Base: LastCoin, SpecialType: LastCoinRngIndexDiff, Color: Orange }
+  - { Name: "Coin H Speed", GroupList: Coin, Type: float, Offset: 0xB8, Base: LastCoin, Coord: "X", Color: Yellow }
+  - { Name: "Coin Y Speed", GroupList: Coin, Type: float, Offset: 0xB0, Base: LastCoin, Coord: "Y", Color: Yellow }
+  - { Name: "Coin Angle", GroupList: Coin, Base: LastCoin, Offset: 0xCA, Type: ushort, Coord: "Z", Color: Yellow }
+  - { Name: "Goal RNG Value", GroupList: Coin, Base: None, SpecialType: GoalRngValue, Color: Pink }
+  - { Name: "Goal RNG Index", GroupList: Coin, Base: None, SpecialType: GoalRngIndex, Color: Pink }
+  - { Name: "Goal RNG Index Diff", GroupList: Coin, Base: None, SpecialType: GoalRngIndexDiff, Color: Pink }
+  - { Name: "Play Time", GroupList: Basic, Base: None, SpecialType: PlayTime, Subclass: String }
+  - { Name: "Num Loaded Objs", GroupList: Basic, Base: None, SpecialType: NumberOfLoadedObjects }
+  - { Name: "Currently Processed Obj", GroupList: Basic, Type: uint, OffsetUS: 0x80361160, OffsetJP: 0x8035FDF0, OffsetEU: 0x8032ED90, Base: Relative, Subclass: Object }
+  - { Name: "Animation Timer", GroupList: Basic, Type: short, OffsetUS: 0x8032DF08, OffsetJP: 0x8032CFA8, OffsetEU: 0x802FA0E8, Base: Relative }
+  - { Name: "Max Obj Render Dist", GroupList: Basic, Type: float, OffsetUS: 0x80336f98, OffsetJP: 0x80335DF8, OffsetEU: 0x80304898, Base: Relative }
+  - { Name: "Music On", GroupList: Basic, Type: byte, OffsetUS: 0x80222618, OffsetJP: 0x80222A18, Base: Relative, Subclass: Boolean, Mask: 0x20, InvertBool: true }
+  - { Name: "Volume", GroupList: Basic, Type: float, OffsetUS: 0x80222630, OffsetJP: 0x80222A30, Base: Relative }
+  - { Name: "Special Triple Jump", GroupList: Basic, Type: byte, OffsetUS: 0x8032DD94, OffsetJP: 0x8032CE34, Base: Relative, Subclass: Boolean }
+  - { Name: "Talked to Yoshi", GroupList: Basic, Type: byte, OffsetUS: 0x80332618, OffsetJP: 0x80331508, Base: Relative, Subclass: Boolean }
+  - { Name: "Never Entered Castle", GroupList: Basic, Type: byte, OffsetUS: 0x8033B26E, OffsetJP: 0x80339EFE, Base: Relative, Subclass: Boolean }
+  - { Name: "Current File", GroupList: Basic, Type: short, OffsetUS: 0x8032DDF4, OffsetJP: 0x8032CE94, Base: Relative }
+  - { Name: "Demo Counter", GroupList: Basic, Type: short, OffsetUS: 0x8032D5F4, OffsetJP: 0x8032C6B4, Base: Relative }
+  - { Name: "Demo Description", GroupList: Basic, Base: None, SpecialType: DemoCounterDescription, Subclass: String }
+  - { Name: "Demo Timer", GroupList: Basic, Type: short, OffsetUS: 0x801A7C30, OffsetJP: 0x801A7AF0, Base: Relative }
+  - { Name: "Timestop Enabled", GroupList: Basic, Type: uint, OffsetUS: 0x8033D480, OffsetJP: 0x8033C110, Base: Relative, Subclass: Boolean, Mask: 0x02 }
+  - { Name: "Hand X", GroupList: Advanced, Type: short, OffsetUS: 0x801A7D1C, OffsetJP: 0x801A7BDC, Base: Relative, Color: Yellow }
+  - { Name: "Hand Y", GroupList: Advanced, Type: short, OffsetUS: 0x801A7D20, OffsetJP: 0x801A7BE0, Base: Relative, Color: Yellow }
+  - { Name: "Mario Cam Selected", GroupList: Advanced, Type: byte, Offset: 0x8033161C, Base: Relative, Subclass: Boolean, Mask: 0x01, Color: Yellow }
+  - { Name: "Fixed Cam Selected", GroupList: Advanced, Type: byte, Offset: 0x8033161C, Base: Relative, Subclass: Boolean, Mask: 0x02, Color: Yellow }
+  - { Name: "TTC Speed Setting", GroupList: Intermediate, Type: short, OffsetUS: 0x80361258, OffsetJP: 0x8035FEE8, Base: Relative, Color: Yellow }
+  - { Name: "TTC Speed Desc", GroupList: Intermediate, Base: None, SpecialType: TtcSpeedSettingDescription, Subclass: String, Color: Yellow }
+  - { Name: "TTC Save State", GroupList: Intermediate, Base: None, SpecialType: TtcSaveState, Subclass: String, Color: Yellow }
+  - { Name: "Mission Selected", GroupList: Intermediate, Type: byte, OffsetUS: 0x801A81A4, OffsetJP: 0x801A8014, Base: Relative, Color: LightBlue }
+  - { Name: "Mission Layout", GroupList: Intermediate, Type: short, OffsetUS: 0x8033BAC8, OffsetJP: 0x8033A758, OffsetSH: 0x8031E318, Base: Relative, Color: LightBlue }
+  - { Name: "Mission Name", GroupList: Intermediate, Type: byte, OffsetUS: 0x80331620, OffsetJP: 0x80330534, OffsetSH: 0x80310BC8, Base: Relative, Color: LightBlue }
+  - { Name: "Last Star", GroupList: Intermediate, Type: byte, OffsetUS: 0x8032DD84, OffsetJP: 0x8032CE24, Base: Relative, Color: LightBlue }
+  - { Name: "Last Star Course", GroupList: Intermediate, Type: byte, OffsetUS: 0x8032DD80, OffsetJP: 0x8032CE20, Base: Relative, Color: LightBlue }
+  - { Name: "Selection Index", GroupList: Intermediate, Type: byte, OffsetUS: 0x80331490, OffsetJP: 0x80330430, Base: Relative, Color: LightBlue }
+  - { Name: "Stage Index", GroupList: Intermediate, Type: short, OffsetUS: 0x8032DDF8, OffsetJP: 0x8032CE98, Base: Relative, Color: LightBlue }
+  - { Name: "Selection Timer", GroupList: Intermediate, Type: byte, OffsetUS: 0x8033149C, OffsetJP: 0x8033043C, Base: Relative, Color: LightBlue }
+  - { Name: "Level Index", GroupList: Intermediate, Type: short, OffsetUS: 0x8033BAC6, OffsetJP: 0x8033A756, OffsetSH: 0x8031E316, Base: Relative, Color: Blue }
+  - { Name: "Level", GroupList: Intermediate, Type: byte, Base: WarpDestination, Offset: 0x01, Color: Blue }
+  - { Name: "Area", GroupList: Intermediate, Type: byte, Base: WarpDestination, Offset: 0x02, Color: Blue }
+  - { Name: "Loading Point", GroupList: Intermediate, Type: short, OffsetUS: 0x8033BACA, OffsetJP: 0x8033A75A, OffsetSH: 0x8031E31A, Base: Relative, Color: Blue }
+  - { Name: "Last Area", GroupList: Intermediate, Type: uint, OffsetUS: 0x8033B4A0, OffsetJP: 0x8033A130, Base: Relative, UseHex: true, Color: Blue }
+  - { Name: "Last Area Entrance", GroupList: Intermediate, Type: byte, OffsetUS: 0x8033B4A4, OffsetJP: 0x8033A134, Base: Relative, Color: Blue }
+  - { Name: "Last Death Course", GroupList: Intermediate, Type: short, OffsetUS: 0x8033BACC, OffsetJP: 0x8033A75C, Base: Relative, Color: Blue }
+  - { Name: "SegToVirt Address", GroupList: Intermediate, Base: None, SpecialType: SegmentedToVirtualAddress, UseHex: true, Color: Green }
+  - { Name: "SegToVirt Output", GroupList: Intermediate, Base: None, SpecialType: SegmentedToVirtualOutput, UseHex: true, Color: Green }
+  - { Name: "VirtToSeg Segment", GroupList: Intermediate, Base: None, SpecialType: VirtualToSegmentedSegment, UseHex: true, Display: byte, Color: Green }
+  - { Name: "VirtToSeg Address", GroupList: Intermediate, Base: None, SpecialType: VirtualToSegmentedAddress, UseHex: true, Color: Green }
+  - { Name: "VirtToSeg Output", GroupList: Intermediate, Base: None, SpecialType: VirtualToSegmentedOutput, UseHex: true, Color: Green }
+  - { Name: "Destination", GroupList: Advanced, Type: short, Offset: 0xE6, Base: Mario, Color: Purple }
+  - { Name: "Destination 2", GroupList: Advanced, Type: short, Offset: 0xE2, Base: Mario, Color: Purple }
+  - { Name: "Door Direction", GroupList: Advanced, Type: short, Offset: 0xEA, Base: Mario, Color: Purple }
+  - { Name: "Transition State", GroupList: Advanced, Type: short, OffsetUS: 0x8033B238, OffsetJP: 0x80339EC8, Base: Relative, Color: Grey }
+  - { Name: "Transition Type", GroupList: Advanced, Type: short, OffsetUS: 0x8033BAB0, OffsetJP: 0x8033A740, Base: Relative, Color: Grey }
+  - { Name: "Transition Progress", GroupList: Advanced, Type: byte, OffsetUS: 0x80330EC0, OffsetJP: 0x8032FF60, Base: Relative, Color: Grey }
+  - { Name: "Transition Black Fade", GroupList: Advanced, Type: short, OffsetUS: 0x8033B23C, OffsetJP: 0x80339ECC, Base: Relative, Color: Grey }
+  - { Name: "Transition White Fade", GroupList: Advanced, Type: short, OffsetUS: 0x8038B8A4, OffsetJP: 0x8038B8A4, Base: Relative, Color: Grey }
+  - { Name: "Transition Shrinking", GroupList: Advanced, Type: short, OffsetUS: 0x8033B254, OffsetJP: 0x80339EE4, Base: Relative, Color: Grey }
+  - { Name: "Gfx Buffer Start", GroupList: Advanced, Type: uint, OffsetUS: 0x8033B06C, OffsetJP: 0x80339CFC, Base: Relative, Subclass: Address, Color: Orange }
+  - { Name: "Gfx Buffer End", GroupList: Advanced, Type: uint, OffsetUS: 0x8033B070, OffsetJP: 0x80339D00, Base: Relative, Subclass: Address, Color: Orange }
+  - { Name: "Gfx Buffer Space", GroupList: Advanced, Base: None, SpecialType: GfxBufferSpace, Color: Orange }
+  - { Name: "ROM Version Tell", GroupList: Advanced, Type: int, Offset: 0x802F0000, Base: Relative, UseHex: true, Color: Pink }
