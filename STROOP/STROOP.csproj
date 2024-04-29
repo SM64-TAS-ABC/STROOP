@@ -292,40 +292,8 @@
 		<None Include="OpenTK.dll.config" />
 		<None Include="packages.config" />
 		<None Include="Properties\Settings.settings" />
-		<None Include="Resources\cog.png" />
+		<None Include="Resources\**\*.*" />
 		<!--
-		<None Include="Resources\direction_*.png" />
-		<None Include="Resources\File Images\**\*" />
-		<None Include="Resources\Hacks\**\*" />
-		-->
-		<None Include="Resources\image_clockwise.png" />
-		<None Include="Resources\image_counterclockwise.png" />
-		<!--<None Include="Resources\image_divide.png" />-->
-		<None Include="Resources\image_down.png" />
-		<None Include="Resources\image_downleft.png" />
-		<None Include="Resources\image_downright.png" />
-		<None Include="Resources\image_eye_closed.png" />
-		<None Include="Resources\image_eye_closed2.png" />
-		<None Include="Resources\image_eye_open.png" />
-		<None Include="Resources\image_eye_open2.png" />
-		<None Include="Resources\image_left.png" />
-		<None Include="Resources\image_minus.png" />
-		<None Include="Resources\image_plus.png" />
-		<!--<None Include="Resources\image_plus_green.png" />-->
-		<None Include="Resources\image_right.png" />
-		<!--<None Include="Resources\image_times.png" />-->
-		<None Include="Resources\image_up.png" />
-		<None Include="Resources\image_upleft.png" />
-		<None Include="Resources\image_upright.png" />
-		<!--<None Include="Resources\Input Images\**\*" />-->
-		<None Include="Resources\lock_*.png" />
-		<!--
-		<None Include="Resources\Maps\**\*" />
-		<None Include="Resources\Object Images\**\*" />
-		<None Include="Resources\Overlays\**\*" />
-		<None Include="Resources\Scripts\**\*" />
-		<None Include="Resources\Shaders\**\*" />
-		<None Include="Resources\Text Images\**\*" />
 		<None Include="Utilities\Stream\IProcessMemory.cs" />
 		-->
 		<Page Include="Controls\DecompilerView.xaml" />
@@ -456,6 +424,7 @@
 		<None Update="App.config" SubType="Designer" />
 		<None Update="Mappings\*.map" CopyToOutputDirectory="PreserveNewest" />
 		<None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />
+		<None Update="Resources\**\*.*" CopyToOutputDirectory="PreserveNewest" />
 		<Page Update="Controls\DecompilerView.xaml" Generator="MSBuild:Compile" SubType="Designer" />
 	</ItemGroup>
 	<ItemGroup>
@@ -478,9 +447,6 @@
 		del "$(TargetDir)OpenTK.xml"
 		del "$(TargetDir)STROOP.exe.config"
 		</PostBuildEvent>
-	</PropertyGroup>
-	<PropertyGroup>
-		<PreBuildEvent>xcopy /E /Y /I "$(ProjectDir)Resources" "$(TargetDir)Resources" /D</PreBuildEvent>
 	</PropertyGroup>
 	<Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
 	<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
