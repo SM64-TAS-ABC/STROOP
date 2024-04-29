@@ -180,469 +180,21 @@
 		<Reference Include="WindowsFormsIntegration" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Include="Calculators\AirMovementCalculator.cs" />
-		<Compile Include="Calculators\BobombState.cs" />
-		<Compile Include="Calculators\CalculatorMain.cs" />
-		<Compile Include="Calculators\CalculatorUtilities.cs" />
-		<Compile Include="Calculators\GroundMovementCalculator.cs" />
-		<Compile Include="Calculators\HolpCalculator.cs" />
-		<Compile Include="Calculators\Input.cs" />
-		<Compile Include="Calculators\LoadingZoneMain.cs" />
-		<Compile Include="Calculators\MarioState.cs" />
-		<Compile Include="Calculators\MutableMarioState.cs" />
-		<Compile Include="Calculators\ObjectCalculator.cs" />
-		<Compile Include="Calculators\OverflowJumpCalculator.cs" />
-		<Compile Include="Calculators\PendulumData.cs" />
-		<Compile Include="Calculators\PendulumMain.cs" />
-		<Compile Include="Calculators\PunchRecoilCalculator.cs" />
-		<Compile Include="Calculators\SlideCalculator.cs" />
-		<Compile Include="Calculators\SlidingMarioState.cs" />
-		<Compile Include="Calculators\WallDisplacementCalculator.cs" />
-		<Compile Include="Calculators\WaterLevelCalculator.cs" />
-		<Compile Include="Calculators\WaterMain.cs" />
-		<Compile Include="Calculators\WaterState.cs" />
-		<Compile Include="Controls\BetterContextMenuStrip.cs" />
-		<Compile Include="Controls\BetterSplitContainer.cs" />
-		<Compile Include="Controls\BetterTextbox.cs" />
-		<Compile Include="Controls\BinaryButton.cs" />
-		<Compile Include="Controls\BorderedTableLayoutPanel.cs" />
-		<Compile Include="Controls\CarretlessTextBox.cs" />
-		<Compile Include="Controls\CoinRingDisplayPanel.cs" />
-		<Compile Include="Controls\ColorSelector.cs" />
-		<Compile Include="Controls\ColorSelector.Designer.cs" />
-		<Compile Include="Controls\DecompilerView.xaml.cs" />
-		<Compile Include="Controls\DoubleBufferedTableLayoutPanel.cs" />
-		<Compile Include="Controls\FileBinaryPictureBox.cs" />
-		<Compile Include="Controls\FileCoinScoreTextbox.cs" />
-		<Compile Include="Controls\FileCourseLabel.cs" />
-		<Compile Include="Controls\FileHatLocationPictureBox.cs" />
-		<Compile Include="Controls\FileHatPositionTextbox.cs" />
-		<Compile Include="Controls\FileKeyDoorPictureBox.cs" />
-		<Compile Include="Controls\FilePictureBox.cs" />
-		<Compile Include="Controls\FileStarPictureBox.cs" />
-		<Compile Include="Controls\FileTextbox.cs" />
-		<Compile Include="Controls\InputDisplayPanel.cs" />
-		<Compile Include="Controls\IntPictureBox.cs" />
-		<Compile Include="Controls\MainSaveTextbox.cs" />
-		<Compile Include="Controls\ModelGraphics.cs" />
-		<Compile Include="Controls\NoTearFlowLayoutPanel.cs" />
-		<Compile Include="Controls\ObjectSlot.cs" />
-		<Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs" />
-		<Compile Include="Controls\PanelEx.cs" />
-		<Compile Include="Controls\RichTextBoxEx.cs" />
-		<Compile Include="Controls\TabControlEx.cs" />
-		<Compile Include="Controls\TrackBarEx.cs" />
-		<Compile Include="Controls\TransparentTextbox.cs" />
-		<Compile Include="Controls\VarHackContainer.cs" />
-		<Compile Include="Controls\VarHackContainer.Designer.cs" />
-		<Compile Include="Controls\VarHackContainerDefaults.cs" />
-		<Compile Include="Controls\VarHackFlowLayoutPanel.cs" />
-		<Compile Include="Controls\VisualLinkLineText.cs" />
-		<Compile Include="Controls\VisualRegexLinkGenerator.cs" />
-		<Compile Include="Controls\WatchVariable.cs" />
-		<Compile Include="Controls\WatchVariableAddressWrapper.cs" />
-		<Compile Include="Controls\WatchVariableAngleWrapper.cs" />
-		<Compile Include="Controls\WatchVariableBooleanWrapper.cs" />
-		<Compile Include="Controls\WatchVariableControl.cs" />
-		<Compile Include="Controls\WatchVariableControl.Designer.cs" />
-		<Compile Include="Controls\WatchVariableControlPrecursor.cs" />
-		<Compile Include="Controls\WatchVariableControlSettings.cs" />
-		<Compile Include="Controls\WatchVariableFlowLayoutPanel.cs" />
-		<Compile Include="Controls\WatchVariableLock.cs" />
-		<Compile Include="Controls\WatchVariableNumberWrapper.cs" />
-		<Compile Include="Controls\WatchVariableObjectWrapper.cs" />
-		<Compile Include="Controls\WatchVariableStringWrapper.cs" />
-		<Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
-		<Compile Include="Controls\WatchVariableWrapper.cs" />
-		<Compile Include="Enums\AddToTabTypeEnum.cs" />
-		<Compile Include="Enums\AggregateMathOperation.cs" />
-		<Compile Include="Enums\AngleUnitType.cs" />
-		<Compile Include="Enums\BaseAddressTypeEnum.cs" />
-		<Compile Include="Enums\BinaryMathOperation.cs" />
-		<Compile Include="Enums\CamHackMode.cs" />
-		<Compile Include="Enums\CellSelectionType.cs" />
-		<Compile Include="Enums\CoinParamsOrder.cs" />
-		<Compile Include="Enums\CompassPosition.cs" />
-		<Compile Include="Enums\Coordinate.cs" />
-		<Compile Include="Enums\CoordinateAngle.cs" />
-		<Compile Include="Enums\CoordinateSystem.cs" />
-		<Compile Include="Enums\CopyTypeEnum.cs" />
-		<Compile Include="Enums\EndiannessType.cs" />
-		<Compile Include="Enums\FileType.cs" />
-		<Compile Include="Enums\FrameInputRelationType.cs" />
-		<Compile Include="Enums\HatLocation.cs" />
-		<Compile Include="Enums\InputDisplayTypeEnum.cs" />
-		<Compile Include="Enums\Map3DCameraMode.cs" />
-		<Compile Include="Enums\MapTrackerIconType.cs" />
-		<Compile Include="Enums\MapTrackerOrderType.cs" />
-		<Compile Include="Enums\MapTrackerVisibilityType.cs" />
-		<Compile Include="Enums\MapType.cs" />
-		<Compile Include="Enums\MouseEvent.cs" />
-		<Compile Include="Enums\PaintingListTypeEnum.cs" />
-		<Compile Include="Enums\PositionControllerRelativity.cs" />
-		<Compile Include="Enums\ReadWriteMode.cs" />
-		<Compile Include="Enums\RelativeDirection.cs" />
-		<Compile Include="Enums\RomVersion.cs" />
-		<Compile Include="Enums\RomVersionSelection.cs" />
-		<Compile Include="Enums\TriangleClassification.cs" />
-		<Compile Include="Enums\TriangleClassificationExtended.cs" />
-		<Compile Include="Enums\TriangleVertexOffset.cs" />
-		<Compile Include="Enums\VariableGroup.cs" />
-		<Compile Include="Enums\WatchVariableSubclass.cs" />
-		<Compile Include="Extensions\BitmapExtensions.cs" />
-		<Compile Include="Extensions\ColorExtensions.cs" />
-		<Compile Include="Extensions\ControlCollectionsExtensions.cs" />
-		<Compile Include="Extensions\FormExtensions.cs" />
-		<Compile Include="Extensions\IEnumerableExtensions.cs" />
-		<Compile Include="Extensions\RectangleExtensions.cs" />
-		<Compile Include="Extensions\RichTextBoxExtensions.cs" />
-		<Compile Include="Extensions\SizeExtensions.cs" />
-		<Compile Include="Forms\ActionForm.cs" />
-		<Compile Include="Forms\ActionForm.Designer.cs" />
-		<Compile Include="Forms\CoinRingDisplayForm.cs" />
-		<Compile Include="Forms\CoinRingDisplayForm.Designer.cs" />
-		<Compile Include="Forms\FormManager.cs" />
-		<Compile Include="Forms\ImageForm.cs" />
-		<Compile Include="Forms\ImageForm.Designer.cs" />
-		<Compile Include="Forms\InfoForm.cs" />
-		<Compile Include="Forms\InfoForm.Designer.cs" />
-		<Compile Include="Forms\IUpdatableForm.cs" />
-		<Compile Include="Forms\LoadingForm.cs" />
-		<Compile Include="Forms\LoadingForm.Designer.cs" />
-		<Compile Include="Forms\MainLoadingForm.cs" />
-		<Compile Include="Forms\MainLoadingForm.Designer.cs" />
-		<Compile Include="Forms\MapPopOutForm.cs" />
-		<Compile Include="Forms\MapPopOutForm.Designer.cs" />
-		<Compile Include="Forms\SelectionForm.cs" />
-		<Compile Include="Forms\SelectionForm.Designer.cs" />
-		<Compile Include="Forms\StroopMainForm.cs" />
-		<Compile Include="Forms\StroopMainForm.Designer.cs" />
-		<Compile Include="Forms\TabForm.cs" />
-		<Compile Include="Forms\TabForm.Designer.cs" />
-		<Compile Include="Forms\TriangleListForm.cs" />
-		<Compile Include="Forms\TriangleListForm.Designer.cs" />
-		<Compile Include="Forms\ValueForm.cs" />
-		<Compile Include="Forms\ValueForm.Designer.cs" />
-		<Compile Include="Forms\ValueSplitForm.cs" />
-		<Compile Include="Forms\ValueSplitForm.Designer.cs" />
-		<Compile Include="Forms\VariableBitForm.cs" />
-		<Compile Include="Forms\VariableBitForm.Designer.cs" />
-		<Compile Include="Forms\VariableControllerForm.cs" />
-		<Compile Include="Forms\VariableControllerForm.Designer.cs" />
-		<Compile Include="Forms\VariableCreationForm.cs" />
-		<Compile Include="Forms\VariableCreationForm.Designer.cs" />
-		<Compile Include="Forms\VariablePopOutForm.cs" />
-		<Compile Include="Forms\VariablePopOutForm.Designer.cs" />
-		<Compile Include="Forms\VariableTripletControllerForm.cs" />
-		<Compile Include="Forms\VariableTripletControllerForm.Designer.cs" />
-		<Compile Include="Forms\VariableViewerForm.cs" />
-		<Compile Include="Forms\VariableViewerForm.Designer.cs" />
+		<Compile Include="Calculators\**\*.cs" />
+		<Compile Include="Controls\**\*.cs" />
+		<Compile Include="Enums\**\*.cs" />
+		<Compile Include="Extensions\**\*.cs" />
+		<Compile Include="Forms\**\*.cs" />
 		<Compile Include="LoadingHandler.cs" />
-		<Compile Include="M64\M64CopiedData.cs" />
-		<Compile Include="M64\M64CopiedFrame.cs" />
-		<Compile Include="M64\M64File.cs" />
-		<Compile Include="M64\M64Header.cs" />
-		<Compile Include="M64\M64InputCell.cs" />
-		<Compile Include="M64\M64InputFrame.cs" />
-		<Compile Include="M64\M64Stats.cs" />
-		<Compile Include="M64\M64Utilities.cs" />
-		<Compile Include="Managers\ActionsManager.cs" />
-		<Compile Include="Managers\AreaManager.cs" />
-		<Compile Include="Managers\CameraManager.cs" />
-		<Compile Include="Managers\CamHackManager.cs" />
-		<Compile Include="Managers\CellsManager.cs" />
-		<Compile Include="Managers\CoinManager.cs" />
-		<Compile Include="Managers\CustomManager.cs" />
-		<Compile Include="Managers\DataManager.cs" />
-		<Compile Include="Managers\DebugManager.cs" />
-		<Compile Include="Managers\DisassemblyManager.cs" />
-		<Compile Include="Managers\FileManager.cs" />
-		<Compile Include="Managers\GfxManager.cs" />
-		<Compile Include="Managers\HackManager.cs" />
-		<Compile Include="Managers\HudManager.cs" />
-		<Compile Include="Managers\InputManager.cs" />
-		<Compile Include="Managers\IVariableAdder.cs" />
-		<Compile Include="Managers\M64Manager.cs" />
-		<Compile Include="Managers\MainSaveManager.cs" />
-		<Compile Include="Managers\MapManager.cs" />
-		<Compile Include="Managers\MarioManager.cs" />
-		<Compile Include="Managers\MemoryManager.cs" />
-		<Compile Include="Managers\MiscManager.cs" />
-		<Compile Include="Managers\ModelManager.cs" />
-		<Compile Include="Managers\MusicManager.cs" />
-		<Compile Include="Managers\ObjectManager.cs" />
-		<Compile Include="Managers\ObjectSlotsManager.cs" />
-		<Compile Include="Managers\OptionsManager.cs" />
-		<Compile Include="Managers\PaintingManager.cs" />
-		<Compile Include="Managers\PuManager.cs" />
-		<Compile Include="Managers\QuarterFrameManager.cs" />
-		<Compile Include="Managers\ScriptManager.cs" />
-		<Compile Include="Managers\SearchManager.cs" />
-		<Compile Include="Managers\SnowManager.cs" />
-		<Compile Include="Managers\SoundManager.cs" />
-		<Compile Include="Managers\TasManager.cs" />
-		<Compile Include="Managers\TestingManager.cs" />
-		<Compile Include="Managers\TriangleManager.cs" />
-		<Compile Include="Managers\VarHackManager.cs" />
-		<Compile Include="Managers\VariableAdder.cs" />
-		<Compile Include="Managers\WarpManager.cs" />
-		<Compile Include="Managers\WatchVariableControlSettingsManager.cs" />
-		<Compile Include="Managers\WatchVariableLockManager.cs" />
-		<Compile Include="Managers\WaterManager.cs" />
-		<Compile Include="Map\Map3D\Map3DCamera.cs" />
-		<Compile Include="Map\Map3D\Map3DGraphics.cs" />
-		<Compile Include="Map\Map3D\Map3DVertex.cs" />
-		<Compile Include="Map\MapDrawType.cs" />
-		<Compile Include="Map\MapGraphics.cs" />
-		<Compile Include="Map\MapGui.cs" />
-		<Compile Include="Map\MapObject.cs" />
-		<Compile Include="Map\MapObjectAggregatedPath.cs" />
-		<Compile Include="Map\MapObjectAllMapObjectsWithName.cs" />
-		<Compile Include="Map\MapObjectAllObjectCeiling.cs" />
-		<Compile Include="Map\MapObjectAllObjectFloor.cs" />
-		<Compile Include="Map\MapObjectAllObjectsWithName.cs" />
-		<Compile Include="Map\MapObjectAllObjectWall.cs" />
-		<Compile Include="Map\MapObjectAngleRange.cs" />
-		<Compile Include="Map\MapObjectArrow.cs" />
-		<Compile Include="Map\MapObjectBackground.cs" />
-		<Compile Include="Map\MapObjectBounds.cs" />
-		<Compile Include="Map\MapObjectBranchPath.cs" />
-		<Compile Include="Map\MapObjectCamera.cs" />
-		<Compile Include="Map\MapObjectCameraFocus.cs" />
-		<Compile Include="Map\MapObjectCameraView.cs" />
-		<Compile Include="Map\MapObjectCeiling.cs" />
-		<Compile Include="Map\MapObjectCellGridlines.cs" />
-		<Compile Include="Map\MapObjectCircle.cs" />
-		<Compile Include="Map\MapObjectCoffinBox.cs" />
-		<Compile Include="Map\MapObjectCompass.cs" />
-		<Compile Include="Map\MapObjectCoordinateLabels.cs" />
-		<Compile Include="Map\MapObjectCorkBoxTester.cs" />
-		<Compile Include="Map\MapObjectCUpFloor.cs" />
-		<Compile Include="Map\MapObjectCurrentBackground.cs" />
-		<Compile Include="Map\MapObjectCurrentCell.cs" />
-		<Compile Include="Map\MapObjectCurrentLevel.cs" />
-		<Compile Include="Map\MapObjectCurrentUnit.cs" />
-		<Compile Include="Map\MapObjectCustomBackground.cs" />
-		<Compile Include="Map\MapObjectCustomCeiling.cs" />
-		<Compile Include="Map\MapObjectCustomCylinder.cs" />
-		<Compile Include="Map\MapObjectCustomCylinderPoints.cs" />
-		<Compile Include="Map\MapObjectCustomFloor.cs" />
-		<Compile Include="Map\MapObjectCustomGridlines.cs" />
-		<Compile Include="Map\MapObjectCustomIconPoints.cs" />
-		<Compile Include="Map\MapObjectCustomLevel.cs" />
-		<Compile Include="Map\MapObjectCustomPositionAngle.cs" />
-		<Compile Include="Map\MapObjectCustomPositionAngleArrow.cs" />
-		<Compile Include="Map\MapObjectCustomSphere.cs" />
-		<Compile Include="Map\MapObjectCustomSpherePoints.cs" />
-		<Compile Include="Map\MapObjectCustomUnitPoints.cs" />
-		<Compile Include="Map\MapObjectCustomWall.cs" />
-		<Compile Include="Map\MapObjectCylinder.cs" />
-		<Compile Include="Map\MapObjectDrawDistanceSphere.cs" />
-		<Compile Include="Map\MapObjectDrawing.cs" />
-		<Compile Include="Map\MapObjectEffectiveHitboxCylinder.cs" />
-		<Compile Include="Map\MapObjectEffectiveHitboxHurtboxCylinder.cs" />
-		<Compile Include="Map\MapObjectEffectiveHurtboxCylinder.cs" />
-		<Compile Include="Map\MapObjectFacingDivider.cs" />
-		<Compile Include="Map\MapObjectFloatGridlines.cs" />
-		<Compile Include="Map\MapObjectFloor.cs" />
-		<Compile Include="Map\MapObjectFlyGuyZoneDividers.cs" />
-		<Compile Include="Map\MapObjectGhost.cs" />
-		<Compile Include="Map\MapObjectGridlines.cs" />
-		<Compile Include="Map\MapObjectHitboxCylinder.cs" />
-		<Compile Include="Map\MapObjectHitboxTriangle.cs" />
-		<Compile Include="Map\MapObjectHolp.cs" />
-		<Compile Include="Map\MapObjectHolpDisplayer.cs" />
-		<Compile Include="Map\MapObjectHome.cs" />
-		<Compile Include="Map\MapObjectHomeLine.cs" />
-		<Compile Include="Map\MapObjectHorizontalTriangle.cs" />
-		<Compile Include="Map\MapObjectHoverData.cs" />
-		<Compile Include="Map\MapObjectHoverDataEnum.cs" />
-		<Compile Include="Map\MapObjectHurtboxCylinder.cs" />
-		<Compile Include="Map\MapObjectIcon.cs" />
-		<Compile Include="Map\MapObjectIconPoint.cs" />
-		<Compile Include="Map\MapObjectIconRectangle.cs" />
-		<Compile Include="Map\MapObjectIwerlipses.cs" />
-		<Compile Include="Map\MapObjectLedgeGrabChecker.cs" />
-		<Compile Include="Map\MapObjectLevel.cs" />
-		<Compile Include="Map\MapObjectLevelCeiling.cs" />
-		<Compile Include="Map\MapObjectLevelFloor.cs" />
-		<Compile Include="Map\MapObjectLevelTriangleInterface.cs" />
-		<Compile Include="Map\MapObjectLevelWall.cs" />
-		<Compile Include="Map\MapObjectLine.cs" />
-		<Compile Include="Map\MapObjectLineSegment.cs" />
-		<Compile Include="Map\MapObjectMario.cs" />
-		<Compile Include="Map\MapObjectMarioCeiling.cs" />
-		<Compile Include="Map\MapObjectMarioFacingArrow.cs" />
-		<Compile Include="Map\MapObjectMarioFloor.cs" />
-		<Compile Include="Map\MapObjectMarioFloorArrow.cs" />
-		<Compile Include="Map\MapObjectMarioIntendedArrow.cs" />
-		<Compile Include="Map\MapObjectMarioMovingArrow.cs" />
-		<Compile Include="Map\MapObjectMarioSlidingArrow.cs" />
-		<Compile Include="Map\MapObjectMarioSpeedArrow.cs" />
-		<Compile Include="Map\MapObjectMarioTwirlArrow.cs" />
-		<Compile Include="Map\MapObjectMarioWall.cs" />
-		<Compile Include="Map\MapObjectNextPositions.cs" />
-		<Compile Include="Map\MapObjectObject.cs" />
-		<Compile Include="Map\MapObjectObjectAngleToMarioArrow.cs" />
-		<Compile Include="Map\MapObjectObjectCeiling.cs" />
-		<Compile Include="Map\MapObjectObjectCustomArrow.cs" />
-		<Compile Include="Map\MapObjectObjectFacingArrow.cs" />
-		<Compile Include="Map\MapObjectObjectFloor.cs" />
-		<Compile Include="Map\MapObjectObjectGraphicsArrow.cs" />
-		<Compile Include="Map\MapObjectObjectGraphicsTriangles.cs" />
-		<Compile Include="Map\MapObjectObjectMovingArrow.cs" />
-		<Compile Include="Map\MapObjectObjectSpeedArrow.cs" />
-		<Compile Include="Map\MapObjectObjectTargetArrow.cs" />
-		<Compile Include="Map\MapObjectObjectWall.cs" />
-		<Compile Include="Map\MapObjectOffsetPositionAngle.cs" />
-		<Compile Include="Map\MapObjectOJPosition.cs" />
-		<Compile Include="Map\MapObjectPath.cs" />
-		<Compile Include="Map\MapObjectPathSegment.cs" />
-		<Compile Include="Map\MapObjectPoint.cs" />
-		<Compile Include="Map\MapObjectPreviousPositions.cs" />
-		<Compile Include="Map\MapObjectPuGridlines.cs" />
-		<Compile Include="Map\MapObjectPunchDetector.cs" />
-		<Compile Include="Map\MapObjectPunchFloor.cs" />
-		<Compile Include="Map\MapObjectPushHitboxCylinder.cs" />
-		<Compile Include="Map\MapObjectPyramidNormal.cs" />
-		<Compile Include="Map\MapObjectPyramidNormalTarget.cs" />
-		<Compile Include="Map\MapObjectPyramidPlatformNormals.cs" />
-		<Compile Include="Map\MapObjectQuad.cs" />
-		<Compile Include="Map\MapObjectRenderTable.cs" />
-		<Compile Include="Map\MapObjectScuttlebugLungingArrow.cs" />
-		<Compile Include="Map\MapObjectSector.cs" />
-		<Compile Include="Map\MapObjectSelf.cs" />
-		<Compile Include="Map\MapObjectSettings.cs" />
-		<Compile Include="Map\MapObjectSettingsAccumulator.cs" />
-		<Compile Include="Map\MapObjectSlidePositions.cs" />
-		<Compile Include="Map\MapObjectSphere.cs" />
-		<Compile Include="Map\MapObjectSquishCancelSpots.cs" />
-		<Compile Include="Map\MapObjectSwooperEffectiveTargetArrow.cs" />
-		<Compile Include="Map\MapObjectTangibilitySphere.cs" />
-		<Compile Include="Map\MapObjectTriangle.cs" />
-		<Compile Include="Map\MapObjectUnitGridlines.cs" />
-		<Compile Include="Map\MapObjectWall.cs" />
-		<Compile Include="Map\MapObjectWaters.cs" />
-		<Compile Include="Map\MapSemaphore.cs" />
-		<Compile Include="Map\MapSemaphoreManager.cs" />
-		<Compile Include="Map\MapTracker.cs" />
-		<Compile Include="Map\MapTracker.Designer.cs" />
-		<Compile Include="Map\MapTrackerFlowLayoutPanel.cs" />
-		<Compile Include="Map\MapUtilities.cs" />
-		<Compile Include="Models\ByteModel.cs" />
-		<Compile Include="Models\CameraDataModel.cs" />
-		<Compile Include="Models\DataModels.cs" />
-		<Compile Include="Models\IUpdatableDataModel.cs" />
-		<Compile Include="Models\LevelDataModel.cs" />
-		<Compile Include="Models\MarioDataModel.cs" />
-		<Compile Include="Models\ObjectDataModel.cs" />
-		<Compile Include="Models\ObjectProcessorDataModel.cs" />
-		<Compile Include="Models\PanModel.cs" />
-		<Compile Include="Models\TriangleDataModel.cs" />
-		<Compile Include="Models\TriangleDataModelCustom.cs" />
-		<Compile Include="Models\TriangleDataModelFull.cs" />
-		<Compile Include="Models\TriangleDataModelLazy.cs" />
-		<Compile Include="Models\TriangleMapData.cs" />
+		<Compile Include="M64\**\*.cs" />
+		<Compile Include="Managers\**\*.cs" />
+		<Compile Include="Map\**\*.cs" />
+		<Compile Include="Models\**\*.cs" />
 		<Compile Include="Program.cs" />
-		<Compile Include="Properties\AssemblyInfo.cs" />
-		<Compile Include="Properties\Resources.Designer.cs" />
-		<Compile Include="Properties\Settings.Designer.cs" />
-		<Compile Include="Script\ScriptEngine.cs" />
-		<Compile Include="Script\TokenScript.cs" />
-		<Compile Include="Structs\ActionTable.cs" />
-		<Compile Include="Structs\AnimationTable.cs" />
-		<Compile Include="Structs\BehaviorCriteria.cs" />
-		<Compile Include="Structs\Configurations\AreaConfig.cs" />
-		<Compile Include="Structs\Configurations\CameraConfig.cs" />
-		<Compile Include="Structs\Configurations\CamHackConfig.cs" />
-		<Compile Include="Structs\Configurations\Config.cs" />
-		<Compile Include="Structs\Configurations\DebugConfig.cs" />
-		<Compile Include="Structs\Configurations\FileConfig.cs" />
-		<Compile Include="Structs\Configurations\GhostHackConfig.cs" />
-		<Compile Include="Structs\Configurations\GotoRetrieveConfig.cs" />
-		<Compile Include="Structs\Configurations\HackConfig.cs" />
-		<Compile Include="Structs\Configurations\HudConfig.cs" />
-		<Compile Include="Structs\Configurations\InputConfig.cs" />
-		<Compile Include="Structs\Configurations\LockConfig.cs" />
-		<Compile Include="Structs\Configurations\M64Config.cs" />
-		<Compile Include="Structs\Configurations\MainSaveConfig.cs" />
-		<Compile Include="Structs\Configurations\MapConfig.cs" />
-		<Compile Include="Structs\Configurations\MappingConfig.cs" />
-		<Compile Include="Structs\Configurations\MarioConfig.cs" />
-		<Compile Include="Structs\Configurations\MarioObjectConfig.cs" />
-		<Compile Include="Structs\Configurations\MiscConfig.cs" />
-		<Compile Include="Structs\Configurations\ObjectConfig.cs" />
-		<Compile Include="Structs\Configurations\ObjectSlotsConfig.cs" />
-		<Compile Include="Structs\Configurations\OptionsConfig.cs" />
-		<Compile Include="Structs\Configurations\OverlayConfig.cs" />
-		<Compile Include="Structs\Configurations\PaintingConfig.cs" />
-		<Compile Include="Structs\Configurations\PositionControllerRelativityConfig.cs" />
-		<Compile Include="Structs\Configurations\RefreshRateConfig.cs" />
-		<Compile Include="Structs\Configurations\RomVersionConfig.cs" />
-		<Compile Include="Structs\Configurations\SavedSettingsConfig.cs" />
-		<Compile Include="Structs\Configurations\SnowConfig.cs" />
-		<Compile Include="Structs\Configurations\SpecialConfig.cs" />
-		<Compile Include="Structs\Configurations\TableConfig.cs" />
-		<Compile Include="Structs\Configurations\TestingConfig.cs" />
-		<Compile Include="Structs\Configurations\TriangleConfig.cs" />
-		<Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
-		<Compile Include="Structs\Configurations\TtcObjectConfig.cs" />
-		<Compile Include="Structs\Configurations\VarHackConfig.cs" />
-		<Compile Include="Structs\Configurations\WaypointConfig.cs" />
-		<Compile Include="Structs\CourseDataTable.cs" />
-		<Compile Include="Structs\Emulator.cs" />
-		<Compile Include="Structs\FlyGuyDataTable.cs" />
-		<Compile Include="Structs\GameScript.cs" />
-		<Compile Include="Structs\Gui\FileImageGui.cs" />
-		<Compile Include="Structs\Gui\InputImageGui.cs" />
-		<Compile Include="Structs\Gui\M64Gui.cs" />
-		<Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
-		<Compile Include="Structs\InputFrame.cs" />
-		<Compile Include="Structs\Map\BackgroundImage.cs" />
-		<Compile Include="Structs\Map\MapAssociations.cs" />
-		<Compile Include="Structs\Map\MapLayout.cs" />
-		<Compile Include="Structs\MissionTable.cs" />
-		<Compile Include="Structs\MusicEntry.cs" />
-		<Compile Include="Structs\MusicTable.cs" />
-		<Compile Include="Structs\ObjectAngleTable.cs" />
-		<Compile Include="Structs\ObjectAssociations.cs" />
-		<Compile Include="Structs\ObjectBehaviorAssociation.cs" />
-		<Compile Include="Structs\PendulumSwingTable.cs" />
-		<Compile Include="Structs\PendulumVertexTable.cs" />
-		<Compile Include="Structs\PointTable.cs" />
-		<Compile Include="Structs\ProcessSelection.cs" />
-		<Compile Include="Structs\PushHitbox.cs" />
-		<Compile Include="Structs\RomHack.cs" />
-		<Compile Include="Structs\SpawnHack.cs" />
-		<Compile Include="Structs\TriangleInfoTable.cs" />
-		<Compile Include="Structs\TrigTable.cs" />
-		<Compile Include="Structs\WaypointTable.cs" />
-		<Compile Include="Ttc\TtcAmp.cs" />
-		<Compile Include="Ttc\TtcBobomb.cs" />
-		<Compile Include="Ttc\TtcCog.cs" />
-		<Compile Include="Ttc\TtcDust.cs" />
-		<Compile Include="Ttc\TtcElevator.cs" />
-		<Compile Include="Ttc\TtcHand.cs" />
-		<Compile Include="Ttc\TtcMain.cs" />
-		<Compile Include="Ttc\TtcObject.cs" />
-		<Compile Include="Ttc\TtcPendulum.cs" />
-		<Compile Include="Ttc\TtcPendulum2.cs" />
-		<Compile Include="Ttc\TtcPendulumBad.cs" />
-		<Compile Include="Ttc\TtcPitBlock.cs" />
-		<Compile Include="Ttc\TtcPusher.cs" />
-		<Compile Include="Ttc\TtcRng.cs" />
-		<Compile Include="Ttc\TtcRng2.cs" />
-		<Compile Include="Ttc\TtcRotatingBlock.cs" />
-		<Compile Include="Ttc\TtcRotatingTriangularPrism.cs" />
-		<Compile Include="Ttc\TtcSaveState.cs" />
-		<Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
-		<Compile Include="Ttc\TtcSimulation.cs" />
-		<Compile Include="Ttc\TtcSpinner.cs" />
-		<Compile Include="Ttc\TtcSpinningTriangle.cs" />
-		<Compile Include="Ttc\TtcThwomp.cs" />
-		<Compile Include="Ttc\TtcTreadmill.cs" />
-		<Compile Include="Ttc\TtcUtilities.cs" />
-		<Compile Include="Ttc\TtcWheel.cs" />
+		<Compile Include="Properties\**\*.cs" />
+		<Compile Include="Script\**\*.cs" />
+		<Compile Include="Structs\**\*.cs" />
+		<Compile Include="Ttc\**\*.cs" />
 		<Compile Include="Utilities\AnimationUtilities.cs" />
 		<Compile Include="Utilities\AreaUtilities.cs" />
 		<Compile Include="Utilities\BehaviorDecoder.cs" />
@@ -723,111 +275,32 @@
 		<Compile Include="Utilities\WaterUtilities.cs" />
 		<Compile Include="Utilities\XmlConfigParser.cs" />
 		<Compile Include="Utilities\ZipUtilities.cs" />
-		<Content Include="Config\ActionsData.xml" />
-		<Content Include="Config\AreaData.xml" />
-		<Content Include="Config\CameraData.xml" />
-		<Content Include="Config\CamHackData.xml" />
-		<Content Include="Config\CellsData.xml" />
-		<Content Include="Config\Config.xml" />
-		<Content Include="Config\CourseData.xml" />
-		<Content Include="Config\CustomData.xml" />
-		<Content Include="Config\DebugData.xml" />
-		<Content Include="Config\FileData.xml" />
-		<Content Include="Config\FileImageAssociations.xml" />
-		<Content Include="Config\Hacks.xml" />
-		<Content Include="Config\HudData.xml" />
-		<Content Include="Config\InputData.xml" />
-		<Content Include="Config\InputImageAssociations.xml" />
-		<Content Include="Config\KoopaTheQuick1Waypoints.xml" />
-		<Content Include="Config\KoopaTheQuick2Waypoints.xml" />
-		<Content Include="Config\MainSaveData.xml" />
-		<Content Include="Config\MapAssociations.xml" />
-		<Content Include="Config\MapVars.xml" />
-		<Content Include="Config\MarioActions.xml" />
-		<Content Include="Config\MarioAnimations.xml" />
-		<Content Include="Config\MarioData.xml" />
-		<Content Include="Config\MarioStateData.xml" />
-		<Content Include="Config\MhsData.xml" />
-		<Content Include="Config\MiscData.xml" />
-		<Content Include="Config\Missions.xml" />
-		<Content Include="Config\MusicData.xml" />
-		<Content Include="Config\MusicData2.xml" />
-		<Content Include="Config\ObjectAssociations.xml" />
-		<Content Include="Config\ObjectData.xml" />
-		<Content Include="Config\OptionsData.xml" />
-		<Content Include="Config\PaintingData.xml" />
-		<Content Include="Config\PendulumSwings.xml" />
-		<Content Include="Config\PuData.xml" />
-		<Content Include="Config\QuarterFrameData.xml" />
-		<Content Include="Config\RacingPenguinWaypoints.xml" />
-		<Content Include="Config\SavedSettings.xml" />
-		<Content Include="Config\ScriptData.xml" />
-		<Content Include="Config\SnowData.xml" />
-		<Content Include="Config\TasData.xml" />
-		<Content Include="Config\TriangleInfo.xml" />
-		<Content Include="Config\TrianglesData.xml" />
-		<Content Include="Config\TtmBowlingBallPoints.xml" />
-		<Content Include="Config\WarpData.xml" />
-		<Content Include="Config\WaterData.xml" />
+		<Content Include="Config\**\*.xml" />
 		<Content Include="icon.ico" />
 		<Content Include="Licenses.txt" />
-		<EmbeddedResource Include="Controls\ColorSelector.resx" />
-		<EmbeddedResource Include="Controls\VarHackContainer.resx" />
-		<EmbeddedResource Include="Controls\WatchVariableControl.resx" />
-		<EmbeddedResource Include="Forms\ActionForm.resx" />
-		<EmbeddedResource Include="Forms\CoinRingDisplayForm.resx" />
-		<EmbeddedResource Include="Forms\ImageForm.resx" />
-		<EmbeddedResource Include="Forms\InfoForm.resx" />
-		<EmbeddedResource Include="Forms\LoadingForm.resx" />
-		<EmbeddedResource Include="Forms\MainLoadingForm.resx" />
-		<EmbeddedResource Include="Forms\MapPopOutForm.resx" />
-		<EmbeddedResource Include="Forms\SelectionForm.resx" />
-		<EmbeddedResource Include="Forms\StroopMainForm.resx" />
-		<EmbeddedResource Include="Forms\TabForm.resx" />
-		<EmbeddedResource Include="Forms\TriangleListForm.resx" />
-		<EmbeddedResource Include="Forms\ValueForm.resx" />
-		<EmbeddedResource Include="Forms\ValueSplitForm.resx" />
-		<EmbeddedResource Include="Forms\VariableBitForm.resx" />
-		<EmbeddedResource Include="Forms\VariableControllerForm.resx" />
-		<EmbeddedResource Include="Forms\VariableCreationForm.resx" />
-		<EmbeddedResource Include="Forms\VariablePopOutForm.resx" />
-		<EmbeddedResource Include="Forms\VariableTripletControllerForm.resx" />
-		<EmbeddedResource Include="Forms\VariableViewerForm.resx" />
+		<EmbeddedResource Include="Controls\**\*.resx" />
+		<EmbeddedResource Include="Forms\**\*.resx" />
 		<EmbeddedResource Include="Map\MapTracker.resx" />
 		<EmbeddedResource Include="Properties\Resources.resx" />
-		<EmbeddedResource Include="Schemas\ActionTableSchema.xsd" />
-		<EmbeddedResource Include="Schemas\AnimationTableSchema.xsd" />
-		<EmbeddedResource Include="Schemas\CameraDataSchema.xsd" />
-		<EmbeddedResource Include="Schemas\ConfigSchema.xsd" />
-		<EmbeddedResource Include="Schemas\CourseDataTableSchema.xsd" />
-		<EmbeddedResource Include="Schemas\FileDataSchema.xsd" />
-		<EmbeddedResource Include="Schemas\FileImageAssociationsSchema.xsd" />
-		<EmbeddedResource Include="Schemas\HacksSchema.xsd" />
-		<EmbeddedResource Include="Schemas\HudDataSchema.xsd" />
-		<EmbeddedResource Include="Schemas\InputImageAssociationsSchema.xsd" />
-		<EmbeddedResource Include="Schemas\MapAssociationsSchema.xsd" />
-		<EmbeddedResource Include="Schemas\MarioDataSchema.xsd" />
-		<EmbeddedResource Include="Schemas\MiscDataSchema.xsd" />
-		<EmbeddedResource Include="Schemas\MissionTableSchema.xsd" />
-		<EmbeddedResource Include="Schemas\ObjectAssociationsSchema.xsd" />
-		<EmbeddedResource Include="Schemas\ObjectDataSchema.xsd" />
-		<EmbeddedResource Include="Schemas\PendulumSwingTableSchema.xsd" />
-		<EmbeddedResource Include="Schemas\ReusableTypes.xsd" />
-		<EmbeddedResource Include="Schemas\ScriptsSchema.xsd" />
-		<EmbeddedResource Include="Schemas\TriangleInfoTableSchema.xsd" />
-		<EmbeddedResource Include="Schemas\TrianglesDataSchema.xsd" />
-		<EmbeddedResource Include="Schemas\ValueListSchema.xsd" />
-		<EmbeddedResource Include="Schemas\WaypointTableSchema.xsd" />
+		<EmbeddedResource Include="Schemas\**\*.xsd" />
 		<None Include="App.config" />
 		<None Include="app.manifest" />
+		<!--<None Include="EmbeddedResources\**\*" />-->
+		<!--<None Include="icon.png" />-->
 		<None Include="Mappings\MappingJP.map" />
 		<None Include="Mappings\MappingUS.map" />
 		<None Include="OpenTK.dll.config" />
 		<None Include="packages.config" />
 		<None Include="Properties\Settings.settings" />
 		<None Include="Resources\cog.png" />
+		<!--
+		<None Include="Resources\direction_*.png" />
+		<None Include="Resources\File Images\**\*" />
+		<None Include="Resources\Hacks\**\*" />
+		-->
 		<None Include="Resources\image_clockwise.png" />
 		<None Include="Resources\image_counterclockwise.png" />
+		<!--<None Include="Resources\image_divide.png" />-->
 		<None Include="Resources\image_down.png" />
 		<None Include="Resources\image_downleft.png" />
 		<None Include="Resources\image_downright.png" />
@@ -838,16 +311,23 @@
 		<None Include="Resources\image_left.png" />
 		<None Include="Resources\image_minus.png" />
 		<None Include="Resources\image_plus.png" />
+		<!--<None Include="Resources\image_plus_green.png" />-->
 		<None Include="Resources\image_right.png" />
+		<!--<None Include="Resources\image_times.png" />-->
 		<None Include="Resources\image_up.png" />
 		<None Include="Resources\image_upleft.png" />
 		<None Include="Resources\image_upright.png" />
-		<None Include="Resources\lock_black.png" />
-		<None Include="Resources\lock_black_open.png" />
-		<None Include="Resources\lock_blue.png" />
-		<None Include="Resources\lock_blue_open.png" />
-		<None Include="Resources\lock_red.png" />
-		<None Include="Resources\lock_red_open.png" />
+		<!--<None Include="Resources\Input Images\**\*" />-->
+		<None Include="Resources\lock_*.png" />
+		<!--
+		<None Include="Resources\Maps\**\*" />
+		<None Include="Resources\Object Images\**\*" />
+		<None Include="Resources\Overlays\**\*" />
+		<None Include="Resources\Scripts\**\*" />
+		<None Include="Resources\Shaders\**\*" />
+		<None Include="Resources\Text Images\**\*" />
+		<None Include="Utilities\Stream\IProcessMemory.cs" />
+		-->
 		<Page Include="Controls\DecompilerView.xaml" />
 	</ItemGroup>
 	<ItemGroup>
@@ -931,52 +411,22 @@
 		<Compile Update="Map\MapTrackerFlowLayoutPanel.cs" SubType="Component" />
 		<Compile Update="Properties\Resources.Designer.cs" AutoGen="True" DependentUpon="Resources.resx" DesignTime="True" />
 		<Compile Update="Properties\Settings.Designer.cs" AutoGen="True" DependentUpon="Settings.settings" DesignTimeSharedInput="True" />
-		<Content Update="Config\ActionsData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\AreaData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\CameraData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\CamHackData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\CellsData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\Config.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\CourseData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\CustomData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\DebugData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\FileData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\FileImageAssociations.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\Hacks.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\HudData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\InputData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\InputImageAssociations.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\KoopaTheQuick1Waypoints.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\KoopaTheQuick2Waypoints.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MainSaveData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\MapAssociations.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MapVars.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MarioActions.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MarioAnimations.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MarioData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MarioStateData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MhsData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MiscData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\Missions.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MusicData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\MusicData2.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\ObjectAssociations.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\ObjectData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\OptionsData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\PaintingData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\PendulumSwings.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\PuData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\QuarterFrameData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\RacingPenguinWaypoints.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\SavedSettings.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\ScriptData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\SnowData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\TasData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\TriangleInfo.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\TrianglesData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
-		<Content Update="Config\TtmBowlingBallPoints.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\WarpData.xml" CopyToOutputDirectory="PreserveNewest" />
-		<Content Update="Config\WaterData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Update="Config\*.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Update="Config\AreaData.xml" SubType="Designer" />
+		<Content Update="Config\CameraData.xml" SubType="Designer" />
+		<Content Update="Config\CellsData.xml" SubType="Designer" />
+		<Content Update="Config\Config.xml" SubType="Designer" />
+		<Content Update="Config\CustomData.xml" SubType="Designer" />
+		<Content Update="Config\HudData.xml" SubType="Designer" />
+		<Content Update="Config\MainSaveData.xml" SubType="Designer" />
+		<Content Update="Config\MiscData.xml" SubType="Designer" />
+		<Content Update="Config\ObjectAssociations.xml" SubType="Designer" />
+		<Content Update="Config\ObjectData.xml" SubType="Designer" />
+		<Content Update="Config\ScriptData.xml" SubType="Designer" />
+		<Content Update="Config\SnowData.xml" SubType="Designer" />
+		<Content Update="Config\TasData.xml" SubType="Designer" />
+		<Content Update="Config\TriangleInfo.xml" SubType="Designer" />
+		<Content Update="Config\TrianglesData.xml" SubType="Designer" />
 		<Content Update="Licenses.txt" CopyToOutputDirectory="PreserveNewest" />
 		<EmbeddedResource Update="Controls\ColorSelector.resx" DependentUpon="ColorSelector.cs" />
 		<EmbeddedResource Update="Controls\VarHackContainer.resx" DependentUpon="VarHackContainer.cs" />
@@ -1002,32 +452,9 @@
 		<EmbeddedResource Update="Forms\VariableViewerForm.resx" DependentUpon="VariableViewerForm.cs" />
 		<EmbeddedResource Update="Map\MapTracker.resx" DependentUpon="MapTracker.cs" />
 		<EmbeddedResource Update="Properties\Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\ActionTableSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\AnimationTableSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\CameraDataSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\ConfigSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\CourseDataTableSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\FileDataSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\FileImageAssociationsSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\HacksSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\HudDataSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\InputImageAssociationsSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\MapAssociationsSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\MarioDataSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\MiscDataSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\MissionTableSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\ObjectAssociationsSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\ObjectDataSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\PendulumSwingTableSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\ReusableTypes.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\ScriptsSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\TriangleInfoTableSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\TrianglesDataSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\ValueListSchema.xsd" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\WaypointTableSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Update="Schemas\*.xsd" SubType="Designer" />
 		<None Update="App.config" SubType="Designer" />
-		<None Update="Mappings\MappingJP.map" CopyToOutputDirectory="PreserveNewest" />
-		<None Update="Mappings\MappingUS.map" CopyToOutputDirectory="PreserveNewest" />
+		<None Update="Mappings\*.map" CopyToOutputDirectory="PreserveNewest" />
 		<None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />
 		<Page Update="Controls\DecompilerView.xaml" Generator="MSBuild:Compile" SubType="Designer" />
 	</ItemGroup>
