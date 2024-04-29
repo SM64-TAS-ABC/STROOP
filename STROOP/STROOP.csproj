@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,7 +7,7 @@
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>STROOP</RootNamespace>
 		<AssemblyName>STROOP</AssemblyName>
-		<TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+		<TargetFramework>net461</TargetFramework>
 		<FileAlignment>512</FileAlignment>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<IsWebBootstrapper>false</IsWebBootstrapper>
@@ -37,7 +35,9 @@
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+		<EnableDefaultItems>false</EnableDefaultItems>
 		<ErrorReport>prompt</ErrorReport>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
 		<PlatformTarget>$(Platform)</PlatformTarget>
 		<SignAssembly>false</SignAssembly>
@@ -73,6 +73,7 @@
 		<CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
 		<PackageReference Include="Accord" Version="3.8.0" />
 		<PackageReference Include="Accord.Video" Version="3.8.0" />
 		<PackageReference Include="Accord.Video.FFMPEG" Version="3.8.0" />
@@ -359,13 +360,8 @@
 			<Install>false</Install>
 		</BootstrapperPackage>
 	</ItemGroup>
-	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-	<PropertyGroup>
-		<PostBuildEvent>
-		del "$(TargetDir)OpenTK.dll.config"
-		del "$(TargetDir)OpenTK.GLControl.xml"
-		del "$(TargetDir)OpenTK.xml"
-		del "$(TargetDir)STROOP.exe.config"
-		</PostBuildEvent>
-	</PropertyGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Delete Files="$(TargetDir)OpenTK.dll.config;$(TargetDir)OpenTK.GLControl.xml;$(TargetDir)OpenTK.xml" />
+		<Delete Files="$(TargetDir)STROOP.exe.config" />
+	</Target>
 </Project>
