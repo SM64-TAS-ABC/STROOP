@@ -199,39 +199,28 @@
 		<Compile Include="Calculators\MarioState.cs" />
 		<Compile Include="Calculators\HolpCalculator.cs" />
 		<Compile Include="Calculators\ObjectCalculator.cs" />
-		<Compile Include="Controls\BetterSplitContainer.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\DoubleBufferedTableLayoutPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\CoinRingDisplayPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\TrackBarEx.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\TabControlEx.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\CarretlessTextBox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\MainSaveTextbox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\ColorSelector.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Controls\ColorSelector.Designer.cs">
-			<DependentUpon>ColorSelector.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\PanelEx.cs">
-			<SubType>Component</SubType>
-		</Compile>
+		<Compile Include="Controls\BetterSplitContainer.cs" />
+		<Compile Update="Controls\BetterSplitContainer.cs" SubType="Component" />
+		<Compile Include="Controls\DoubleBufferedTableLayoutPanel.cs" />
+		<Compile Update="Controls\DoubleBufferedTableLayoutPanel.cs" SubType="Component" />
+		<Compile Include="Controls\CoinRingDisplayPanel.cs" />
+		<Compile Update="Controls\CoinRingDisplayPanel.cs" SubType="Component" />
+		<Compile Include="Controls\TrackBarEx.cs" />
+		<Compile Update="Controls\TrackBarEx.cs" SubType="Component" />
+		<Compile Include="Controls\TabControlEx.cs" />
+		<Compile Update="Controls\TabControlEx.cs" SubType="Component" />
+		<Compile Include="Controls\CarretlessTextBox.cs" />
+		<Compile Update="Controls\CarretlessTextBox.cs" SubType="Component" />
+		<Compile Include="Controls\MainSaveTextbox.cs" />
+		<Compile Update="Controls\MainSaveTextbox.cs" SubType="Component" />
+		<Compile Include="Controls\ColorSelector.cs" />
+		<Compile Update="Controls\ColorSelector.cs" SubType="UserControl" />
+		<Compile Include="Controls\ColorSelector.Designer.cs" />
+		<Compile Update="Controls\ColorSelector.Designer.cs" DependentUpon="ColorSelector.cs" />
+		<Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs" />
+		<Compile Update="Controls\ObjectSlotFlowLayoutPanel.cs" SubType="Component" />
+		<Compile Include="Controls\PanelEx.cs" />
+		<Compile Update="Controls\PanelEx.cs" SubType="Component" />
 		<Compile Include="Controls\WatchVariableAddressWrapper.cs" />
 		<Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
 		<Compile Include="Controls\WatchVariableStringWrapper.cs" />
@@ -255,179 +244,126 @@
 		<Compile Include="Enums\RomVersionSelection.cs" />
 		<Compile Include="Enums\TriangleClassificationExtended.cs" />
 		<Compile Include="Extensions\FormExtensions.cs" />
-		<Compile Include="Forms\ImageForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\ImageForm.Designer.cs">
-			<DependentUpon>ImageForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\TriangleListForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\TriangleListForm.Designer.cs">
-			<DependentUpon>TriangleListForm.cs</DependentUpon>
-		</Compile>
+		<Compile Include="Forms\ImageForm.cs" />
+		<Compile Update="Forms\ImageForm.cs" SubType="Form" />
+		<Compile Include="Forms\ImageForm.Designer.cs" />
+		<Compile Update="Forms\ImageForm.Designer.cs" DependentUpon="ImageForm.cs" />
+		<Compile Include="Forms\TriangleListForm.cs" />
+		<Compile Update="Forms\TriangleListForm.cs" SubType="Form" />
+		<Compile Include="Forms\TriangleListForm.Designer.cs" />
+		<Compile Update="Forms\TriangleListForm.Designer.cs" DependentUpon="TriangleListForm.cs" />
 		<Compile Include="Forms\FormManager.cs" />
 		<Compile Include="Forms\IUpdatableForm.cs" />
-		<Compile Include="Forms\TabForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\TabForm.Designer.cs">
-			<DependentUpon>TabForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\CoinRingDisplayForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\CoinRingDisplayForm.Designer.cs">
-			<DependentUpon>CoinRingDisplayForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\ValueSplitForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\ValueSplitForm.Designer.cs">
-			<DependentUpon>ValueSplitForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\ValueForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\ValueForm.Designer.cs">
-			<DependentUpon>ValueForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\ActionForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\ActionForm.Designer.cs">
-			<DependentUpon>ActionForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\LoadingForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\LoadingForm.Designer.cs">
-			<DependentUpon>LoadingForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\MapPopOutForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\MapPopOutForm.Designer.cs">
-			<DependentUpon>MapPopOutForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\VariableTripletControllerForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\VariableTripletControllerForm.Designer.cs">
-			<DependentUpon>VariableTripletControllerForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\VariablePopOutForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\VariablePopOutForm.Designer.cs">
-			<DependentUpon>VariablePopOutForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\SelectionForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\SelectionForm.Designer.cs">
-			<DependentUpon>SelectionForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\VariableBitForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\VariableBitForm.Designer.cs">
-			<DependentUpon>VariableBitForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\VariableCreationForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\VariableCreationForm.Designer.cs">
-			<DependentUpon>VariableCreationForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\WatchVariableControl.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Controls\WatchVariableControl.Designer.cs">
-			<DependentUpon>WatchVariableControl.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\VarHackContainer.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Controls\VarHackContainer.Designer.cs">
-			<DependentUpon>VarHackContainer.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\NoTearFlowLayoutPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
+		<Compile Include="Forms\TabForm.cs" />
+		<Compile Update="Forms\TabForm.cs" SubType="Form" />
+		<Compile Include="Forms\TabForm.Designer.cs" />
+		<Compile Update="Forms\TabForm.Designer.cs" DependentUpon="TabForm.cs" />
+		<Compile Include="Forms\CoinRingDisplayForm.cs" />
+		<Compile Update="Forms\CoinRingDisplayForm.cs" SubType="Form" />
+		<Compile Include="Forms\CoinRingDisplayForm.Designer.cs" />
+		<Compile Update="Forms\CoinRingDisplayForm.Designer.cs" DependentUpon="CoinRingDisplayForm.cs" />
+		<Compile Include="Forms\ValueSplitForm.cs" />
+		<Compile Update="Forms\ValueSplitForm.cs" SubType="Form" />
+		<Compile Include="Forms\ValueSplitForm.Designer.cs" />
+		<Compile Update="Forms\ValueSplitForm.Designer.cs" DependentUpon="ValueSplitForm.cs" />
+		<Compile Include="Forms\ValueForm.cs" />
+		<Compile Update="Forms\ValueForm.cs" SubType="Form" />
+		<Compile Include="Forms\ValueForm.Designer.cs" />
+		<Compile Update="Forms\ValueForm.Designer.cs" DependentUpon="ValueForm.cs" />
+		<Compile Include="Forms\ActionForm.cs" />
+		<Compile Update="Forms\ActionForm.cs" SubType="Form" />
+		<Compile Include="Forms\ActionForm.Designer.cs" />
+		<Compile Update="Forms\ActionForm.Designer.cs" DependentUpon="ActionForm.cs" />
+		<Compile Include="Forms\LoadingForm.cs" />
+		<Compile Update="Forms\LoadingForm.cs" SubType="Form" />
+		<Compile Include="Forms\LoadingForm.Designer.cs" />
+		<Compile Update="Forms\LoadingForm.Designer.cs" DependentUpon="LoadingForm.cs" />
+		<Compile Include="Forms\MapPopOutForm.cs" />
+		<Compile Update="Forms\MapPopOutForm.cs" SubType="Form" />
+		<Compile Include="Forms\MapPopOutForm.Designer.cs" />
+		<Compile Update="Forms\MapPopOutForm.Designer.cs" DependentUpon="MapPopOutForm.cs" />
+		<Compile Include="Forms\VariableTripletControllerForm.cs" />
+		<Compile Update="Forms\VariableTripletControllerForm.cs" SubType="Form" />
+		<Compile Include="Forms\VariableTripletControllerForm.Designer.cs" />
+		<Compile Update="Forms\VariableTripletControllerForm.Designer.cs" DependentUpon="VariableTripletControllerForm.cs" />
+		<Compile Include="Forms\VariablePopOutForm.cs" />
+		<Compile Update="Forms\VariablePopOutForm.cs" SubType="Form" />
+		<Compile Include="Forms\VariablePopOutForm.Designer.cs" />
+		<Compile Update="Forms\VariablePopOutForm.Designer.cs" DependentUpon="VariablePopOutForm.cs" />
+		<Compile Include="Forms\SelectionForm.cs" />
+		<Compile Update="Forms\SelectionForm.cs" SubType="Form" />
+		<Compile Include="Forms\SelectionForm.Designer.cs" />
+		<Compile Update="Forms\SelectionForm.Designer.cs" DependentUpon="SelectionForm.cs" />
+		<Compile Include="Forms\VariableBitForm.cs" />
+		<Compile Update="Forms\VariableBitForm.cs" SubType="Form" />
+		<Compile Include="Forms\VariableBitForm.Designer.cs" />
+		<Compile Update="Forms\VariableBitForm.Designer.cs" DependentUpon="VariableBitForm.cs" />
+		<Compile Include="Forms\VariableCreationForm.cs" />
+		<Compile Update="Forms\VariableCreationForm.cs" SubType="Form" />
+		<Compile Include="Forms\VariableCreationForm.Designer.cs" />
+		<Compile Update="Forms\VariableCreationForm.Designer.cs" DependentUpon="VariableCreationForm.cs" />
+		<Compile Include="Controls\WatchVariableControl.cs" />
+		<Compile Update="Controls\WatchVariableControl.cs" SubType="UserControl" />
+		<Compile Include="Controls\WatchVariableControl.Designer.cs" />
+		<Compile Update="Controls\WatchVariableControl.Designer.cs" DependentUpon="WatchVariableControl.cs" />
+		<Compile Include="Controls\VarHackContainer.cs" />
+		<Compile Update="Controls\VarHackContainer.cs" SubType="UserControl" />
+		<Compile Include="Controls\VarHackContainer.Designer.cs" />
+		<Compile Update="Controls\VarHackContainer.Designer.cs" DependentUpon="VarHackContainer.cs" />
+		<Compile Include="Controls\NoTearFlowLayoutPanel.cs" />
+		<Compile Update="Controls\NoTearFlowLayoutPanel.cs" SubType="Component" />
 		<Compile Include="Controls\VisualLinkLineText.cs" />
 		<Compile Include="Controls\VisualRegexLinkGenerator.cs" />
 		<Compile Include="Controls\WatchVariableControlSettings.cs" />
 		<Compile Include="Controls\WatchVariableLock.cs" />
-		<Compile Include="Controls\BetterContextMenuStrip.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\TransparentTextbox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\BorderedTableLayoutPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\BinaryButton.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\BetterTextbox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\DecompilerView.xaml.cs">
-			<DependentUpon>DecompilerView.xaml</DependentUpon>
-		</Compile>
+		<Compile Include="Controls\BetterContextMenuStrip.cs" />
+		<Compile Update="Controls\BetterContextMenuStrip.cs" SubType="Component" />
+		<Compile Include="Controls\TransparentTextbox.cs" />
+		<Compile Update="Controls\TransparentTextbox.cs" SubType="Component" />
+		<Compile Include="Controls\BorderedTableLayoutPanel.cs" />
+		<Compile Update="Controls\BorderedTableLayoutPanel.cs" SubType="Component" />
+		<Compile Include="Controls\BinaryButton.cs" />
+		<Compile Update="Controls\BinaryButton.cs" SubType="Component" />
+		<Compile Include="Controls\BetterTextbox.cs" />
+		<Compile Update="Controls\BetterTextbox.cs" SubType="Component" />
+		<Compile Include="Controls\DecompilerView.xaml.cs" />
+		<Compile Update="Controls\DecompilerView.xaml.cs" DependentUpon="DecompilerView.xaml" />
 		<Compile Include="Controls\WatchVariable.cs" />
 		<Compile Include="Controls\WatchVariableControlPrecursor.cs" />
 		<Compile Include="Controls\WatchVariableBooleanWrapper.cs" />
 		<Compile Include="Controls\WatchVariableObjectWrapper.cs" />
 		<Compile Include="Controls\WatchVariableAngleWrapper.cs" />
 		<Compile Include="Controls\WatchVariableNumberWrapper.cs" />
-		<Compile Include="Controls\VarHackFlowLayoutPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
+		<Compile Include="Controls\VarHackFlowLayoutPanel.cs" />
+		<Compile Update="Controls\VarHackFlowLayoutPanel.cs" SubType="Component" />
 		<Compile Include="Controls\WatchVariableWrapper.cs" />
-		<Compile Include="Controls\InputDisplayPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FileHatPositionTextbox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FileTextbox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FileHatLocationPictureBox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FileKeyDoorPictureBox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FileCourseLabel.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FileCoinScoreTextbox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FilePictureBox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FileBinaryPictureBox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\FileStarPictureBox.cs">
-			<SubType>Component</SubType>
-		</Compile>
+		<Compile Include="Controls\InputDisplayPanel.cs" />
+		<Compile Update="Controls\InputDisplayPanel.cs" SubType="Component" />
+		<Compile Include="Controls\FileHatPositionTextbox.cs" />
+		<Compile Update="Controls\FileHatPositionTextbox.cs" SubType="Component" />
+		<Compile Include="Controls\FileTextbox.cs" />
+		<Compile Update="Controls\FileTextbox.cs" SubType="Component" />
+		<Compile Include="Controls\FileHatLocationPictureBox.cs" />
+		<Compile Update="Controls\FileHatLocationPictureBox.cs" SubType="Component" />
+		<Compile Include="Controls\FileKeyDoorPictureBox.cs" />
+		<Compile Update="Controls\FileKeyDoorPictureBox.cs" SubType="Component" />
+		<Compile Include="Controls\FileCourseLabel.cs" />
+		<Compile Update="Controls\FileCourseLabel.cs" SubType="Component" />
+		<Compile Include="Controls\FileCoinScoreTextbox.cs" />
+		<Compile Update="Controls\FileCoinScoreTextbox.cs" SubType="Component" />
+		<Compile Include="Controls\FilePictureBox.cs" />
+		<Compile Update="Controls\FilePictureBox.cs" SubType="Component" />
+		<Compile Include="Controls\FileBinaryPictureBox.cs" />
+		<Compile Update="Controls\FileBinaryPictureBox.cs" SubType="Component" />
+		<Compile Include="Controls\FileStarPictureBox.cs" />
+		<Compile Update="Controls\FileStarPictureBox.cs" SubType="Component" />
 		<Compile Include="Controls\ModelGraphics.cs" />
-		<Compile Include="Controls\IntPictureBox.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\WatchVariableFlowLayoutPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Controls\RichTextBoxEx.cs">
-			<SubType>Component</SubType>
-		</Compile>
+		<Compile Include="Controls\IntPictureBox.cs" />
+		<Compile Update="Controls\IntPictureBox.cs" SubType="Component" />
+		<Compile Include="Controls\WatchVariableFlowLayoutPanel.cs" />
+		<Compile Update="Controls\WatchVariableFlowLayoutPanel.cs" SubType="Component" />
+		<Compile Include="Controls\RichTextBoxEx.cs" />
+		<Compile Update="Controls\RichTextBoxEx.cs" SubType="Component" />
 		<Compile Include="Enums\FileType.cs" />
 		<Compile Include="Enums\CoordinateSystem.cs" />
 		<Compile Include="Enums\CamHackMode.cs" />
@@ -441,12 +377,10 @@
 		<Compile Include="Extensions\ControlCollectionsExtensions.cs" />
 		<Compile Include="Extensions\IEnumerableExtensions.cs" />
 		<Compile Include="Extensions\RectangleExtensions.cs" />
-		<Compile Include="Forms\MainLoadingForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\MainLoadingForm.Designer.cs">
-			<DependentUpon>MainLoadingForm.cs</DependentUpon>
-		</Compile>
+		<Compile Include="Forms\MainLoadingForm.cs" />
+		<Compile Update="Forms\MainLoadingForm.cs" SubType="Form" />
+		<Compile Include="Forms\MainLoadingForm.Designer.cs" />
+		<Compile Update="Forms\MainLoadingForm.Designer.cs" DependentUpon="MainLoadingForm.cs" />
 		<Compile Include="LoadingHandler.cs" />
 		<Compile Include="Managers\MapManager.cs" />
 		<Compile Include="Managers\CellsManager.cs" />
@@ -592,15 +526,12 @@
 		<Compile Include="Map\MapObjectMario.cs" />
 		<Compile Include="Map\MapObjectIcon.cs" />
 		<Compile Include="Map\MapObject.cs" />
-		<Compile Include="Map\MapTracker.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Map\MapTracker.Designer.cs">
-			<DependentUpon>MapTracker.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Map\MapTrackerFlowLayoutPanel.cs">
-			<SubType>Component</SubType>
-		</Compile>
+		<Compile Include="Map\MapTracker.cs" />
+		<Compile Update="Map\MapTracker.cs" SubType="UserControl" />
+		<Compile Include="Map\MapTracker.Designer.cs" />
+		<Compile Update="Map\MapTracker.Designer.cs" DependentUpon="MapTracker.cs" />
+		<Compile Include="Map\MapTrackerFlowLayoutPanel.cs" />
+		<Compile Update="Map\MapTrackerFlowLayoutPanel.cs" SubType="Component" />
 		<Compile Include="Map\MapSemaphore.cs" />
 		<Compile Include="Map\MapSemaphoreManager.cs" />
 		<Compile Include="Map\Map3D\Map3DCamera.cs" />
@@ -691,9 +622,8 @@
 		<Compile Include="Managers\OptionsManager.cs" />
 		<Compile Include="Managers\PuManager.cs" />
 		<Compile Include="Managers\TriangleManager.cs" />
-		<Compile Include="Controls\ObjectSlot.cs">
-			<SubType>Component</SubType>
-		</Compile>
+		<Compile Include="Controls\ObjectSlot.cs" />
+		<Compile Update="Controls\ObjectSlot.cs" SubType="Component" />
 		<Compile Include="Managers\ObjectSlotsManager.cs" />
 		<Compile Include="Models\CameraDataModel.cs" />
 		<Compile Include="Models\MarioDataModel.cs" />
@@ -843,12 +773,10 @@
 		<Compile Include="Utilities\N64Disassembler.cs" />
 		<Compile Include="Utilities\ButtonUtilities.cs" />
 		<Compile Include="Structs\ProcessSelection.cs" />
-		<Compile Include="Forms\StroopMainForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\StroopMainForm.Designer.cs">
-			<DependentUpon>StroopMainForm.cs</DependentUpon>
-		</Compile>
+		<Compile Include="Forms\StroopMainForm.cs" />
+		<Compile Update="Forms\StroopMainForm.cs" SubType="Form" />
+		<Compile Include="Forms\StroopMainForm.Designer.cs" />
+		<Compile Update="Forms\StroopMainForm.Designer.cs" DependentUpon="StroopMainForm.cs" />
 		<Compile Include="Program.cs" />
 		<Compile Include="Properties\AssemblyInfo.cs" />
 		<Compile Include="Utilities\Stream\ProcessStream.cs" />
@@ -859,36 +787,28 @@
 		<Compile Include="Utilities\PuUtilities.cs" />
 		<Compile Include="Utilities\RngIndexer.cs" />
 		<Compile Include="Utilities\XmlConfigParser.cs" />
-		<Compile Include="Forms\InfoForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\InfoForm.Designer.cs">
-			<DependentUpon>InfoForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\VariableControllerForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\VariableControllerForm.Designer.cs">
-			<DependentUpon>VariableControllerForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\VariableViewerForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\VariableViewerForm.Designer.cs">
-			<DependentUpon>VariableViewerForm.cs</DependentUpon>
-		</Compile>
+		<Compile Include="Forms\InfoForm.cs" />
+		<Compile Update="Forms\InfoForm.cs" SubType="Form" />
+		<Compile Include="Forms\InfoForm.Designer.cs" />
+		<Compile Update="Forms\InfoForm.Designer.cs" DependentUpon="InfoForm.cs" />
+		<Compile Include="Forms\VariableControllerForm.cs" />
+		<Compile Update="Forms\VariableControllerForm.cs" SubType="Form" />
+		<Compile Include="Forms\VariableControllerForm.Designer.cs" />
+		<Compile Update="Forms\VariableControllerForm.Designer.cs" DependentUpon="VariableControllerForm.cs" />
+		<Compile Include="Forms\VariableViewerForm.cs" />
+		<Compile Update="Forms\VariableViewerForm.cs" SubType="Form" />
+		<Compile Include="Forms\VariableViewerForm.Designer.cs" />
+		<Compile Update="Forms\VariableViewerForm.Designer.cs" DependentUpon="VariableViewerForm.cs" />
 		<None Include="Resources\lock_red_open.png" />
 		<None Include="Resources\lock_red.png" />
 		<None Include="Resources\lock_blue_open.png" />
 		<None Include="Resources\lock_black_open.png" />
 		<None Include="Resources\lock_black.png" />
 		<None Include="app.manifest" />
-		<None Include="Mappings\MappingJP.map">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="Mappings\MappingUS.map">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
+		<None Include="Mappings\MappingJP.map" />
+		<None Update="Mappings\MappingJP.map" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="Mappings\MappingUS.map" />
+		<None Update="Mappings\MappingUS.map" CopyToOutputDirectory="PreserveNewest" />
 		<None Include="OpenTK.dll.config" />
 		<None Include="Resources\lock_blue.png" />
 		<None Include="Resources\cog.png" />
@@ -908,293 +828,185 @@
 		<None Include="Resources\image_down.png" />
 		<None Include="Resources\image_counterclockwise.png" />
 		<None Include="Resources\image_clockwise.png" />
-		<None Include="App.config">
-			<SubType>Designer</SubType>
-		</None>
-		<EmbeddedResource Include="Controls\ColorSelector.resx">
-			<DependentUpon>ColorSelector.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Controls\WatchVariableControl.resx">
-			<DependentUpon>WatchVariableControl.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Controls\VarHackContainer.resx">
-			<DependentUpon>VarHackContainer.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\ImageForm.resx">
-			<DependentUpon>ImageForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\TriangleListForm.resx">
-			<DependentUpon>TriangleListForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\TabForm.resx">
-			<DependentUpon>TabForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\CoinRingDisplayForm.resx">
-			<DependentUpon>CoinRingDisplayForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\ValueSplitForm.resx">
-			<DependentUpon>ValueSplitForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\ValueForm.resx">
-			<DependentUpon>ValueForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\ActionForm.resx">
-			<DependentUpon>ActionForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\LoadingForm.resx">
-			<DependentUpon>LoadingForm.cs</DependentUpon>
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\MapPopOutForm.resx">
-			<DependentUpon>MapPopOutForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\VariableTripletControllerForm.resx">
-			<DependentUpon>VariableTripletControllerForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\VariablePopOutForm.resx">
-			<DependentUpon>VariablePopOutForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\SelectionForm.resx">
-			<DependentUpon>SelectionForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\MainLoadingForm.resx">
-			<DependentUpon>MainLoadingForm.cs</DependentUpon>
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<Content Include="Config\MainSaveData.xml">
-			<SubType>Designer</SubType>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\MarioStateData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\MusicData2.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\PaintingData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\MhsData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\MusicData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\CellsData.xml">
-			<SubType>Designer</SubType>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\ScriptData.xml">
-			<SubType>Designer</SubType>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\TtmBowlingBallPoints.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\SnowData.xml">
-			<SubType>Designer</SubType>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\SavedSettings.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\CourseData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\TasData.xml">
-			<SubType>Designer</SubType>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\FileImageAssociations.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\InputImageAssociations.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\MarioAnimations.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\ActionsData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\CamHackData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\FileData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\DebugData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\PuData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\Missions.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\KoopaTheQuick1Waypoints.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\KoopaTheQuick2Waypoints.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\RacingPenguinWaypoints.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\QuarterFrameData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\MarioActions.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\InputData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\PendulumSwings.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\AreaData.xml">
-			<SubType>Designer</SubType>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\TriangleInfo.xml">
-			<SubType>Designer</SubType>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\TrianglesData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<SubType>Designer</SubType>
-		</Content>
-		<Content Include="Config\CustomData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<SubType>Designer</SubType>
-		</Content>
-		<Content Include="Config\MapVars.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\WarpData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\OptionsData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\WaterData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<EmbeddedResource Include="Forms\StroopMainForm.resx">
-			<DependentUpon>StroopMainForm.cs</DependentUpon>
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\VariableBitForm.resx">
-			<DependentUpon>VariableBitForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\VariableCreationForm.resx">
-			<DependentUpon>VariableCreationForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Map\MapTracker.resx">
-			<DependentUpon>MapTracker.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Properties\Resources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<Compile Include="Properties\Resources.Designer.cs">
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Resources.resx</DependentUpon>
-			<DesignTime>True</DesignTime>
-		</Compile>
-		<EmbeddedResource Include="Schemas\ConfigSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<Content Include="Config\Hacks.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<EmbeddedResource Include="Forms\InfoForm.resx">
-			<DependentUpon>InfoForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\VariableControllerForm.resx">
-			<DependentUpon>VariableControllerForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\VariableViewerForm.resx">
-			<DependentUpon>VariableViewerForm.cs</DependentUpon>
-		</EmbeddedResource>
+		<None Include="App.config" />
+		<None Update="App.config" SubType="Designer" />
+		<EmbeddedResource Include="Controls\ColorSelector.resx" />
+		<EmbeddedResource Update="Controls\ColorSelector.resx" DependentUpon="ColorSelector.cs" />
+		<EmbeddedResource Include="Controls\WatchVariableControl.resx" />
+		<EmbeddedResource Update="Controls\WatchVariableControl.resx" DependentUpon="WatchVariableControl.cs" />
+		<EmbeddedResource Include="Controls\VarHackContainer.resx" />
+		<EmbeddedResource Update="Controls\VarHackContainer.resx" DependentUpon="VarHackContainer.cs" />
+		<EmbeddedResource Include="Forms\ImageForm.resx" />
+		<EmbeddedResource Update="Forms\ImageForm.resx" DependentUpon="ImageForm.cs" />
+		<EmbeddedResource Include="Forms\TriangleListForm.resx" />
+		<EmbeddedResource Update="Forms\TriangleListForm.resx" DependentUpon="TriangleListForm.cs" />
+		<EmbeddedResource Include="Forms\TabForm.resx" />
+		<EmbeddedResource Update="Forms\TabForm.resx" DependentUpon="TabForm.cs" />
+		<EmbeddedResource Include="Forms\CoinRingDisplayForm.resx" />
+		<EmbeddedResource Update="Forms\CoinRingDisplayForm.resx" DependentUpon="CoinRingDisplayForm.cs" />
+		<EmbeddedResource Include="Forms\ValueSplitForm.resx" />
+		<EmbeddedResource Update="Forms\ValueSplitForm.resx" DependentUpon="ValueSplitForm.cs" />
+		<EmbeddedResource Include="Forms\ValueForm.resx" />
+		<EmbeddedResource Update="Forms\ValueForm.resx" DependentUpon="ValueForm.cs" />
+		<EmbeddedResource Include="Forms\ActionForm.resx" />
+		<EmbeddedResource Update="Forms\ActionForm.resx" DependentUpon="ActionForm.cs" />
+		<EmbeddedResource Include="Forms\LoadingForm.resx" />
+		<EmbeddedResource Update="Forms\LoadingForm.resx" DependentUpon="LoadingForm.cs" SubType="Designer" />
+		<EmbeddedResource Include="Forms\MapPopOutForm.resx" />
+		<EmbeddedResource Update="Forms\MapPopOutForm.resx" DependentUpon="MapPopOutForm.cs" />
+		<EmbeddedResource Include="Forms\VariableTripletControllerForm.resx" />
+		<EmbeddedResource Update="Forms\VariableTripletControllerForm.resx" DependentUpon="VariableTripletControllerForm.cs" />
+		<EmbeddedResource Include="Forms\VariablePopOutForm.resx" />
+		<EmbeddedResource Update="Forms\VariablePopOutForm.resx" DependentUpon="VariablePopOutForm.cs" />
+		<EmbeddedResource Include="Forms\SelectionForm.resx" />
+		<EmbeddedResource Update="Forms\SelectionForm.resx" DependentUpon="SelectionForm.cs" />
+		<EmbeddedResource Include="Forms\MainLoadingForm.resx" />
+		<EmbeddedResource Update="Forms\MainLoadingForm.resx" DependentUpon="MainLoadingForm.cs" SubType="Designer" />
+		<Content Include="Config\MainSaveData.xml" />
+		<Content Update="Config\MainSaveData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\MarioStateData.xml" />
+		<Content Update="Config\MarioStateData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\MusicData2.xml" />
+		<Content Update="Config\MusicData2.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\PaintingData.xml" />
+		<Content Update="Config\PaintingData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\MhsData.xml" />
+		<Content Update="Config\MhsData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\MusicData.xml" />
+		<Content Update="Config\MusicData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\CellsData.xml" />
+		<Content Update="Config\CellsData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\ScriptData.xml" />
+		<Content Update="Config\ScriptData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\TtmBowlingBallPoints.xml" />
+		<Content Update="Config\TtmBowlingBallPoints.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\SnowData.xml" />
+		<Content Update="Config\SnowData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\SavedSettings.xml" />
+		<Content Update="Config\SavedSettings.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\CourseData.xml" />
+		<Content Update="Config\CourseData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\TasData.xml" />
+		<Content Update="Config\TasData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\FileImageAssociations.xml" />
+		<Content Update="Config\FileImageAssociations.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\InputImageAssociations.xml" />
+		<Content Update="Config\InputImageAssociations.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\MarioAnimations.xml" />
+		<Content Update="Config\MarioAnimations.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\ActionsData.xml" />
+		<Content Update="Config\ActionsData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\CamHackData.xml" />
+		<Content Update="Config\CamHackData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\FileData.xml" />
+		<Content Update="Config\FileData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\DebugData.xml" />
+		<Content Update="Config\DebugData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\PuData.xml" />
+		<Content Update="Config\PuData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\Missions.xml" />
+		<Content Update="Config\Missions.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\KoopaTheQuick1Waypoints.xml" />
+		<Content Update="Config\KoopaTheQuick1Waypoints.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\KoopaTheQuick2Waypoints.xml" />
+		<Content Update="Config\KoopaTheQuick2Waypoints.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\RacingPenguinWaypoints.xml" />
+		<Content Update="Config\RacingPenguinWaypoints.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\QuarterFrameData.xml" />
+		<Content Update="Config\QuarterFrameData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\MarioActions.xml" />
+		<Content Update="Config\MarioActions.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\InputData.xml" />
+		<Content Update="Config\InputData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\PendulumSwings.xml" />
+		<Content Update="Config\PendulumSwings.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\AreaData.xml" />
+		<Content Update="Config\AreaData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\TriangleInfo.xml" />
+		<Content Update="Config\TriangleInfo.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\TrianglesData.xml" />
+		<Content Update="Config\TrianglesData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\CustomData.xml" />
+		<Content Update="Config\CustomData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\MapVars.xml" />
+		<Content Update="Config\MapVars.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\WarpData.xml" />
+		<Content Update="Config\WarpData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\OptionsData.xml" />
+		<Content Update="Config\OptionsData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\WaterData.xml" />
+		<Content Update="Config\WaterData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<EmbeddedResource Include="Forms\StroopMainForm.resx" />
+		<EmbeddedResource Update="Forms\StroopMainForm.resx" DependentUpon="StroopMainForm.cs" SubType="Designer" />
+		<EmbeddedResource Include="Forms\VariableBitForm.resx" />
+		<EmbeddedResource Update="Forms\VariableBitForm.resx" DependentUpon="VariableBitForm.cs" />
+		<EmbeddedResource Include="Forms\VariableCreationForm.resx" />
+		<EmbeddedResource Update="Forms\VariableCreationForm.resx" DependentUpon="VariableCreationForm.cs" />
+		<EmbeddedResource Include="Map\MapTracker.resx" />
+		<EmbeddedResource Update="Map\MapTracker.resx" DependentUpon="MapTracker.cs" />
+		<EmbeddedResource Include="Properties\Resources.resx" />
+		<EmbeddedResource Update="Properties\Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" SubType="Designer" />
+		<Compile Include="Properties\Resources.Designer.cs" />
+		<Compile Update="Properties\Resources.Designer.cs" AutoGen="True" DependentUpon="Resources.resx" DesignTime="True" />
+		<EmbeddedResource Include="Schemas\ConfigSchema.xsd" />
+		<EmbeddedResource Update="Schemas\ConfigSchema.xsd" SubType="Designer" />
+		<Content Include="Config\Hacks.xml" />
+		<Content Update="Config\Hacks.xml" CopyToOutputDirectory="PreserveNewest" />
+		<EmbeddedResource Include="Forms\InfoForm.resx" />
+		<EmbeddedResource Update="Forms\InfoForm.resx" DependentUpon="InfoForm.cs" />
+		<EmbeddedResource Include="Forms\VariableControllerForm.resx" />
+		<EmbeddedResource Update="Forms\VariableControllerForm.resx" DependentUpon="VariableControllerForm.cs" />
+		<EmbeddedResource Include="Forms\VariableViewerForm.resx" />
+		<EmbeddedResource Update="Forms\VariableViewerForm.resx" DependentUpon="VariableViewerForm.cs" />
 		<None Include="packages.config" />
-		<None Include="Properties\Settings.settings">
-			<Generator>SettingsSingleFileGenerator</Generator>
-			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
-		</None>
-		<Compile Include="Properties\Settings.Designer.cs">
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Settings.settings</DependentUpon>
-			<DesignTimeSharedInput>True</DesignTimeSharedInput>
-		</Compile>
-		<EmbeddedResource Include="Schemas\MiscDataSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\ObjectAssociationsSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\MarioDataSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\ObjectDataSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\ReusableTypes.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\MapAssociationsSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\ScriptsSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\CameraDataSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\HudDataSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\HacksSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\TrianglesDataSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\ActionTableSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\AnimationTableSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\PendulumSwingTableSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\InputImageAssociationsSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\FileDataSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\FileImageAssociationsSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\MissionTableSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\CourseDataTableSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\WaypointTableSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\ValueListSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Schemas\TriangleInfoTableSchema.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
+		<None Include="Properties\Settings.settings" />
+		<None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />
+		<Compile Include="Properties\Settings.Designer.cs" />
+		<Compile Update="Properties\Settings.Designer.cs" AutoGen="True" DependentUpon="Settings.settings" DesignTimeSharedInput="True" />
+		<EmbeddedResource Include="Schemas\MiscDataSchema.xsd" />
+		<EmbeddedResource Update="Schemas\MiscDataSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\ObjectAssociationsSchema.xsd" />
+		<EmbeddedResource Update="Schemas\ObjectAssociationsSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\MarioDataSchema.xsd" />
+		<EmbeddedResource Update="Schemas\MarioDataSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\ObjectDataSchema.xsd" />
+		<EmbeddedResource Update="Schemas\ObjectDataSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\ReusableTypes.xsd" />
+		<EmbeddedResource Update="Schemas\ReusableTypes.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\MapAssociationsSchema.xsd" />
+		<EmbeddedResource Update="Schemas\MapAssociationsSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\ScriptsSchema.xsd" />
+		<EmbeddedResource Update="Schemas\ScriptsSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\CameraDataSchema.xsd" />
+		<EmbeddedResource Update="Schemas\CameraDataSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\HudDataSchema.xsd" />
+		<EmbeddedResource Update="Schemas\HudDataSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\HacksSchema.xsd" />
+		<EmbeddedResource Update="Schemas\HacksSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\TrianglesDataSchema.xsd" />
+		<EmbeddedResource Update="Schemas\TrianglesDataSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\ActionTableSchema.xsd" />
+		<EmbeddedResource Update="Schemas\ActionTableSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\AnimationTableSchema.xsd" />
+		<EmbeddedResource Update="Schemas\AnimationTableSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\PendulumSwingTableSchema.xsd" />
+		<EmbeddedResource Update="Schemas\PendulumSwingTableSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\InputImageAssociationsSchema.xsd" />
+		<EmbeddedResource Update="Schemas\InputImageAssociationsSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\FileDataSchema.xsd" />
+		<EmbeddedResource Update="Schemas\FileDataSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\FileImageAssociationsSchema.xsd" />
+		<EmbeddedResource Update="Schemas\FileImageAssociationsSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\MissionTableSchema.xsd" />
+		<EmbeddedResource Update="Schemas\MissionTableSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\CourseDataTableSchema.xsd" />
+		<EmbeddedResource Update="Schemas\CourseDataTableSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\WaypointTableSchema.xsd" />
+		<EmbeddedResource Update="Schemas\WaypointTableSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\ValueListSchema.xsd" />
+		<EmbeddedResource Update="Schemas\ValueListSchema.xsd" SubType="Designer" />
+		<EmbeddedResource Include="Schemas\TriangleInfoTableSchema.xsd" />
+		<EmbeddedResource Update="Schemas\TriangleInfoTableSchema.xsd" SubType="Designer" />
 	</ItemGroup>
 	<ItemGroup>
 		<BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -1209,46 +1021,29 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
-		<Page Include="Controls\DecompilerView.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
+		<Page Include="Controls\DecompilerView.xaml" />
+		<Page Update="Controls\DecompilerView.xaml" Generator="MSBuild:Compile" SubType="Designer" />
 	</ItemGroup>
 	<ItemGroup>
-		<Content Include="Config\CameraData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<SubType>Designer</SubType>
-		</Content>
-		<Content Include="Config\Config.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<SubType>Designer</SubType>
-		</Content>
-		<Content Include="Config\HudData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<SubType>Designer</SubType>
-		</Content>
-		<Content Include="Config\ObjectData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<SubType>Designer</SubType>
-		</Content>
-		<Content Include="Config\MapAssociations.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\MarioData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Config\ObjectAssociations.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<SubType>Designer</SubType>
-		</Content>
-		<Content Include="Config\MiscData.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<SubType>Designer</SubType>
-		</Content>
+		<Content Include="Config\CameraData.xml" />
+		<Content Update="Config\CameraData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\Config.xml" />
+		<Content Update="Config\Config.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\HudData.xml" />
+		<Content Update="Config\HudData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\ObjectData.xml" />
+		<Content Update="Config\ObjectData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\MapAssociations.xml" />
+		<Content Update="Config\MapAssociations.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\MarioData.xml" />
+		<Content Update="Config\MarioData.xml" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="Config\ObjectAssociations.xml" />
+		<Content Update="Config\ObjectAssociations.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
+		<Content Include="Config\MiscData.xml" />
+		<Content Update="Config\MiscData.xml" CopyToOutputDirectory="PreserveNewest" SubType="Designer" />
 		<Content Include="icon.ico" />
-		<Content Include="Licenses.txt">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
+		<Content Include="Licenses.txt" />
+		<Content Update="Licenses.txt" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 	<PropertyGroup>
