@@ -25,7 +25,6 @@ namespace STROOP
 
                 Thread thread = new Thread(new ThreadStart(LoadingHandler.ShowForm));
                 thread.IsBackground = true;
-                thread.SetApartmentState(ApartmentState.STA);
                 thread.Start();
             }
 
