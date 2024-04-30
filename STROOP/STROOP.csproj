@@ -38,6 +38,8 @@
 		<EnableDefaultItems>false</EnableDefaultItems>
 		<ErrorReport>prompt</ErrorReport>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+		<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages> <!-- Accord's maintainer messed up the metadata, and since the project is archived, it will never be fixed -->
 		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
 		<PlatformTarget>$(Platform)</PlatformTarget>
 		<SignAssembly>false</SignAssembly>
@@ -95,6 +97,7 @@
 		<Reference Include="System.Deployment" />
 		<Reference Include="System.Drawing" />
 		<Reference Include="System.Net.Http" />
+		<PackageReference Include="System.Resources.Extensions" Version="6.0.0" /> <!-- 8.0.0 probably works too but there's a big scary warning -->
 		<Reference Include="System.Windows.Forms" />
 		<Reference Include="System.Xml" />
 		<Reference Include="UIAutomationProvider" />
@@ -104,6 +107,7 @@
 	<ItemGroup>
 		<Compile Include="Calculators\**\*.cs" />
 		<Compile Include="Controls\**\*.cs" />
+		<Compile Remove="Controls\DecompilerView.xaml.cs" /> <!-- unused and prevents building on Linux -->
 		<Compile Include="Enums\**\*.cs" />
 		<Compile Include="Extensions\**\*.cs" />
 		<Compile Include="Forms\**\*.cs" />
@@ -116,7 +120,7 @@
 		<Compile Include="Properties\**\*.cs" />
 		<Compile Include="Script\**\*.cs" />
 		<Compile Include="Structs\**\*.cs" />
-		<Compile Include="Ttc\**\*.cs" />
+		<Compile Include="TTC\**\*.cs" />
 		<Compile Include="Utilities\AnimationUtilities.cs" />
 		<Compile Include="Utilities\AreaUtilities.cs" />
 		<Compile Include="Utilities\BehaviorDecoder.cs" />
@@ -217,7 +221,6 @@
 		<!--
 		<None Include="Utilities\Stream\IProcessMemory.cs" />
 		-->
-		<Page Include="Controls\DecompilerView.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Controls\BetterContextMenuStrip.cs" SubType="Component" />
@@ -229,7 +232,6 @@
 		<Compile Update="Controls\CoinRingDisplayPanel.cs" SubType="Component" />
 		<Compile Update="Controls\ColorSelector.cs" SubType="UserControl" />
 		<Compile Update="Controls\ColorSelector.Designer.cs" DependentUpon="ColorSelector.cs" />
-		<Compile Update="Controls\DecompilerView.xaml.cs" DependentUpon="DecompilerView.xaml" />
 		<Compile Update="Controls\DoubleBufferedTableLayoutPanel.cs" SubType="Component" />
 		<Compile Update="Controls\FileBinaryPictureBox.cs" SubType="Component" />
 		<Compile Update="Controls\FileCoinScoreTextbox.cs" SubType="Component" />
@@ -346,7 +348,6 @@
 		<None Update="Mappings\*.map" CopyToOutputDirectory="PreserveNewest" />
 		<None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />
 		<None Update="Resources\**\*.*" CopyToOutputDirectory="PreserveNewest" />
-		<Page Update="Controls\DecompilerView.xaml" Generator="MSBuild:Compile" SubType="Designer" />
 	</ItemGroup>
 	<ItemGroup>
 		<BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
