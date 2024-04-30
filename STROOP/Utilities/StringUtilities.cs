@@ -42,6 +42,11 @@ namespace STROOP.Utilities
             return (num > 0 ? "+" : "") + num;
         }
 
+        public static string FormatIntegerWithSign(long num)
+        {
+            return (num > 0 ? "+" : "") + num;
+        }
+
         public static string Capitalize(string s)
         {
             if (string.IsNullOrEmpty(s)) return s;

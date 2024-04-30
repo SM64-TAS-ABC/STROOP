@@ -21,19 +21,19 @@ namespace STROOP.M64
         private readonly M64Gui _gui;
 
         // 018 4-byte little-endian unsigned int: number of input samples for any controllers
-        private int _numInputs;
+        private uint _numInputs;
         [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200B\u200BNum Inputs")]
-        public int NumInputs { get => _numInputs; set { _numInputs = value; NotifyChange(); } }
+        public uint NumInputs { get => _numInputs; set { _numInputs = value; NotifyChange(); } }
 
         // 00C 4-byte little-endian unsigned int: number of frames(vertical interrupts)
-        private int _numVis;
+        private uint _numVis;
         [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200BNum VIs")]
-        public int NumVis { get => _numVis; set { _numVis = value; NotifyChange(); } }
+        public uint NumVis { get => _numVis; set { _numVis = value; NotifyChange(); } }
 
         // 010 4-byte little-endian unsigned int: rerecord count
-        private int _numRerecords;
+        private uint _numRerecords;
         [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200BNum Rerecords")]
-        public int NumRerecords { get => _numRerecords; set { _numRerecords = value; NotifyChange(); } }
+        public uint NumRerecords { get => _numRerecords; set { _numRerecords = value; NotifyChange(); } }
 
         // 01C 2-byte unsigned int: movie start type
         // value 1: movie begins from snapshot(the snapshot will be loaded from an externalfile
@@ -187,11 +187,11 @@ namespace STROOP.M64
             Signature = BitConverter.ToUInt32(bytes, 0x000);
             VersionNumber = BitConverter.ToUInt32(bytes, 0x004);
             Uid = BitConverter.ToInt32(bytes, 0x008);
-            NumVis = BitConverter.ToInt32(bytes, 0x00C);
-            NumRerecords = BitConverter.ToInt32(bytes, 0x010);
+            NumVis = BitConverter.ToUInt32(bytes, 0x00C);
+            NumRerecords = BitConverter.ToUInt32(bytes, 0x010);
             Fps = bytes[0x014];
             NumControllers = bytes[0x015];
-            NumInputs = BitConverter.ToInt32(bytes, 0x018);
+            NumInputs = BitConverter.ToUInt32(bytes, 0x018);
 
             short movieStartTypeShort = BitConverter.ToInt16(bytes, 0x01C);
             MovieStartType = ConvertShortToMovieStartTypeEnum(movieStartTypeShort);
@@ -266,11 +266,11 @@ namespace STROOP.M64
             Signature = BitConverter.ToUInt32(bytes, 0x000);
             VersionNumber = BitConverter.ToUInt32(bytes, 0x004);
             Uid = BitConverter.ToInt32(bytes, 0x008);
-            NumVis = BitConverter.ToInt32(bytes, 0x00C);
-            NumRerecords = BitConverter.ToInt32(bytes, 0x010);
+            NumVis = BitConverter.ToUInt32(bytes, 0x00C);
+            NumRerecords = BitConverter.ToUInt32(bytes, 0x010);
             Fps = bytes[0x014];
             NumControllers = bytes[0x015];
-            NumInputs = BitConverter.ToInt32(bytes, 0x018);
+            NumInputs = BitConverter.ToUInt32(bytes, 0x018);
 
             short movieStartTypeShort = BitConverter.ToInt16(bytes, 0x01C);
             MovieStartType = ConvertShortToMovieStartTypeEnum(movieStartTypeShort);

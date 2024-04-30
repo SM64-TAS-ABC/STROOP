@@ -404,9 +404,9 @@ namespace STROOP.Managers
             string isModifiedSuffix = _m64File.IsModified ? " [MODIFIED]" : "";
             _gui.LabelFileName.Text = fileName + isModifiedSuffix;
 
-            int currentFrameCount = _m64File.Inputs.Count;
-            int originalFrameCount = _m64File.OriginalFrameCount;
-            int frameCountDiff = currentFrameCount - originalFrameCount;
+            uint currentFrameCount = (uint)_m64File.Inputs.Count;
+            uint originalFrameCount = _m64File.OriginalFrameCount;
+            long frameCountDiff = currentFrameCount - originalFrameCount;
             _gui.LabelNumInputsValue.Text = String.Format(
                 "{0} / {1} [{2}]",
                 currentFrameCount,

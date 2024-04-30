@@ -24,7 +24,7 @@ namespace STROOP.M64
         public string CurrentFilePath { get; private set; }
         public string CurrentFileName { get; private set; }
         public byte[] RawBytes { get; private set; }
-        public int OriginalFrameCount { get; private set; }
+        public uint OriginalFrameCount { get; private set; }
 
         public bool IsModified = false;
         public readonly HashSet<M64InputFrame> ModifiedFrames = new HashSet<M64InputFrame>();
@@ -84,7 +84,7 @@ namespace STROOP.M64
 
             IsModified = false;
             ModifiedFrames.Clear();
-            OriginalFrameCount = Header.NumInputs;
+            OriginalFrameCount = (uint)Header.NumInputs;
             for (int i = 0; i < frameBytes.Length && i < 4 * OriginalFrameCount; i += 4)
             {
                 Inputs.Add(new M64InputFrame(
@@ -117,7 +117,7 @@ namespace STROOP.M64
             try
             {
                 if (_gui.CheckBoxMaxOutViCount.Checked)
-                    Header.NumVis = -1;
+                    Header.NumVis = uint.MaxValue;
                 DialogUtilities.WriteFileBytes(filePath, ToBytes());
                 int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
                 Config.M64Manager.Open(filePath, fileName);
@@ -169,7 +169,7 @@ namespace STROOP.M64
             ControlUtilities.TableGoTo(_gui.DataGridViewInputs, currentPosition);
 
             IsModified = true;
-            Header.NumInputs = Inputs.Count;
+            Header.NumInputs = (uint)Inputs.Count;
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
         }
@@ -221,7 +221,7 @@ namespace STROOP.M64
             }
 
             IsModified = true;
-            Header.NumInputs = Inputs.Count;
+            Header.NumInputs = (uint)Inputs.Count;
             RefreshInputFrames(index);
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
@@ -268,7 +268,7 @@ namespace STROOP.M64
             ControlUtilities.TableGoTo(_gui.DataGridViewInputs, currentPosition);
 
             IsModified = true;
-            Header.NumInputs = Inputs.Count;
+            Header.NumInputs = (uint)Inputs.Count;
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
         }

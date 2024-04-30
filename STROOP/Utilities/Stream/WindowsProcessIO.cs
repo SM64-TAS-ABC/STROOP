@@ -127,7 +127,6 @@ namespace STROOP.Utilities
             uint setInfoSize = (uint)Marshal.SizeOf(typeof(PsapiWorkingSetExInformation));
 
             List<MemoryRegion> regions = new List<MemoryRegion>();
-            MemoryBasicInformation mbi;
             for (IntPtr p = new IntPtr(); VQueryEx(_processHandle, p, out info, infoSize) == infoSize;
                 p = (IntPtr)(p.ToInt64() + info.RegionSize.ToInt64()))
             {

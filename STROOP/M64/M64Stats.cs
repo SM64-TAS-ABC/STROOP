@@ -119,20 +119,20 @@ namespace STROOP.M64
         }
 
         [Category("Misc"), DisplayName("\u200B\u200B\u200BLag VIs")]
-        public int LagVis
+        public long LagVis
         {
             get { return _header.NumVis - 2 * _header.NumInputs; }
             set { }
         }
 
         [Category("Misc"), DisplayName("\u200B\u200BNum Unused Inputs")]
-        public int NumUnusedInputs
+        public long NumUnusedInputs
         {
             get
             {
                 if (_rawBytes == null) return 0;
-                int rawInputCount = (_rawBytes.Length - M64Config.HeaderSize) / 4;
-                int headerInputCount = _header.NumInputs;
+                long rawInputCount = (_rawBytes.Length - M64Config.HeaderSize) / 4;
+                long headerInputCount = _header.NumInputs;
                 return rawInputCount - headerInputCount;
             }
             set { }
