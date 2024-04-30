@@ -19,7 +19,7 @@ using STROOP.Models;
 
 namespace STROOP.Utilities
 {
-    public class LazyImage
+    public class LazyImage : IDisposable
     {
         private string _filePath;
         private LazyImage _preLazyImage;
@@ -60,6 +60,11 @@ namespace STROOP.Utilities
         public LazyImage(Image image)
         {
             _image = image;
+        }
+
+        public void Dispose()
+        {
+            _image?.Dispose();
         }
     }
 }
