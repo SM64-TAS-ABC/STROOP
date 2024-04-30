@@ -26,6 +26,7 @@ namespace STROOP.Utilities
 
         public override string Name => System.IO.Path.GetFileName(_path);
         public override Process Process => null;
+        public override uint RamSize => (uint)_data.Length;
 
         private byte[] _data;
 

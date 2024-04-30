@@ -12,6 +12,7 @@ namespace STROOP.Utilities
     {
         string Name { get; }
         Process Process { get; }
+        uint RamSize { get; }
         bool Suspend();
         bool Resume();
 

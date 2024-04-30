@@ -19,6 +19,8 @@ namespace STROOP.Utilities
         protected abstract UIntPtr BaseOffset { get; }
         protected abstract EndiannessType Endianness { get; }
 
+        public abstract uint RamSize {  get; }
+
         public abstract bool IsSuspended { get; }
 
         public abstract string Name { get; }

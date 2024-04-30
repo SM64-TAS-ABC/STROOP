@@ -568,8 +568,8 @@ namespace STROOP.Utilities
                 try
                 {
                     // Read whole ram value to buffer
-                    if (_ram.Length != Config.RamSize)
-                        _ram = new byte[Config.RamSize];
+                    if (_ram.Length != _io?.RamSize)
+                        _ram = new byte[_io.RamSize];
 
                     return _io?.ReadRelative(0, _ram, EndiannessType.Little) ?? false;
                 }

@@ -22,7 +22,7 @@ Latest development builds with the newest features, bug fixes can be found on th
     * Bizhawk
     * Nemu
     * Mupen64Plus
-    * ~~Project64~~ (broken)
+    * Project64
     * Dolphin
   * 64 Marios (Must be super)
   * Marios must be American, Japanese, PAL, or Shindou

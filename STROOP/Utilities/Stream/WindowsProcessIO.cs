@@ -19,6 +19,9 @@ namespace STROOP.Utilities
         protected bool _isSuspended = false;
         protected UIntPtr _baseOffset;
         protected Emulator _emulator;
+        protected uint? _ramSizeOverride;
+
+        public override uint RamSize => _ramSizeOverride ?? Config.RamSize;
 
         public override bool IsSuspended => _isSuspended;
 
@@ -37,7 +40,7 @@ namespace STROOP.Utilities
 
             _process.EnableRaisingEvents = true;
 
-            ProcessAccess accessFlags = ProcessAccess.PROCESS_QUERY_LIMITED_INFORMATION | ProcessAccess.SUSPEND_RESUME 
+            ProcessAccess accessFlags = ProcessAccess.PROCESS_QUERY_LIMITED_INFORMATION | ProcessAccess.SUSPEND_RESUME
                 | ProcessAccess.VM_OPERATION | ProcessAccess.VM_READ | ProcessAccess.VM_WRITE;
             _processHandle = ProcessGetHandleFromId(accessFlags, false, _process.Id);
             try
@@ -132,7 +135,7 @@ namespace STROOP.Utilities
                     continue;
                 //if (info.Type != MemoryType.MEM_MAPPED)
                 //    continue;
-                if ((Int64)info.RegionSize < Config.RamSize)
+                if ((Int64)info.RegionSize < 0x400000)
                     continue;
 
                 MemoryRegion region = new MemoryRegion((IntPtr)(Int64)info.BaseAddress, info.RegionSize);
@@ -168,7 +171,7 @@ namespace STROOP.Utilities
                 }
             }
 
-            foreach (MemoryRegion region in regions) { 
+            foreach (MemoryRegion region in regions) {
                 UIntPtr baseAddress = (UIntPtr)(UInt64)region.StartAddress; // Start address for reading
                 Int64 bytesRemain = (Int64)region.Size;
                 while (true)
@@ -297,6 +300,7 @@ namespace STROOP.Utilities
                     List<UIntPtr> validAddress = new List<UIntPtr>();
                     foreach (UIntPtr address in FindBytesInProcess(ArcTableBytes, dllRegion))
                     {
+                        bool found = false;
                         // Check different Sm64 offsets
                         foreach (uint offset in ArcTableOffsets)
                         {
@@ -306,14 +310,28 @@ namespace STROOP.Utilities
                                 continue;
 
                             _baseOffset = startOfRam;
-                            return;
+                            found = true;
+                            break;
                         }
+                        if (found)
+                            break;
                     }
                 }
             }
             else
             {
                 _baseOffset = configRamStart;
+            }
+
+            // Don't use expanded ram if we can't read from it (Project64 by default)
+            byte[] readTest = new byte[RamSize];
+            if (!ReadFunc((UIntPtr)_baseOffset, readTest))
+            {
+                readTest = new byte[0x400000];
+                if (ReadFunc((UIntPtr)_baseOffset, readTest))
+                {
+                    _ramSizeOverride = 0x400000;
+                }
             }
         }
 
@@ -352,12 +370,12 @@ namespace STROOP.Utilities
                 disposedValue = true;
             }
         }
-        
+
         ~WindowsProcessRamIO()
         {
             Dispose(false);
         }
-        
+
         public void Dispose()
         {
             Dispose(true);

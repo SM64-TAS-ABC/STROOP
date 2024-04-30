@@ -24,6 +24,7 @@ namespace STROOPUnitTests.Mocks
         public override event EventHandler OnClose;
 
         public const uint Offset = 0x1000000;
+        public override uint RamSize => 0x400000;
 
         private EndiannessType _endianness;
         private byte[] _buffer;
