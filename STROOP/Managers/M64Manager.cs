@@ -40,6 +40,10 @@ namespace STROOP.Managers
             _gui.ButtonCopyRom.Click += (sender, e) => CopyHeaderRomVersion();
             _gui.ButtonPasteRom.Click += (sender, e) => PasteHeaderRomVersion();
 
+            _m64File = new M64File(_gui);
+            _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
+            UpdateTableSettings();
+
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
             _gui.DataGridViewInputs.CellContentClick += (sender, e) =>
@@ -64,9 +68,6 @@ namespace STROOP.Managers
                 Open(filePath, fileName);
             };
 
-            _m64File = new M64File(_gui);
-            _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
-            UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64File.Header;
             _gui.PropertyGridHeader.Refresh();
             _gui.PropertyGridStats.SelectedObject = _m64File.Stats;
