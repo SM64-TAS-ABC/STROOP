@@ -45,6 +45,8 @@ namespace STROOP
         public StroopMainForm()
         {
             InitializeComponent();
+            var isMono = System.Type.GetType("Mono.Runtime") != null;
+            if (isMono) WatchVariablePanelObjects.Visible = false; // I believe the actual errors are from setting `Label.Text = new string(new byte[0]);` or similar, but the stacktraces don't say which controls it is --yoshi
         }
 
         private bool AttachToProcess(Process process)
