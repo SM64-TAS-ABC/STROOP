@@ -206,7 +206,6 @@
 		<EmbeddedResource Include="Forms\**\*.resx" />
 		<EmbeddedResource Include="Map\MapTracker.resx" />
 		<EmbeddedResource Include="Properties\Resources.resx" />
-		<EmbeddedResource Include="Schemas\**\*.xsd" />
 		<None Include="App.config" />
 		<None Include="app.manifest" />
 		<!--<None Include="EmbeddedResources\**\*" />-->
@@ -341,7 +340,6 @@
 		<EmbeddedResource Update="Forms\VariableViewerForm.resx" DependentUpon="VariableViewerForm.cs" />
 		<EmbeddedResource Update="Map\MapTracker.resx" DependentUpon="MapTracker.cs" />
 		<EmbeddedResource Update="Properties\Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" SubType="Designer" />
-		<EmbeddedResource Update="Schemas\*.xsd" SubType="Designer" />
 		<None Update="App.config" SubType="Designer" />
 		<None Update="Mappings\*.map" CopyToOutputDirectory="PreserveNewest" />
 		<None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />

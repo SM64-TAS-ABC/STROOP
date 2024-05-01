@@ -12,7 +12,7 @@
     <Emulator name="Mupen 5.0 RR" processName="mupen64-wiivc" ramStart="0x00901920" endianness="little" autoDetect="true"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-RTZ" ramStart="0x00901920" endianness="little" autoDetect="true"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording-v2-reset" ramStart="0x008ECA90" endianness="little" autoDetect="true"/>
-    <Emulator name="Mupen 5.0 RR" processName="mupen64-rrv8-avisplit" ramStart="0x008ECBB0" endianness="little" autoDetect="true"/>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64-rrv8-avisplit" ramStart="0x008ECBB0" endianness="little" autoDetect="true" schemaWork="false"/>
 
     <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000" endianness="little" autoDetect="true"/>
     <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x6A1C0" endianness="little" autoDetect="true"/>
@@ -21,6 +21,7 @@
     <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianness="big" special="dolphin"/>
     <Emulator name="Mupen64Plus" processName="mupen64plus" ramStart="0x008FF142" endianness="little"/>
   </Emulators>
+  <DoSchemasEvenWork/>
 
   <!-- US, JP, or SH -->
   <RomVersion>US</RomVersion>

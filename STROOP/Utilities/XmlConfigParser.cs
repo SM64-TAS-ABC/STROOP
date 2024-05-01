@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using System.Xml.Schema;
 using System.IO;
 using System.Reflection;
 using STROOP.Structs;
@@ -27,40 +26,10 @@ namespace STROOP.Utilities
             return Path.DirectorySeparatorChar == '\\' ? s : s.Replace('\\', Path.DirectorySeparatorChar);
         }
 
-        public class ResourceXmlResolver : XmlResolver
-        {
-            /// <summary>
-            /// When overridden in a derived class, maps a URI to an object containing the actual resource.
-            /// </summary>
-            /// <returns>
-            /// A System.IO.Stream object or null if a type other than stream is specified.
-            /// </returns>
-            /// <param name="absoluteUri">The URI returned from <see cref="M:System.Xml.XmlResolver.ResolveUri(System.Uri,System.String)"/>. </param><param name="role">The current version does not use this parameter when resolving URIs. This is provided for future extensibility purposes. For example, this can be mapped to the xlink:role and used as an implementation specific argument in other scenarios. </param><param name="ofObjectToReturn">The type of object to return. The current version only returns System.IO.Stream objects. </param><exception cref="T:System.Xml.XmlException"><paramref name="ofObjectToReturn"/> is not a Stream type. </exception><exception cref="T:System.UriFormatException">The specified URI is not an absolute URI. </exception><exception cref="T:System.ArgumentNullException"><paramref name="absoluteUri"/> is null. </exception><exception cref="T:System.Exception">There is a runtime error (for example, an interrupted server connection). </exception>
-            public override object GetEntity(Uri absoluteUri, string role, Type ofObjectToReturn)
-            {
-                // If ofObjectToReturn is null, then any of the following types can be returned for correct processing:
-                // Stream, TextReader, XmlReader or descendants of XmlSchema
-                var result = this.GetType().Assembly.GetManifestResourceStream(
-                    string.Format("STROOP.Schemas.{0}", Path.GetFileName(absoluteUri.ToString())));
-
-                // set a conditional breakpoint "result==null" here
-                return result;
-            }
-        }
-
         public static void OpenConfig(string path)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/ConfigSchema.xsd", "ConfigSchema.xsd");
-            schemaSet.Compile();
-
             // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach(var element in doc.Root.Elements())
             {
@@ -82,7 +51,7 @@ namespace STROOP.Utilities
                                 RamStart = ramStart,
                                 Dll = subElement.Attribute(XName.Get("offsetDll")) != null
                                     ? subElement.Attribute(XName.Get("offsetDll")).Value : null,
-                                Endianness = subElement.Attribute(XName.Get("endianness")).Value == "big" 
+                                Endianness = subElement.Attribute(XName.Get("endianness")).Value == "big"
                                     ? EndiannessType.Big : EndiannessType.Little,
                                 IOType = special == "dolphin" ? typeof(DolphinProcessIO) : typeof(WindowsProcessRamIO),
                                 AutoDetect = autoDetect,
@@ -101,17 +70,8 @@ namespace STROOP.Utilities
 
         public static void OpenSavedSettings(string path)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/ConfigSchema.xsd", "ConfigSchema.xsd");
-            schemaSet.Compile();
-
             // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (var element in doc.Root.Elements())
             {
@@ -203,19 +163,9 @@ namespace STROOP.Utilities
 
         public static List<WatchVariableControlPrecursor> OpenWatchVariableControlPrecursors(string path)
         {
-            string schemaFile = "MiscDataSchema.xsd";
             var objectData = new List<WatchVariableControlPrecursor>();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", schemaFile);
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -232,17 +182,8 @@ namespace STROOP.Utilities
         public static ObjectAssociations OpenObjectAssoc(string path, ObjectSlotManagerGui objectSlotManagerGui)
         {
             var assoc = new ObjectAssociations();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/ObjectAssociationsSchema.xsd", "ObjectAssociationsSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             // Create Behavior-ImagePath list
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
@@ -560,7 +501,7 @@ namespace STROOP.Utilities
                                 case "Used":
                                     usedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
-                                    
+
                                 case "Closest":
                                     closestOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
@@ -724,9 +665,9 @@ namespace STROOP.Utilities
                         var spawnElement = element.Element(XName.Get("SpawnCode"));
                         if (spawnElement != null)
                         {
-                            byte spawnGfxId = (byte)(spawnElement.Attribute(XName.Get("gfxId")) != null ? 
+                            byte spawnGfxId = (byte)(spawnElement.Attribute(XName.Get("gfxId")) != null ?
                                 ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("gfxId")).Value) : 0);
-                            byte spawnExtra = (byte)(spawnElement.Attribute(XName.Get("extra")) != null ? 
+                            byte spawnExtra = (byte)(spawnElement.Attribute(XName.Get("extra")) != null ?
                                 ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("extra")).Value) : (byte)(subType.HasValue ? subType : 0));
                             assoc.AddSpawnHack(new SpawnHack()
                             {
@@ -929,17 +870,7 @@ namespace STROOP.Utilities
 
         public static List<InputImageGui> CreateInputImageAssocList(string path)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/InputImageAssociationsSchema.xsd", "InputImageAssociationsSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             List<InputImageGui> guiList = new List<InputImageGui>();
             foreach (XElement element in doc.Root.Elements())
@@ -974,17 +905,7 @@ namespace STROOP.Utilities
         public static InputImageGui CreateInputImageAssoc(
             string path, string inputImageDir, InputDisplayTypeEnum inputDisplayType)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/InputImageAssociationsSchema.xsd", "InputImageAssociationsSchema.xsd");
-            schemaSet.Compile();
-            
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             // Create path list
             string buttonAPath = "",
@@ -1126,17 +1047,7 @@ namespace STROOP.Utilities
 
         public static void OpenFileImageAssoc(string path, FileImageGui fileImageGui)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/FileImageAssociationsSchema.xsd", "FileImageAssociationsSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             // Create path list
             string fileImageDir = "",
@@ -1408,17 +1319,8 @@ namespace STROOP.Utilities
         public static MapAssociations OpenMapAssoc(string path)
         {
             var assoc = new MapAssociations();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/MapAssociationsSchema.xsd", "MapAssociationsSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1521,17 +1423,8 @@ namespace STROOP.Utilities
         public static ScriptParser OpenScripts(string path)
         {
             var parser = new ScriptParser();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/ScriptsSchema.xsd", "ScriptsSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             string scriptDir = "";
             List<Tuple<string, uint>> scriptLocations = new List<Tuple<string, uint>>();
@@ -1569,16 +1462,8 @@ namespace STROOP.Utilities
         public static List<RomHack> OpenHacks(string path)
         {
             var hacks = new List<RomHack>();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ScriptsSchema.xsd", "ScriptsSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             string hackDir = "";
 
@@ -1622,16 +1507,8 @@ namespace STROOP.Utilities
         public static ActionTable OpenActionTable(string path)
         {
             ActionTable actionTable = null;
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ActionTableSchema.xsd", "ActionTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1675,16 +1552,8 @@ namespace STROOP.Utilities
         public static AnimationTable OpenAnimationTable(string path)
         {
             AnimationTable animationTable = new AnimationTable();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/AnimationTableSchema.xsd", "AnimationTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1703,16 +1572,8 @@ namespace STROOP.Utilities
         public static TriangleInfoTable OpenTriangleInfoTable(string path)
         {
             TriangleInfoTable table = new TriangleInfoTable();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/TriangleInfoTableSchema.xsd", "TriangleInfoTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1737,16 +1598,8 @@ namespace STROOP.Utilities
         public static CourseDataTable OpenCourseDataTable(string path)
         {
             CourseDataTable courseDataTable = new CourseDataTable();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/CourseDataTableSchema.xsd", "CourseDataTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1771,16 +1624,8 @@ namespace STROOP.Utilities
         public static PendulumSwingTable OpenPendulumSwingTable(string path)
         {
             PendulumSwingTable pendulumSwingTable = new PendulumSwingTable();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/PendulumSwingTableSchema.xsd", "PendulumSwingTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1805,16 +1650,7 @@ namespace STROOP.Utilities
 
         public static WaypointTable OpenWaypointTable(string path)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             List<WaypointTable.WaypointReference> waypoints = new List<WaypointTable.WaypointReference>();
             foreach (XElement element in doc.Root.Elements())
@@ -1837,16 +1673,8 @@ namespace STROOP.Utilities
 
         public static PointTable OpenPointTable(string path)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
-            schemaSet.Compile();
-
             // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             List<PointTable.PointReference> points = new List<PointTable.PointReference>();
             foreach (XElement element in doc.Root.Elements())
@@ -1869,16 +1697,7 @@ namespace STROOP.Utilities
 
         public static MusicTable OpenMusicTable(string path)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             List<MusicEntry> musicEntries = new List<MusicEntry>();
             foreach (XElement element in doc.Root.Elements())
@@ -1894,16 +1713,8 @@ namespace STROOP.Utilities
         public static MissionTable OpenMissionTable(string path)
         {
             MissionTable missionTable = new MissionTable();
-            var assembly = Assembly.GetExecutingAssembly();
 
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/MissionTableSchema.xsd", "MissionTableSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
             var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1923,11 +1734,6 @@ namespace STROOP.Utilities
             }
 
             return missionTable;
-        }
-
-        private static void Validation(object sender, ValidationEventArgs e)
-        {
-            throw new Exception(e.Message);
         }
     }
 }
