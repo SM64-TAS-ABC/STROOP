@@ -38,7 +38,6 @@
 		<EnableDefaultItems>false</EnableDefaultItems>
 		<ErrorReport>prompt</ErrorReport>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 		<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages> <!-- Accord's maintainer messed up the metadata, and since the project is archived, it will never be fixed -->
 		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
 		<PlatformTarget>$(Platform)</PlatformTarget>
