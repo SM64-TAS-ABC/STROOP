@@ -295,9 +295,9 @@ namespace STROOP.Structs
             // Unload and dispose of all images
             foreach (var obj in _objAssoc)
             {
-                obj.Image?.Image?.Dispose();
-                obj.TransparentImage?.Image?.Dispose();
-                obj.MapImage?.Image?.Dispose();
+                obj.Image?.Dispose();
+                obj.TransparentImage?.Dispose();
+                obj.MapImage?.Dispose();
             }
 
             _transparentDefaultImage?.Dispose();

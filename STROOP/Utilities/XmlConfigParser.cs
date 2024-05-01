@@ -22,6 +22,11 @@ namespace STROOP.Utilities
 {
     public static class XmlConfigParser
     {
+        private static string FixPathSep(string s)
+        {
+            return Path.DirectorySeparatorChar == '\\' ? s : s.Replace('\\', Path.DirectorySeparatorChar);
+        }
+
         public class ResourceXmlResolver : XmlResolver
         {
             /// <summary>
@@ -276,16 +281,16 @@ namespace STROOP.Utilities
                             switch(subElement.Name.ToString())
                             {
                                 case "ImageDirectory":
-                                    imageDir = subElement.Value;
+                                    imageDir = FixPathSep(subElement.Value);
                                     break;
                                 case "DefaultImage":
                                     defaultImagePath = subElement.Value;
                                     break;
                                 case "MapImageDirectory":
-                                    mapImageDir = subElement.Value;
+                                    mapImageDir = FixPathSep(subElement.Value);
                                     break;
                                 case "OverlayImageDirectory":
-                                    overlayImageDir = subElement.Value;
+                                    overlayImageDir = FixPathSep(subElement.Value);
                                     break;
                                 case "EmptyImage":
                                     emptyImagePath = subElement.Value;
@@ -948,15 +953,15 @@ namespace STROOP.Utilities
                             {
                                 case "ClassicInputImageDirectory":
                                     guiList.Add(CreateInputImageAssoc(
-                                        path, subElement.Value, InputDisplayTypeEnum.Classic));
+                                        path, FixPathSep(subElement.Value), InputDisplayTypeEnum.Classic));
                                     break;
                                 case "SleekInputImageDirectory":
                                     guiList.Add(CreateInputImageAssoc(
-                                        path, subElement.Value, InputDisplayTypeEnum.Sleek));
+                                        path, FixPathSep(subElement.Value), InputDisplayTypeEnum.Sleek));
                                     break;
                                 case "VerticalInputImageDirectory":
                                     guiList.Add(CreateInputImageAssoc(
-                                        path, subElement.Value, InputDisplayTypeEnum.Vertical));
+                                        path, FixPathSep(subElement.Value), InputDisplayTypeEnum.Vertical));
                                     break;
                             }
                         }
@@ -1185,7 +1190,7 @@ namespace STROOP.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "FileImageDirectory":
-                                    fileImageDir = subElement.Value;
+                                    fileImageDir = FixPathSep(subElement.Value);
                                     break;
                             }
                         }
@@ -1425,10 +1430,10 @@ namespace STROOP.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "MapImageDirectory":
-                                    assoc.MapImageFolderPath = subElement.Value;
+                                    assoc.MapImageFolderPath = FixPathSep(subElement.Value);
                                     break;
                                 case "BackgroundImageDirectory":
-                                    assoc.BackgroundImageFolderPath = subElement.Value;
+                                    assoc.BackgroundImageFolderPath = FixPathSep(subElement.Value);
                                     break;
                                 case "DefaultImage":
                                     var defaultMap = new MapLayout() { ImagePath = subElement.Value };
@@ -1587,7 +1592,7 @@ namespace STROOP.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "HackDirectory":
-                                    hackDir = subElement.Value;
+                                    hackDir = FixPathSep(subElement.Value);
                                     break;
                             }
                         }
