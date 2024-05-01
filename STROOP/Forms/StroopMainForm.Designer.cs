@@ -1077,8 +1077,8 @@ namespace STROOP
             this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelModelTriangles = new System.Windows.Forms.Label();
             this.dataGridViewTriangles = new System.Windows.Forms.DataGridView();
-            this.Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -14605,8 +14605,8 @@ namespace STROOP
             this.dataGridViewTriangles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTriangles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTriangles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Group,
-            this.Type,
+            this.GroupColumn,
+            this.TypeColumn,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
@@ -14617,17 +14617,17 @@ namespace STROOP
             this.dataGridViewTriangles.Size = new System.Drawing.Size(79, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
-            // Group
+            // GroupColumn
             // 
-            this.Group.HeaderText = "Group";
-            this.Group.Name = "Group";
-            this.Group.ReadOnly = true;
+            this.GroupColumn.HeaderText = "Group";
+            this.GroupColumn.Name = "GroupColumn";
+            this.GroupColumn.ReadOnly = true;
             // 
-            // Type
+            // TypeColumn
             // 
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
+            this.TypeColumn.HeaderText = "Type";
+            this.TypeColumn.Name = "TypeColumn";
+            this.TypeColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -22878,8 +22878,8 @@ namespace STROOP
         private DataGridViewTextBoxColumn Y;
         private DataGridViewTextBoxColumn Z;
         private DataGridView dataGridViewTriangles;
-        private DataGridViewTextBoxColumn Group;
-        private DataGridViewTextBoxColumn Type;
+        private DataGridViewTextBoxColumn GroupColumn;
+        private DataGridViewTextBoxColumn TypeColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
