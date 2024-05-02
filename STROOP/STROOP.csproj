@@ -105,7 +105,6 @@
 	<ItemGroup>
 		<Compile Include="Calculators\**\*.cs" />
 		<Compile Include="Controls\**\*.cs" />
-		<Compile Remove="Controls\DecompilerView.xaml.cs" /> <!-- unused and prevents building on Linux -->
 		<Compile Include="Enums\**\*.cs" />
 		<Compile Include="Extensions\**\*.cs" />
 		<Compile Include="Forms\**\*.cs" />
