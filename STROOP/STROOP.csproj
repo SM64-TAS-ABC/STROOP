@@ -95,7 +95,7 @@
 		<Reference Include="System.Deployment" />
 		<Reference Include="System.Drawing" />
 		<Reference Include="System.Net.Http" />
-		<PackageReference Include="System.Resources.Extensions" Version="6.0.0" /> <!-- 8.0.0 probably works too but there's a big scary warning -->
+		<PackageReference Include="System.Resources.Extensions" Version="4.6.0" /> <!-- "4.0.0" required by Resources for some reason-->
 		<Reference Include="System.Windows.Forms" />
 		<Reference Include="System.Xml" />
 		<Reference Include="UIAutomationProvider" />
