@@ -35,7 +35,6 @@
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<DefineConstants>$(DefineConstants);TRACE</DefineConstants>
-		<EnableDefaultItems>false</EnableDefaultItems>
 		<ErrorReport>prompt</ErrorReport>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages> <!-- Accord's maintainer messed up the metadata, and since the project is archived, it will never be fixed -->
@@ -103,20 +102,9 @@
 		<Reference Include="WindowsFormsIntegration" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Include="$(MSBuildProjectDirectory)\**\*.cs" />
 		<Content Include="Config\**\*.xml" />
 		<Content Include="icon.ico" />
 		<Content Include="Licenses.txt" />
-		<EmbeddedResource Include="$(MSBuildProjectDirectory)\**\*.resx" />
-		<None Include="App.config" />
-		<None Include="app.manifest" />
-		<!--<None Include="EmbeddedResources\**\*" />-->
-		<!--<None Include="icon.png" />-->
-		<None Include="Mappings\MappingJP.map" />
-		<None Include="Mappings\MappingUS.map" />
-		<None Include="OpenTK.dll.config" />
-		<None Include="Properties\Settings.settings" />
-		<None Include="Resources\**\*.*" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Controls\BetterContextMenuStrip.cs" SubType="Component" />
