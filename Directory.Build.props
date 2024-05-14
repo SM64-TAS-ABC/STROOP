@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<DefineConstants>$(DefineConstants);TRACE</DefineConstants>
 		<ErrorReport>prompt</ErrorReport>
+		<LangVersion>7.1</LangVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
 		<DebugSymbols>true</DebugSymbols>
