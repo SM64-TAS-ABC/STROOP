@@ -1,4 +1,4 @@
-﻿﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -17,21 +17,9 @@
 		<TestProjectType>UnitTest</TestProjectType>
 		<NuGetPackageImportStamp>
 		</NuGetPackageImportStamp>
-		<DefineConstants>$(DefineConstants);TRACE</DefineConstants>
 		<EnableMSTestRunner>true</EnableMSTestRunner>
-		<ErrorReport>prompt</ErrorReport>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
-		<Optimize>false</Optimize>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-		<DebugType>pdbonly</DebugType>
-		<Optimize>true</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="MSTest" Version="3.3.1" PrivateAssets="all" />
