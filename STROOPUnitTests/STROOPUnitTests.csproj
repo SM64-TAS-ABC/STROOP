@@ -7,7 +7,7 @@
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>STROOPUnitTests</RootNamespace>
 		<AssemblyName>STROOPUnitTests</AssemblyName>
-		<TargetFramework>net462</TargetFramework>
+		<TargetFramework>net461</TargetFramework>
 		<FileAlignment>512</FileAlignment>
 		<ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
 		<VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -24,5 +24,14 @@
 	<ItemGroup>
 		<PackageReference Include="MSTest" Version="3.3.1" PrivateAssets="all" />
 		<ProjectReference Include="$(ProjectDir)../STROOP/STROOP.csproj" />
+	</ItemGroup>
+
+	<!-- newer versions of Microsoft.NET.Test.Sdk silently fail for net461, but with this incantation it works fine, see https://github.com/microsoft/vstest/issues/4187#issuecomment-1346833455 -->
+	<PropertyGroup>
+		<IsTestProject>true</IsTestProject>
+		<TestProject>true</TestProject>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectCapability Include="TestContainer" />
 	</ItemGroup>
 </Project>
