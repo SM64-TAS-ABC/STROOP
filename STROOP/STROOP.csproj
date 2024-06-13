@@ -34,8 +34,6 @@
 		</NuGetPackageImportStamp>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<DefineConstants>$(DefineConstants);TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 		<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages> <!-- Accord's maintainer messed up the metadata, and since the project is archived, it will never be fixed -->
@@ -43,16 +41,6 @@
 		<PlatformTarget>$(Platform)</PlatformTarget>
 		<SignAssembly>false</SignAssembly>
 		<SignManifests>false</SignManifests>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
-		<Optimize>false</Optimize>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-		<DebugType>pdbonly</DebugType>
-		<Optimize>true</Optimize>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)' == 'Windows Build' ">
 		<DebugType>none</DebugType>
@@ -83,24 +71,10 @@
 		<PackageReference Include="OpenTK" Version="3.1.0" />
 		<PackageReference Include="OpenTK.GLControl" Version="3.1.0" />
 		<Reference Include="PresentationCore" />
-		<Reference Include="PresentationFramework" />
-		<Reference Include="System" />
-		<Reference Include="System.Core" />
 		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
-		<Reference Include="System.Xaml" />
-		<Reference Include="System.Xml.Linq" />
-		<Reference Include="System.Data.DataSetExtensions" />
-		<Reference Include="Microsoft.CSharp" />
-		<Reference Include="System.Data" />
-		<Reference Include="System.Deployment" />
-		<Reference Include="System.Drawing" />
-		<Reference Include="System.Net.Http" />
 		<PackageReference Include="System.Resources.Extensions" Version="4.6.0" /> <!-- "4.0.0" required by Resources for some reason-->
 		<Reference Include="System.Windows.Forms" />
-		<Reference Include="System.Xml" />
-		<Reference Include="UIAutomationProvider" />
 		<Reference Include="WindowsBase" />
-		<Reference Include="WindowsFormsIntegration" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="Config\**\*.xml" />
