@@ -22,11 +22,11 @@ namespace STROOP.Utilities
 
         const int WAYPOINT_FLAGS_END = -1;
 
-        const int PLATFORM_ON_TRACK_ACT_INIT = 0;
-        const int PLATFORM_ON_TRACK_ACT_WAIT_FOR_MARIO = 1;
-        const int PLATFORM_ON_TRACK_ACT_MOVE_ALONG_TRACK = 2;
-        const int PLATFORM_ON_TRACK_ACT_PAUSE_BRIEFLY = 3;
-        const int PLATFORM_ON_TRACK_ACT_FALL = 4;
+        public const int PLATFORM_ON_TRACK_ACT_INIT = 0;
+        public const int PLATFORM_ON_TRACK_ACT_WAIT_FOR_MARIO = 1;
+        public const int PLATFORM_ON_TRACK_ACT_MOVE_ALONG_TRACK = 2;
+        public const int PLATFORM_ON_TRACK_ACT_PAUSE_BRIEFLY = 3;
+        public const int PLATFORM_ON_TRACK_ACT_FALL = 4;
 
         const int PLATFORM_ON_TRACK_TYPE_CARPET = 0;
         const int PLATFORM_ON_TRACK_TYPE_SKI_LIFT = 1;
@@ -250,7 +250,7 @@ namespace STROOP.Utilities
         {
         }
 
-        public void ApplyToObject(uint objAddress)
+        public void ApplyToObject(uint objAddress, bool applyTimer = true)
         {
             Config.Stream.SetValue(oBehParams, objAddress + ObjectConfig.BehaviorParamsOffset);
             Config.Stream.SetValue(oBehParams2ndByte, objAddress + ObjectConfig.BehaviorSubtypeOffset);
@@ -284,7 +284,10 @@ namespace STROOP.Utilities
 
             Config.Stream.SetValue(oAction, objAddress + ObjectConfig.ActionOffset);
             Config.Stream.SetValue(oPrevAction, objAddress + 0x18C);
-            Config.Stream.SetValue(oTimer, objAddress + ObjectConfig.TimerOffset);
+            if (applyTimer)
+            {
+                Config.Stream.SetValue(oTimer, objAddress + ObjectConfig.TimerOffset);
+            }
 
             Config.Stream.SetValue(oPlatformOnTrackBaseBallIndex, objAddress + 0x88);
             Config.Stream.SetValue(oPlatformOnTrackDistMovedSinceLastBall, objAddress + 0xF4);
@@ -502,7 +505,8 @@ namespace STROOP.Utilities
 
                     this.oAction == other.oAction &&
                     this.oPrevAction == other.oPrevAction &&
-                    //this.oTimer == other.oTimer &&
+                    // oTimer is excluded: while the platform moves it depends on when Mario
+                    // last stood on it, which the simulation has no way of knowing.
 
                     this.oPlatformOnTrackBaseBallIndex == other.oPlatformOnTrackBaseBallIndex &&
                     this.oPlatformOnTrackDistMovedSinceLastBall == other.oPlatformOnTrackDistMovedSinceLastBall &&
@@ -609,16 +613,27 @@ namespace STROOP.Utilities
         public void Update(bool isMarioStandingOnPlatform)
         {
             this.isMarioStandingOnPlatform = isMarioStandingOnPlatform;
-            
-            bhv_platform_on_track_update();
 
+            // cur_obj_update checks for an action change both before running the behavior
+            // and after incrementing oTimer, so the first frame of a new action sees 0.
             if (oAction != oPrevAction)
             {
                 oTimer = 0;
                 oPrevAction = oAction;
             }
 
-            oTimer++;
+            bhv_platform_on_track_update();
+
+            if (oTimer < 0x3FFFFFFF)
+            {
+                oTimer++;
+            }
+
+            if (oAction != oPrevAction)
+            {
+                oTimer = 0;
+                oPrevAction = oAction;
+            }
         }
 
         private void platform_on_track_reset()
@@ -629,7 +644,11 @@ namespace STROOP.Utilities
 
         private void platform_on_track_mario_not_on_platform()
         {
-            throw new NotImplementedException("platform_on_track_mario_not_on_platform");
+            if (((ushort)(oBehParams >> 16) & PLATFORM_ON_TRACK_BP_DONT_DISAPPEAR) == 0)
+            {
+                // cur_obj_wait_then_blink(150, 40), then platform_on_track_reset()
+                throw new NotImplementedException("platform_on_track_mario_not_on_platform");
+            }
         }
 
         private void bhv_platform_on_track_init()
