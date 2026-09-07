@@ -295,16 +295,20 @@
   <Data groupList="Basic" type="float" offset="0x168" base="Object" coord="Y">Home Y</Data>
   <Data groupList="Basic" type="float" offset="0x16C" base="Object" coord="Z">Home Z</Data>
 
-  <Data groupList="Advanced" type="uint" offset="0x1D4" base="Object" subclass="Address">Initial Release Status</Data>
-  <Data groupList="Basic" type="uint" offset="0x1CC" base="Object" subclass="Address">Release Status</Data>
-  <Data groupList="Advanced" type="int" offset="0x1D0" base="Object">Stack Index</Data>
+  <Data groupList="Advanced" type="uint" offset="0x188" base="Object" useHex="true">Behaviour params</Data>
+  <!-- this is a copy of (params>>16 & 0xFF) -->
+  <!---<Data groupList="Advanced" type="uint" offset="0x144" base="Object" useHex="true">Behaviour param 2</Data>-->
+  <Data groupList="Advanced" type="uint" offset="0x1D4" base="Object" subclass="Address">Behaviour stack pointer</Data>
+  <Data groupList="Advanced" type="uint" offset="0x1CC" base="Object" subclass="Address">Current behaviour command</Data>
+  <Data groupList="Advanced" type="int" offset="0x1D0" base="Object">Behaviour Stack Index</Data>
+
   <Data groupList="Basic" type="uint" offset="0x134" base="Object" useHex="true">Interaction Status</Data>
 
   <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" useHex="true">Active Flags</Data>
 
-  <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
   <Data groupList="Basic" type="int" offset="0x14C" base="Object">Action</Data>
-  <Data groupList="Advanced" type="int" offset="0x18C" base="Object">Action 2</Data>
+  <!-- STROOP sees this as a copy of Action, it's a temporary variable reset right after object update -->
+  <!-- <Data groupList="Advanced" type="int" offset="0x18C" base="Object">Previous action</Data>-->
   <Data groupList="Advanced" type="int" offset="0x150" base="Object">Sub Action</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
 
