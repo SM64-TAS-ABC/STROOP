@@ -20,4 +20,5 @@
   <Hack name="RCP Crash (J)" path="RcpCrashJ.hck" />
   <Hack name="Object Graphics Triangles" path="ObjectGraphicsTriangles.hck" />
   <Hack name="Object Graphics Triangles Cam POV" path="ObjectGraphicsTrianglesCameraPov.hck" />
+  <Hack name="D-pad Cap Spawning" path="CapSpawn.hck" />
 </Hacks>
